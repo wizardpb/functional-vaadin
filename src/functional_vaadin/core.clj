@@ -1,6 +1,7 @@
-(ns functional-vaadin.core)
+(ns functional-vaadin.core
+  (:import (com.vaadin.ui
+             Label
+             Button)))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn button [options]
+  (Button.))

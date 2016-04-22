@@ -6,4 +6,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [com.vaadin/vaadin-server "7.6.5"]
                  [com.vaadin/vaadin-client-compiled "7.6.5"]
-                 [com.vaadin/vaadin-themes "7.6.5"]])
+                 [com.vaadin/vaadin-themes "7.6.5"]]
+  :profiles {:dev {:source-paths ["src" "dev"]
+                   ;:dependencies []
+                   }}
+  )
