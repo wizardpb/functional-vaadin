@@ -1,4 +1,5 @@
 (ns functional-vaadin.build-support
+  "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.config :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui Panel AbstractOrderedLayout)))

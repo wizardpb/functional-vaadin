@@ -1,4 +1,5 @@
 (ns functional-vaadin.config
+  "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:use [functional-vaadin.config-table]
             [functional-vaadin.utils])
   (:import (java.util Map)))

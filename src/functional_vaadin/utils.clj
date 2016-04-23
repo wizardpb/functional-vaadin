@@ -1,4 +1,5 @@
 (ns functional-vaadin.utils
+  "Generally useful utility functions"
   (:import [com.vaadin.ui AbstractComponent]))
 
 (defn capitalize [s]
