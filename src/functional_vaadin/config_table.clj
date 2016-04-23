@@ -1,10 +1,10 @@
 (ns functional-vaadin.config-table
-  (:require [functional-vaadin.config-funcs :refer :all])
+  (:use [functional-vaadin.config-funcs])
   (:import (com.vaadin.ui
-            Label Embedded Link MenuBar CustomComponent Upload Button Calendar GridLayout
+            Component AbstractComponent Label Embedded Link MenuBar CustomComponent Upload Button Calendar GridLayout
             TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
             RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
-            ListSelect OptionGroup Tree TreeTable VerticalLayout HorizontalLayout FormLayout)))
+            ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout)))
 
 (def config-table
   {
@@ -48,6 +48,7 @@
     [:setContainerDataSource 2] (fn [obj arg0 arg1] (.setContainerDataSource obj arg0 arg1))
     [:setContainerDataSource 6] (fn [obj arg0 arg1 arg2 arg3 arg4 arg5] (.setContainerDataSource obj arg0 arg1 arg2 arg3 arg4 arg5))
     [:setContainerDataSource 1] (fn [obj arg0] (.setContainerDataSource obj arg0))
+    [:setContent 1] (fn [obj arg0] (.setContent obj arg0))
     [:setContentMode 1] (fn [obj arg0] (.setContentMode obj arg0))
     [:setConversionError 1] (fn [obj arg0] (.setConversionError obj arg0))
     [:setConvertedValue 1] (fn [obj arg0] (.setConvertedValue obj arg0))
@@ -151,7 +152,9 @@
     [:setRowGenerator 1] (fn [obj arg0] (.setRowGenerator obj arg0))
     [:setRowHeaderMode 1] (fn [obj arg0] (.setRowHeaderMode obj arg0))
     [:setRows 1] (fn [obj arg0] (.setRows obj arg0))
+    [:setScrollLeft 1] (fn [obj arg0] (.setScrollLeft obj arg0))
     [:setScrollToSelectedItem 1] (fn [obj arg0] (.setScrollToSelectedItem obj arg0))
+    [:setScrollTop 1] (fn [obj arg0] (.setScrollTop obj arg0))
     [:setSecondComponent 1] (fn [obj arg0] (.setSecondComponent obj arg0))
     [:setSelectable 1] (fn [obj arg0] (.setSelectable obj arg0))
     [:setSelectedTab 1] (fn [obj arg0] (.setSelectedTab obj arg0))

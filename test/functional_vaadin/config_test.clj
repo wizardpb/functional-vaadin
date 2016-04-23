@@ -1,6 +1,7 @@
 (ns functional-vaadin.config-test
-  (:require [clojure.test :refer :all]
-            [functional-vaadin.config :refer :all])
+  (:use [clojure.test]
+            [functional-vaadin.config])
+
   (:import (com.vaadin.ui Button VerticalLayout)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.server Sizeable)))
@@ -30,4 +31,14 @@
       (is (= (.getHeightUnits obj) (Sizeable/UNITS_MM)))
       (is (= (.getWidth obj) 4.0))
       (is (= (.getWidthUnits obj) (Sizeable/UNITS_MM)))
-      )))
+      ))
+
+  (testing "Error handling"
+    (is (thrown-with-msg?
+          IllegalArgumentException #"Configuration options must be a Map"
+          (configure (Button.) :keyword)))
+    (is (thrown-with-msg?
+          UnsupportedOperationException #"No such option for class com.vaadin.ui.Button: :wozza"
+          (configure (Button.) {:wozza "wizzbang"}))))
+
+  )

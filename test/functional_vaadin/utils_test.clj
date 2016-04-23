@@ -1,6 +1,6 @@
 (ns functional-vaadin.utils-test
-  (:require [clojure.test :refer :all]
-            [functional-vaadin.utils :refer :all]))
+  (:use [clojure.test]
+        [functional-vaadin.utils]))
 
 
 (deftest all
