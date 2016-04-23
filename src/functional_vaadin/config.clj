@@ -1,7 +1,7 @@
 (ns functional-vaadin.config
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:use [functional-vaadin.config-table]
-            [functional-vaadin.utils])
+        [functional-vaadin.utils])
   (:import (java.util Map)))
 
 (def parent-options
@@ -13,6 +13,14 @@
    :alignment (fn [child optval] [:componentAlignment [child optval]])
    })
 
+(def parent-data-options
+  "A set of config options that are saved fo use in any way by parent.These differ from parent-options in
+  that the configuration mechanism only extracts and saves them"
+  #{
+    :position                                               ;xy position of an element in a Grid Layout
+    :span                                                   ;xy span of an element in a Grid Layout
+    })
+
 (defn parent-transform [child [optkey optval]]
   ((get parent-options optkey) child optval))
 
@@ -23,6 +31,15 @@
     (do
       (attach-data child :parent-options (into {} (map parent-transform (repeat child) popts)))
       (apply dissoc opts (keys parent-options)))
+    opts))
+
+(defn- extract-parent-data
+  "Extract and save any child options for use by a parent"
+  [opts child]
+  (if-let [popts (not-empty (select-keys opts parent-data-options))]
+    (do
+      (attach-data child :parent-data popts)
+      (apply dissoc opts parent-data-options))
     opts))
 
 (defn- configure-component
@@ -42,6 +59,10 @@
 (defn configure [obj ^Map opts]
   (if (not (instance? Map opts))
     (throw (IllegalArgumentException. "Configuration options must be a Map")))
-  (do-configure obj (extract-parent-options opts obj))
+  (do-configure
+    obj
+    (-> opts
+        (extract-parent-options obj)
+        (extract-parent-data obj)))
   obj)
 

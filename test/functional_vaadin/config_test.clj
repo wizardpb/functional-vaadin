@@ -1,12 +1,19 @@
 (ns functional-vaadin.config-test
   (:use [clojure.test]
-            [functional-vaadin.config])
+        [functional-vaadin.config]
+        [functional-vaadin.utils])
 
   (:import (com.vaadin.ui Button VerticalLayout)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.server Sizeable)))
 
 (deftest configuration
+
+  (testing "Option and data extraction"
+    (let [b (configure (Button.) {:caption "Push Me" :expandRatio 0.5 :position [1 1]})]
+      (is (= (get-data b :parent-data) {:position [1 1]}))
+      (is (= (get-data b :parent-options) {:expandRatio [b 0.5]}))
+      (is (= (.getCaption b) "Push Me"))))
 
   (testing "Single option args"
     (let [obj (Button.)]
