@@ -8,17 +8,10 @@
 (defn- apply-parent-options
   "Apply any options save on the child under the key :parent-options."
   [parent child]
-  (if-let [opts (get-data child :parent-options)]
+  (if-let [opts (detach-data child :parent-options)]
     ;; Use do-configure so the parent opst aren't re-extracted
     (do-configure parent opts))
   )
-
-(defmulti handle-parent-options (fn [parent child] (class parent)))
-
-(defmethod handle-parent-options :default [p c])
-
-(defmethod handle-parent-options AbstractOrderedLayout [parent child]
-  (configure parent (get-data child :parent-options)))
 
 (defmulti add-children (fn [parent children] (class parent)))
 

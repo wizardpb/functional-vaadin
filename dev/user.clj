@@ -1,9 +1,17 @@
 (ns user
-  (:use [functional-vaadin.core]
-        [clojure.test]
-        [config-gen]))
+  (:require [clojure.string :as str])
+  (:use [clojure.test]
+        [functional-vaadin.core]
+        [config-gen])
+  (:import (java.io File)))
 
-(def test-files ["config" "core" "utils"])
+(def test-dir "test/functional_vaadin/")
+
+(defn test-ns-sym [fname]
+  (symbol (str "functional-vaadin." (str/replace (first (str/split fname #"\.")) #"_" "-"))))
 
 (defn run-my-tests []
-  (apply run-tests (map #(symbol (str "functional-vaadin." %1 "-test")) test-files)))
+  (let [test-files (.list (File. ^String test-dir))]
+    (doseq [fname test-files]
+      (load-file (str test-dir fname)))
+    (apply run-tests (map test-ns-sym test-files))))

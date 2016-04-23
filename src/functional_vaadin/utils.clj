@@ -18,5 +18,14 @@
               (hash-map key data)))
   )
 
-(defn get-data [component key]
+(defn get-data
+  "Get any attached data at key"
+  [component key]
   (get (.getData component) key))
+
+(defn detach-data
+  "Get and remove any attached data at key"
+  [component key]
+  (let [m (.getData component)]
+    (.setData component (dissoc m key))
+    (get m key)))
