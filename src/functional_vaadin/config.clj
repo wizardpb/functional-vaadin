@@ -36,12 +36,12 @@
       (throw (UnsupportedOperationException. (str "No such option for " (class obj) ": " opt))))))
 
 (defn do-configure [obj ^Map opts]
-  (if (not (instance? Map opts))
-    (throw (IllegalArgumentException. "Configuration options must be a Map")))
   (doseq [opt-spec opts]
     (configure-component obj opt-spec)))
 
 (defn configure [obj ^Map opts]
+  (if (not (instance? Map opts))
+    (throw (IllegalArgumentException. "Configuration options must be a Map")))
   (do-configure obj (extract-parent-options opts obj))
   obj)
 

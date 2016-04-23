@@ -1,5 +1,4 @@
 (ns functional-vaadin.config-table
-  (:use [functional-vaadin.config-funcs])
   (:import (com.vaadin.ui
             Component AbstractComponent Label Embedded Link MenuBar CustomComponent Upload Button Calendar GridLayout
             TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
