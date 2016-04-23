@@ -1,4 +1,4 @@
-(defproject functional-vaadin "0.1.0-SNAPSHOT"
+(defproject com.prajnainc/functional-vaadin "0.1.0-SNAPSHOT"
   :description "A functional interface to Vaadin"
   ;:url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
