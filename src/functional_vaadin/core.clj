@@ -8,7 +8,8 @@
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
              ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout
-             Component UI)))
+             Component UI)
+           (java.util Date)))
 
 (def
   ^{:dynamic true :private true}
@@ -33,6 +34,97 @@
            (UnsupportedOperationException. "The generated UI is not a Vaadin Component"))))
      *current-ui*))
 
+;; Base components - Button, Link, Label etc.
+
+(defn button [opts]
+  (configure (Button.) opts))
+
+(defn link [opts]
+  (configure (Link.) opts))
+
+(defn label [opt-or-text]
+  (if (instance? String opt-or-text)
+    (Label. opt-or-text)
+    (configure (Label.) opt-or-text)))
+
+;; Forms and Fields
+
+(defn text-field [& args]
+  (condp = (count args)
+    0 (TextField.)
+    1 (let [[arg] args]
+        (if (instance? String arg)
+          (TextField. arg)
+          (configure (TextField.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (every? #(instance? String %1) args)
+          (TextField. arg1 arg2)
+          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
+    (throw (IllegalArgumentException. "Too many arguments for TextField"))))
+
+(defn password-field [& args]
+  (condp = (count args)
+    0 (PasswordField.)
+    1 (let [arg (first args)]
+        (if (instance? String arg)
+
+          (PasswordField. arg) (configure (PasswordField.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (every? #(instance? String %1) args)
+          (PasswordField. arg1 arg2)
+          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
+    (throw (IllegalArgumentException. "Too many arguments for PasswordField"))))
+
+(defn text-area [& args]
+  (condp = (count args)
+    0 (TextArea.)
+    1 (let [arg (first args)]
+        (if (instance? String arg)
+          (TextArea. arg)
+          (configure (TextArea.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (every? #(instance? String %1) args)
+          (TextArea. arg1 arg2)
+          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
+    (throw (IllegalArgumentException. "Too many arguments for TextArea"))))
+
+(defn rich-text-area [& args]
+  (condp = (count args)
+    0 (RichTextArea.)
+    1 (let [arg (first args)]
+        (if (instance? String arg)
+          (RichTextArea. arg)
+          (configure (RichTextArea.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (every? #(instance? String %1) args)
+          (RichTextArea. arg1 arg2)
+          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
+    (throw (IllegalArgumentException. "Too many arguments for RichTextArea"))))
+
+(defn inline-date-field [& args]
+  (condp = (count args)
+    0 (InlineDateField.)
+    1 (let [arg (first args)]
+        (if (instance? String arg) (InlineDateField. arg) (configure (InlineDateField.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (and (instance? String arg1) (instance? Date arg2))
+          (InlineDateField. ^String arg1 ^Date arg2)
+          (throw (IllegalArgumentException. "Arguments must be a String and a Date"))))
+    (throw (IllegalArgumentException. "Too many arguments for InlineDateField"))))
+
+(defn popup-date-field [& args]
+  (condp = (count args)
+    0 (PopupDateField.)
+    1 (let [arg (first args)]
+        (if (instance? String arg) (PopupDateField. arg) (configure (PopupDateField.) arg)))
+    2 (let [[arg1 arg2] args]
+        (if (and (instance? String arg1) (instance? Date arg2))
+          (PopupDateField. ^String arg1 ^Date arg2)
+          (throw (IllegalArgumentException. "Arguments must be a String and a Date"))))
+    (throw (IllegalArgumentException. "Too many arguments for PopupDateField"))))
+
+;; Containers and layouts
+
 (defn panel [opts & children]
   (add-children (configure (Panel.) opts) children))
 
@@ -45,13 +137,5 @@
 (defn form-layout [opts & children]
   (add-children (configure (FormLayout.) opts) children))
 
-(defn button [opts]
-  (configure (Button.) opts))
+;; TODO - Grid and Form Layout, Split Layouts
 
-(defn link [opts]
-  (configure (Link.) opts))
-
-(defn label [opt-or-text]
-  (if (instance? String opt-or-text)
-    (Label. opt-or-text)
-    (configure (Label.) opt-or-text)))
