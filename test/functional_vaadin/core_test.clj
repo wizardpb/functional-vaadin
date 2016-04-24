@@ -50,6 +50,23 @@
           b (.getComponent vt 0)]
       (is (= (.getExpandRatio vt b) 0.5)))))
 
+(deftest ui-grid-layout
+  (testing "Building"
+    (let [layout (grid-layout {}
+                   (label "label") (button "Push Me"))]
+      (is (= 2 (.getComponentCount layout)))
+      (is (= 2 (.getRows layout)))
+      (is (= 1 (.getColumns layout))))
+    ; TODO - need row and col spec on grid-layout
+    ;(let [layout (grid-layout
+    ;               {}
+    ;               (label {:caption "label" :position [0 0]})
+    ;               (button {:caption "Push Me" :position [0 1]}))]
+    ;  (is (= 2 (.getComponentCount layout)))
+    ;  (is (= 1 (.getRows layout)))
+    ;  (is (= 2 (.getColumns layout))))
+    ))
+
 (deftest ui-text-fields
   (testing "Building"
     (doseq [[fn cls] [[text-field TextField]

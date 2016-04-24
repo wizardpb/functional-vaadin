@@ -12,8 +12,13 @@
   (testing "Option and data extraction"
     (let [b (configure (Button.) {:caption "Push Me" :expandRatio 0.5 :position [1 1]})]
       (is (= (get-data b :parent-data) {:position [1 1]}))
-      (is (= (get-data b :parent-options) {:expandRatio [b 0.5]}))
-      (is (= (.getCaption b) "Push Me"))))
+      (is (= (get-data b :parent-config) {:expandRatio [b 0.5]}))
+      (is (= (.getCaption b) "Push Me")))
+    (doseq [opt [:position :span]]
+      (doseq [vals [nil 1 [1] [1 nil] [:a :b]]]
+        (is (thrown?
+             IllegalArgumentException                       ;(re-pattern (get-in parent-data-specs [opt :error-msg]))
+             (configure (Button.) {opt vals}))))))
 
   (testing "Single option args"
     (let [obj (Button.)]
@@ -28,7 +33,6 @@
       (is (= (.getMargin obj) (MarginInfo. true true true true)))))
 
   (testing "Multiple option args"
-
     (let [obj (Button.)]
       (is (= (.getHeight (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) 3.0))
       (is (= (.getHeightUnits (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) (Sizeable/UNITS_INCH))))

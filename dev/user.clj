@@ -2,6 +2,7 @@
   (:require [clojure.string :as str])
   (:use [clojure.test]
         [functional-vaadin.core]
+        [functional-vaadin.config]
         [config-gen])
   (:import (java.io File)))
 
