@@ -2,7 +2,8 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.config :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Panel AbstractOrderedLayout GridLayout)))
+  (:import (com.vaadin.ui Panel AbstractOrderedLayout GridLayout)
+           (java.util Map)))
 
 
 (defn- apply-parent-config
@@ -12,6 +13,66 @@
     ;; Use do-configure so the parent opst aren't re-extracted
     (do-configure parent config))
   )
+
+
+
+(defn- find-constructor
+  "Find a constructor for the given class and arguments, matching argument types against the arguments
+  Longer matches take precendent, and assignability determines an argument match. The null constructor is ignored"
+  [cls args]
+  (letfn [(match-arg-types [ctor-param-types args]
+            (and
+              (> (count ctor-param-types) 0)
+              (= (count ctor-param-types) (count args))
+              (every? true? (map #(.isAssignableFrom %1 %2) ctor-param-types args)))
+            )]
+    (let [ctor-list (sort
+                     #(>= (.getParameterCount %1) (.getParameterCount %2))
+                     (seq (.getConstructors cls)))
+         ]
+     (some
+       #(if (match-arg-types
+              (seq (.getParameterTypes %1))
+              (map (fn [o] (class o)) (take (.getParameterCount %1) args)))
+         %1)
+       ctor-list
+       )
+     ))
+  )
+
+(defn create-widget
+  "Create Vaadin widgets using, if possible, the initial n items of args as constructor argument.
+
+  For n > 0, try and match the types of a constructors parameters againt the first n arguments types. For multiple
+  matches, the longest constructor arglist is preferred. If the first argument is a Map,
+  and there is a null constructor, prefer that to any constructors, and construct and congfigure the widget from the
+  map. If no constructors match, and there is a null constructor, create a widget using that
+
+  Any remaining arguments are treated as children, unless allow-children is false. The new object and children are
+  returned in a vector. If there is no match to the arguments are made, and exception is thrown"
+  [cls args allow-children]
+  (let [first-arg (first args)
+        null-ctor (.getConstructor cls (make-array Class 0))
+        error-msg (str "Cannot create a " (.getSimpleName cls) " from " args)]
+    ;; First try for configuration
+    (letfn [(make-result [obj children]
+              (if (and (not allow-children) (> (count children) 0))
+                (throw (IllegalArgumentException. (str (.getSimpleName cls) " does not allow children")))
+                [obj children]))]
+      (if (and null-ctor (instance? Map first-arg))
+        (make-result
+          (configure (.newInstance null-ctor (object-array 0)) first-arg)
+          (drop 1 args))
+        ;; Otherwise try and find a non-null constructor and use that
+       (if-let [ctor (find-constructor cls args)]
+         (make-result
+           (.newInstance ctor (object-array (take (.getParameterCount ctor) args)))
+           (drop (.getParameterCount ctor) args))
+         ;; Otherwise use the null constructor if any children satisfy allow-children
+         (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
+           (make-result (.newInstance null-ctor (object-array 0)) args)
+           ;; Otherwise, we fail
+           (throw (IllegalArgumentException. error-msg))))))))
 
 (defmulti add-children (fn [parent children] (class parent)))
 

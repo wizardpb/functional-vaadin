@@ -59,113 +59,58 @@
 
 ;; Base components - Button, Link, Label etc.
 
-(defn button [arg]
-  ;TODO - add constructor spec building
-  (if (instance? String arg)
-    (Button. arg)
-    (configure (Button.) arg)))
+(defn button [ & args]
+  ; TODO - allow child argument to be click function
+  (first (create-widget Button args false)))
 
-(defn link [config]
-  (configure (Link.) config))
+(defn link [& args]
+  ; TODO - allow child argument to be click function
+  (first (create-widget Link args false)))
 
-(defn label [opt-or-text]
-  (if (instance? String opt-or-text)
-    (Label. ^String opt-or-text)
-    (configure (Label.) opt-or-text)))
+(defn label [& args]
+  (first (create-widget Label args false)))
 
 ;; Forms and Fields
 
 (defn text-field [& args]
-  (condp = (count args)
-    ;; TODO - convert to constructor spec creation
-    0 (TextField.)
-    1 (let [[arg] args]
-        (if (instance? String arg)
-          (TextField. ^String arg)
-          (configure (TextField.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (every? #(instance? String %1) args)
-          (TextField. ^String arg1 ^String arg2)
-          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
-    (throw (IllegalArgumentException. "Too many arguments for TextField"))))
+  (first (create-widget TextField args false)))
 
 (defn password-field [& args]
-  (condp = (count args)
-    0 (PasswordField.)
-    1 (let [arg (first args)]
-        (if (instance? String arg)
-
-          (PasswordField. ^String arg) (configure (PasswordField.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (every? #(instance? String %1) args)
-          (PasswordField. ^String arg1 ^String arg2)
-          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
-    (throw (IllegalArgumentException. "Too many arguments for PasswordField"))))
+  (first (create-widget PasswordField args false)))
 
 (defn text-area [& args]
-  (condp = (count args)
-    0 (TextArea.)
-    1 (let [arg (first args)]
-        (if (instance? String arg)
-          (TextArea. ^String arg)
-          (configure (TextArea.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (every? #(instance? String %1) args)
-          (TextArea. ^String arg1 ^String arg2)
-          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
-    (throw (IllegalArgumentException. "Too many arguments for TextArea"))))
+  (first (create-widget TextArea args false)))
 
 (defn rich-text-area [& args]
-  (condp = (count args)
-    0 (RichTextArea.)
-    1 (let [arg (first args)]
-        (if (instance? String arg)
-          (RichTextArea. ^String arg)
-          (configure (RichTextArea.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (every? #(instance? String %1) args)
-          (RichTextArea. ^String arg1 ^String arg2)
-          (throw (IllegalArgumentException. "Both arguments must be Strings"))))
-    (throw (IllegalArgumentException. "Too many arguments for RichTextArea"))))
+  (first (create-widget RichTextArea args false)))
 
 (defn inline-date-field [& args]
-  (condp = (count args)
-    0 (InlineDateField.)
-    1 (let [arg (first args)]
-        (if (instance? String arg) (InlineDateField. ^String arg) (configure (InlineDateField.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (and (instance? String arg1) (instance? Date arg2))
-          (InlineDateField. ^String arg1 ^Date arg2)
-          (throw (IllegalArgumentException. "Arguments must be a String and a Date"))))
-    (throw (IllegalArgumentException. "Too many arguments for InlineDateField"))))
+  (first (create-widget InlineDateField args false)))
 
 (defn popup-date-field [& args]
-  (condp = (count args)
-    0 (PopupDateField.)
-    1 (let [arg (first args)]
-        (if (instance? String arg) (PopupDateField. ^String arg) (configure (PopupDateField.) arg)))
-    2 (let [[arg1 arg2] args]
-        (if (and (instance? String arg1) (instance? Date arg2))
-          (PopupDateField. ^String arg1 ^Date arg2)
-          (throw (IllegalArgumentException. "Arguments must be a String and a Date"))))
-    (throw (IllegalArgumentException. "Too many arguments for PopupDateField"))))
+  (first (create-widget PopupDateField args false)))
 
 ;; Containers and layouts
 
-(defn panel [config & children]
-  (add-children (configure (Panel.) config) children))
+(defn panel [& args]
+  (let [[panel children] (create-widget Panel args true)]
+    (add-children panel children)))
 
-(defn vertical-layout [config & children]
-  (add-children (configure (VerticalLayout.) config) children))
+(defn vertical-layout [& args]
+  (let [[vl children] (create-widget VerticalLayout args true)]
+    (add-children vl children)))
 
-(defn horizontal-layout [config & children]
-  (add-children (configure (HorizontalLayout.) config) children))
+(defn horizontal-layout [& args]
+  (let [[hl children] (create-widget HorizontalLayout args true)]
+    (add-children hl children)))
 
-(defn form-layout [config & children]
-  (add-children (configure (FormLayout.) config) children))
+(defn form-layout [& args]
+  (let [[hl children] (create-widget FormLayout args true)]
+    (add-children hl children)))
 
-(defn grid-layout [config & children]
-  (add-children (configure (GridLayout.) config) children))
+(defn grid-layout [& args]
+  (let [[hl children] (create-widget GridLayout args true)]
+    (add-children hl children)))
 
 ;; TODO - Form Layout, Split Layouts
 

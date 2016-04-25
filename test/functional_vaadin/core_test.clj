@@ -6,26 +6,27 @@
 
 (deftest ui-panel
   (testing "Building"
-    (let [panel (panel {})]
-      (is (instance? Panel panel))
-      (is (nil? (.getContent panel))))
-    (let [panel (panel {:content (VerticalLayout.)})]
-      (is (instance? Panel panel))
-      (is (instance? VerticalLayout (.getContent panel))))
-    (is (thrown-with-msg?
-          UnsupportedOperationException #"Cannot add children to an instance of class com.vaadin.ui.Button"
-          (panel {:content (Button.)})))))
+    (is (instance? Panel (panel)))
+    (is (nil? (.getContent (panel))))
+    (is (nil? (.getCaption (panel))))
+    (is (instance? Panel (panel "Caption")))
+    (is (nil? (.getContent (panel "Caption"))))
+    (is (= "Caption" (.getCaption (panel "Caption"))))
+    (is (instance? Panel (panel "Caption" (VerticalLayout.))))
+    (is (instance? VerticalLayout (.getContent (panel "Caption" (VerticalLayout.)))))
+    (is (= "Caption" (.getCaption (panel "Caption" (VerticalLayout.)))))
+    ))
 
 (deftest ui-ordered-layout
   (testing "Building"
     (doseq [[fn cls] [[vertical-layout VerticalLayout]
                 [horizontal-layout HorizontalLayout]
                 [form-layout FormLayout]]]
-      (let [layout (apply fn {} [])]
+      (let [layout (apply fn [])]
         (is (instance? cls layout))
         (is (= 0 (.getComponentCount layout))))
 
-      (let [layout (apply fn [{} (TextField.) (Button.)])]
+      (let [layout (apply fn [(TextField.) (Button.)])]
         (is (instance? cls layout))
         (is (= 2 (.getComponentCount layout)))
         (is (instance? TextField (.getComponent layout 0)))
@@ -33,12 +34,12 @@
 
       (let [t (TextField.)
             b (Button.)
-            layout (apply fn [{} t b])]
+            layout (apply fn [ t b])]
         (is (= 2 (.getComponentCount layout)))
         (is (identical? t (.getComponent layout 0)))
         (is (identical? b (.getComponent layout 1))))
 
-      (let [vt (apply fn [{} (button {:caption "Push Me"}) (label "Text")])
+      (let [vt (apply fn [(button {:caption "Push Me"}) (label "Text")])
             b (.getComponent vt 0)
             l (.getComponent vt 1)]
         (is (and (instance? Button b) (instance? Label l)))
@@ -46,20 +47,18 @@
         (is (= (.getValue l) "Text"))))
     )
   (testing "Parent options"
-    (let [vt (vertical-layout {} (button {:caption "Push Me" :expandRatio 0.5}))
+    (let [vt (vertical-layout (button {:caption "Push Me" :expandRatio 0.5}))
           b (.getComponent vt 0)]
       (is (= (.getExpandRatio vt b) 0.5)))))
 
 (deftest ui-grid-layout
   (testing "Building"
-    (let [layout (grid-layout {}
+    (let [layout (grid-layout
                    (label "label") (button "Push Me"))]
       (is (= 2 (.getComponentCount layout)))
       (is (= 2 (.getRows layout)))
       (is (= 1 (.getColumns layout))))
-    ; TODO - need row and col spec on grid-layout
-    ;(let [layout (grid-layout
-    ;               {}
+    ;(let [layout (grid-layout 1 2
     ;               (label {:caption "label" :position [0 0]})
     ;               (button {:caption "Push Me" :position [0 1]}))]
     ;  (is (= 2 (.getComponentCount layout)))
@@ -73,18 +72,12 @@
                       [password-field PasswordField]
                       [text-area TextArea]
                       [rich-text-area RichTextArea]]]
-      (is (instance? cls (fn {})))
+      (is (instance? cls (fn)))
       (is (= (.getCaption (fn {:caption "Field"})) "Field"))
       (is (= (.getValue (fn {:value "Content"})) "Content"))
       (is (= (.getCaption (fn "Field")) "Field"))
       (is (= (.getCaption (fn "Field" "Content")) "Field"))
       (is (= (.getValue (fn "Field" "Content")) "Content"))
-      (is (thrown-with-msg?
-            IllegalArgumentException #"Both arguments must be Strings"
-            (fn {} "Text")))
-      (is (thrown-with-msg?
-            IllegalArgumentException #"Too many arguments for .*"
-            (fn {} "Text" (Button.))))
       ))
   )
 
@@ -98,11 +91,5 @@
       (is (= (.getCaption (fn "Field")) "Field"))
       (is (= (.getCaption (fn "Field" (Date. 0))) "Field"))
       (is (= (.getValue (fn "Field" (Date. 0))) (Date. 0)))
-      (is (thrown-with-msg?
-            IllegalArgumentException #"Arguments must be a String and a Date"
-            (fn {} "Text")))
-      (is (thrown-with-msg?
-            IllegalArgumentException #"Too many arguments for .*"
-            (fn {} "Text" (Button.))))
       )))
 
