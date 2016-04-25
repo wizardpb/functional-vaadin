@@ -14,31 +14,28 @@
     (do-configure parent config))
   )
 
-
-
-(defn- find-constructor
+(defn find-constructor
   "Find a constructor for the given class and arguments, matching argument types against the arguments
   Longer matches take precendent, and assignability determines an argument match. The null constructor is ignored"
   [cls args]
-  (letfn [(match-arg-types [ctor-param-types args]
-            (and
-              (> (count ctor-param-types) 0)
-              (= (count ctor-param-types) (count args))
-              (every? true? (map #(.isAssignableFrom %1 %2) ctor-param-types args)))
-            )]
-    (let [ctor-list (sort
-                     #(>= (.getParameterCount %1) (.getParameterCount %2))
-                     (seq (.getConstructors cls)))
-         ]
-     (some
-       #(if (match-arg-types
-              (seq (.getParameterTypes %1))
-              (map (fn [o] (class o)) (take (.getParameterCount %1) args)))
-         %1)
-       ctor-list
-       )
-     ))
-  )
+  (letfn [(match-arg                                        ;Match an arg and convert - deal with Long->int
+            [^Class ctor-type arg]
+            (cond
+              (and (= ctor-type Integer/TYPE) (= (class arg) Long)) (int arg)
+              (.isAssignableFrom ctor-type (class arg)) arg
+              true nil))
+          (match-args                                       ;Match arguments with ctor types. Return (possibly converted) arguments
+            [ctor-param-types args]
+            (if (and (> (count ctor-param-types) 0) (= (count ctor-param-types) (count args)))
+              (let [conv-args (map match-arg ctor-param-types args)]
+                (if (every? identity conv-args)
+                  conv-args)))
+            )
+          (match-ctor [ctor]
+            (if-let [conv-args (match-args (seq (.getParameterTypes ctor)) (take (.getParameterCount ctor) args))]
+              [ctor conv-args]))]
+    (let [ctor-list (sort #(>= (.getParameterCount %1) (.getParameterCount %2)) (seq (.getConstructors cls)))]
+      (some match-ctor ctor-list))))
 
 (defn create-widget
   "Create Vaadin widgets using, if possible, the initial n items of args as constructor argument.
@@ -54,23 +51,28 @@
   (let [first-arg (first args)
         null-ctor (.getConstructor cls (make-array Class 0))
         error-msg (str "Cannot create a " (.getSimpleName cls) " from " args)]
-    ;; First try for configuration
+
     (letfn [(make-result [obj children]
               (if (and (not allow-children) (> (count children) 0))
                 (throw (IllegalArgumentException. (str (.getSimpleName cls) " does not allow children")))
                 [obj children]))]
+
+      ;; First try for configuration
       (if (and null-ctor (instance? Map first-arg))
         (make-result
           (configure (.newInstance null-ctor (object-array 0)) first-arg)
           (drop 1 args))
+
         ;; Otherwise try and find a non-null constructor and use that
-       (if-let [ctor (find-constructor cls args)]
+       (if-let [[ctor conv-args] (find-constructor cls args)]
          (make-result
-           (.newInstance ctor (object-array (take (.getParameterCount ctor) args)))
+           (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
            (drop (.getParameterCount ctor) args))
+
          ;; Otherwise use the null constructor if any children satisfy allow-children
          (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
            (make-result (.newInstance null-ctor (object-array 0)) args)
+
            ;; Otherwise, we fail
            (throw (IllegalArgumentException. error-msg))))))))
 

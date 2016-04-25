@@ -37,7 +37,7 @@
 
     (doseq [args [
                   (list (Label. "Cell 1-1"))
-                  ;(list (int 1) (int 1) (Label. "Cell 1-1"))
+                  (list 1 1 (Label. "Cell 1-1"))
                   ]
             ]
       (let [[b c] (create-widget GridLayout args true)]
