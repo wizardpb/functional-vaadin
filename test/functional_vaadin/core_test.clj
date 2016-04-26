@@ -1,8 +1,10 @@
 (ns functional-vaadin.core-test
   (:use [clojure.test]
-        [functional-vaadin.core])
-  (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label TextArea PasswordField PopupDateField RichTextArea InlineDateField)
-           (java.util Date)))
+        [functional-vaadin.core]
+        [functional-vaadin.utils])
+  (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox)
+           (java.util Date)
+           (com.vaadin.data.fieldgroup FieldGroup)))
 
 (deftest ui-panel
   (testing "Building"
@@ -93,3 +95,38 @@
       (is (= (.getValue (fn "Field" (Date. 0))) (Date. 0)))
       )))
 
+(defmacro with-form [& forms]
+  `(with-bindings
+    {#'*current-field-group* (FieldGroup.)}
+    ~@forms
+    *current-field-group*))
+
+(deftest ui-form-fields
+  (testing "Creation"
+    (with-form
+      (is (instance? TextField (form-field "propId" TextField)))
+      (is (instance? CheckBox (form-field "checked?" CheckBox)))
+      (is (=  "Text Field" (.getCaption (form-field "text-field" TextField)))) ; Auto set of caption
+      (is (= "Field" (.getCaption (form-field "propId2" TextField {:caption "Field"}))))
+      ))
+  (testing "Binding"
+    (let [fg (with-form
+              (form-field "f1" TextField)
+              (form-field "f2" CheckBox))]
+      (is (instance? FieldGroup fg))
+      (is (= (count (.getFields fg)) 2))
+      (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"f1" "f2"})))
+    )
+  (testing "Validation"
+    (is (thrown-with-msg? UnsupportedOperationException #"Form fields cannot be created outside of forms"
+                          (form-field "propId" TextField)))
+    (is (thrown-with-msg? IllegalArgumentException #"Form field can only be created from instances of interface com.vaadin.ui.Field"
+                          (with-form
+                            (form-field "propId" (Object.)))))))
+
+(deftest ui-forms
+  (testing "Creation"
+    (is (instance? FormLayout (form)))
+    (is (instance? FieldGroup (get-data (form) :field-group)))
+    (is (instance? VerticalLayout (form {:content VerticalLayout})))
+    ))

@@ -3,14 +3,17 @@
   individual Vaadinwidgets"
   (:use [functional-vaadin.build-support]
         [functional-vaadin.config]
-        [functional-vaadin.data-map])
+        [functional-vaadin.data-map]
+        [functional-vaadin.utils])
+
   (:import (com.vaadin.ui
              Label Embedded Link MenuBar Upload Button Calendar GridLayout
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
              ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout
-             Component UI)
-           (java.util Date)))
+             Component UI Field)
+           (java.util Date Map)
+           (com.vaadin.data.fieldgroup FieldGroup)))
 
 (def
   ^{:dynamic true :private true}
@@ -112,5 +115,32 @@
   (let [[hl children] (create-widget GridLayout args true)]
     (add-children hl children)))
 
-;; TODO - Form Layout, Split Layouts
+;; TODO - Split Layouts
+
+;; Forms
+
+(def ^{:dynamic true :tag FieldGroup} *current-field-group* nil)
+
+(defn create-form-layout [arg-list]
+  (let [[conf# & rest#] arg-list]
+    (if (and (instance? Map conf#) (:content conf#))
+      (create-widget (:content conf#) (concat (list (dissoc conf# :content)) rest#) true)
+      (create-widget FormLayout arg-list true))))
+
+(defmacro form [& args]
+  `(with-bindings {#'*current-field-group* (FieldGroup.)}
+     (let [[l# c#] (create-form-layout (list ~@args))]
+       (add-children l# c#)
+       (attach-data l# :field-group *current-field-group*)
+       l#
+     )))
+
+(defn form-field [propertId klass & config]
+  (when (not (isa? klass Field ))
+    (throw (IllegalArgumentException. (str "Form field can only be created from instances of " Field))))
+  (when (nil? *current-field-group*)
+    (throw (UnsupportedOperationException. "Form fields cannot be created outside of forms")))
+  (let [[f c] (create-widget klass (list (or (first config) {:caption (humanize propertId)})) false)]
+    (.bind *current-field-group* f propertId)
+    f))
 

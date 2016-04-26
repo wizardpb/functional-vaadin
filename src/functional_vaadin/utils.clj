@@ -1,5 +1,6 @@
 (ns functional-vaadin.utils
   "Generally useful utility functions"
+  (:require [clojure.string :as str])
   (:import [com.vaadin.ui AbstractComponent]))
 
 (defn capitalize [s]
@@ -29,3 +30,8 @@
   (let [m (.getData component)]
     (.setData component (dissoc m key))
     (get m key)))
+
+(defn humanize
+  "Turn a keyword or symbol string into a humanized for. The text is split at hyphens (-) and each segment is capitalized"
+  [kw-or-string]
+  (str/join " " (map capitalize (str/split (name kw-or-string) #"-"))))

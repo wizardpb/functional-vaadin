@@ -3,6 +3,7 @@
   (:use [clojure.test]
         [functional-vaadin.core]
         [functional-vaadin.config]
+        [functional-vaadin.utils]
         [config-gen])
   (:import (java.io File)))
 

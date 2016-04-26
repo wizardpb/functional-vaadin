@@ -29,6 +29,13 @@
               :error-msg "Element span must be a vector of two integers"}
    })
 
+(def special-attribute-specs
+  "The defintion of any attributes that get special processing. These are all synthetic attributes that get used
+  in various contexts. Keys are the attribute names, values are processing functions"
+  {
+   }
+  )
+
 (defn transform-parent-attribute-spec
   "Transform a parent attribute spec into a form applicable to the parent"
   [child [optkey optval]]
