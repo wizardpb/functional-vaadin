@@ -95,6 +95,27 @@
 (defn popup-date-field [& args]
   (first (create-widget PopupDateField args false)))
 
+(defn slider [& args]
+  (first (create-widget Slider args false)))
+
+(defn check-box [& args]
+  (first (create-widget CheckBox args false)))
+
+(defn combo-box [& args]
+  (first (create-widget ComboBox args false)))
+
+(defn twin-col-select [& args]
+  (first (create-widget TwinColSelect args false)))
+
+(defn native-select [& args]
+  (first (create-widget NativeSelect args false)))
+
+(defn list-select [& args]
+  (first (create-widget ListSelect args false)))
+
+(defn option-group [& args]
+  (first (create-widget OptionGroup args false)))
+
 ;; Containers and layouts
 
 (defn panel [& args]
@@ -117,29 +138,17 @@
   (let [[hl children] (create-widget GridLayout args true)]
     (add-children hl children)))
 
-;Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
-(defn slider [& args]
-  (first (create-widget Slider args false)))
+(defn tab-sheet [& args]
+  (let [[ts children] (create-widget TabSheet args true)]
+    (add-children ts children)))
 
-(defn check-box [& args]
-  (first (create-widget CheckBox args false)))
+(defn vertical-split-panel [& args]
+  (let [[sl children] (create-widget VerticalSplitPanel args true)]
+    (add-children sl children)))
 
-(defn combo-box [& args]
-  (first (create-widget ComboBox args false)))
-
-(defn twin-col-select [& args]
-  (first (create-widget TwinColSelect args false)))
-
-(defn native-select [& args]
-  (first (create-widget NativeSelect args false)))
-
-(defn list-select [& args]
-  (first (create-widget ListSelect args false)))
-
-(defn option-group [& args]
-  (first (create-widget OptionGroup args false)))
-
-;; TODO - Split Layouts
+(defn horizontal-split-panel [& args]
+  (let [[sl children] (create-widget HorizontalSplitPanel args true)]
+    (add-children sl children)))
 
 ;; Forms
 

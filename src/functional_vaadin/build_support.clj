@@ -2,7 +2,7 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.config :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Panel AbstractOrderedLayout GridLayout)
+  (:import (com.vaadin.ui Panel AbstractOrderedLayout GridLayout AbstractSplitPanel)
            (java.util Map)))
 
 
@@ -79,7 +79,7 @@
 (defmulti add-children (fn [parent children] (class parent)))
 
 (defmethod add-children :default [parent children]
-  (throw (UnsupportedOperationException. (str "Cannot add children to an instance of " (class parent)))))
+  (throw (UnsupportedOperationException. (str "add-children udefined!!!" (class parent)))))
 
 (defmethod add-children Panel [panel children]
   (let [content (.getContent panel)]
@@ -101,4 +101,9 @@
         #{:position} (.addComponent parent child x y)
         #{:position :span} (.addComponent parent child x y (+ x dx -1) (+ y dy -1)))
       (apply-parent-config parent child)))
+  parent)
+
+(defmethod add-children AbstractSplitPanel [parent children]
+  (doseq [child children]
+    (.addComponent parent child))
   parent)

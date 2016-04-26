@@ -70,6 +70,26 @@
       (is (= 1 (.getColumns layout))))
     ))
 
+(deftest ui-split-panels
+  (testing "Building"
+    (doseq [panel [(vertical-split-panel (vertical-layout) (horizontal-layout))
+                   (horizontal-split-panel (vertical-layout) (horizontal-layout))]]
+      (is (= 2 (.getComponentCount panel)))
+      (is (instance? VerticalLayout (.getFirstComponent panel)))
+      (is (instance? HorizontalLayout (.getSecondComponent panel))))
+    (doseq [panel [(vertical-split-panel {:firstComponent (vertical-layout)
+                                          :secondComponent (horizontal-layout)})
+                   (horizontal-split-panel (vertical-layout) (horizontal-layout))]]
+      (is (= 2 (.getComponentCount panel)))
+      (is (instance? VerticalLayout (.getFirstComponent panel)))
+      (is (instance? HorizontalLayout (.getSecondComponent panel)))))
+  (testing "Validation"
+    (is (thrown-with-msg? UnsupportedOperationException #"Split panel can contain only two components"
+                       (vertical-split-panel {:firstComponent  (vertical-layout)
+                                              :secondComponent (horizontal-layout)}
+                                             (button)))))
+  )
+
 (deftest ui-text-fields
   (testing "Building"
     (doseq [[fn cls] [[text-field TextField]
