@@ -17,6 +17,8 @@
            ;(javax.servlet.http HttpSessionBindingListener)
            ))
 
+;; TODO - clicks/evets. ids, data binding,
+
 (def
   ^{:dynamic true :private true}
   *current-ui*
@@ -29,9 +31,6 @@
   (component-at [this id] "Look up a component")
   (set-data-source [this component source-id] "Tell a component where to get data")
   (set-data [this source-id data] "Set a dat avalue for a source"))
-
-(defn- get-ui-data [ui]
-  (if-let [d (.getData ui)] d {:components {} :data-map {}}))
 
 ;; Extend UI with the IUIData protocol. We store the state on the data element of the component
 ;(extend-type UI

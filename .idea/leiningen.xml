@@ -6,6 +6,8 @@
         <option value="system" />
         <option value="provided" />
         <option value="dev" />
+        <option value="base" />
+        <option value="user" />
       </list>
     </option>
   </component>
