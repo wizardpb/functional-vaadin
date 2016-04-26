@@ -31,8 +31,12 @@
 
 (def special-attribute-specs
   "The defintion of any attributes that get special processing. These are all synthetic attributes that get used
-  in various contexts. Keys are the attribute names, values are processing functions"
+  in various contexts. Keys are the attribute names, values are processing functions
+
+  Note that someo of these override or augment existing attribute setters (e.g setId). This is done
+  by makingsure special attribute handling is done before confoguring a component"
   {
+   :id (fn [c id] (.setId c id))
    }
   )
 

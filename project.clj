@@ -8,6 +8,6 @@
                  [com.vaadin/vaadin-client-compiled "7.6.5"]
                  [com.vaadin/vaadin-themes "7.6.5"]]
   :profiles {:dev {:source-paths ["src" "dev"]
-                   ;:dependencies []
+                   :dependencies []
                    }}
   )

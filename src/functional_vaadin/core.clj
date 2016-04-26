@@ -7,13 +7,15 @@
         [functional-vaadin.utils])
 
   (:import (com.vaadin.ui
-             Label Embedded Link MenuBar Upload Button Calendar GridLayout
-             TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
-             RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
-             ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout
+             MenuBar
+             Label Embedded Link Upload Button Calendar
+             Panel VerticalLayout HorizontalLayout FormLayout GridLayout TabSheet VerticalSplitPanel HorizontalSplitPanel
+             TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Table Tree TreeTable
              Component UI Field)
            (java.util Date Map)
-           (com.vaadin.data.fieldgroup FieldGroup)))
+           (com.vaadin.data.fieldgroup FieldGroup)
+           ;(javax.servlet.http HttpSessionBindingListener)
+           ))
 
 (def
   ^{:dynamic true :private true}
@@ -114,6 +116,28 @@
 (defn grid-layout [& args]
   (let [[hl children] (create-widget GridLayout args true)]
     (add-children hl children)))
+
+;Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
+(defn slider [& args]
+  (first (create-widget Slider args false)))
+
+(defn check-box [& args]
+  (first (create-widget CheckBox args false)))
+
+(defn combo-box [& args]
+  (first (create-widget ComboBox args false)))
+
+(defn twin-col-select [& args]
+  (first (create-widget TwinColSelect args false)))
+
+(defn native-select [& args]
+  (first (create-widget NativeSelect args false)))
+
+(defn list-select [& args]
+  (first (create-widget ListSelect args false)))
+
+(defn option-group [& args]
+  (first (create-widget OptionGroup args false)))
 
 ;; TODO - Split Layouts
 

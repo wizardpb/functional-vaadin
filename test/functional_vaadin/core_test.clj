@@ -2,7 +2,9 @@
   (:use [clojure.test]
         [functional-vaadin.core]
         [functional-vaadin.utils])
-  (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox)
+  (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
+                          TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)))
 
@@ -82,6 +84,22 @@
       (is (= (.getValue (fn "Field" "Content")) "Content"))
       ))
   )
+
+(deftest ui-select-fields
+  (testing "Building"
+    (doseq [[fn klass] [
+                      [slider Slider]
+                      [check-box CheckBox]
+                      [combo-box ComboBox]
+                      [twin-col-select TwinColSelect]
+                      [native-select NativeSelect]
+                      [list-select ListSelect]
+                      [option-group OptionGroup]
+                      ]]
+      (is (instance? klass (fn)))
+      (is (= (.getCaption (fn {:caption "Field"})) "Field"))
+      (is (= (.getCaption (fn "Field")) "Field"))
+      )))
 
 (deftest ui-date-fields
   (testing "Building"
