@@ -1,7 +1,9 @@
 (ns functional-vaadin.config-test
   (:use [clojure.test]
         [functional-vaadin.config]
-        [functional-vaadin.utils])
+        [functional-vaadin.builders]
+        [functional-vaadin.utils]
+        [functional-vaadin.test-ui])
 
   (:import (com.vaadin.ui Button VerticalLayout)
            (com.vaadin.shared.ui MarginInfo)
@@ -17,8 +19,8 @@
     (doseq [opt [:position :span]]
       (doseq [vals [nil 1 [1] [1 nil] [:a :b]]]
         (is (thrown?
-             IllegalArgumentException                       ;(re-pattern (get-in parent-data-specs [opt :error-msg]))
-             (configure (Button.) {opt vals}))))))
+              IllegalArgumentException                       ;(re-pattern (get-in parent-data-specs [opt :error-msg]))
+              (configure (Button.) {opt vals}))))))
 
   (testing "Single option args"
     (let [obj (Button.)]
@@ -51,5 +53,27 @@
     (is (thrown-with-msg?
           UnsupportedOperationException #"No such option for class com.vaadin.ui.Button: :wozza"
           (configure (Button.) {:wozza "wizzbang"}))))
+
+  (testing "Special attributes"
+    (with-bindings
+      {#'*current-ui* (->UIDataProvider {})}
+      (let [b (button {:id "myform"})]
+       (is (= (.getId b) "myform"))
+       (is (identical? (.component-at *current-ui* "myform") b))
+       (is (identical? (.component-at *current-ui* :myform) b))
+       (is (identical? (.component-at *current-ui* [:myform]) b))
+       (is (identical? (.component-at *current-ui* ["myform"]) b))
+       ))
+    (with-bindings
+      {#'*current-ui* (->UIDataProvider {})}
+      (let [b (button {:id "myform.save"})]
+        (is (= (.getId b) "myform.save"))
+        (is (identical? (.component-at *current-ui* "myform.save") b))
+        (is (identical? (.component-at *current-ui* :myform.save) b))
+        (is (identical? (.component-at *current-ui* [:myform :save]) b))
+        (is (identical? (.component-at *current-ui* ["myform" "save"]) b))
+        ))
+
+    )
 
   )

@@ -4,6 +4,9 @@
         [functional-vaadin.core]
         [functional-vaadin.config]
         [functional-vaadin.utils]
+        [functional-vaadin.data-map]
+        [functional-vaadin.event-handling]
+        [functional-vaadin.test-ui]
         [config-gen])
   (:import (java.io File)))
 
@@ -17,3 +20,5 @@
     (doseq [fname test-files]
       (load-file (str test-dir fname)))
     (apply run-tests (map test-ns-sym test-files))))
+
+(def dp (->UIDataProvider {}))

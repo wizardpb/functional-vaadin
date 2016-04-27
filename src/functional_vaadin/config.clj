@@ -6,6 +6,11 @@
             [clojure.set :as set])
   (:import (java.util Map)))
 
+(def
+  ^{:dynamic true}
+  *current-ui*
+  "A dynamic var that will hold the current ui during building")
+
 (def parent-attribute-specs
   "The definition of all attribute specs to save on a child for execution by a parent. Keys are the options,
   values are fns to transform the child option value for the parent"
@@ -30,13 +35,10 @@
    })
 
 (def special-attribute-specs
-  "The defintion of any attributes that get special processing. These are all synthetic attributes that get used
-  in various contexts. Keys are the attribute names, values are processing functions
-
-  Note that someo of these override or augment existing attribute setters (e.g setId). This is done
-  by makingsure special attribute handling is done before confoguring a component"
+  "The defintion of any attributes that get special processing. These add to, augment or override other config
+  specs (e.g setid). Override or augment is determined by the override key in the spec"
   {
-   :id (fn [c id] (.setId c id))
+   :id {:func (fn [c id] (.add-component *current-ui* c (str/split id #"\."))) :override false}
    }
   )
 
@@ -45,7 +47,7 @@
   [child [optkey optval]]
   ((get parent-attribute-specs optkey) child optval))
 
-(defn- extract-parent-attribute-spec
+(defn- extract-parent-attribute-specs
   "Extract and save any config values for application to a parent"
   [opts child]
   (if-let [popts (not-empty (select-keys opts (keys parent-attribute-specs)))]
@@ -60,7 +62,7 @@
       (conj acc (get-in parent-data-specs [opt :error-msg]))
       acc)))
 
-(defn- extract-parent-data-spec
+(defn- extract-parent-data-specs
   "Extract, validate and save any child options for use by a parent"
   [opts child]
   (if-let [popts (not-empty (select-keys opts (keys parent-data-specs)))]
@@ -72,6 +74,18 @@
       (attach-data child :parent-data popts)
       (apply dissoc opts (keys parent-data-specs)))
     opts))
+
+(defn- do-special-attribute-specs
+  [opts component]
+  (apply dissoc opts
+         (reduce
+           (fn [ remove-keys [opt-key opt-val]]
+             (let [spec (get special-attribute-specs opt-key)]
+               ((:func spec) component opt-val)
+               (if (:override spec) (conj remove-keys opt-key) remove-keys)))
+           []
+           (select-keys opts (keys special-attribute-specs))))
+  )
 
 (defn- configure-component
   [obj [attribute args]]
@@ -94,7 +108,8 @@
   (do-configure
     obj
     (-> config
-        (extract-parent-attribute-spec obj)
-        (extract-parent-data-spec obj)))
+        (do-special-attribute-specs obj)
+        (extract-parent-attribute-specs obj)
+        (extract-parent-data-specs obj)))
   obj)
 
