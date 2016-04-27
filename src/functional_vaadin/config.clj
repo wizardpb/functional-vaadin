@@ -1,6 +1,7 @@
 (ns functional-vaadin.config
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:use [functional-vaadin.config-table]
+        [functional-vaadin.event-handling]
         [functional-vaadin.utils])
   (:require [clojure.string :as str]
             [clojure.set :as set])
@@ -38,7 +39,8 @@
   "The defintion of any attributes that get special processing. These add to, augment or override other config
   specs (e.g setid). Override or augment is determined by the override key in the spec"
   {
-   :id {:func (fn [c id] (.add-component *current-ui* c (str/split id #"\."))) :override false}
+   :id      {:func (fn [c id] (.add-component *current-ui* c (str/split id #"\."))) :override false}
+   :onClick {:func (fn [c action] (onClick c action)) :override true}
    }
   )
 

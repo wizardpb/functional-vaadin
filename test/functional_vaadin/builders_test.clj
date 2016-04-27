@@ -4,9 +4,10 @@
         [functional-vaadin.utils])
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded)
            (java.util Date)
-           (com.vaadin.data.fieldgroup FieldGroup)))
+           (com.vaadin.data.fieldgroup FieldGroup)
+           (apple.laf JRSUIUtils$Images)))
 
 (deftest ui-panel
          (testing "Building"
@@ -168,3 +169,16 @@
                   (is (instance? FieldGroup (get-data (form) :field-group)))
                   (is (instance? VerticalLayout (form {:content VerticalLayout})))
                   ))
+
+(deftest ui-embedded
+  (testing "Image"
+    (is (instance? Image (image)))
+    (is (= "Caption" (.getCaption (image "Caption"))))
+    (is (= "Caption" (.getCaption (image {:caption "Caption"}))))
+    )
+  (testing "Embedded"
+    (is (instance? Embedded (embedded)))
+    (is (= "Caption" (.getCaption (embedded "Caption"))))
+    (is (= "Caption" (.getCaption (embedded {:caption "Caption"}))))
+    )
+  )

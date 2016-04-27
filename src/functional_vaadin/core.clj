@@ -1,10 +1,8 @@
 (ns functional-vaadin.core
   "Definition of all user functions for the libray - UI definition macro and all functions to build
   individual Vaadinwidgets"
-  (:use [functional-vaadin.build-support]
-        [functional-vaadin.config]
-        [functional-vaadin.data-map]
-        [functional-vaadin.utils])
+  (:use [functional-vaadin.config]
+    )
 
   (:import (com.vaadin.ui
              MenuBar

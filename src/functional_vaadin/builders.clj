@@ -5,22 +5,22 @@
              MenuBar
              Label Embedded Link Upload Button Calendar
              Panel VerticalLayout HorizontalLayout FormLayout GridLayout TabSheet VerticalSplitPanel HorizontalSplitPanel
-             TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Table Tree TreeTable
-             Component UI Field)
+             TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
+             ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
+             Table Tree TreeTable
+             Component UI Field Image)
            (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)))
 
 
-;; TODO - clicks/events. ids, data binding,
+;; TODO - data binding,
 
 ;; Base components - Button, Link, Label etc.
 
 (defn button [& args]
-  ; TODO - allow child argument to be click function
   (first (create-widget Button args false)))
 
 (defn link [& args]
-  ; TODO - allow child argument to be click function
   (first (create-widget Link args false)))
 
 (defn label [& args]
@@ -128,3 +128,10 @@
     (.bind *current-field-group* f propertId)
     f))
 
+;; Embedded items
+
+(defn image [& args]
+  (first (create-widget Image args false)))
+
+(defn embedded [& args]
+  (first (create-widget Embedded args false)))
