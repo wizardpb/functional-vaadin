@@ -3,7 +3,7 @@
         [functional-vaadin.config]
         [functional-vaadin.builders]
         [functional-vaadin.utils]
-        [functional-vaadin.test-ui])
+        [functional-vaadin.mock-data-provider])
 
   (:import (com.vaadin.ui Button VerticalLayout)
            (com.vaadin.shared.ui MarginInfo)
@@ -56,7 +56,7 @@
 
   (testing "Special attributes"
     (with-bindings
-      {#'*current-ui* (->UIDataProvider {})}
+      {#'*current-ui* (->UIDataProvider {} nil)}
       (let [b (button {:id "myform"})]
        (is (= (.getId b) "myform"))
        (is (identical? (.component-at *current-ui* "myform") b))
@@ -65,7 +65,7 @@
        (is (identical? (.component-at *current-ui* ["myform"]) b))
        ))
     (with-bindings
-      {#'*current-ui* (->UIDataProvider {})}
+      {#'*current-ui* (->UIDataProvider {} nil)}
       (let [b (button {:id "myform.save"})]
         (is (= (.getId b) "myform.save"))
         (is (identical? (.component-at *current-ui* "myform.save") b))

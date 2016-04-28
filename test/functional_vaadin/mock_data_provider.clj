@@ -1,13 +1,18 @@
-(ns functional-vaadin.test-ui
+(ns functional-vaadin.mock-data-provider
   (:use [functional-vaadin.core]
         [functional-vaadin.data-map]
-        [functional-vaadin.utils]))
+        [functional-vaadin.utils])
+  (:import (com.vaadin.ui SingleComponentContainer)))
 
 (defprotocol IComponentData
   (setData [this data])
   (getData [this]))
 
-(deftype UIDataProvider [^:volatile-mutable data]
+(deftype UIDataProvider [^:volatile-mutable data ^:volatile-mutable content]
+  SingleComponentContainer
+  (setContent [this c] (set! content c))
+  (getContent [this] content)
+  (getComponentCount [this] (if content 1 0))
   IComponentData
   (setData [this d] (set! data d))
   (getData [this] data)

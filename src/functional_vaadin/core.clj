@@ -29,7 +29,7 @@
      (with-bindings
       {#'*current-ui* this-ui#}
       (let [root# ~top-form]
-        (if (isa? root# Component)
+        (if (instance? Component root#)
           (.setContent *current-ui* root#)
           (throw
             (UnsupportedOperationException. "The generated UI is not a Vaadin Component"))))

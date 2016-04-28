@@ -2,9 +2,5 @@
   (:use [clojure.test]
         [functional-vaadin.core]
         [functional-vaadin.utils]
-        [functional-vaadin.test-ui])
+        [functional-vaadin.mock-data-provider])
   )
-
-
-
-

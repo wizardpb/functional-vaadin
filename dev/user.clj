@@ -6,12 +6,10 @@
         [functional-vaadin.builders]
         [functional-vaadin.data-map]
         [functional-vaadin.event-handling]
-        [functional-vaadin.test-ui]
+        [functional-vaadin.mock-data-provider]
         [config-gen])
   (:import (java.io File)
-           (com.vaadin.ui Component)
-           (com.vaadin.server AbstractClientConnector)
-           (com.vaadin.event MouseEvents$ClickEvent)))
+           ))
 
 (def test-dir "test/functional_vaadin/")
 
@@ -24,5 +22,5 @@
       (load-file (str test-dir fname)))
     (apply run-tests (map test-ns-sym test-files))))
 
-(def dp (->UIDataProvider {}))
+(def dp (->UIDataProvider {} nil))
 
