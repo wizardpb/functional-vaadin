@@ -11,10 +11,7 @@
   "A protocol to assign and lookup components by ID, and provide a shared UI data area
   addressable by hierarchical (dot-separated) symbols"
   (add-component [this component id] "Assign an ID")
-  (component-at [this component-id] "Look up a component")
-  (set-data-source [this component source-id] "Tell a component where to get data")
-  (set-data-at [this source-id data] "Set a dat avalue for a source")
-  (get-data-at [this component-id] "Get data from a component"))
+  (component-at [this component-id] "Look up a component"))
 
 (defmacro defui [^UI ui top-form]
   `(let [this-ui# ~ui]
