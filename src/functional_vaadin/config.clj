@@ -1,10 +1,10 @@
 (ns functional-vaadin.config
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
-  (:use [functional-vaadin.config-table]
-        [functional-vaadin.event-handling]
-        [functional-vaadin.utils])
   (:require [clojure.string :as str]
-            [clojure.set :as set])
+            [clojure.set :as set]
+            [functional-vaadin.config-table :refer :all]
+            [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.utils :refer :all])
   (:import (java.util Map)))
 
 (def

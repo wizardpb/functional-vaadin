@@ -1,19 +1,11 @@
 (ns functional-vaadin.core
-  "Definition of all user functions for the libray - UI definition macro and all functions to build
-  individual Vaadinwidgets"
-  (:use [functional-vaadin.config]
+  "Definition of all user functions for the library - UI definition macro and all functions to build
+  individual Vaadin widgets"
+  (:require [functional-vaadin.config :refer :all]
+            [functional-vaadin.builders :refer :all]
     )
 
-  (:import (com.vaadin.ui
-             MenuBar
-             Label Embedded Link Upload Button Calendar
-             Panel VerticalLayout HorizontalLayout FormLayout GridLayout TabSheet VerticalSplitPanel HorizontalSplitPanel
-             TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Table Tree TreeTable
-             Component UI Field)
-           (java.util Date Map)
-           (com.vaadin.data.fieldgroup FieldGroup)
-    ;(javax.servlet.http HttpSessionBindingListener)
-           ))
+  (:import (com.vaadin.ui Component UI)))
 
 (defprotocol IUIData
   "A protocol to assign and lookup components by ID, and provide a shared UI data area

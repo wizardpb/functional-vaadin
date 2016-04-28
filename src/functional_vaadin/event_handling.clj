@@ -1,11 +1,9 @@
 (ns functional-vaadin.event-handling
-  (:use functional-vaadin.utils)
+  (:require [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded)
            (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent)))
 
-;(deftype ButtonClickDelegator [handler]
-;  Button$ClickListener
-;  (^void buttonClick [this ^Button$ClickEvent evt] (handler evt)))
+;TODO - valueChange listener
 
 (defmulti onClick
           "Add a an action that occurs when the component is clicked"

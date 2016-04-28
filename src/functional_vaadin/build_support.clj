@@ -2,7 +2,8 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.config :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Panel AbstractOrderedLayout GridLayout AbstractSplitPanel)
+  (:import (com.vaadin.ui
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer)
            (java.util Map)))
 
 
@@ -85,6 +86,11 @@
   (let [content (.getContent panel)]
     (when content (add-children content children))
     panel))
+
+(defmethod add-children AbstractComponentContainer [parent children]
+  (doseq [child children]
+    (.addComponent parent child))
+  parent)
 
 (defmethod add-children AbstractOrderedLayout [parent children]
   (doseq [child children]

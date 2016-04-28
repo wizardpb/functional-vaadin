@@ -1,15 +1,14 @@
 (ns user
-  (:require [clojure.string :as str])
-  (:use [clojure.test]
-        [functional-vaadin.core]
-        [functional-vaadin.config]
-        [functional-vaadin.builders]
-        [functional-vaadin.data-map]
-        [functional-vaadin.event-handling]
-        [functional-vaadin.mock-data-provider]
-        [config-gen])
-  (:import (java.io File)
-           ))
+  (:require [clojure.string :as str]
+            [clojure.test :refer :all]
+            [functional-vaadin.core :refer :all]
+            ;[functional-vaadin.config :refer :all]
+            [functional-vaadin.builders :refer :all]
+            ;[functional-vaadin.data-map :refer :all]
+            ;[functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.mock-data-provider :refer :all]
+            [config-gen :refer :all])
+  (:import (java.io File)))
 
 (def test-dir "test/functional_vaadin/")
 

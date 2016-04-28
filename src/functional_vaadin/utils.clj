@@ -1,8 +1,6 @@
 (ns functional-vaadin.utils
   "Generally useful utility functions"
-  (:require [clojure.string :as str])
-  (:import [com.vaadin.ui AbstractComponent]
-           (clojure.lang Keyword)))
+  (:require [clojure.string :as str]))
 
 (defn capitalize [s]
   (if (empty? s) s (str (.toUpperCase (subs s 0 1)) (subs s 1))))

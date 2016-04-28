@@ -1,6 +1,6 @@
 (ns functional-vaadin.builders
-  (:use [functional-vaadin.build-support]
-        [functional-vaadin.utils])
+  (:require [functional-vaadin.build-support :refer :all]
+            [functional-vaadin.utils  :refer :all])
   (:import (com.vaadin.ui
              MenuBar
              Label Embedded Link Upload Button Calendar
