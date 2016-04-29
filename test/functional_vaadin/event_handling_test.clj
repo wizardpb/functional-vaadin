@@ -42,3 +42,6 @@
       (do-mouse-click embedded)
       (is (not @clicked))))
   )
+
+(deftest field-events
+  ())

@@ -11,16 +11,46 @@
 
 (deftest ui-panel
   (testing "Building"
-    (is (instance? Panel (panel)))
-    (is (nil? (.getContent (panel))))
-    (is (nil? (.getCaption (panel))))
-    (is (instance? Panel (panel "Caption")))
-    (is (nil? (.getContent (panel "Caption"))))
-    (is (= "Caption" (.getCaption (panel "Caption"))))
-    (is (instance? Panel (panel "Caption" (VerticalLayout.))))
-    (is (instance? VerticalLayout (.getContent (panel "Caption" (VerticalLayout.)))))
-    (is (= "Caption" (.getCaption (panel "Caption" (VerticalLayout.)))))
-    ))
+    (let [p (panel)]
+      (is (instance? Panel p))
+      (is (nil? (.getCaption p)))
+      (is (nil? (.getContent p))))
+
+    (let [p (panel "Caption")]
+      (is (instance? Panel p))
+      (is (nil? (.getContent p)))
+      (is (= "Caption" (.getCaption p)))
+      (is (nil? (.getContent p))))
+
+    (let [p (panel "Caption" (VerticalLayout.))]
+      (is (instance? Panel p))
+      (is (instance? VerticalLayout (.getContent p)))
+      (is (= "Caption" (.getCaption p)))
+      (is (= 0 (.getComponentCount (.getContent p)))))
+
+    (let [p (panel {:caption "Caption" :content (VerticalLayout.)})]
+      (is (instance? Panel p))
+      (is (instance? VerticalLayout (.getContent p)))
+      (is (= "Caption" (.getCaption p)))
+      (is (= 0 (.getComponentCount (.getContent p)))))
+
+    (let [p (panel "Caption" (VerticalLayout.) (Label.))]
+      (is (instance? Panel p))
+      (is (instance? VerticalLayout (.getContent p)))
+      (is (= "Caption" (.getCaption p)))
+      (is (= 1 (.getComponentCount (.getContent p))))
+      (is (instance? Label (.getComponent (.getContent p) 0)))
+      )
+
+    (let [p (panel {:caption "Caption" :content (VerticalLayout.)} (Label.))]
+      (is (instance? Panel p))
+      (is (instance? VerticalLayout (.getContent p)))
+      (is (= "Caption" (.getCaption p)))
+      (is (= 1 (.getComponentCount (.getContent p))))
+      (is (instance? Label (.getComponent (.getContent p) 0)))
+      )
+    )
+  )
 
 (deftest ui-ordered-layout
   (testing "Building"

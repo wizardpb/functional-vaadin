@@ -62,7 +62,7 @@
       (if (and null-ctor (instance? Map first-arg))
         (make-result
           (configure (.newInstance null-ctor (object-array 0)) first-arg)
-          (drop 1 args))
+          (rest args))
 
         ;; Otherwise try and find a non-null constructor and use that
        (if-let [[ctor conv-args] (find-constructor cls args)]
@@ -83,9 +83,12 @@
   (throw (UnsupportedOperationException. (str "add-children udefined!!!" (class parent)))))
 
 (defmethod add-children Panel [panel children]
-  (let [content (.getContent panel)]
-    (when content (add-children content children))
-    panel))
+  (if-let [content (.getContent panel)]
+    (add-children content children)
+    (if (> (count children) 0)
+      (throw (IllegalArgumentException.
+               "You must set the content of a Panel before adding children"))))
+  panel)
 
 (defmethod add-children AbstractComponentContainer [parent children]
   (doseq [child children]

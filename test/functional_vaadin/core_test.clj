@@ -48,4 +48,4 @@
                            )
                     )
           ]
-      (is (instance? UIDataProvider ui)))))
+      )))

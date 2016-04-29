@@ -1,7 +1,8 @@
 (ns functional-vaadin.event-handling
   (:require [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded)
-           (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent)))
+  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent)
+           (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent)
+           (com.vaadin.data Property$ValueChangeListener Property$ValueChangeEvent)))
 
 ;TODO - valueChange listener
 
@@ -46,4 +47,26 @@
       (reify
         MouseEvents$ClickListener
         (^void click [this ^MouseEvents$ClickEvent evt] (act-fn evt))
+        ))))
+
+(defmulti onValueChange
+          "Add a an action that occurs when a components vaue changes"
+          (fn [component action] (class component)))
+
+(defmethod onValueChange Field [component action]
+  (let [act-fn action]
+    (.addValueChangeListener
+     component
+     (reify
+       Property$ValueChangeListener
+       (^void valueChange [this ^Property$ValueChangeEvent evt] (act-fn evt))
+       ))))
+
+(defmethod onValueChange Label [component action]
+  (let [act-fn action]
+    (.addValueChangeListener
+      component
+      (reify
+        Property$ValueChangeListener
+        (^void valueChange [this ^Property$ValueChangeEvent evt] (act-fn evt))
         ))))

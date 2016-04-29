@@ -41,6 +41,7 @@
   {
    :id      {:func (fn [c id] (.add-component *current-ui* c (str/split id #"\."))) :override false}
    :onClick {:func (fn [c action] (onClick c action)) :override true}
+   :onValueChange {:func (fn [c action] (onValueChange c action)) :override true}
    }
   )
 
