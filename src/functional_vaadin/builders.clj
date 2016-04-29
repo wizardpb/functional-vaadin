@@ -29,43 +29,43 @@
 ;; Forms and Fields
 
 (defn text-field [& args]
-  (first (create-widget TextField args false)))
+  (create-field TextField args))
 
 (defn password-field [& args]
-  (first (create-widget PasswordField args false)))
+  (create-field PasswordField args))
 
 (defn text-area [& args]
-  (first (create-widget TextArea args false)))
+  (create-field TextArea args))
 
 (defn rich-text-area [& args]
-  (first (create-widget RichTextArea args false)))
+  (create-field RichTextArea args))
 
 (defn inline-date-field [& args]
-  (first (create-widget InlineDateField args false)))
+  (create-field InlineDateField args))
 
 (defn popup-date-field [& args]
-  (first (create-widget PopupDateField args false)))
+  (create-field PopupDateField args))
 
 (defn slider [& args]
-  (first (create-widget Slider args false)))
+  (create-field Slider args))
 
 (defn check-box [& args]
-  (first (create-widget CheckBox args false)))
+  (create-field CheckBox args))
 
 (defn combo-box [& args]
-  (first (create-widget ComboBox args false)))
+  (create-field ComboBox args))
 
 (defn twin-col-select [& args]
-  (first (create-widget TwinColSelect args false)))
+  (create-field TwinColSelect args))
 
 (defn native-select [& args]
-  (first (create-widget NativeSelect args false)))
+  (create-field NativeSelect args))
 
 (defn list-select [& args]
-  (first (create-widget ListSelect args false)))
+  (create-field ListSelect args))
 
 (defn option-group [& args]
-  (first (create-widget OptionGroup args false)))
+  (create-field OptionGroup args))
 
 ;; Containers and layouts
 
@@ -103,7 +103,7 @@
 
 ;; Forms
 
-(def ^{:dynamic true :tag FieldGroup} *current-field-group* nil)
+;; TODO - replace form-field with <field-builder>(<propId>, & field args)
 
 (defn create-form-layout [arg-list]
   (let [[conf# & rest#] arg-list]
@@ -119,15 +119,6 @@
        l#
        )))
 
-(defn form-field [propertId klass & config]
-  (when (not (isa? klass Field))
-    (throw (IllegalArgumentException. (str "Form field can only be created from instances of " Field))))
-  (when (nil? *current-field-group*)
-    (throw (UnsupportedOperationException. "Form fields cannot be created outside of forms")))
-  (let [[f c] (create-widget klass (list (or (first config) {:caption (humanize propertId)})) false)]
-    (.bind *current-field-group* f propertId)
-    f))
-
 ;; Embedded items
 
 (defn image [& args]
@@ -135,3 +126,8 @@
 
 (defn embedded [& args]
   (first (create-widget Embedded args false)))
+
+;; Tables
+
+(defn table [& args]
+  )

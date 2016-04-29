@@ -31,11 +31,11 @@
                                               )
                              (panel "Tab 2"
                                     (form
-                                      (form-field "name" TextField)
-                                      (form-field "address1" TextField)
-                                      (form-field "address2" TextField)
-                                      (form-field "city" TextField)
-                                      (form-field "state" TextField)))
+                                      (text-field "name")
+                                      (text-field "address1")
+                                      (text-field "address2")
+                                      (text-field "city")
+                                      (text-field "state")))
                              (panel "Tab 3"
                                     (grid-layout 3 4
                                                  (label "R1C1") (label "R1C2") (label "R1C3")

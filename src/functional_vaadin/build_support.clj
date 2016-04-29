@@ -4,8 +4,11 @@
             [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui
              Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer)
-           (java.util Map)))
+           (java.util Map)
+           [com.vaadin.data.fieldgroup FieldGroup]))
 
+
+;; Widget creation
 
 (defn- apply-parent-config
   "Apply any options save on the child under the key :parent-config."
@@ -77,6 +80,8 @@
            ;; Otherwise, we fail
            (throw (IllegalArgumentException. error-msg))))))))
 
+;; Adding content
+
 (defmulti add-children (fn [parent children] (class parent)))
 
 (defmethod add-children :default [parent children]
@@ -116,3 +121,21 @@
   (doseq [child children]
     (.addComponent parent child))
   parent)
+
+;; Field building
+
+(def ^{:dynamic true :tag FieldGroup} *current-field-group* nil)
+
+(defn create-field
+  "Create a Field object, dealing with both Form and non-Form fields"
+  [field-class args]
+  (if *current-field-group*
+    (let [propertyId (first args)]
+      (when (not (instance? String propertyId))
+        (throw (IllegalArgumentException. "Form field names must be Strings")))
+      (let [[field children] (create-widget field-class (rest args) false)]
+        (when (nil? (.getCaption field)) (.setCaption field (humanize propertyId)))
+        (.bind *current-field-group* field propertyId)
+        field))
+    (first (create-widget field-class args false)))
+  )
