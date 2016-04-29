@@ -12,9 +12,6 @@
            (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)))
 
-
-;; TODO - data binding,
-
 ;; Base components - Button, Link, Label etc.
 
 (defn button [& args]
@@ -102,8 +99,6 @@
     (add-children sl children)))
 
 ;; Forms
-
-;; TODO - replace form-field with <field-builder>(<propId>, & field args)
 
 (defn create-form-layout [arg-list]
   (let [[conf# & rest#] arg-list]

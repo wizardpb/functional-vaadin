@@ -5,6 +5,8 @@
   (:import (com.vaadin.ui Button Panel Image Embedded)
            (com.vaadin.event MouseEvents$ClickEvent)))
 
+;; TODO - replace with FRP - which one?
+
 (defn do-mouse-click [component]
   (.click
     (first (.getListeners component MouseEvents$ClickEvent))
