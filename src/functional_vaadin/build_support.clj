@@ -53,13 +53,13 @@
   returned in a vector. If there is no match to the arguments are made, and exception is thrown"
   [cls args allow-children]
   (let [first-arg (first args)
-        null-ctor (.getConstructor cls (make-array Class 0))
-        error-msg (str "Cannot create a " (.getSimpleName cls) " from " args)]
+        null-ctor (.getConstructor cls (make-array Class 0))]
 
     (letfn [(make-result [obj children]
               (if (and (not allow-children) (> (count children) 0))
                 (throw (IllegalArgumentException. (str (.getSimpleName cls) " does not allow children")))
-                [obj children]))]
+                [obj children]))
+            ]
 
       ;; First try for configuration
       (if (and null-ctor (instance? Map first-arg))
@@ -78,7 +78,7 @@
            (make-result (.newInstance null-ctor (object-array 0)) args)
 
            ;; Otherwise, we fail
-           (throw (IllegalArgumentException. error-msg))))))))
+           (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
 ;; Adding content
 
