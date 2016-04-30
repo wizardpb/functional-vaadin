@@ -1,5 +1,6 @@
 (ns functional-vaadin.event-handling
-  (:require [functional-vaadin.utils :refer :all])
+  (:require [functional-vaadin.thread-vars :refer :all]
+            [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent)
            (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent)
            (com.vaadin.data Property$ValueChangeListener Property$ValueChangeEvent)))
@@ -15,10 +16,11 @@
   (let [act-fn action]
     (.addClickListener
       component
-      (reify
-        Button$ClickListener
-        (^void buttonClick [this ^Button$ClickEvent evt] (act-fn evt))
-        ))))
+      (let [fg *current-field-group*]
+        (reify
+         Button$ClickListener
+         (^void buttonClick [this ^Button$ClickEvent evt] (act-fn evt fg))
+         )))))
 
 (defmethod onClick Panel [component action]
   (let [act-fn action]

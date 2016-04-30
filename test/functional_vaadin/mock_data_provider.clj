@@ -1,6 +1,5 @@
 (ns functional-vaadin.mock-data-provider
   (:use [functional-vaadin.core]
-        [functional-vaadin.data-map]
         [functional-vaadin.utils])
   (:import (com.vaadin.ui SingleComponentContainer)))
 

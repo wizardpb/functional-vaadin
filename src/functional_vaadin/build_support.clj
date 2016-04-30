@@ -1,11 +1,11 @@
 (ns functional-vaadin.build-support
   "Functions useful in implementing all the builder functions in core"
-  (:require [functional-vaadin.config :refer :all]
+  (:require [functional-vaadin.thread-vars :refer :all]
+            [functional-vaadin.config :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui
              Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer)
-           (java.util Map)
-           [com.vaadin.data.fieldgroup FieldGroup]))
+           (java.util Map)))
 
 
 ;; Widget creation
@@ -124,7 +124,6 @@
 
 ;; Field building
 
-(def ^{:dynamic true :tag FieldGroup} *current-field-group* nil)
 
 (defn create-field
   "Create a Field object, dealing with both Form and non-Form fields"

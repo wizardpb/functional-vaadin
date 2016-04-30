@@ -2,15 +2,12 @@
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:require [clojure.string :as str]
             [clojure.set :as set]
+            [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (java.util Map)))
 
-(def
-  ^{:dynamic true}
-  *current-ui*
-  "A dynamic var that will hold the current ui during building")
 
 (def parent-attribute-specs
   "The definition of all attribute specs to save on a child for execution by a parent. Keys are the options,

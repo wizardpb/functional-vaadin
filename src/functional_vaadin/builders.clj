@@ -1,5 +1,6 @@
 (ns functional-vaadin.builders
-  (:require [functional-vaadin.build-support :refer :all]
+  (:require [functional-vaadin.thread-vars :refer :all]
+            [functional-vaadin.build-support :refer :all]
             [functional-vaadin.utils  :refer :all])
   (:import (com.vaadin.ui
              MenuBar
@@ -123,6 +124,9 @@
   (first (create-widget Embedded args false)))
 
 ;; Tables
+
+(defn table-column [^String propertyId ^Map config]
+  )
 
 (defn table [& args]
   )

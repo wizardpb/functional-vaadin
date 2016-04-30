@@ -2,26 +2,43 @@
   (:require [clojure.string :as str]
             [clojure.test :refer :all]
             [functional-vaadin.core :refer :all]
-    ;[functional-vaadin.config :refer :all]
+            [functional-vaadin.config :refer :all]
             [functional-vaadin.builders :refer :all]
-    ;[functional-vaadin.data-map :refer :all]
-    ;[functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.utils :refer :all]
             [functional-vaadin.mock-data-provider :refer :all]
             [config-gen :refer :all])
   (:import (java.io File)
            (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
-           [com.vaadin.server VaadinServlet]))
+           (org.apache.commons.io FileUtils)
+           [com.vaadin.server VaadinServlet]
+           [com.vaadin.data.util ObjectProperty PropertysetItem]
+           [com.vaadin.data.fieldgroup FieldGroup]
+           [com.vaadin.ui VerticalLayout]
+           ))
 
-(def test-dir "test/functional_vaadin/")
+(def test-dir "test/")
 
 (defn test-ns-sym [fname]
-  (symbol (str "functional-vaadin." (str/replace (first (str/split fname #"\.")) #"_" "-"))))
+  (symbol (-> fname
+              (str/replace #"\.clj$" "")
+              (str/replace #"test/" "")
+              (str/replace #"/" ".")
+              (str/replace #"_" "-"))))
+
+(declare add-file-paths)
+
+(defn file-paths [base-dir]
+  (map #(.getPath %1)
+       (FileUtils/listFiles
+         ^File (File. base-dir)
+         #^"[Ljava.lang.String;" (into-array ["clj"])
+         true)))
 
 (defn run-my-tests []
-  (let [test-files (.list (File. ^String test-dir))]
+  (let [test-files (file-paths test-dir)]
     (doseq [fname test-files]
-      (load-file (str test-dir fname)))
+      (load-file fname))
     (apply run-tests (map test-ns-sym test-files))))
 
 (def dp (->UIDataProvider {} nil))
@@ -47,24 +64,36 @@
     main-ui
     (panel
       "Main Panel"
-      (vertical-layout
-        {:margin true}
-        (tab-sheet
-          (vertical-layout
-            {:caption "Vertical" :margin true :spacing true}
-            (label "Line1") (label "Line2")
+      (let [prop (ObjectProperty. "Hello")]
+        (vertical-layout
+          {:margin true}
+          (tab-sheet
+            (vertical-layout
+              {:caption "Property Binding" :margin true :spacing true}
+              (text-field {:caption "Input" :propertyDataSource prop :immediate true})
+              (label {:propertyDataSource prop})
+              )
+            (let [item (PropertysetItem.)]
+              (.addItemProperty item "first-name" (ObjectProperty. "Paul"))
+              (.addItemProperty item "last-name" (ObjectProperty. "Bennett"))
+              (horizontal-layout
+               {:caption "Item Binding" :margin true :spacing true}
+               (let [form (form {:content VerticalLayout}
+                                (form-layout
+                                  (text-field "first-name")
+                                  (text-field "last-name"))
+                                (horizontal-layout {:margin true :spacing true}
+                                                   (button {:caption "Save"
+                                                            :onClick (fn [evt ^FieldGroup fg] (.commit fg))})))]
+                 (.setItemDataSource (get-data form :field-group) item)
+                 form)
+
+               (vertical-layout {:margin true :spacing true}
+                                (label {:propertyDataSource (.getItemProperty item "first-name")})
+                                (label {:propertyDataSource (.getItemProperty item "last-name")}))
+               ))
             )
-          (horizontal-layout
-            {:caption "Horizontal" :margin true :spacing true}
-            (label "Left") (label "Right")
-            )
-          (grid-layout
-            {:caption "Grid" :rows 2 :columns 2 :margin true}
-            (label "11") (label "21")
-            (label "11") (label "21")
-            )
-          )
-        )
+          ))
       )
     )
   )

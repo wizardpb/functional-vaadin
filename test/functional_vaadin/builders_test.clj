@@ -1,5 +1,6 @@
 (ns functional-vaadin.builders-test
   (:use [clojure.test]
+        [functional-vaadin.thread-vars]
         [functional-vaadin.builders]
         [functional-vaadin.build-support]
         [functional-vaadin.utils])

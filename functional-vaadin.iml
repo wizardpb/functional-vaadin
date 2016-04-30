@@ -26,8 +26,10 @@
     <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-shared:7.6.5" level="project" />
     <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-themes:7.6.5" level="project" />
     <orderEntry type="library" name="Leiningen: com.yahoo.platform.yui/yuicompressor:2.4.8" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-io:2.4" level="project" />
     <orderEntry type="library" name="Leiningen: compliment:0.2.0" level="project" />
     <orderEntry type="library" name="Leiningen: javax.servlet/javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.apache.directory.studio/org.apache.commons.io:2.4" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/java.classpath:0.2.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.5" level="project" />
