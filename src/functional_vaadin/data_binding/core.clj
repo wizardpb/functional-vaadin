@@ -7,33 +7,6 @@
 
 ;; TODO - immutable <-> mutable bridge
 
-(defn- initializeItem
-  "Initialize a given Item using updateFn to set a Property on the item from some element of kvdata.
-  Kvdata is an iterable sequece of kv pairs (MapEnties, vectors, etc) and is iterated with reduce-kv. updateFn
-  id called as (updateFn item pid val) where pid and value are the k-v values from kvdata"
-  [item updateFn kvdata]
-  (reduce-kv
-    (fn [item pid val] (updateFn item pid val) item)
-    item
-    kvdata)
-  )
-
-(defn ->Item [data]
-  (cond
-    (or                                                     ;Use natural keys for Maps and Collections
-      (instance? Collection data)
-      (instance? Map data)
-      ) (initializeItem (PropertysetItem.)
-                        (fn [item pid val] (.addItemProperty item pid (ObjectProperty. val)))
-                        data)
-    (or                                                     ;Synthezize integer keys for Sets and Sequences
-      (instance? Set data)
-      (seq? data)
-      ) (initializeItem (PropertysetItem.)
-                        (fn [item pid val] (.addItemProperty item pid (ObjectProperty. val)))
-                        (map-indexed #(vector %1 %2) data))
-    true (throw (IllegalArgumentException. "Cannot bind an Item to " data)))
-  )
 
 (defmulti set-component-data (fn [component data] (class component)))
 

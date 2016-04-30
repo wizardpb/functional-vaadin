@@ -2,7 +2,7 @@
   (:use [clojure.test]
         [functional-vaadin.thread-vars]
         [functional-vaadin.config]
-        [functional-vaadin.builders]
+        [functional-vaadin.core]
         [functional-vaadin.utils]
         [functional-vaadin.mock-data-provider])
 

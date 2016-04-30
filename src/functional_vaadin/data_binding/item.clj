@@ -1,8 +1,7 @@
 (ns functional-vaadin.data-binding.item
   (:import
     (com.vaadin.data.util ObjectProperty PropertysetItem)
-    [java.util Collection Map Set]
-    [com.vaadin.data Item]))
+    (java.util Collection Map)))
 
 (defn- initializeItem
   "Initialize a given Item using updateFn to set a Property on the item from some element of kvdata.

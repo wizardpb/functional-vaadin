@@ -1,12 +1,9 @@
 (ns user
-  (:require [clojure.string :as str]
-            [clojure.test :refer :all]
-            [functional-vaadin.core :refer :all]
-            [functional-vaadin.config :refer :all]
-            [functional-vaadin.builders :refer :all]
-            [functional-vaadin.utils :refer :all]
-            [functional-vaadin.mock-data-provider :refer :all]
-            [config-gen :refer :all])
+  (:require [clojure.string :as str])
+  (:use clojure.test
+        functional-vaadin.core
+        functional-vaadin.utils
+        config-gen)
   (:import (java.io File)
            (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
@@ -16,6 +13,13 @@
            [com.vaadin.data.fieldgroup FieldGroup]
            [com.vaadin.ui VerticalLayout]
            ))
+(declare run-jetty)
+
+(comment
+  (def server (run-jetty))
+  (do (.stop server) (def server (run-jetty)))
+  )
+
 
 (def test-dir "test/")
 
@@ -28,7 +32,7 @@
 
 (declare add-file-paths)
 
-(defn file-paths [base-dir]
+(defn file-paths [^String base-dir]
   (map #(.getPath %1)
        (FileUtils/listFiles
          ^File (File. base-dir)
@@ -41,13 +45,11 @@
       (load-file fname))
     (apply run-tests (map test-ns-sym test-files))))
 
-(def dp (->UIDataProvider {} nil))
-
 (defn run-jetty []
   (let [server (Server. 8080)
         ^ServletContextHandler context (ServletContextHandler. ServletContextHandler/SESSIONS)]
     (.setContextPath context "/")
-    (.setInitParameter context "UI" "functional_vaadin.TestUI")
+    (.setInitParameter context "UI" "functional_vaadin.ui.TestUI")
     (.setResourceBase context "dev-resources/public")
 
     (.setHandler server context)

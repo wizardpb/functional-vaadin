@@ -1,6 +1,6 @@
 (ns functional-vaadin.event-handling-test
   (:use [clojure.test]
-        [functional-vaadin.builders]
+        [functional-vaadin.core]
         [functional-vaadin.event-handling]
         [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui Button Panel Image Embedded FormLayout)
