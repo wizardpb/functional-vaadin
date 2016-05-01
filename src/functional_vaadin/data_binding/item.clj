@@ -3,7 +3,7 @@
     (com.vaadin.data.util ObjectProperty PropertysetItem)
     (java.util Collection Map)))
 
-(defn- initializeItem
+(defn initializeItem
   "Initialize a given Item using updateFn to set a Property on the item from some element of kvdata.
   Kvdata is an iterable sequece of kv pairs (MapEnties, vectors, etc) and is iterated with reduce-kv. updateFn
   id called as (updateFn item pid val) where pid and value are the k-v values from kvdata"

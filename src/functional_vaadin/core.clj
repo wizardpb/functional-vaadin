@@ -15,15 +15,6 @@
 
 ;; Primary build macro
 
-;(defprotocol IUIData
-;  "A protocol to assign and lookup components by ID, and provide a shared UI data area
-;  addressable by hierarchical (dot-separated) symbols"
-;  (add-component [this component id] "Assign an ID")
-;  (component-at [this component-id] "Look up a component")
-;  (bind [this component-id location] "Bind a named component to a data location")
-;  (update-binding [this location fn] "Update bound data at location using the function fn")
-;  )
-
 (defmacro defui [^UI ui top-form]
   `(let [this-ui# ~ui]
      (with-bindings

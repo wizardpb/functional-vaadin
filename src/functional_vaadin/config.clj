@@ -36,7 +36,7 @@
   "The defintion of any attributes that get special processing. These add to, augment or override other config
   specs (e.g setid). Override or augment is determined by the override key in the spec"
   {
-   :id      {:func (fn [c id] (.add-component *current-ui* c (str/split id #"\."))) :override false}
+   :id      {:func (fn [c id] (.addComponent *current-ui* c (str/split id #"\."))) :override false}
    :onClick {:func (fn [c action] (onClick c action)) :override true}
    :onValueChange {:func (fn [c action] (onValueChange c action)) :override true}
    }

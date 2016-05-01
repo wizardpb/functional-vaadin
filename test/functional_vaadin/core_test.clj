@@ -4,13 +4,13 @@
         [functional-vaadin.core]
         [functional-vaadin.build-support]
         [functional-vaadin.utils]
-        [functional_vaadin.mock_data_provider :refer :all])
+        )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
                           Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
-           ))
+           [functional_vaadin.ui FunctionalUI]))
 
 (deftest ui-panel
   (testing "Building"
@@ -223,18 +223,18 @@
 
 (deftest ui-building
   (testing "Basic UI"
-    (let [ui (defui (->UIDataProvider {} nil)
+    (let [ui (defui (FunctionalUI.)
                     (vertical-layout
                       (label "Label 1")
                       (label "Label 2")))]
-      (is (instance? UIDataProvider ui))
+      (is (instance? FunctionalUI ui))
       (let [vl (.getContent ui)]
         (is (instance? VerticalLayout vl))
         (is (= (.getComponentCount vl) 2))
         (is (every? #(instance? Label %1) (map #(.getComponent vl %1) [0 1])))
         )))
   (testing "Complex UI"
-    (let [ui (defui (->UIDataProvider {} nil)
+    (let [ui (defui (FunctionalUI.)
                     (panel "Top Panel"
                            (tab-sheet
                              (vertical-layout {:caption "Tab 1"}

@@ -1,12 +1,14 @@
 (ns functional-vaadin.data-binding.core
+  (:require [functional-vaadin.data-binding.item :refer :all]
+            [functional-vaadin.data-binding.container :refer :all])
   (:import
-    (com.vaadin.data Property Property$Viewer Item Item$Viewer Container)
+    (com.vaadin.data Property Property$Viewer Item Item$Viewer Container Container$Viewer)
     (com.vaadin.data.util ObjectProperty PropertysetItem)
-    (com.vaadin.ui Component)
-    [java.util Collection Map Set]))
+    (com.vaadin.ui Component Grid Calendar)
+    [java.util Collection Map Set]
+    [com.vaadin.data.fieldgroup FieldGroup]))
 
-;; TODO - immutable <-> mutable bridge
-
+; Set data source
 
 (defmulti set-component-data (fn [component data] (class component)))
 
@@ -22,8 +24,19 @@
 (defmethod set-component-data Item$Viewer [^Item$Viewer component data]
   (.setItemDataSource component (->Item data)))
 
-(defmethod set-component-data Item [^Container component data]
-  )
+(defmethod set-component-data FieldGroup [component data]
+  (.setItemDataSource component (->Item data)))
+
+(defmethod set-component-data Container$Viewer [component data]
+  (.setContainerDataSource component (->Container data)))
+
+(defmethod set-component-data Grid [component data]
+  (.setContainerDataSource component (->Container data)))
+
+(defmethod set-component-data Calendar [component data]
+  (.setContainerDataSource component (->Container data)))
+
+; Get data source
 
 (defmulti get-component-data (fn [component] (class component)))
 

@@ -2,7 +2,7 @@
   (:import [com.vaadin.data.fieldgroup FieldGroup]))
 
 (def
-  ^{:dynamic true}
+  ^{:dynamic true :tag functional_vaadin.ui.IUIDataStore}
   *current-ui*
   "A dynamic var that will hold the current ui during building")
 
