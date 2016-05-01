@@ -20,10 +20,10 @@
 (defn -componentAt [this id]
   (get-data this (component-key id)))
 
-(defn -bind [this component-id location])
+(defn -bind [this component-id location-id])
 
-(defn -setBinding [this location fn])
+(defn -updateBinding [this location-id fn])
 
-(defn -getBinding [this location])
+(defn -getBindingValue [this location-id])
 
 

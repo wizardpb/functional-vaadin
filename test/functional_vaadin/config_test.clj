@@ -61,21 +61,15 @@
       {#'*current-ui* (FunctionalUI.)}
       (let [b (button {:id "myform"})]
        (is (= (.getId b) "myform"))
-       (is (identical? (.componentAt *current-ui* "myform") b))
        (is (identical? (.componentAt *current-ui* :myform) b))
-       (is (identical? (.componentAt *current-ui* [:myform]) b))
-       (is (identical? (.componentAt *current-ui* ["myform"]) b))
+
        ))
     (with-bindings
       {#'*current-ui* (FunctionalUI.)}
       (let [b (button {:id "myform.save"})]
         (is (= (.getId b) "myform.save"))
-        (is (identical? (.componentAt *current-ui* "myform.save") b))
         (is (identical? (.componentAt *current-ui* :myform.save) b))
-        (is (identical? (.componentAt *current-ui* [:myform :save]) b))
-        (is (identical? (.componentAt *current-ui* ["myform" "save"]) b))
         ))
-
     )
 
   )
