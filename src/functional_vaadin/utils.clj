@@ -15,6 +15,13 @@
     (or (seq? key) (vector? key)) (map keyword key)
     )
   )
+
+(defn component-key [id]
+  (concat [:components] (parse-key id)))
+
+(defn binding-key [id]
+  (concat [:bindings] (parse-key id)))
+
 (defn attach-data
   "Attach data to a Component indexed by a key. The data is stored in a Map under the key, which is in turn
   stored in the setData() attribute of the Component"

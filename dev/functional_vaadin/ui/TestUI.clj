@@ -1,6 +1,5 @@
 (ns functional-vaadin.ui.TestUI
-  (:require [functional-vaadin.core :refer :all]
-            [user :as u])
+  (:require [functional-vaadin.ui.test-ui-def :as u])
   (:gen-class :extends functional_vaadin.ui.FunctionalUI
               :main false))
 
