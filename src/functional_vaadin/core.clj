@@ -1,5 +1,7 @@
 (ns functional-vaadin.core
-  (:require [functional-vaadin.thread-vars :refer :all]
+  (:require [clojure.set :as set]
+            [functional-vaadin.ui.IUIDataStore]
+            [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]
             [functional-vaadin.utils  :refer :all])
   (:import (com.vaadin.ui
@@ -115,19 +117,13 @@
 
 ;; Forms
 
-(defn create-form-layout [arg-list]
-  (let [[conf# & rest#] arg-list]
-    (if (and (instance? Map conf#) (:content conf#))
-      (create-widget (:content conf#) (concat (list (dissoc conf# :content)) rest#) true)
-      (create-widget FormLayout arg-list true))))
 
 (defmacro form [& args]
   `(with-bindings {#'*current-field-group* (FieldGroup.)}
      (let [[l# c#] (create-form-layout (list ~@args))]
        (add-children l# c#)
        (attach-data l# :field-group *current-field-group*)
-       l#
-       )))
+       l#)))
 
 ;; Embedded items
 
@@ -139,10 +135,30 @@
 
 ;; Tables
 
-(defn table-column [^String propertyId ^Map config]
+(def valid-column-options
+      #{:propertyId :type :defaultValue :header :icon :alignment})
+
+(defn table-column
+  ; Config options:
+  ;
+  ; Class<T> type,
+  ; Object defaultValue,
+  ; String columnHeader,
+  ; Resource columnIcon,
+  ; Align columnAlignment
+  ([^String propertyId ^Map config]
+   (-> (assoc
+         (merge {:type Object :defaultValue nil} config)
+         :propertyId propertyId)
+       (convert-column-values)
+       (validate-column-options)))
+
+  ([^String propertyId] (table-column propertyId {}))
+
   )
 
 (defn table [& args]
-  )
+  (let [[table children] (create-widget Table args true)]
+    (add-children table children)))
 
 

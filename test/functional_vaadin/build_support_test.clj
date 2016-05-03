@@ -2,7 +2,7 @@
   (:use [clojure.test]
         [functional-vaadin.build-support]
         [functional-vaadin.utils])
-  (:import (com.vaadin.ui Button VerticalLayout Panel Label GridLayout)
+  (:import (com.vaadin.ui Button VerticalLayout Panel Label GridLayout Table)
            (com.vaadin.server Resource ClassResource)))
 
 (deftest new-instance
@@ -45,3 +45,4 @@
         (is (= 1 (count c))))))
 
   )
+

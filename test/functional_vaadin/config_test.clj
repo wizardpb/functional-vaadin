@@ -1,5 +1,6 @@
 (ns functional-vaadin.config-test
   (:use [clojure.test]
+        [functional-vaadin.ui.IUIDataStore]
         [functional-vaadin.thread-vars]
         [functional-vaadin.config]
         [functional-vaadin.core]
@@ -9,7 +10,8 @@
   (:import (com.vaadin.ui Button VerticalLayout)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.server Sizeable)
-           [functional_vaadin.ui FunctionalUI]))
+           (java.util Map)
+           (functional_vaadin.ui TestUI)))
 
 (deftest configuration
 
@@ -58,17 +60,26 @@
 
   (testing "Special attributes"
     (with-bindings
-      {#'*current-ui* (FunctionalUI.)}
+      {#'*current-ui* (TestUI.)}
       (let [b (button {:id "myform"})]
        (is (= (.getId b) "myform"))
-       (is (identical? (.componentAt *current-ui* :myform) b))
+       (is (identical? (componentAt *current-ui* :myform) b))
 
        ))
     (with-bindings
-      {#'*current-ui* (FunctionalUI.)}
+      {#'*current-ui* (TestUI.)}
       (let [b (button {:id "myform.save"})]
         (is (= (.getId b) "myform.save"))
-        (is (identical? (.componentAt *current-ui* :myform.save) b))
+        (is (identical? (componentAt *current-ui* :myform.save) b))
+        ))
+    (with-bindings
+      {#'*current-ui* (TestUI.)}
+      (let [b (label {:bind "mylabel.data"})
+            binding (get-data *current-ui* (binding-key "mylabel.data"))]
+        (is (instance? Map binding))
+        (is (= (:bind-type binding) :Property))
+        (is (= (:structure binding) :Any))
+        (is (= (:components binding) #{b}))
         ))
     )
 

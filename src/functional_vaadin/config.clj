@@ -5,8 +5,10 @@
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.ui.IUIDataStore :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (java.util Map)))
+  (:import (java.util Map)
+           (clojure.lang Keyword)))
 
 
 (def parent-attribute-specs
@@ -32,16 +34,36 @@
               :error-msg "Element span must be a vector of two integers"}
    })
 
+(declare doBind)
+
 (def special-attribute-specs
   "The defintion of any attributes that get special processing. These add to, augment or override other config
   specs (e.g setid). Override or augment is determined by the override key in the spec"
   {
-   :id      {:func (fn [c id] (.addComponent *current-ui* c (keyword id))) :override false}
-   :onClick {:func (fn [c action] (onClick c action)) :override true}
+   :id            {:func (fn [c id] (addComponent *current-ui* c (keyword id))) :override false}
+   :onClick       {:func (fn [c action] (onClick c action)) :override true}
    :onValueChange {:func (fn [c action] (onValueChange c action)) :override true}
+   :bind          {:func (fn [c args] (doBind *current-ui* c args)) :override true}
    }
   )
 
+(defn validate-bind-args [mapargs]
+  (if (not (= (keys mapargs) #{:as :id}))
+    (throw (IllegalArgumentException.
+             (str "Incorrect bindAs arguments: " mapargs ". Format is {:as <bind-type> :id <location>")))
+    [(keyword (:as mapargs)) (keyword (:id mapargs))]))
+
+(defn doBind
+  ; Args can be a keyword or map {:as <type> :id <id>}
+  [ui component args]
+  (cond
+    (instance? String args) (bind ui component (keyword args))
+    (instance? Keyword args) (bind ui component args)
+    (instance? Map args) (let [[bind-type location] (validate-bind-args args)]
+                           (bindAs ui component bind-type location))
+    true (throw (IllegalArgumentException. "Bind arguments must be a Map or a Keyword")))
+
+  )
 (defn transform-parent-attribute-spec
   "Transform a parent attribute spec into a form applicable to the parent"
   [child [optkey optval]]

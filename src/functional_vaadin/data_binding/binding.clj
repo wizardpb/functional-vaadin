@@ -40,22 +40,25 @@
                   (str "Cannot bind a " (.getSimpleName (class component)) " as a " bind-type)))))
 
 (defn check-structure [binding new-structure]
-  (if (not= (:structure binding) new-structure)
+  (if (and (:structure binding) (not= (:structure binding) new-structure))
     (throw (IllegalArgumentException.
              (str "Incompatible combination of component and bind type. Already bound as "
-                  (:structure binding))))))
+                  (:structure binding))))
+    new-structure))
 
 (defn default-bind-type [component]
-  {:pre (not (nil? component))
-   :post (not (nil? %))}
+  {:pre  [(not (nil? component))]
+   :post [(not (nil? %))]}
   (cond
     (instance? Property component) :Property
     (or (instance? Item$Viewer component)
         (instance? FieldGroup component)) :Item
-    (instance? Container$Viewer component) :Container))
+    (instance? Container$Viewer component) :Container
+    true (throw (IllegalArgumentException.
+                  (str (.getSimpleName (class component)) "s do not support binding")))))
 
 (defn bind-component [ui bind-type component location-id]
-  {:pre (not (nil? component))}
+  {:pre [(not (nil? component))]}
   (let [bind-key (binding-key location-id)
         binding (or (get-data ui bind-key) (->Binding {:bind-type bind-type}))]
     (if (contains? (:components binding) component)
@@ -69,11 +72,11 @@
   )
 
 (defn update-binding [binding update-fn]
-  {:pre (not (nil? binding))}
+  {:pre [(not (nil? binding))]}
   (let [old-value (get-bound-value binding)]
     [old-value (set-bound-value binding (update-fn old-value))]))
 
 (defn get-binding-value [binding]
-  {:pre (not (nil? binding))}
+  {:pre [(not (nil? binding))]}
   (get-bound-value binding))
 

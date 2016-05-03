@@ -1,13 +1,17 @@
 (ns user
   (:require [clojure.string :as str])
   (:use clojure.test
+        functional-vaadin.ui.IUIDataStore
+        functional-vaadin.ui.TestUI
         functional-vaadin.ui.test-ui-def
         config-gen)
-  (:import (java.io File)
+  (:import (functional_vaadin.ui TestUI)
+           (java.io File)
            (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
            (org.apache.commons.io FileUtils)
            [com.vaadin.server VaadinServlet]
+           (com.vaadin.ui Button Label)
            ))
 
 (declare run-jetty)

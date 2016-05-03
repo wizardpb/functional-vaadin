@@ -7,10 +7,11 @@
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
-           [functional_vaadin.ui FunctionalUI]))
+           [functional_vaadin.ui FunctionalUI]
+           (com.vaadin.data.util IndexedContainer)))
 
 (deftest ui-panel
   (testing "Building"
@@ -219,7 +220,32 @@
     )
   )
 
-
+(deftest ui-tables
+  (testing "Creation"
+    (let [tbl (table "My Table"
+                     (table-column "Col1" {:header "String"})
+                     (table-column "Col2" {:header "Number"}))]
+      (is (instance? Table tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      (is (= (vec (.getColumnHeaders tbl)) ["String" "Number"]))
+      ))
+  (testing "Data"
+    (let [tbl (table "My Table"
+                     (table-column "Col1")
+                     (table-column "Col2"))
+          data (IndexedContainer.)]
+      (.addContainerProperty data "Col1" String "")
+      (.addContainerProperty data "Col2" Long 0)
+      (reduce (fn [c index] (.addItem c index)
+                (.setValue (.getContainerProperty c index "Col1") (str "Cell 1," index))
+                (.setValue (.getContainerProperty c index "Col2") index)
+                c)
+              data (range 0 10))
+      (.setContainerDataSource tbl data)
+      (is (= (.size tbl) 10)
+      )
+    )))
 
 (deftest ui-building
   (testing "Basic UI"
@@ -233,6 +259,7 @@
         (is (= (.getComponentCount vl) 2))
         (is (every? #(instance? Label %1) (map #(.getComponent vl %1) [0 1])))
         )))
+
   (testing "Complex UI"
     (let [ui (defui (FunctionalUI.)
                     (panel "Top Panel"
