@@ -125,18 +125,18 @@
     (let [ui (TestUI.)
           c {:structure :Map
              :bind-type :Item}]
-      (attach-data ui (binding-key :button) c)
-      (is (identical? c (get-data ui (binding-key :button))))
-      (is (identical? c (get-data ui (binding-key :button))))
+      (attach-data ui (binding-key :some.data) c)
+      (is (identical? c (get-data ui (binding-key :some.data))))
+      (is (identical? c (get-data ui (binding-key :some.data))))
       ))
   (testing "attach/detach - bindings"
     (let [ui (TestUI.)
           c {:structure :Map
              :bind-type :Item}]
-      (attach-data ui (binding-key :button) c)
-      (is (identical? c (get-data ui (binding-key :button))))
-      (is (identical? c (detach-data ui (binding-key :button))))
-      (is (nil? (get-data ui (binding-key :button))))
+      (attach-data ui (binding-key :some.data) c)
+      (is (identical? c (get-data ui (binding-key :some.data))))
+      (is (identical? c (detach-data ui (binding-key :some.data))))
+      (is (nil? (get-data ui (binding-key :some.data))))
       )
     )
   )
