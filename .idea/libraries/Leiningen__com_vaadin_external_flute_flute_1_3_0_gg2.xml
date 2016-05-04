@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Leiningen: com.vaadin.external.flute/flute:1.3.0.gg2">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/repository/com/vaadin/external/flute/flute/1.3.0.gg2/flute-1.3.0.gg2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/external/flute/flute/1.3.0.gg2/flute-1.3.0.gg2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

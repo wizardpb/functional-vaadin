@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Leiningen: com.vaadin/vaadin-sass-compiler:0.9.13">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/repository/com/vaadin/vaadin-sass-compiler/0.9.13/vaadin-sass-compiler-0.9.13.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-sass-compiler/0.9.13/vaadin-sass-compiler-0.9.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

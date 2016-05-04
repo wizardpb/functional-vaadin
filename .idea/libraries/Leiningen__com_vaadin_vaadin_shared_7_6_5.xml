@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Leiningen: com.vaadin/vaadin-shared:7.6.5">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/repository/com/vaadin/vaadin-shared/7.6.5/vaadin-shared-7.6.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-shared/7.6.5/vaadin-shared-7.6.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
