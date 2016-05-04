@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Leiningen: org.apache.directory.studio/org.apache.commons.io:2.4">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache/directory/studio/org.apache.commons.io/2.4/org.apache.commons.io-2.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/repository/org/apache/directory/studio/org.apache.commons.io/2.4/org.apache.commons.io-2.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
