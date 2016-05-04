@@ -1,6 +1,5 @@
 (ns functional-vaadin.ui.IUIDataStore
-  (:require [functional-vaadin.data-binding.binding :refer :all]
-            [functional-vaadin.utils :refer :all])
+  (:require [functional-vaadin.utils :refer :all])
   (:import (clojure.lang Keyword)
            (com.vaadin.ui Component)))
 

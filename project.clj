@@ -1,6 +1,6 @@
 (defproject com.prajnainc/functional-vaadin "0.1.0-SNAPSHOT"
   :description "A functional interface to Vaadin"
-  ;:url "http://example.com/FIXME"
+  :url "https://github.com/wizardpb/functional-vaadin"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]

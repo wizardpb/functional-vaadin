@@ -20,12 +20,10 @@
                 (text-field "last-name"))
               (horizontal-layout {:margin true :spacing true}
                                  (button {:caption "Save"
-                                          :onClick (fn [^Button$ClickEvent evt fg]
+                                          :onClick (fn [^Button button evt fg]
                                                      (.commit fg)
-                                                     (let [^Table table
-                                                           (componentAt
-                                                             ^IUIDataStore (.getUI ^Button (.getSource evt))
-                                                             :table)
+                                                     (let [ui (.getUI button)
+                                                           ^Table table (componentAt ui :table)
                                                            data-source (.getItemDataSource fg)]
                                                        (.addItem table (object-array
                                                                          (map #(.getValue (.getItemProperty data-source %1))

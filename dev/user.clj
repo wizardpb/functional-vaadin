@@ -3,11 +3,9 @@
             [functional-vaadin.utils :as u])
   (:use clojure.test
         functional-vaadin.ui.IUIDataStore
-        functional-vaadin.ui.TestUI
         functional-vaadin.ui.test-ui-def
         config-gen)
-  (:import (functional_vaadin.ui TestUI)
-           (java.io File)
+  (:import (java.io File)
            (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
            (org.apache.commons.io FileUtils)

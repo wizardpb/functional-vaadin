@@ -63,3 +63,6 @@
 
 (defn bad-argument [& args]
   (throw (IllegalArgumentException. (apply str args))))
+
+(defn unsupported-op [& args]
+  (throw (UnsupportedOperationException. (apply str args))))
