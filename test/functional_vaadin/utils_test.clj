@@ -2,7 +2,8 @@
   (:use [clojure.test]
         [functional-vaadin.utils])
   (:import (java.util Map)
-           (com.vaadin.ui Button)))
+           (com.vaadin.ui Button)
+           (functional_vaadin.ui TestUI)))
 
 
 (deftest string-helpers
@@ -102,4 +103,40 @@
       (is (= (get-data c [:test-key :b]) 2))
       ))
 
+  )
+(deftest ui-data
+  (testing "attach/get - components"
+    (let [ui (TestUI.)
+          c (Button.)]
+      (attach-data ui (component-key :button) c)
+      (is (identical? c (get-data ui (component-key :button))))
+      (is (identical? c (get-data ui (component-key :button))))
+      ))
+  (testing "attach/detach - components"
+    (let [ui (TestUI.)
+          c (Button.)]
+      (attach-data ui (component-key :button) c)
+      (is (identical? c (get-data ui (component-key :button))))
+      (is (identical? c (detach-data ui (component-key :button))))
+      (is (nil? (get-data ui (component-key :button))))
+      )
+    )
+  (testing "attach/get - bindings"
+    (let [ui (TestUI.)
+          c {:structure :Map
+             :bind-type :Item}]
+      (attach-data ui (binding-key :some.data) c)
+      (is (identical? c (get-data ui (binding-key :some.data))))
+      (is (identical? c (get-data ui (binding-key :some.data))))
+      ))
+  (testing "attach/detach - bindings"
+    (let [ui (TestUI.)
+          c {:structure :Map
+             :bind-type :Item}]
+      (attach-data ui (binding-key :some.data) c)
+      (is (identical? c (get-data ui (binding-key :some.data))))
+      (is (identical? c (detach-data ui (binding-key :some.data))))
+      (is (nil? (get-data ui (binding-key :some.data))))
+      )
+    )
   )

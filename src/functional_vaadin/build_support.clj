@@ -2,9 +2,10 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config :refer :all]
-            [functional-vaadin.utils :refer :all])
+            [functional-vaadin.utils :refer :all]
+            [clojure.set :as set])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout)
            (java.util Map)))
 
 
@@ -80,6 +81,27 @@
            ;; Otherwise, we fail
            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
+(defmulti create-form-layout (fn [args] (if (instance? Map (first args)) :has-config :no-config)))
+
+(defmethod create-form-layout :no-config [args]
+  (create-widget FormLayout args true))
+
+(defmethod create-form-layout :has-config [args]
+  (let [[conf & rest] args
+        [bind-conf widget-cond] (extract-keys conf #{:bind})]
+
+    ;; Bind the field-group (not the layout) if we are binding
+    (if (not (empty? bind-conf))
+      (doBind *current-ui* *current-field-group* (:bind bind-conf)))
+
+    ; Create the layout (form) component and attach the field group
+    (let [widget-and-children
+          (if (:content widget-cond)
+                   (create-widget (:content widget-cond) (concat (list (dissoc widget-cond :content)) rest) true)
+                   (create-widget FormLayout (concat (list widget-cond) rest) true))]
+      widget-and-children)))
+
+
 ;; Adding content
 
 (defmulti add-children (fn [parent children] (class parent)))
@@ -122,8 +144,49 @@
     (.addComponent parent child))
   parent)
 
-;; Field building
+;Tables
 
+(defmethod add-children Table [table children]
+  ; Children are specifications of Table properties
+  (doseq [{:keys [propertyId type defaultValue header icon alignment]} children]
+    (.addContainerProperty table propertyId type defaultValue header icon alignment))
+  table)
+
+(defn validate-column-options [config]
+  (letfn
+    [(validate-keys [config]
+       (let [bad-keys (set/difference
+                        (set (keys config))
+                        #{:propertyId :type :defaultValue :header :icon :alignment})]
+         (if (not-empty bad-keys)
+           (throw (IllegalArgumentException. (str "Unknown table configuration options: " bad-keys)))
+           config)))
+     (validate-propertyId [config]
+       (let [pid (:propertyId config)]
+         (if (not (or (keyword? pid) (string? pid)))
+           (throw (IllegalArgumentException. "Property Id must be a Keyword or String"))
+           config)))]
+    (-> config
+        (validate-keys)
+        (validate-propertyId))
+    ))
+
+(defn- alignment-for [aval]
+  (cond
+    (= aval :left) Table$Align/LEFT
+    (= aval :right) Table$Align/LEFT
+    (= aval :center) Table$Align/CENTER
+    true (throw (IllegalArgumentException. (str "Invalid column alignment " aval)))))
+
+(defn convert-column-values [config]
+  (reduce (fn [config [op conv-fn]]
+            (if-let [val (get config op)]
+              (assoc config op (conv-fn val))
+              config))
+          config
+          {:alignment alignment-for}))
+
+;; Field building
 
 (defn create-field
   "Create a Field object, dealing with both Form and non-Form fields"
@@ -138,3 +201,4 @@
         field))
     (first (create-widget field-class args false)))
   )
+

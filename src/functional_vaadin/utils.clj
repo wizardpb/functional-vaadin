@@ -15,6 +15,13 @@
     (or (seq? key) (vector? key)) (map keyword key)
     )
   )
+
+(defn component-key [id]
+  (concat [:components] (parse-key id)))
+
+(defn binding-key [id]
+  (concat [:bindings] (parse-key id)))
+
 (defn attach-data
   "Attach data to a Component indexed by a key. The data is stored in a Map under the key, which is in turn
   stored in the setData() attribute of the Component"
@@ -45,3 +52,11 @@
   "Turn a keyword or symbol string into a humanized for. The text is split at hyphens (-) and each segment is capitalized"
   [kw-or-string]
   (str/join " " (map capitalize (str/split (name kw-or-string) #"-"))))
+
+(defn extract-keys [m rmkeys]
+  (reduce (fn [[l r] k]
+            (if ((set (keys r)) k)
+              [(assoc l k (get r k)) (dissoc r k)]
+              [l r]))
+          [{} m] rmkeys)
+  )
