@@ -10,8 +10,8 @@
                           Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
-           [functional_vaadin.ui FunctionalUI]
-           (com.vaadin.data.util IndexedContainer)))
+           (com.vaadin.data.util IndexedContainer)
+           (functional_vaadin.ui TestUI)))
 
 (deftest ui-panel
   (testing "Building"
@@ -249,11 +249,11 @@
 
 (deftest ui-building
   (testing "Basic UI"
-    (let [ui (defui (FunctionalUI.)
+    (let [ui (defui (TestUI.)
                     (vertical-layout
                       (label "Label 1")
                       (label "Label 2")))]
-      (is (instance? FunctionalUI ui))
+      (is (instance? TestUI ui))
       (let [vl (.getContent ui)]
         (is (instance? VerticalLayout vl))
         (is (= (.getComponentCount vl) 2))
@@ -261,7 +261,7 @@
         )))
 
   (testing "Complex UI"
-    (let [ui (defui (FunctionalUI.)
+    (let [ui (defui (TestUI.)
                     (panel "Top Panel"
                            (tab-sheet
                              (vertical-layout {:caption "Tab 1"}

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="Leiningen: org.jsoup/jsoup:1.8.3">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.8.3/jsoup-1.8.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/repository/org/jsoup/jsoup/1.8.3/jsoup-1.8.3.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

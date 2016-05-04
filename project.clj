@@ -7,11 +7,7 @@
                  [com.vaadin/vaadin-server "7.6.5"]
                  [com.vaadin/vaadin-client-compiled "7.6.5"]
                  [com.vaadin/vaadin-themes "7.6.5"]]
-  :aot [
-        ;functional-vaadin.ui.IUIDataStore
-  ;      functional-vaadin.ui.FunctionalUI
-        functional-vaadin.ui.TestUI
-   ]
+  :aot [functional-vaadin.ui.TestUI]
   :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
