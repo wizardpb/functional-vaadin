@@ -60,3 +60,6 @@
               [l r]))
           [{} m] rmkeys)
   )
+
+(defn bad-argument [& args]
+  (throw (IllegalArgumentException. (apply str args))))

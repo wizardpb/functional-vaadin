@@ -72,15 +72,6 @@
         (is (= (.getId b) "myform.save"))
         (is (identical? (componentAt *current-ui* :myform.save) b))
         ))
-    (with-bindings
-      {#'*current-ui* (TestUI.)}
-      (let [b (label {:bind "mylabel.data"})
-            binding (get-data *current-ui* (binding-key "mylabel.data"))]
-        (is (instance? Map binding))
-        (is (= (:bind-type binding) :Property))
-        (is (= (:structure binding) :Any))
-        (is (= (:components binding) #{b}))
-        ))
     )
 
   )

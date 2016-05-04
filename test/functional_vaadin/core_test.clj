@@ -11,7 +11,7 @@
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui FunctionalUI]
-           (com.vaadin.data.util IndexedContainer)))
+           (com.vaadin.data.util IndexedContainer PropertysetItem)))
 
 (deftest ui-panel
   (testing "Building"
@@ -170,7 +170,7 @@
 
 (defmacro with-form [& forms]
   `(with-bindings
-     {#'*current-field-group* (FieldGroup.)}
+     {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
      ~@forms
      *current-field-group*))
 
@@ -184,13 +184,24 @@
       ))
   (testing "Binding"
     (let [fg (with-form
-               (text-field "f1")
-               (check-box "f2"))]
+               (text-field "tf1")
+               (text-field "tf2" String)
+               (text-field "tf3" {:caption "Text Field 3"})
+               (text-field "tf4" String {:caption "Text Field 4"})
+               (check-box "cb2"))]
       (is (instance? FieldGroup fg))
-      (is (= (count (.getFields fg)) 2))
-      (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"f1" "f2"})))
+      (is (= (count (.getFields fg)) 5))
+      (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
+      (is (= (set (.getBoundPropertyIds fg)) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
+      (is (= "Text Field 3" (.getCaption (.getField fg "tf3") )))
+      (is (= "Text Field 4" (.getCaption (.getField fg "tf4") )))
+      (do
+        (.setBuffered (.getField fg "tf3") false)
+        (.setValue (.getItemProperty (.getItemDataSource fg) "tf3") "Text 3")
+        (is (= "Text 3" (.getValue (.getField fg "tf3"))))))
     )
   )
+
 
 (deftest ui-forms
   (testing "Creation"

@@ -2,11 +2,14 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config :refer :all]
+            [functional-vaadin.data-binding.conversion :refer :all]
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui
              Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout)
-           (java.util Map)))
+           (java.util Map)
+           (java.lang.reflect Constructor)
+           (clojure.lang Keyword)))
 
 
 ;; Widget creation
@@ -69,7 +72,7 @@
           (rest args))
 
         ;; Otherwise try and find a non-null constructor and use that
-       (if-let [[ctor conv-args] (find-constructor cls args)]
+       (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
          (make-result
            (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
            (drop (.getParameterCount ctor) args))
@@ -81,26 +84,18 @@
            ;; Otherwise, we fail
            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
-(defmulti create-form-layout (fn [args] (if (instance? Map (first args)) :has-config :no-config)))
+(defn create-form-layout [args]
+  (if (instance? Map (first args))
+    ;; Use the config to determine content if it's there ...
+    (let [[config & rest] args
+          [form-config widget-config] (extract-keys config #{:content})]
 
-(defmethod create-form-layout :no-config [args]
-  (create-widget FormLayout args true))
-
-(defmethod create-form-layout :has-config [args]
-  (let [[conf & rest] args
-        [bind-conf widget-cond] (extract-keys conf #{:bind})]
-
-    ;; Bind the field-group (not the layout) if we are binding
-    (if (not (empty? bind-conf))
-      (doBind *current-ui* *current-field-group* (:bind bind-conf)))
-
-    ; Create the layout (form) component and attach the field group
-    (let [widget-and-children
-          (if (:content widget-cond)
-                   (create-widget (:content widget-cond) (concat (list (dissoc widget-cond :content)) rest) true)
-                   (create-widget FormLayout (concat (list widget-cond) rest) true))]
-      widget-and-children)))
-
+     ; Create the layout (form) component  of the correct type
+     (create-widget
+       (or (:content form-config) FormLayout)
+       (concat (list widget-config) rest) true))
+    ; Otherwise defaul content is a FormLayout
+    (create-widget FormLayout args true)))
 
 ;; Adding content
 
@@ -188,17 +183,47 @@
 
 ;; Field building
 
+(defn- parse-form-field-args
+  "Parse an argument list for a form field. Syntax is
+  [property-id property-type? widget-config?]
+
+  Returns [propery-id (or property-type Object) (or widget-config {})]"
+  [args]
+  (let [[prop-id prop-type widget-config] args]
+    (cond
+      (zero? (count args)) (bad-argument "You must supply at least a property id for a form field")
+      (= 1 (count args)) (cond
+                           (not (or (instance? String prop-id)
+                                    (instance? Keyword prop-id))) (bad-argument "Property id must be a String or keyword")
+                           true [prop-id Object {}])
+      (= 2 (count args)) (cond
+                           (and (not (instance? Class prop-type))
+                                (not (instance? Map prop-type))) (bad-argument "Second argument shoud be type or config map")
+                           true (if (instance? Class prop-type)
+                                  [prop-id prop-type {}]
+                                  [prop-id Object prop-type]));Second arg is the config
+      (= 3 (count args)) (cond
+                           (not (instance? Class prop-type)) (bad-argument "Property type must be a class")
+                           (not (instance? Map widget-config)) (bad-argument "Invalid configuration")
+                           true [prop-id prop-type widget-config]))
+    )
+  )
+
 (defn create-field
   "Create a Field object, dealing with both Form and non-Form fields"
   [field-class args]
   (if *current-field-group*
-    (let [propertyId (first args)]
-      (when (not (instance? String propertyId))
-        (throw (IllegalArgumentException. "Form field names must be Strings")))
-      (let [[field children] (create-widget field-class (rest args) false)]
-        (when (nil? (.getCaption field)) (.setCaption field (humanize propertyId)))
-        (.bind *current-field-group* field propertyId)
-        field))
+    (let [[prop-id prop-type widget-config] (parse-form-field-args args)
+          field (first (create-widget field-class (list widget-config) false))
+          data-source (.getItemDataSource *current-field-group*)
+          data-prop-ids (set (.getItemPropertyIds data-source))]
+      (if (not (contains? data-prop-ids prop-id))
+        (.addItemProperty data-source prop-id (->Property nil prop-type)))
+      (.bind *current-field-group* field prop-id)
+      (if (nil? (.getCaption field))
+        (.setCaption field (humanize prop-id)))
+      field
+    )
     (first (create-widget field-class args false)))
   )
 

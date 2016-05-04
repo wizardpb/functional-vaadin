@@ -13,7 +13,8 @@
              Table Tree TreeTable
              Component UI Field Image)
            (java.util Date Map)
-           (com.vaadin.data.fieldgroup FieldGroup)))
+           (com.vaadin.data.fieldgroup FieldGroup)
+           (com.vaadin.data.util PropertysetItem)))
 
 ;; Primary build macro
 
@@ -117,9 +118,8 @@
 
 ;; Forms
 
-
 (defmacro form [& args]
-  `(with-bindings {#'*current-field-group* (FieldGroup.)}
+  `(with-bindings {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
      (let [[l# c#] (create-form-layout (list ~@args))]
        (add-children l# c#)
        (attach-data l# :field-group *current-field-group*)

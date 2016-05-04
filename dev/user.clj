@@ -1,5 +1,6 @@
 (ns user
-  (:require [clojure.string :as str])
+  (:require [clojure.string :as str]
+            [functional-vaadin.utils :as u])
   (:use clojure.test
         functional-vaadin.ui.IUIDataStore
         functional-vaadin.ui.TestUI
