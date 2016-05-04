@@ -1,20 +1,21 @@
-(defproject functional-vaadin "0.1.0-SNAPSHOT"
-  :description "A functional interface to the Vaadin Web Framework"
-  :url ""
-
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [com.vaadin/vaadin-server "7.6.1"]
-                 [com.vaadin/vaadin-client-compiled "7.6.1"]
-                 [com.vaadin/vaadin-themes "7.6.1"]
-                 ;;[javax.servlet/servlet-api "2.5"]
-                 ]
-  :aot [examples.simple.main-ui]
-  :plugins [[lein-servlet "0.4.1"]]
-
-  :servlet {:deps    [[lein-servlet/adapter-jetty9 "0.4.1" :exclusions [org.glassfish/javax.el]]]
-            :config  {:engine :jetty
-                      :host   "localhost"
-                      :port   3000}
-            :webapps {"/"
-                      {:web-xml "src/main/webapp/WEB-INF/web.xml"
-                       :public  "resources"}}})
+(defproject com.prajnainc/functional-vaadin "0.1.0-SNAPSHOT"
+  :description "A functional interface to Vaadin"
+  ;:url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [com.vaadin/vaadin-server "7.6.5"]
+                 [com.vaadin/vaadin-client-compiled "7.6.5"]
+                 [com.vaadin/vaadin-themes "7.6.5"]]
+  :aot [functional-vaadin.ui.IUIDataStore
+        functional-vaadin.ui.FunctionalUI
+        functional-vaadin.ui.TestUI]
+  :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
+             :dev      {:source-paths ["src" "dev"]
+                        :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
+                                       [org.clojure/tools.nrepl "0.2.11"]
+                                       [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
+                                       [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
+                                       ]
+                        }}
+  )

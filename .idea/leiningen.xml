@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeiningenProjectSettings">
+    <option name="selectedProfiles">
+      <list>
+        <option value="system" />
+        <option value="provided" />
+        <option value="dev" />
+        <option value="base" />
+        <option value="user" />
+      </list>
+    </option>
+  </component>
+</project>
