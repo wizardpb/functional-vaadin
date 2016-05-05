@@ -15,7 +15,7 @@
 (declare run-jetty)
 
 (comment
-  (def server (run-jetty))
+  (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
   (.stop server) (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
   )
 

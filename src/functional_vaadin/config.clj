@@ -7,92 +7,122 @@
             [functional-vaadin.event-handling :refer :all]
             [functional-vaadin.naming :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (java.util Map)
-           (clojure.lang Keyword)))
+  (:import (java.util Map Collection)
+           (clojure.lang Keyword)
+           (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment)
+           (com.vaadin.shared.ui MarginInfo)))
 
-;; TODO - MarginInfo conversion
+(def attribute-translation
+  "A mapping for alternative names for configuration attribute keys"
+  {:alignment :componentAlignment})
 
-;; TODO - merge child attr and parent-data attr
+(defn- save-for-layout-parent
+  "Save an option for setting as an attribute on the parent. The saved value is an argument list for the attribute setter"
+  [^AbstractComponent child opt-key opt-value]
+  (.setData child (assoc-in (or (.getData child) {}) [:parent-data opt-key] [child opt-value])))
 
-(def child-attribute-specs
-  "The definition of all attribute specs to save on a child for execution by a parent. Keys are the options,
-  values are fns to transform the child option value for the parent"
+(defn- save-for-grid-parent
+  "Save an option for setting as an attribute on the parent. The saved value is an argument list for the attribute setter"
+  [^AbstractComponent child opt-key opt-value]
+  (.setData child (assoc-in (or (.getData child) {}) [:parent-data opt-key] opt-value)))
+
+(defn validate-margin [opt-val]
+  (or (instance? Boolean opt-val)
+      (and (instance? Collection opt-val)
+           (<= (count opt-val) 4)
+           (every? #{:left :right :top :bottom :vertical :horizontal} opt-val)
+           )))
+
+
+(defn ^MarginInfo ->MarginInfo [opt-val]
+  (if (instance? Boolean opt-val)
+    (MarginInfo. ^Boolean opt-val)
+    (MarginInfo.
+      (boolean (some #{:top :vertical} opt-val))
+      (boolean (some #{:right :horizontal} opt-val))
+      (boolean (some #{:bottom :vertical} opt-val))
+      (boolean (some #{:left :horizontal} opt-val))
+      )
+    ))
+
+(def synthetic-option-specs
+  ""
   {
-   :expandRatio (fn [child optval] [:expandRatio [child optval]])
-   :componentAlignment (fn [child optval] [:componentAlignment [child optval]])
-   :alignment (fn [child optval] [:componentAlignment [child optval]])
+   :expandRatio        {; OrderedLayout expansionRation
+                        :validate  (fn [optval] (instance? Float optval))
+                        :error-msg "Expansion ration must be a Float"
+                        :execute   save-for-layout-parent
+                        }
+   :componentAlignment {;OrderedLayout componentAlignment
+                        :validate  (fn [optval] (instance? Alignment optval))
+                        :error-msg "Component alignment must be an Alignment value"
+                        :execute   save-for-layout-parent
+                        }
+   :position           {; GridLayout position
+                        :validate  (fn [vals] (and (vector? vals) (= 2 (count vals)) (every? integer? vals)))
+                        :error-msg "Grid position must be a vector of two integers"
+                        :execute   save-for-grid-parent
+                        }
+   :span               {; GridLayout span
+                        :validate  (fn [vals] (and (vector? vals) (= 2 (count vals)) (every? integer? vals)))
+                        :error-msg "Element span must be a vector of two integers"
+                        :execute   save-for-grid-parent}
+   :margin             {
+                        :validate  validate-margin
+                        :execute   (fn [^AbstractOrderedLayout obj opt-key opt-val]
+                                     (.setMargin obj (->MarginInfo opt-val)))
+                        :error-msg "Margin info must be true/false or a vector of the keywords [:left :right :top :bottom :vertical :horizontal]"}
+   :id                 {
+                        :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
+                        :execute   (fn [obj opt-key id] (addComponent *current-ui* obj (keyword id)) (.setId obj (name id)))
+                        :error-msg "Id must be a String or Keyword"}
+   :onClick            {:validate  (fn [val] (ifn? val))
+                        :error-msg "Click handler must be a function"
+                        :execute   (fn [obj opt-key action] (onClick obj action))}
+   :onValueChange      {:validate  (fn [val] (ifn? val))
+                        :error-msg "Value change handler must be a function"
+                        :execute   (fn [obj opt-key action] (onValueChange obj action))}
    })
 
-(def parent-data-specs
-  "The definition of all attribute specs that are saved for use in any way by parent other than as attribute specs.
-  These differ from parent-options in that the configuration mechanism only extracts and saves them.
-  Keys are options to extract, values are validation functions and error messages"
-  {
-   :position {                                              ; GridLayout position
-              :validate (fn [vals] (and (vector? vals) (= 2 (count vals)) (every? integer? vals)))
-              :error-msg "Grid position must be a vector of two integers"
-              }
-   :span     {                                              ; ; GridLayout span
-              :validate (fn [vals] (and (vector? vals) (= 2 (count vals)) (every? integer? vals)))
-              :error-msg "Element span must be a vector of two integers"}
-   })
-
-(def special-attribute-specs
-  "The defintion of any attributes that get special processing. These add to, augment or override other config
-  specs (e.g setid). Override or augment is determined by the override key in the spec"
-  {
-   :id            {:func (fn [c id] (addComponent *current-ui* c (keyword id))) :override false}
-   :onClick       {:func (fn [c action] (onClick c action)) :override true}
-   :onValueChange {:func (fn [c action] (onValueChange c action)) :override true}
-   }
+(defn- validate-option [errors [opt-key opt-val] specs]
+  (if-let [{v-fn :validate msg :error-msg} (get specs opt-val)]
+    (if (not (v-fn opt-val))
+      (conj errors msg))
+    errors)
   )
 
-(defn transform-parent-attribute-spec
-  "Transform a parent attribute spec into a form applicable to the parent"
-  [child [optkey optval]]
-  ((get child-attribute-specs optkey) child optval))
+(defn validate-config [config specs]
+  (reduce #(validate-option %1 %2 specs) [] config))
 
-(defn- extract-child-attribute-specs
-  "Extract and save any config values for application to a parent"
-  [opts child]
-  (if-let [popts (not-empty (select-keys opts (keys child-attribute-specs)))]
-    (do
-      (attach-data child :parent-config (into {} (map transform-parent-attribute-spec (repeat child) popts)))
-      (apply dissoc opts (keys child-attribute-specs)))
-    opts))
+(defn translate-config-keys [config]
+  (reduce (fn [nopts [k v]] (assoc nopts (or (get attribute-translation k) k) v)) {} config))
 
-(defn- validate-parent-data-sepc [acc [opt val]]
-  (let [valdateFn (get-in parent-data-specs [opt :validate])]
-    (if (not (valdateFn val))
-      (conj acc (get-in parent-data-specs [opt :error-msg]))
-      acc)))
+(defn do-syntheric-option [obj [opt-key opt-val]]
+  ((get-in synthetic-option-specs [opt-key :execute]) obj opt-key opt-val))
 
-(defn- extract-parent-data-specs
-  "Extract, validate and save any child options for use by a parent"
-  [opts child]
-  (if-let [popts (not-empty (select-keys opts (keys parent-data-specs)))]
-    (do
-      (if (= #{:span} (set/intersection (set (keys popts)) #{:position :span}))
-        (throw (IllegalArgumentException. "span option requires a postion")))
-      (if-let [errors (not-empty (reduce validate-parent-data-sepc [] popts))]
-        (throw (IllegalArgumentException. (str/join ", " errors))))
-      (attach-data child :parent-data popts)
-      (apply dissoc opts (keys parent-data-specs)))
-    opts))
+(defn do-synthetic-options [config obj]
+  (let [[syn-config attr-config] (extract-keys config (keys synthetic-option-specs))]
+    (doseq [option syn-config]
+      (do-syntheric-option obj option))
+    attr-config))
 
-(defn- do-special-attribute-specs
-  [opts component]
-  (apply dissoc opts
-         (reduce
-           (fn [ remove-keys [opt-key opt-val]]
-             (let [spec (get special-attribute-specs opt-key)]
-               ((:func spec) component opt-val)
-               (if (:override spec) (conj remove-keys opt-key) remove-keys)))
-           []
-           (select-keys opts (keys special-attribute-specs))))
-  )
+(defn- set-attribute
+  [obj [attribute args]]
+  (let [arg-list (if (not (or (seq? args) (vector? args))) [args] args)
+        attr-setter (keyword (str "set" (capitalize (name attribute))))
+        f (get config-table [attr-setter (count arg-list)])]
+    (if f
+      (do
+        (apply f obj arg-list))
+      (unsupported-op (str "No such option for " (class obj) ": " attribute)))))
 
-(defn- configure-component
+(defn do-configure [obj ^Map config]
+  (doseq [attr-spec config]
+    (set-attribute obj attr-spec))
+  obj)
+
+(defn- do-attribute-config
+  "Apply a configuration option that sets an object attribute (e.g. setMargin)"
   [obj [attribute args]]
   (let [arg-list (if (not (or (seq? args) (vector? args))) [args] args)
         opt-key (keyword (str "set" (capitalize (name attribute))))
@@ -100,21 +130,29 @@
     (if f
       (do
         (apply f obj arg-list))
-      (throw (UnsupportedOperationException. (str "No such option for " (class obj) ": " attribute))))))
+      (unsupported-op (str "No such option for " (class obj) ": " attribute)))))
 
-(defn do-configure [obj ^Map config]
+(defn do-attribute-options
+  "Configure a component from a set of configuration options (a Map key->value)"
+  [^Map config obj]
   (doseq [attr-spec config]
-    (configure-component obj attr-spec))
-  obj)
+    (do-attribute-config obj attr-spec))
+  config)
 
-(defn configure [obj ^Map config]
+(defn configure
+  "Configure a component from a set of options. This extracts and executes any special options, then
+  configures the component attributes from the remainder"
+  [obj ^Map config]
   (if (not (instance? Map config))
-    (throw (IllegalArgumentException. "Configuration options must be a Map")))
-  (do-configure
-    obj
+    (bad-argument "Configuration options must be a Map"))
+  (let [errors (validate-config config synthetic-option-specs)]
+    (if (not (empty? errors))
+      (bad-argument (str/join "\n" errors))))
+  (do-configure obj
     (-> config
-        (do-special-attribute-specs obj)
-        (extract-child-attribute-specs obj)
-        (extract-parent-data-specs obj)))
+       (translate-config-keys)
+       (do-synthetic-options obj)
+       (do-attribute-options obj)
+       ))
   obj)
 

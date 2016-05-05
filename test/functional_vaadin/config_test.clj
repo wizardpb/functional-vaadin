@@ -7,24 +7,13 @@
         [functional-vaadin.utils]
         )
 
-  (:import (com.vaadin.ui Button VerticalLayout)
+  (:import (com.vaadin.ui Button VerticalLayout Alignment)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.server Sizeable)
            (java.util Map)
            (functional_vaadin.ui TestUI)))
 
 (deftest configuration
-
-  (testing "Option and data extraction"
-    (let [b (configure (Button.) {:caption "Push Me" :expandRatio 0.5 :position [1 1]})]
-      (is (= (get-data b :parent-data) {:position [1 1]}))
-      (is (= (get-data b :parent-config) {:expandRatio [b 0.5]}))
-      (is (= (.getCaption b) "Push Me")))
-    (doseq [opt [:position :span]]
-      (doseq [vals [nil 1 [1] [1 nil] [:a :b]]]
-        (is (thrown?
-              IllegalArgumentException                       ;(re-pattern (get-in parent-data-specs [opt :error-msg]))
-              (configure (Button.) {opt vals}))))))
 
   (testing "Single option args"
     (let [obj (Button.)]
@@ -50,6 +39,45 @@
       (is (= (.getWidthUnits obj) (Sizeable/UNITS_MM)))
       ))
 
+  (testing "Parent attributes"
+    )
+
+  (testing "Synthetic attributes"
+    (with-bindings
+      {#'*current-ui* (TestUI.)}
+      (let [b (button {:id "myform"})]
+        (is (= (.getId b) "myform"))
+        (is (identical? (componentAt *current-ui* :myform) b))
+        ))
+    (with-bindings
+      {#'*current-ui* (TestUI.)}
+      (let [b (button {:id :myform.save})]
+        (is (= (.getId b) "myform.save"))
+        (is (identical? (componentAt *current-ui* :myform.save) b))
+        ))
+    (let [b (button {:position [0 0]})]
+      (is (= (.getData b) {:parent-data {:position [0 0]}})))
+    (let [b (button {:alignment Alignment/TOP_LEFT})]
+      (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}})))
+    )
+
+  (testing "Margin setting"
+    (let [l (vertical-layout {:margin true})]
+      (is (= (.getMargin l) (MarginInfo.  true ))))
+    (let [l (vertical-layout {:margin [:vertical]})]
+      (is (= (.getMargin l) (MarginInfo.  true false))))
+    (let [l (vertical-layout {:margin [:horizontal]})]
+      (is (= (.getMargin l) (MarginInfo. false true))))
+    (let [l (vertical-layout {:margin [:vertical :top]})]
+      (is (= (.getMargin l) (MarginInfo. true false))))
+    (let [l (vertical-layout {:margin [:vertical :left]})]
+      (is (= (.getMargin l) (MarginInfo. true false true true))))
+    (let [l (vertical-layout {:margin [:horizontal :left]})]
+      (is (= (.getMargin l) (MarginInfo. false true))))
+    (let [l (vertical-layout {:margin [:top :left]})]
+      (is (= (.getMargin l) (MarginInfo. true false false true))))
+    )
+
   (testing "Error handling"
     (is (thrown-with-msg?
           IllegalArgumentException #"Configuration options must be a Map"
@@ -58,20 +86,6 @@
           UnsupportedOperationException #"No such option for class com.vaadin.ui.Button: :wozza"
           (configure (Button.) {:wozza "wizzbang"}))))
 
-  (testing "Special attributes"
-    (with-bindings
-      {#'*current-ui* (TestUI.)}
-      (let [b (button {:id "myform"})]
-       (is (= (.getId b) "myform"))
-       (is (identical? (componentAt *current-ui* :myform) b))
 
-       ))
-    (with-bindings
-      {#'*current-ui* (TestUI.)}
-      (let [b (button {:id "myform.save"})]
-        (is (= (.getId b) "myform.save"))
-        (is (identical? (componentAt *current-ui* :myform.save) b))
-        ))
-    )
 
   )

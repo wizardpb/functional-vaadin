@@ -15,9 +15,9 @@
 ;; Widget creation
 
 (defn- apply-parent-config
-  "Apply any options save on the child under the key :parent-config."
-  [parent child]
-  (if-let [config (detach-data child :parent-config)]
+  "Apply any options save on the child under the key :parent-data."
+  [config parent child]
+  (if-let [config (detach-data child :parent-data)]
     ;; Use do-configure so the parent opst aren't re-extracted
     (do-configure parent config))
   )
@@ -120,18 +120,20 @@
 (defmethod add-children AbstractOrderedLayout [parent children]
   (doseq [child children]
     (.addComponent parent child)
-    (apply-parent-config parent child))
+    (do-configure parent (get-data child :parent-data)))
   parent)
 
 (defmethod add-children GridLayout [^GridLayout parent children]
   (doseq [child children]
-    (let [pdata (get-data child :parent-data)
-          {[x y] :position [dx dy] :span} pdata]
-      (condp = (set (keys pdata))
+    ; Extract the grid layout child options
+    (let [[grid-config parent-config] (extract-keys (get-data child :parent-data) #{:position :span})
+          {[x y] :position [dx dy] :span} grid-config]
+      (condp = (set (keys grid-config))
         #{} (.addComponent parent child)
         #{:position} (.addComponent parent child x y)
-        #{:position :span} (.addComponent parent child x y (+ x dx -1) (+ y dy -1)))
-      (apply-parent-config parent child)))
+        #{:position :span} (.addComponent parent child x y (+ x dx -1) (+ y dy -1))
+        #{:span} (bad-argument ":span requires a :position value as well"))
+      (do-configure parent parent-config)))
   parent)
 
 (defmethod add-children AbstractSplitPanel [parent children]

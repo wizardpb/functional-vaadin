@@ -53,7 +53,9 @@
   [kw-or-string]
   (str/join " " (map capitalize (str/split (name kw-or-string) #"-"))))
 
-(defn extract-keys [m rmkeys]
+(defn extract-keys
+  "Extract the keys and values from m whose keys appear in rmkeys. Return the extracted map and the remaining map"
+  [m rmkeys]
   (reduce (fn [[l r] k]
             (if ((set (keys r)) k)
               [(assoc l k (get r k)) (dissoc r k)]
