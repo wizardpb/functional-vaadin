@@ -5,6 +5,7 @@
            (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent)
            (com.vaadin.data Property$ValueChangeListener Property$ValueChangeEvent Property$ValueChangeNotifier)))
 
+
 (defmulti onClick
           "Add a an action that occurs when the component is clicked"
           (fn [component action] (class component)))

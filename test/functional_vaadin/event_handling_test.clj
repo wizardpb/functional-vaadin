@@ -6,7 +6,7 @@
   (:import (com.vaadin.ui Button Panel Image Embedded FormLayout)
            (com.vaadin.event MouseEvents$ClickEvent)))
 
-;; TODO - replace with FRP - which one?
+;; TODO - integration with RxClojure
 
 (defn do-mouse-click [component]
   (.click

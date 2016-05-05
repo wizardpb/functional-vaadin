@@ -1,4 +1,7 @@
 (ns functional-vaadin.ui.IUIDataStore
+  "IUIDataStore is a component naming and lookup protocol that extends the com.vaadin.ui.UI class to provide the ability
+  to name and lookup any component in a built ui. Adding the :id configuration option to a component will give that
+  component the supplied name, and allow it to be accessed from the UI using componentAt"
   (:require [functional-vaadin.utils :refer :all])
   (:import (clojure.lang Keyword)
            (com.vaadin.ui Component)))

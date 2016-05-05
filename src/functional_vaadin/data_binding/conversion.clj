@@ -6,20 +6,27 @@
            (com.vaadin.data Property Item Container)))
 
 (defn ->Property
+  "Create a Property from some data. The type can be supplied directly or implied from the given
+  (non-nil) data"
   ([data] (->Property data (if data (class data) Object)))
   ([data type] (ObjectProperty. data type)))
 
-(defn <-Property [^Property property]
+(defn <-Property
+  "Extract the data in a Property"
+  [^Property property]
   {:pre [(instance? Property property)]}
   (.getValue property))
 
-(defn ->Item [data]
+(defn ->Item
+  "Convert a Map object to a com.vaadin,data.Item"
+  [data]
   {:pre [instance? Map data]}
   (reduce (fn [item [k v]] (.addItemProperty item k (->Property v)) item)
           (PropertysetItem.)
           data))
 
-(defn <-Item [^Item item]
+(defn <-Item
+  "Extract the data in an Item to a Clojure hash-map" [^Item item]
   {:pre [(instance? Item item)]}
   (persistent!
     (reduce (fn [map pid] (assoc! map pid (.getValue (.getItemProperty item pid))))
@@ -51,7 +58,11 @@
       (add-fn container data-index (nth data data-index)))
     container))
 
-(defmulti ->Container "Create a Container from some data"
+(defmulti ->Container
+          "Create a Container from some data. The data structure determines how the data is added. Collections of Maps
+          add Items to the Container (as would be constructed by ->Item), and use the collection index as the Item id.
+           Collections of other objects use those objects as Item ids, but do not add Properties to those items. This is
+           useful for setting the data for selection components (derived from com.vaadin.ui.AbstractSelect)"
           (fn [data]
             {:pre [(instance? Collection data)]}
             (let [vec-data (vec data)]
@@ -71,7 +82,10 @@
 (defmethod ->Container :Unknown [data]
   (throw (IllegalArgumentException. (str "Cannot create a Container from " data))))
 
-(defn <-Container [^Container container]
+(defn <-Container
+  "Extract data from a Container in such a way that (<-Container (->Container data)) produces the original data content
+  and structure"
+  [^Container container]
   {:pre [(instance? Container container)]}
   (let [item-ids (.getItemIds container)
         prop-ids (.getContainerPropertyIds container)]

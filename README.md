@@ -2,9 +2,21 @@
 
 A functional (Clojure) interface to the Vaadin Web UI Framework.
 
-Using Vaadin from Clojure is generally straightforward, but involves the same kind of repetion as it does from straight Java - endless .setXXX calls, intermediate vars to hold sub structure, and various minor inconveniences in setting parameters (e.g. the inability to define expansion ratios on contained objects themselves). It would also be nice to have a functional way of connecting data to the UI ...
+Using Vaadin from Clojure is generally straightforward, but involves the same kind of repetion as it does from straight
+Java - endless .setXXX calls, intermediate vars to hold sub structure, and various minor inconveniences in setting
+parameters (e.g. the inability to define expansion ratios on contained objects themselves). It would also be nice to
+have a functional way of connecting data to the UI.
 
-This lib is designed to fix these issues. It offers a purely declarative UI definition, homoiconic in the same way that Clojure itself is, along with a data binding mechanism that is inspired from the server approach of Om-Next. (Thanks to David Nolen !)
+This lib is designed to fix these issues. It offers
+
+- a purely declarative UI DSL, homoiconic in the same way that Clojure itself is
+
+- a component naming mechanism that removes the need for variables to refer to components, available at both
+construction and run time.
+
+- a simpler event handing mechanism, along with integration with RxClosure
+
+- conversion functions to interface Clojures immutable data structures with Vaadin data binding objects
 
 ## Release
 
@@ -15,7 +27,6 @@ This is currently incomplete - pre-release. Current version is [0.1.0-SNAPSHOT]
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Prajna Inc, all rights reserved
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or any later version.

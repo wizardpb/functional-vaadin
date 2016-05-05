@@ -1,3 +1,3 @@
 # Introduction to functional-vaadin
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+Full documentation is available on the [project wiki](https://github.com/wizardpb/functional-vaadin/wiki)
