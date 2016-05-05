@@ -10,9 +10,10 @@
                  [com.vaadin/vaadin-themes "7.6.5"]]
   :codox {:namespaces [functional-vaadin.core
                        functional-vaadin.data-binding.conversion
-                       functional-vaadin.ui.IUIDataStore]}
+                       functional-vaadin.examples.FormAndTableUI]}
   :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
-             :dev      {:aot [functional-vaadin.ui.TestUI]
+             :dev      {:aot [functional-vaadin.ui.TestUI
+                              functional-vaadin.examples.FormAndTableUI]
                         :source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
                                        [org.clojure/tools.nrepl "0.2.11"]
@@ -20,5 +21,6 @@
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        ]
                         }
-             :jar {:aot [functional-vaadin.ui.TestUI]}}
+             :jar {:aot [functional-vaadin.ui.TestUI
+                         functional-vaadin.examples.FormAndTableUI]}}
   )

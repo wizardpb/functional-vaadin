@@ -2,7 +2,7 @@
   "The primary namespace for the project, contains all publically accesible buidlers and vars. This should be the only
   required namespace for use in a project"
   (:require [clojure.set :as set]
-            [functional-vaadin.ui.IUIDataStore]
+            [functional-vaadin.naming]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]
             [functional-vaadin.utils  :refer :all])

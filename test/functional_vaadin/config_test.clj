@@ -1,6 +1,6 @@
 (ns functional-vaadin.config-test
   (:use [clojure.test]
-        [functional-vaadin.ui.IUIDataStore]
+        [functional-vaadin.naming]
         [functional-vaadin.thread-vars]
         [functional-vaadin.config]
         [functional-vaadin.core]

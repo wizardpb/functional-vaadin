@@ -2,7 +2,6 @@
   (:require [clojure.string :as str]
             [functional-vaadin.utils :as u])
   (:use clojure.test
-        functional-vaadin.ui.IUIDataStore
         functional-vaadin.ui.test-ui-def
         config-gen)
   (:import (java.io File)
@@ -17,7 +16,7 @@
 
 (comment
   (def server (run-jetty))
-  (do (.stop server) (def server (run-jetty)))
+  (.stop server) (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
   )
 
 
@@ -43,11 +42,11 @@
       (load-file fname))
     (apply run-tests (map test-ns-sym test-files))))
 
-(defn run-jetty []
+(defn run-jetty [ui-name]
   (let [server (Server. 8080)
         ^ServletContextHandler context (ServletContextHandler. ServletContextHandler/SESSIONS)]
     (.setContextPath context "/")
-    (.setInitParameter context "UI" "functional_vaadin.ui.TestUI")
+    (.setInitParameter context "UI" ui-name)
     (.setResourceBase context "dev-resources/public")
 
     (.setHandler server context)

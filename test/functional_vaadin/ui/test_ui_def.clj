@@ -1,6 +1,6 @@
 (ns functional-vaadin.ui.test-ui-def
   (:use functional-vaadin.core
-        functional-vaadin.ui.IUIDataStore
+        functional-vaadin.naming
         functional-vaadin.utils)
   (:import (com.vaadin.data.util ObjectProperty PropertysetItem)
            (com.vaadin.ui VerticalLayout Button$ClickEvent Button Table)

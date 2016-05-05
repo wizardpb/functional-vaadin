@@ -5,13 +5,16 @@
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
-            [functional-vaadin.ui.IUIDataStore :refer :all]
+            [functional-vaadin.naming :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (java.util Map)
            (clojure.lang Keyword)))
 
+;; TODO - MarginInfo conversion
 
-(def parent-attribute-specs
+;; TODO - merge child attr and parent-data attr
+
+(def child-attribute-specs
   "The definition of all attribute specs to save on a child for execution by a parent. Keys are the options,
   values are fns to transform the child option value for the parent"
   {
@@ -44,24 +47,18 @@
    }
   )
 
-(defn validate-bind-args [mapargs]
-  (if (not (= (keys mapargs) #{:as :id}))
-    (throw (IllegalArgumentException.
-             (str "Incorrect bindAs arguments: " mapargs ". Format is {:as <bind-type> :id <location>")))
-    [(keyword (:as mapargs)) (keyword (:id mapargs))]))
-
 (defn transform-parent-attribute-spec
   "Transform a parent attribute spec into a form applicable to the parent"
   [child [optkey optval]]
-  ((get parent-attribute-specs optkey) child optval))
+  ((get child-attribute-specs optkey) child optval))
 
-(defn- extract-parent-attribute-specs
+(defn- extract-child-attribute-specs
   "Extract and save any config values for application to a parent"
   [opts child]
-  (if-let [popts (not-empty (select-keys opts (keys parent-attribute-specs)))]
+  (if-let [popts (not-empty (select-keys opts (keys child-attribute-specs)))]
     (do
       (attach-data child :parent-config (into {} (map transform-parent-attribute-spec (repeat child) popts)))
-      (apply dissoc opts (keys parent-attribute-specs)))
+      (apply dissoc opts (keys child-attribute-specs)))
     opts))
 
 (defn- validate-parent-data-sepc [acc [opt val]]
@@ -117,7 +114,7 @@
     obj
     (-> config
         (do-special-attribute-specs obj)
-        (extract-parent-attribute-specs obj)
+        (extract-child-attribute-specs obj)
         (extract-parent-data-specs obj)))
   obj)
 
