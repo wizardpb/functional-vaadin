@@ -2,7 +2,7 @@
   "Functions useful in implementing all the builder functions in core"
   (:require [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config :refer :all]
-            [functional-vaadin.data-binding.conversion :refer :all]
+            [functional-vaadin.conversion :refer :all]
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui

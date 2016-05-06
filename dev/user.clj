@@ -1,6 +1,9 @@
 (ns user
   (:require [clojure.string :as str]
-            [functional-vaadin.utils :as u])
+            [functional-vaadin.core :refer :all]
+            [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.utils :as u]
+            [rx.lang.clojure.core :as rx])
   (:use clojure.test
         functional-vaadin.ui.test-ui-def
         config-gen)
@@ -18,7 +21,6 @@
   (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
   (.stop server) (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
   )
-
 
 (def test-dir "test/")
 

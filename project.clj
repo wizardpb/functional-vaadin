@@ -5,11 +5,12 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :plugins [[lein-codox "0.9.5"]]
   :dependencies [[org.clojure/clojure "1.8.0"]
+                 [io.reactivex/rxclojure "1.0.0"]
                  [com.vaadin/vaadin-server "7.6.5"]
                  [com.vaadin/vaadin-client-compiled "7.6.5"]
                  [com.vaadin/vaadin-themes "7.6.5"]]
   :codox {:namespaces [functional-vaadin.core
-                       functional-vaadin.data-binding.conversion
+                       functional-vaadin.conversion
                        functional-vaadin.examples.FormAndTableUI]}
   :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:aot [functional-vaadin.ui.TestUI

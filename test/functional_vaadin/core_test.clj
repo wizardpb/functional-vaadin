@@ -206,7 +206,7 @@
 (deftest ui-forms
   (testing "Creation"
     (is (instance? FormLayout (form)))
-    (is (instance? FieldGroup (get-data (form) :field-group)))
+    (is (instance? FieldGroup (get-field-group (form))))
     (is (instance? VerticalLayout (form {:content VerticalLayout})))
     )
   (testing "Fields"

@@ -1,6 +1,7 @@
 (ns functional-vaadin.utils
   "Generally useful utility functions"
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str])
+  (:import (com.vaadin.ui AbstractComponent)))
 
 (defn capitalize [s]
   (if (empty? s) s (str (.toUpperCase (subs s 0 1)) (subs s 1))))
@@ -25,7 +26,7 @@
 (defn attach-data
   "Attach data to a Component indexed by a key. The data is stored in a Map under the key, which is in turn
   stored in the setData() attribute of the Component"
-  [component key data]
+  [^AbstractComponent component key data]
   (.setData component (assoc-in (.getData component) (parse-key key) data)))
 
 (defn get-data
@@ -63,8 +64,23 @@
           [{} m] rmkeys)
   )
 
+(defn get-field-group [component]
+  (and component (get-data component :field-group)))
+
+(defn set-field-group [component fg]
+  {:pre [(not (nil? component))]}
+  (attach-data component :field-group fg))
+
+(defn form-of
+  "Return the formthe component is a member of. Defined as the first parent component with a field group."
+  [component]
+  (if component
+    (if (get-field-group component)
+     component
+     (recur (.getParent component)))))
+
 (defn bad-argument [& args]
-  (throw (IllegalArgumentException. (apply str args))))
+  (throw (IllegalArgumentException. ^String (apply str args))))
 
 (defn unsupported-op [& args]
-  (throw (UnsupportedOperationException. (apply str args))))
+  (throw (UnsupportedOperationException. ^String (apply str args))))

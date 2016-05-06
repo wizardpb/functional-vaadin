@@ -195,7 +195,7 @@ not the layout itself"
   `(with-bindings {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
      (let [[l# c#] (create-form-layout (list ~@args))]
        (add-children l# c#)
-       (attach-data l# :field-group *current-field-group*)
+       (set-field-group l# *current-field-group*)
        l#)))
 
 ;; Embedded items
