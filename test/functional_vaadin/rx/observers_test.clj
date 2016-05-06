@@ -3,7 +3,6 @@
             [rx.lang.clojure.core :as rx]
             [functional-vaadin.core :refer :all]
             [functional-vaadin.rx.observers :refer :all]
-            [functional-vaadin.rx.operators :refer :all]
             [functional-vaadin.utils :refer :all]
             )
   (:import (java.util Map)

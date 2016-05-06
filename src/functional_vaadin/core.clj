@@ -40,48 +40,53 @@
 ;; Base components - Button, Link, Label etc.
 
 (defn button
-  "Create a Button component"
+  "Create a Button component from constructor arguments or a configuration Map"
   [& args]
   (first (create-widget Button args false)))
 
 (defn link
-  "Create a Link component"
+  "Create a Link component from constructor arguments or a single configuration Map"
   [& args]
   (first (create-widget Link args false)))
 
 (defn label
-  "Create a Label component"
+  "Create a Label component from constructor arguments or a configuration Map"
   [& args]
   (first (create-widget Label args false)))
 
 ;; Forms and Fields
 
 (defn text-field
-  "Create a TextField component. When used inside a form, will take an extra intial argument that
+  "Create a TextField component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
   (create-field TextField args))
 
 (defn password-field
-  "Create a PassowrdField component. When used inside a form, will take an extra intial argument that
+  "Create a PassowrdField component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
   (create-field PasswordField args))
 
 (defn text-area
-  "Create a TextArea component. When used inside a form, will take an extra intial argument that
+  "Create a TextArea component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field TextArea args))
 
 (defn rich-text-area
-  "Create a RichTextArea component. When used inside a form, will take an extra intial argument that
+  "Create a RichTextArea component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
   (create-field RichTextArea args))
 
 (defn inline-date-field
-  "Create a InineDateField component. When used inside a form, will take an extra intial argument that
+  "Create a InineDateField component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
   (create-field InlineDateField args))
@@ -93,94 +98,103 @@ defined the data bindng property the field will bind to"
   (create-field PopupDateField args))
 
 (defn slider
-  "Create a Slider component. When used inside a form, will take an extra intial argument that
+  "Create a Slider component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field Slider args))
 
 (defn check-box
-  "Create a CheckBox component. When used inside a form, will take an extra intial argument that
+  "Create a CheckBox component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field CheckBox args))
 
 (defn combo-box
-  "Create a ComboBox component. When used inside a form, will take an extra intial argument that
+  "Create a ComboBox component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field ComboBox args))
 
 (defn twin-col-select
-  "Create a TwinColSelect component. When used inside a form, will take an extra intial argument that
+  "Create a TwinColSelect component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field TwinColSelect args))
 
 (defn native-select
-  "Create a NativeSelect component. When used inside a form, will take an extra intial argument that
+  "Create a NativeSelect component from constructor arguments or a configuration Map.
+  When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field NativeSelect args))
 
 (defn list-select
-  "Create a ListSelect component. When used inside a form, will take an extra intial argument that
+  "Create a ListSelect component from constructor arguments or a configuration Map. When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
   (create-field ListSelect args))
 
 (defn option-group
-  "Create an OptionGroup component. When used inside a form, will take an extra intial argument that
+  "Create an OptionGroup component from constructor arguments or a configuration Map. When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
   (create-field OptionGroup args))
 
 ;; Containers and layouts
 
+;TODO - make Panel take a content arg or default, children are then childen of the content
 (defn panel
-  "Create a Panel component. Allows only a single child" [& args]
+  "Create a Panel component from constructor arguments or a configuration Map. Allows only a single child which will be set as the content" [& args]
   (let [[panel children] (create-widget Panel args true)]
     (add-children panel children)))
 
 (defn vertical-layout
-  "Create a VerticalLayout component. Expansion ration a alignment parameters can be placed on the children,
+  "Create a VerticalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  Expansion ration and alignment parameters are placed on the children,
   not the layout itself"
   [& args]
   (let [[vl children] (create-widget VerticalLayout args true)]
     (add-children vl children)))
 
 (defn horizontal-layout
-  "Create a HorizontalLayout component. Expansion ration a alignment parameters can be placed on the children,
+  "Create a HorizontalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  Expansion ration a alignment parameters  areplaced on the children,
 not the layout itself"
   [& args]
   (let [[hl children] (create-widget HorizontalLayout args true)]
     (add-children hl children)))
 
 (defn form-layout
-  "Create a FormLayout component."
+  "Create a FormLayout component from constructor arguments or a configuration Map. Remaining arguments are children.."
   [& args]
   (let [[hl children] (create-widget FormLayout args true)]
     (add-children hl children)))
 
 (defn grid-layout
-  "Create a GridLayout component."
+  "Create a GridLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  Childen may have :position and :span configuration options to specify their position and size"
   [& args]
   (let [[hl children] (create-widget GridLayout args true)]
     (add-children hl children)))
 
 (defn tab-sheet
-  "Create a TabSheet component."
+  "Create a TabSheet componentfrom constructor arguments or a configuration Map. Remaining arguments are children.."
   [& args]
   (let [[ts children] (create-widget TabSheet args true)]
     (add-children ts children)))
 
 (defn vertical-split-panel
-  "Create a VerticalSplitPanel component."
+  "Create a VerticalSplitPanel component from constructor arguments or a configuration Map. Remaining arguments are children."
   [& args]
   (let [[sl children] (create-widget VerticalSplitPanel args true)]
     (add-children sl children)))
 
 (defn horizontal-split-panel
-  "Create a HorizontalSplitPanel component."
+  "Create a HorizontalSplitPanel component from constructor arguments or a configuration Map. Remaining arguments are children."
   [& args]
   (let [[sl children] (create-widget HorizontalSplitPanel args true)]
     (add-children sl children)))
@@ -201,12 +215,12 @@ not the layout itself"
 ;; Embedded items
 
 (defn image
-  "Create an Image component."
+  "Create an Image component from constructor arguments or a configuration Map."
   [& args]
   (first (create-widget Image args false)))
 
 (defn embedded
-  "Create an Embedded component."
+  "Create an Embedded component from constructor arguments or a configuration Map."
   [& args]
   (first (create-widget Embedded args false)))
 
@@ -232,7 +246,7 @@ not the layout itself"
   )
 
 (defn table
-  "Create a Table component."
+  "Create a Table component from constructor arguments or a configuration Map. Children must be table-column specifications"
   [& args]
   (let [[table children] (create-widget Table args true)]
     (add-children table children)))

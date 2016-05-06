@@ -11,6 +11,8 @@
                  [com.vaadin/vaadin-themes "7.6.5"]]
   :codox {:namespaces [functional-vaadin.core
                        functional-vaadin.conversion
+                       functional-vaadin.rx.observers
+                       functional-vaadin.rx.operators
                        functional-vaadin.examples.FormAndTableUI]}
   :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:aot [functional-vaadin.ui.TestUI

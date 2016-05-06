@@ -1,7 +1,10 @@
 (ns user
   (:require [clojure.string :as str]
+            [clojure.pprint :as pp]
             [functional-vaadin.core :refer :all]
             [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.rx.observers :as obs]
+            [functional-vaadin.rx.operators :as ops]
             [functional-vaadin.utils :as u]
             [rx.lang.clojure.core :as rx])
   (:use clojure.test
@@ -59,4 +62,10 @@
     ;(.join server)
     ))
 
-
+(comment
+  (def fm (form (button)))
+  (def btn (.getComponent fm 0))
+  (rx/subscribe (->> (obs/buttonClicks btn)
+                     (ops/commit)
+                     ) (fn [v] (pp/pprintln v)))
+  )
