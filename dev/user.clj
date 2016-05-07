@@ -19,8 +19,13 @@
            (com.vaadin.ui Button Label)
            ))
 
+(def show-t true)
 (comment
   (gen-config-table)
+  (def timer (Observable/interval 1 TimeUnit/SECONDS) )
+  (def ss (rx/subscribe timer (fn [t] (if show-t (println t)))))
+  (def show-t false)
+  (rx/unsubscribe ss)
   )
 
 (declare run-jetty)
@@ -28,6 +33,8 @@
 (comment
   (def server (run-jetty "functional_vaadin.examples.Sampler"))
   (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler"))
+  (def server (run-jetty "functional_vaadin.ui.TestUI"))
+  (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI"))
   )
 
 (def test-dir "test/")
