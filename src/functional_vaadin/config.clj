@@ -100,7 +100,7 @@
 (defn do-syntheric-option [obj [opt-key opt-val]]
   ((get-in synthetic-option-specs [opt-key :execute]) obj opt-key opt-val))
 
-(defn do-synthetic-options [config obj]
+(defn do-synthetic-options [obj config]
   (let [[syn-config attr-config] (extract-keys config (keys synthetic-option-specs))]
     (doseq [option syn-config]
       (do-syntheric-option obj option))
@@ -116,43 +116,23 @@
         (apply f obj arg-list))
       (unsupported-op (str "No such option for " (class obj) ": " attribute)))))
 
-(defn do-configure [obj ^Map config]
+(defn do-configure [obj config]
   (doseq [attr-spec config]
     (set-attribute obj attr-spec))
   obj)
 
-(defn- do-attribute-config
-  "Apply a configuration option that sets an object attribute (e.g. setMargin)"
-  [obj [attribute args]]
-  (let [arg-list (if (not (or (seq? args) (vector? args))) [args] args)
-        opt-key (keyword (str "set" (capitalize (name attribute))))
-        f (get config-table [opt-key (count arg-list)])]
-    (if f
-      (do
-        (apply f obj arg-list))
-      (unsupported-op (str "No such option for " (class obj) ": " attribute)))))
-
-(defn do-attribute-options
-  "Configure a component from a set of configuration options (a Map key->value)"
-  [^Map config obj]
-  (doseq [attr-spec config]
-    (do-attribute-config obj attr-spec))
-  config)
-
 (defn configure
   "Configure a component from a set of options. This extracts and executes any special options, then
   configures the component attributes from the remainder"
-  [obj ^Map config]
+  [obj config]
   (if (not (instance? Map config))
     (bad-argument "Configuration options must be a Map"))
   (let [errors (validate-config config synthetic-option-specs)]
     (if (not (empty? errors))
       (bad-argument (str/join "\n" errors))))
-  (do-configure obj
-    (-> config
-       (translate-config-keys)
-       (do-synthetic-options obj)
-       (do-attribute-options obj)
-       ))
+  (->> config
+      (translate-config-keys)
+      (do-synthetic-options obj)
+      (do-configure obj))
   obj)
 

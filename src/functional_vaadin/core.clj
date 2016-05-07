@@ -226,23 +226,17 @@ not the layout itself"
 
 ;; Tables
 
-(def valid-column-options
-      #{:propertyId :type :defaultValue :header :icon :alignment})
-
 (defn table-column
   "Create a table column. Only valid as a child of a Table component. The first argument must be the name of the
   data binding property that the column will bind to. Other config options can be the type (:type) and default value
-  (:default) of the property, the column header (:header), a Resource for the column icon (:icon) and the column
-  alignment (:alignment)"
-  ([^String propertyId ^Map config]
-   (-> (assoc
-         (merge {:type Object :defaultValue nil} config)
-         :propertyId propertyId)
-       (convert-column-values)
-       (validate-column-options)))
-
-  ([^String propertyId] (table-column propertyId {}))
-
+  (:default) of the property, plus any of the table setColumnXXX setters. These will be configured on the table as
+  for other config options"
+  ([propertyId config]
+   (assoc
+     (merge {:type Object :defaultValue nil} config)
+     :propertyId propertyId)
+   )
+  ([propertyId] (table-column propertyId {}))
   )
 
 (defn table

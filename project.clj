@@ -13,10 +13,10 @@
                        functional-vaadin.conversion
                        functional-vaadin.rx.observers
                        functional-vaadin.rx.operators
-                       functional-vaadin.examples.FormAndTableUI]}
+                       functional-vaadin.examples.Sampler]}
   :profiles {:provided {:dependencies [[javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:aot [functional-vaadin.ui.TestUI
-                              functional-vaadin.examples.FormAndTableUI]
+                              functional-vaadin.examples.Sampler]
                         :source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
                                        [org.clojure/tools.nrepl "0.2.11"]
@@ -25,5 +25,5 @@
                                        ]
                         }
              :jar {:aot [functional-vaadin.ui.TestUI
-                         functional-vaadin.examples.FormAndTableUI]}}
+                         functional-vaadin.examples.Sampler]}}
   )

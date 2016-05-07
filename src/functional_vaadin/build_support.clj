@@ -143,45 +143,25 @@
 
 ;Tables
 
+(defn translate-column-options [propertyId column-config]
+  ; translate option :XXX to :columnXXX. This gets further translated to :setColumnXXX by (configure)
+  ; Also add in the propertyIs as the first argument
+  (reduce (fn [tconfig [opt-key opt-arg]]
+            (assoc tconfig
+              (keyword (str "column" (capitalize (name opt-key))))
+              [propertyId opt-arg]))
+          {}
+          column-config))
+
 (defmethod add-children Table [table children]
-  ; Children are specifications of Table properties
-  (doseq [{:keys [propertyId type defaultValue header icon alignment]} children]
-    (.addContainerProperty table propertyId type defaultValue header icon alignment))
+  ; Children are configuration Maps of Table setters for that column
+  (doseq [child children]
+    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys child #{:propertyId :type :defaultValue})]
+     (.addContainerProperty table propertyId type defaultValue)
+     (->> column-config
+          (translate-column-options propertyId)
+          (configure table))))
   table)
-
-(defn validate-column-options [config]
-  (letfn
-    [(validate-keys [config]
-       (let [bad-keys (set/difference
-                        (set (keys config))
-                        #{:propertyId :type :defaultValue :header :icon :alignment})]
-         (if (not-empty bad-keys)
-           (throw (IllegalArgumentException. (str "Unknown table configuration options: " bad-keys)))
-           config)))
-     (validate-propertyId [config]
-       (let [pid (:propertyId config)]
-         (if (not (or (keyword? pid) (string? pid)))
-           (throw (IllegalArgumentException. "Property Id must be a Keyword or String"))
-           config)))]
-    (-> config
-        (validate-keys)
-        (validate-propertyId))
-    ))
-
-(defn- alignment-for [aval]
-  (cond
-    (= aval :left) Table$Align/LEFT
-    (= aval :right) Table$Align/LEFT
-    (= aval :center) Table$Align/CENTER
-    true (throw (IllegalArgumentException. (str "Invalid column alignment " aval)))))
-
-(defn convert-column-values [config]
-  (reduce (fn [config [op conv-fn]]
-            (if-let [val (get config op)]
-              (assoc config op (conv-fn val))
-              config))
-          config
-          {:alignment alignment-for}))
 
 ;; Field building
 

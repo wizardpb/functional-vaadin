@@ -234,12 +234,23 @@
 (deftest ui-tables
   (testing "Creation"
     (let [tbl (table "My Table"
-                     (table-column "Col1" {:header "String"})
-                     (table-column "Col2" {:header "Number"}))]
+                     (table-column "Col1")
+                     (table-column "Col2"))]
       (is (instance? Table tbl))
       (is (= "My Table" (.getCaption tbl)))
       (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
-      (is (= (vec (.getColumnHeaders tbl)) ["String" "Number"]))
+      ))
+  (testing "Column config options"
+    (let [tbl (table "My Table"
+                     (table-column "Col1" {:type String :defaultValue "" :header "Column 1" :width 100})
+                     (table-column "Col2" {:type Integer :defaultValue 0 :header "Column 2" :width 50}))
+          itemId (.addItem tbl)]
+      (is (instance? Table tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      (is (= [100 50] (map #(.getColumnWidth tbl %1) ["Col1" "Col2"])))
+      (is (= [String Integer] (map #(.getType (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
+      (is (= ["" 0] (map #(.getValue (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
       ))
   (testing "Data"
     (let [tbl (table "My Table"
