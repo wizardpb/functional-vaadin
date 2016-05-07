@@ -21,8 +21,8 @@
 (declare run-jetty)
 
 (comment
-  (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
-  (.stop server) (def server (run-jetty "functional_vaadin.examples.FormAndTableUI"))
+  (def server (run-jetty "functional_vaadin.examples.Sampler"))
+  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler"))
   )
 
 (def test-dir "test/")
