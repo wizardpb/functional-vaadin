@@ -56,7 +56,8 @@
 
 ;; Fields
 
-;TODO - add explcit bind option to speficy form bindng, with initial value and type implied from that
+; TODO - add explicit bind option to speficy form bindng, with initial value and type implied from that
+; TODO - field validation
 
 (defn text-field
   "Create a TextField component from constructor arguments or a configuration Map.

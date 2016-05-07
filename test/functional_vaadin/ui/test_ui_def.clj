@@ -22,15 +22,15 @@
           {:sizeFull [] :caption "Form and Table"}
           (form {:content VerticalLayout :id :form :margin true :sizeFull []}
                 (form-layout
-                  (text-field "first-name" String)
-                  (text-field "last-name" String))
+                  (text-field "first-name" String {:nullRepresentation ""})
+                  (text-field "last-name" String {:nullRepresentation ""}))
                 (horizontal-layout
                   (button {:caption "Save" :id :save-button}))
                 )
           (vertical-layout
             {:margin true :sizeFull []}
             (table {:caption "People" :sizeFull [] :id :table}
-                   (table-column "first-name" {:header "First Name" :width 200})
+                   (table-column "first-name" {:header "First Name" :width 200 })
                    (table-column "last-name" {:header "Last Name"})
                    )
             )
