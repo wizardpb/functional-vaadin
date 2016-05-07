@@ -13,7 +13,7 @@
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
              Table Tree TreeTable
-             Component UI Field Image)
+             Component UI Field Image ProgressBar)
            (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)))
@@ -127,22 +127,27 @@ defined the data bindng property the field will bind to"
 
 (defn native-select
   "Create a NativeSelect component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  When used inside a form, will take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
   (create-field NativeSelect args))
 
 (defn list-select
-  "Create a ListSelect component from constructor arguments or a configuration Map. When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Create a ListSelect component from constructor arguments or a configuration Map. When used inside a form, will
+  take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
   (create-field ListSelect args))
 
 (defn option-group
-  "Create an OptionGroup component from constructor arguments or a configuration Map. When used inside a form, will take an extra intial argument that
-  defined the data bindng property the field will bind to"
+  "Create an OptionGroup component from constructor arguments or a configuration Map. When used inside a form,
+  will take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
   (create-field OptionGroup args))
+
+(defn progress-bar
+  "Create a ProgressBar component from constructor arguments or a configuration Map. When used inside a form, will take
+  an extra intial argument that\n  defined the data bindng property the field will bind to"
+  [& args]
+  (create-field ProgressBar args))
 
 ;; Containers and layouts
 

@@ -9,7 +9,8 @@
             [rx.lang.clojure.core :as rx])
   (:use clojure.test
         functional-vaadin.ui.test-ui-def
-        config-gen)
+        config-gen
+        )
   (:import (java.io File)
            (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
@@ -17,6 +18,10 @@
            [com.vaadin.server VaadinServlet]
            (com.vaadin.ui Button Label)
            ))
+
+(comment
+  (gen-config-table)
+  )
 
 (declare run-jetty)
 
