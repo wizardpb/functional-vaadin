@@ -2,7 +2,6 @@
   "A simple UI that presents some UI examples in a TabSheet: a form and a table. progress bar, etc..
   The table can be filed by filling in the form and clicking 'Save'"
   (:use functional-vaadin.core
-        functional-vaadin.naming
         functional-vaadin.rx.observers
         functional-vaadin.rx.operators
         functional-vaadin.utils)
@@ -19,9 +18,9 @@
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
   (defui main-ui
-    (panel "Main Panel" (tab-sheet)
+    (panel "Functional Vaadin Sampler" (tab-sheet)
       (horizontal-layout {:sizeFull [] :caption "Form and Table"}
-        (form {:content VerticalLayout :id :form :margin true :sizeFull []}
+        (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
           (form-layout
             (text-field "first-name" String {:nullRepresentation ""})
             (text-field "last-name" String {:nullRepresentation ""}))
@@ -43,9 +42,9 @@
         )
       )
     )
-  (->> (buttonClicks (componentAt main-ui :save-button))    ; Observe Save button clicks
+  (->> (buttonClicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
     (commit)                                             ; Commit the form of which it is a part
-    (consume-for (componentAt main-ui :table)            ; Consume the form data (in :item) and set into the table
+    (consume-for (componentNamed :table main-ui)            ; Consume the form data (in :item) and set into the table
       (fn [table data]
         (let [{:keys [item]} data
               row (object-array (map #(.getValue (.getItemProperty item %1)) ["first-name" "last-name"]))]
@@ -57,9 +56,9 @@
   ;
   (let [subscription (atom nil)                             ; Indicate we are running by saving the timer subsciption
         timer (Observable/interval 1 TimeUnit/SECONDS)      ; The timer that sends events
-        progress (componentAt main-ui :progress)            ; The progress bar component
-        start-button (componentAt main-ui :start-button)    ; Start and stop button components
-        stop-button (componentAt main-ui :stop-button)
+        progress (componentNamed :progress main-ui )            ; The progress bar component
+        start-button (componentNamed :start-button main-ui)    ; Start and stop button components
+        stop-button (componentNamed :stop-button main-ui)
         stop-fn (fn [clickInfo]                             ; A function that stops the 'background' job
                   (when @subscription                       ; When it's subscribed, timer is running, so unsubscribe and remove the subscription
                     (swap! subscription (fn [s] (rx/unsubscribe s) nil))

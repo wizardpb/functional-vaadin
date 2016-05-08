@@ -74,7 +74,9 @@
                         :error-msg "Margin info must be true/false or a vector of the keywords [:left :right :top :bottom :vertical :horizontal]"}
    :id                 {
                         :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
-                        :execute   (fn [obj opt-key id] (addComponent *current-ui* obj (keyword id)) (.setId obj (name id)))
+                        :execute   (fn [obj opt-key id]
+                                     (if *current-ui* (addComponent *current-ui* obj (keyword id)))
+                                     (.setId obj (name id)))
                         :error-msg "Id must be a String or Keyword"}
    :onClick            {:validate  (fn [val] (ifn? val))
                         :error-msg "Click handler must be a function"

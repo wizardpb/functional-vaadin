@@ -3,8 +3,6 @@
   (:import (clojure.lang Keyword)
            (com.vaadin.ui Component)))
 
-; TODO - move to core and make only componetAt public
-
 (defn addComponent [ui ^Component component ^Keyword id]
               (let [ks (component-key id)]
                 (if (get-data component ks)

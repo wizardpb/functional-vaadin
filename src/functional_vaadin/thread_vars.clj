@@ -4,7 +4,7 @@
 (def
   ^{:dynamic true}
   *current-ui*
-  "A dynamic var that will hold the current ui during building")
+  "A dynamic var that will hold the current ui during building" nil)
 
 (def
   ^{:dynamic true :tag FieldGroup}

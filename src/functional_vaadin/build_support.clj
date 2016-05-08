@@ -6,7 +6,7 @@
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer)
            (java.util Map)
            (java.lang.reflect Constructor)
            (clojure.lang Keyword)))
@@ -85,17 +85,18 @@
            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
 (defn create-form-content [args]
-  (if (instance? Map (first args))
-    ;; Use the config to determine content if it's there ...
-    (let [[config & rest] args
-          [form-config widget-config] (extract-keys config #{:content})]
-
-     ; Create the layout (form) component  of the correct type
-     (create-widget
-       (or (:content form-config) FormLayout)
-       (concat (list widget-config) rest) true))
-    ; Otherwise defaul content is a FormLayout
-    (create-widget FormLayout args true)))
+  (let [[arg1 arg2] args]
+    (cond
+      ;; Use the config to determine content. If it's there, remove it and configure the value with the rest of the config
+      (and (instance? Map arg1) (:content arg1)) [
+                                                  (configure (:content arg1) (dissoc arg1 :content))
+                                                  (drop 1 args)]
+      ; We have a content directly - configure it if the second argumen is a Map, otherwise that's the layout result
+      (instance? ComponentContainer arg1) (if (instance? Map arg2)
+                                             [(configure arg1 arg2) (drop 2 args)]
+                                             [arg1 (drop 1 args)])
+      ; Otherwise defaul content is a normally-created FormLayout
+      true (create-widget FormLayout args true))))
 
 ;; Adding content
 

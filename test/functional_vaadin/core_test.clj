@@ -7,7 +7,7 @@
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui TestUI]
@@ -207,14 +207,32 @@
   (testing "Creation"
     (is (instance? FormLayout (form)))
     (is (instance? FieldGroup (get-field-group (form))))
-    (is (instance? VerticalLayout (form {:content VerticalLayout})))
+    (let [fm (form (vertical-layout) {:id :layout})]
+      (is (instance? VerticalLayout fm))
+      (is (= "layout" (.getId fm))))
+    (let [fm (form {:content (vertical-layout) :id :layout})]
+      (is (instance? VerticalLayout fm))
+      (is (= "layout" (.getId fm))))
     )
   (testing "Fields"
-    (let [form (form
+    (let [fm (form
                  (text-field "prop1")
                  (check-box "checked"))]
-      (is (= 2 (.getComponentCount form)))
-      (is (= [TextField CheckBox] (map #(class (.getComponent form %1)) (range 0 2)))))
+      (is (instance? FormLayout fm))
+      (is (= 2 (.getComponentCount fm)))
+      (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
+    (let [fm (form (vertical-layout) {:id :layout}
+                 (text-field "prop1")
+                 (check-box "checked"))]
+      (is (instance? VerticalLayout fm))
+      (is (= 2 (.getComponentCount fm)))
+      (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
+    (let [fm (form {:content (vertical-layout) :id :layout}
+                 (text-field "prop1")
+                 (check-box "checked"))]
+      (is (instance? VerticalLayout fm))
+      (is (= 2 (.getComponentCount fm)))
+      (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
     )
   )
 

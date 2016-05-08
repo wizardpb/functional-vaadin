@@ -2,7 +2,7 @@
   "The primary namespace for the project, contains all publically accesible buidlers and vars. This should be the only
   required namespace for use in a project"
   (:require [clojure.set :as set]
-            [functional-vaadin.naming]
+            [functional-vaadin.naming :as nm]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]
             [functional-vaadin.utils  :refer :all])
@@ -36,6 +36,11 @@
              (UnsupportedOperationException. "The generated UI is not a Vaadin Component"))))
        )
      this-ui#))
+
+;; Public named component access
+
+(defn componentNamed [key ui]
+  (nm/componentAt ui key))
 
 ;; Base components - Button, Link, Label etc.
 
@@ -209,9 +214,14 @@ not the layout itself"
 ;; Forms
 
 (defmacro form
-  "Create a Form. This is a pseudo component that creates a layout component (specified by the :content configuration
-  option) and adds a controling Field Group to the layout (stored on the components 'data' attribute). This is made
-  available in all event handlers attached to form components"
+  "Usage: (form [^ComponentContainer content] [^Map config] children*)
+
+  Create a Form. This is a pseudo component that returns a ComponentConainer with an added Field Group. The FieldGroup
+  is made available for binding form (children) fields, and in all event handlers attached to form components
+
+  The content may be specified directly as the first argument, which must be a ComponentContainer, or as a :content
+  configuration option. Any remaining configuration optiond are applied to the container. If neither are present the
+  contnet defaults to a FormLayout"
   [& args]
   `(with-bindings {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
      (let [[l# c#] (create-form-content (list ~@args))]
