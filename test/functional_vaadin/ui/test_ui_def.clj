@@ -67,11 +67,13 @@
       (rx/subscribe (fn [clickInfo]
                       (when-not @subscription               ; When it's not subscribed, subscribe and save the subscription
                         (swap! subscription                 ; Also indicate when we are done by using stop-fn
-                          (fn [_] (rx/subscribe timer
-                                    (fn [t]
-                                      (.setValue progress (float (/ t 10)))
-                                      (if (> t 10) (stop-fn {}))) ;Stop when we're done
-                                    )))
+                          (fn [_]
+                            (rx/subscribe timer
+                              (fn [t]
+                                (.setValue progress (float (/ (inc t) 10)))
+                                (if (> t 9) (stop-fn {}))) ;Stop when we're done
+                              )
+                            ))
                         (.setEnabled start-button false)    ; Flip button state so Start is disabled and Stop enabled
                         (.setEnabled stop-button true)
                         ))))
