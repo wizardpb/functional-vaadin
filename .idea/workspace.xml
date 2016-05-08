@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +49,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="216" column="38" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="38" />
+            <state relative-caret-position="243">
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_ui_def.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_ui_def.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
@@ -110,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="95" column="25" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
+            <state relative-caret-position="180">
+              <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -289,8 +285,8 @@
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
       </list>
     </option>
   </component>
@@ -654,7 +650,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/ui" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1462713241571">{:repl-history {:ide [], :local [&quot;\n(validate-margin [:vertical])&quot; &quot;(assoc [0 0] 1 1)&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal]) true) [false false] [:vertical])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:vertical])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:horizontal])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:horizontal :vertical])&quot; &quot;(repeat 4 false)&quot; &quot;(boolean #{:top})&quot; &quot;(boolean nil)&quot; &quot;(grid-layout 1 2\n             (label {:caption \&quot;label\&quot; :position [0 0]})\n             (button {:caption \&quot;Push Me\&quot; :position [0 1]}))&quot; &quot;(def server (run-jetty))&quot; &quot;(def btn (button \&quot;Save\&quot;))&quot; &quot;(onClick btn (fn [s evt fg] (println \&quot;Clicked \&quot; s)))&quot; &quot;(def b-obs (rx/observable* (fn [sub]\n                   (onClick btn (fn [&amp; args] (rx/onNext sub args)))\n                   )))&quot; &quot;(def b-obs (rx/observable* (fn [sub]\n                   (onClick btn (fn [&amp; args] (.onNext sub args)))\n                   )))&quot; &quot;(rx/subscribe b-obs (fn [v] (println \&quot;Observed \&quot; v \&quot; from \&quot; (first v))))&quot; &quot;(rx/subscribe (rx/map b-obs (fn [v] (first v))) (fn [v] (println \&quot;Mapped \&quot; v)))&quot; &quot;b-obs&quot; &quot;(rx/subscribe (rx/map (fn [v] (first v)) b-obs) (fn [v] (println \&quot;Mapped \&quot; v)))&quot; &quot;(get-field-group nil)&quot; &quot;(def fm (form (button \&quot;test\&quot;)))&quot; &quot;(class fm)&quot; &quot;(.getComponent fm 0)&quot; &quot;(get-field-group fm)&quot; &quot;(u/get-field-group fm)&quot; &quot;(u/get-field-group )&quot; &quot;(.getParent (.getComponent fm 0))&quot; &quot;(get-field-group (.getComponent fm 0))&quot; &quot;(u/get-field-group (.getComponent fm 0))&quot; &quot;(u/form-of (button))&quot; &quot;(u/get-f(u/form-of (.getComponent fm 0)))&quot; &quot;(u/form-of (.getComponent fm 0))&quot; &quot;(u/get-field-group (u/form-of (.getComponent fm 0)))&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed #(vector (.getValue comp) evt fg)))})]\n      (.setValue field \&quot;Text1\&quot;)\n      (is (vector? @changed))\n      (is (= (first @changed) \&quot;Text1\&quot;))\n      (is (instance? Field$ValueChangeEvent (second @changed)))\n      (is (nil? (nth @changed 2)))\n      )&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed #(vector (.getValue comp) evt fg)))})]\n      (.setValue field \&quot;Text1\&quot;)\n      \n      )&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed (fn [_] (vector (.getValue comp) evt fg))))})]\n      (.setValue field \&quot;Text1\&quot;)\n      \n      )&quot; &quot;(def field (text-field {:onValueChange (fn [comp evt fg] (println \&quot;Called!\&quot;))}))\n(.setValue field \&quot;Text1\&quot;)\n      \n      &quot; &quot;(def field (text-field {:onValueChange (fn [&amp; args] (println \&quot;Called!\&quot; args))}))\n(.setValue field \&quot;Text1\&quot;)\n      \n      &quot; &quot;(apply (fn ([] 0) ([a] 1)) [])&quot; &quot;(apply (fn ([] 0) ([a] 1)) [1])&quot; &quot;(-&gt;&gt; (obs/buttonClicks (button))\n     (ops/commit)\n     (ops/consume-for (label) (fn [m] (println m)))\n     )&quot; &quot;(rx/subscribe (-&gt;&gt; (obs/buttonClicks (button))\n      (ops/commit)\n      ) (fn [v] (println v)))&quot; &quot;(def btn (button))&quot; &quot;(def btn (.getComponent fm 0))&quot; &quot;btn&quot; &quot;(def fm (form (button)))&quot; &quot;(def btn (.getComponent fm 0\n                        ))&quot; &quot;(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n      (ops/commit)\n      ) (fn [v] (println v)))&quot; &quot;(def fm (form (button)))\n(def btn (.getComponent fm 0))\n(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n                   (ops/commit)\n                   ) (fn [v] (pp/pprintln v)))&quot; &quot;(def fm (form (button)))\n(def btn (.getComponent fm 0))\n(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n                   (ops/commit)\n                   ) (fn [v] (pp/pprint v)))&quot; &quot;(.click btn)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.FormAndTableUI\&quot;))&quot; &quot;(let [[{:keys [:propertyId]} opts] [{:propertyId \&quot;p\&quot;} {:width 50.0}]] [propertyId opts])&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.ui.TestUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.example.FormAndTableUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.FormAndTableUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(map #(.getSimpleName %) configurable-classes)&quot; &quot;(str/join \&quot; \&quot; (map #(.getSimpleName %) configurable-classes))&quot; &quot;(concat \&quot;a\&quot; \&quot;b\&quot;)&quot; &quot;(count \&quot;a\&quot;)&quot; &quot;(&gt; 120 100)&quot; &quot;(mod 100 120)&quot; &quot;(/ 100 120)&quot; &quot;(div 100 120)&quot; &quot;(quot 100 120)&quot; &quot;(quot 121 120)&quot; &quot;(&gt; 121 120)&quot; &quot;(&lt; 121 120)&quot; &quot;(format-config-classes)&quot; &quot;preample&quot; &quot;pream&quot; &quot;(def preamble\n  (str\n    \&quot;(ns functional-vaadin.config-table\n  \\\&quot;This is auto-generated by the functions in config-gen\n  DO NOT EDIT\\\&quot;\n  (:import\n    (com.vaadin.ui\n      \&quot;\n    (format-config-classes)\n    \&quot;)))\n\n(def config-table\n  {\\n\&quot;))&quot; &quot;(str\n  \&quot;(ns functional-vaadin.config-table\n\\\&quot;This is auto-generated by the functions in config-gen\nDO NOT EDIT\\\&quot;\n(:import\n  (com.vaadin.ui\n    \&quot;\n  (format-config-classes)\n  \&quot;)))\n\n(def config-table\n{\\n\&quot;)&quot; &quot;(str/split-lines (format-config-classes))\n&quot; &quot;(str/split (format-config-classes) #\&quot;\\\\n\&quot;)\n&quot; &quot;(str/split (format-config-classes) #\&quot;\\n\&quot;)\n&quot; &quot;(format-config-classes)\n&quot; &quot;preamble&quot; &quot;(gen-config-table)&quot; &quot;(run-my-tests)&quot; &quot;(def timer ((rx/subscribe (Observable/interval 0 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t)))))&quot; &quot;(def timer ((rx/subscribe (Observable/interval 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t)))))&quot; &quot;(.unsubscribe timer)&quot; &quot;timer&quot; &quot;(def timer ((rx/subscribe (Observable/interval 0 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t))))) (rx/unsubscribe timer)&quot; &quot;(def timer ((rx/subscribe (Observable/interval 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t))))) (rx/unsubscribe timer)&quot; &quot;(rx/unsubscribe timer)&quot; &quot;(def timer (Observable/interval 1 TimeUnit/SECONDS) )&quot; &quot;(def ss (rx/subscribe (fn [t] (if show-t (println t)))))&quot; &quot;(def show-t false)&quot; &quot;(def show-t true)&quot; &quot;(def ss (rx/subscribe timer (fn [t] (if show-t (println t)))))&quot; &quot;(rx/unsubscribe ss)&quot; &quot;(float (/ 1 10))&quot; &quot;(float 0.1)&quot; &quot;(class (float 0.1))&quot; &quot;(class 0.1)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.ui.TestUI\&quot;))&quot; &quot;(.stop server)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1462713475822">{:repl-history {:ide [], :local [&quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal]) true) [false false] [:vertical])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:vertical])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:horizontal])&quot; &quot;(reduce #(assoc %1 (.indexOf [:vertical :horizontal] %2) true) [false false] [:horizontal :vertical])&quot; &quot;(repeat 4 false)&quot; &quot;(boolean #{:top})&quot; &quot;(boolean nil)&quot; &quot;(grid-layout 1 2\n             (label {:caption \&quot;label\&quot; :position [0 0]})\n             (button {:caption \&quot;Push Me\&quot; :position [0 1]}))&quot; &quot;(def server (run-jetty))&quot; &quot;(def btn (button \&quot;Save\&quot;))&quot; &quot;(onClick btn (fn [s evt fg] (println \&quot;Clicked \&quot; s)))&quot; &quot;(def b-obs (rx/observable* (fn [sub]\n                   (onClick btn (fn [&amp; args] (rx/onNext sub args)))\n                   )))&quot; &quot;(def b-obs (rx/observable* (fn [sub]\n                   (onClick btn (fn [&amp; args] (.onNext sub args)))\n                   )))&quot; &quot;(rx/subscribe b-obs (fn [v] (println \&quot;Observed \&quot; v \&quot; from \&quot; (first v))))&quot; &quot;(rx/subscribe (rx/map b-obs (fn [v] (first v))) (fn [v] (println \&quot;Mapped \&quot; v)))&quot; &quot;b-obs&quot; &quot;(rx/subscribe (rx/map (fn [v] (first v)) b-obs) (fn [v] (println \&quot;Mapped \&quot; v)))&quot; &quot;(get-field-group nil)&quot; &quot;(def fm (form (button \&quot;test\&quot;)))&quot; &quot;(class fm)&quot; &quot;(.getComponent fm 0)&quot; &quot;(get-field-group fm)&quot; &quot;(u/get-field-group fm)&quot; &quot;(u/get-field-group )&quot; &quot;(.getParent (.getComponent fm 0))&quot; &quot;(get-field-group (.getComponent fm 0))&quot; &quot;(u/get-field-group (.getComponent fm 0))&quot; &quot;(u/form-of (button))&quot; &quot;(u/get-f(u/form-of (.getComponent fm 0)))&quot; &quot;(u/form-of (.getComponent fm 0))&quot; &quot;(u/get-field-group (u/form-of (.getComponent fm 0)))&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed #(vector (.getValue comp) evt fg)))})]\n      (.setValue field \&quot;Text1\&quot;)\n      (is (vector? @changed))\n      (is (= (first @changed) \&quot;Text1\&quot;))\n      (is (instance? Field$ValueChangeEvent (second @changed)))\n      (is (nil? (nth @changed 2)))\n      )&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed #(vector (.getValue comp) evt fg)))})]\n      (.setValue field \&quot;Text1\&quot;)\n      \n      )&quot; &quot;(let [changed (atom nil)\n          ^TextField field (text-field {:onValueChange (fn [comp evt fg] (swap! changed (fn [_] (vector (.getValue comp) evt fg))))})]\n      (.setValue field \&quot;Text1\&quot;)\n      \n      )&quot; &quot;(def field (text-field {:onValueChange (fn [comp evt fg] (println \&quot;Called!\&quot;))}))\n(.setValue field \&quot;Text1\&quot;)\n      \n      &quot; &quot;(def field (text-field {:onValueChange (fn [&amp; args] (println \&quot;Called!\&quot; args))}))\n(.setValue field \&quot;Text1\&quot;)\n      \n      &quot; &quot;(apply (fn ([] 0) ([a] 1)) [])&quot; &quot;(apply (fn ([] 0) ([a] 1)) [1])&quot; &quot;(-&gt;&gt; (obs/buttonClicks (button))\n     (ops/commit)\n     (ops/consume-for (label) (fn [m] (println m)))\n     )&quot; &quot;(rx/subscribe (-&gt;&gt; (obs/buttonClicks (button))\n      (ops/commit)\n      ) (fn [v] (println v)))&quot; &quot;(def btn (button))&quot; &quot;(def btn (.getComponent fm 0))&quot; &quot;btn&quot; &quot;(def fm (form (button)))&quot; &quot;(def btn (.getComponent fm 0\n                        ))&quot; &quot;(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n      (ops/commit)\n      ) (fn [v] (println v)))&quot; &quot;(def fm (form (button)))\n(def btn (.getComponent fm 0))\n(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n                   (ops/commit)\n                   ) (fn [v] (pp/pprintln v)))&quot; &quot;(def fm (form (button)))\n(def btn (.getComponent fm 0))\n(rx/subscribe (-&gt;&gt; (obs/buttonClicks btn)\n                   (ops/commit)\n                   ) (fn [v] (pp/pprint v)))&quot; &quot;(.click btn)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.FormAndTableUI\&quot;))&quot; &quot;(let [[{:keys [:propertyId]} opts] [{:propertyId \&quot;p\&quot;} {:width 50.0}]] [propertyId opts])&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.ui.TestUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.example.FormAndTableUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.FormAndTableUI\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(map #(.getSimpleName %) configurable-classes)&quot; &quot;(str/join \&quot; \&quot; (map #(.getSimpleName %) configurable-classes))&quot; &quot;(concat \&quot;a\&quot; \&quot;b\&quot;)&quot; &quot;(count \&quot;a\&quot;)&quot; &quot;(&gt; 120 100)&quot; &quot;(mod 100 120)&quot; &quot;(/ 100 120)&quot; &quot;(div 100 120)&quot; &quot;(quot 100 120)&quot; &quot;(quot 121 120)&quot; &quot;(&gt; 121 120)&quot; &quot;(&lt; 121 120)&quot; &quot;(format-config-classes)&quot; &quot;preample&quot; &quot;pream&quot; &quot;(def preamble\n  (str\n    \&quot;(ns functional-vaadin.config-table\n  \\\&quot;This is auto-generated by the functions in config-gen\n  DO NOT EDIT\\\&quot;\n  (:import\n    (com.vaadin.ui\n      \&quot;\n    (format-config-classes)\n    \&quot;)))\n\n(def config-table\n  {\\n\&quot;))&quot; &quot;(str\n  \&quot;(ns functional-vaadin.config-table\n\\\&quot;This is auto-generated by the functions in config-gen\nDO NOT EDIT\\\&quot;\n(:import\n  (com.vaadin.ui\n    \&quot;\n  (format-config-classes)\n  \&quot;)))\n\n(def config-table\n{\\n\&quot;)&quot; &quot;(str/split-lines (format-config-classes))\n&quot; &quot;(str/split (format-config-classes) #\&quot;\\\\n\&quot;)\n&quot; &quot;(str/split (format-config-classes) #\&quot;\\n\&quot;)\n&quot; &quot;(format-config-classes)\n&quot; &quot;preamble&quot; &quot;(gen-config-table)&quot; &quot;(def timer ((rx/subscribe (Observable/interval 0 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t)))))&quot; &quot;(def timer ((rx/subscribe (Observable/interval 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t)))))&quot; &quot;(.unsubscribe timer)&quot; &quot;timer&quot; &quot;(def timer ((rx/subscribe (Observable/interval 0 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t))))) (rx/unsubscribe timer)&quot; &quot;(def timer ((rx/subscribe (Observable/interval 1 TimeUnit/SECONDS) (fn [t] (println \&quot;Time now \&quot; t))))) (rx/unsubscribe timer)&quot; &quot;(rx/unsubscribe timer)&quot; &quot;(def timer (Observable/interval 1 TimeUnit/SECONDS) )&quot; &quot;(def ss (rx/subscribe (fn [t] (if show-t (println t)))))&quot; &quot;(def show-t false)&quot; &quot;(def show-t true)&quot; &quot;(def ss (rx/subscribe timer (fn [t] (if show-t (println t)))))&quot; &quot;(rx/unsubscribe ss)&quot; &quot;(float (/ 1 10))&quot; &quot;(float 0.1)&quot; &quot;(class (float 0.1))&quot; &quot;(class 0.1)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.ui.TestUI\&quot;))&quot; &quot;(.stop server)&quot; &quot;(and 1 2)&quot; &quot;(and 1 2 3)&quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -1030,7 +1026,8 @@
     <MESSAGE value="Added TODOs" />
     <MESSAGE value="Added working ProgressBar to Sampler" />
     <MESSAGE value="Added nul representation to Sampler and TestUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added nul representation to Sampler and TestUI" />
+    <MESSAGE value="Better code styling for ui build trees" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better code styling for ui build trees" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1443,26 +1440,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="216" column="38" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="38" />
+        <state relative-caret-position="243">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="95" column="25" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        <state relative-caret-position="180">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
           <folding />
         </state>
       </provider>

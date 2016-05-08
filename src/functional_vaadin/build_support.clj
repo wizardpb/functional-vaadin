@@ -84,7 +84,7 @@
            ;; Otherwise, we fail
            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
-(defn create-form-layout [args]
+(defn create-form-content [args]
   (if (instance? Map (first args))
     ;; Use the config to determine content if it's there ...
     (let [[config & rest] args
