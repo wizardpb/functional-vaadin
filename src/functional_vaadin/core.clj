@@ -56,7 +56,7 @@
 
 ;; Fields
 
-; TODO - add explicit bind option to speficy form bindng, with initial value and type implied from that
+; TODO - add explicit bind option to specify form bindng, with initial value (type implied from initial value) or explicit type
 ; TODO - field validation
 
 (defn text-field
@@ -154,7 +154,6 @@ defined the data bindng property the field will bind to"
 
 ;; Containers and layouts
 
-;TODO - make Panel take a content arg or default, children are then childen of the content
 (defn panel
   "Create a Panel component from constructor arguments or a configuration Map. Allows only a single child which will be set as the content" [& args]
   (let [[panel children] (create-widget Panel args true)]
@@ -215,7 +214,7 @@ not the layout itself"
   available in all event handlers attached to form components"
   [& args]
   `(with-bindings {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
-     (let [[l# c#] (create-form-layout (list ~@args))]
+     (let [[l# c#] (create-form-content (list ~@args))]
        (add-children l# c#)
        (set-field-group l# *current-field-group*)
        l#)))
