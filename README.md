@@ -20,7 +20,7 @@ construction and run time.
 
 ## Release
 
-This is currently incomplete - pre-release. Current version is [0.1.0-SNAPSHOT]
+Currently just a snapshot release - v0.1.0-SNAPSHOT
 
 ## Usage
 
