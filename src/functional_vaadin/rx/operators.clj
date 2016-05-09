@@ -5,8 +5,6 @@
            (com.vaadin.data.fieldgroup FieldGroup)
            (java.util Map)))
 
-; TODO - An observer on a future
-
 (defn consume-for
   "Usage: (consume-for component fn xs)
   Subscribes to an Observable xs, calling the function fn with the given component for every event received

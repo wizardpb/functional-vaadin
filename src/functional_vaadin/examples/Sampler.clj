@@ -42,7 +42,7 @@
         )
       )
     )
-  (->> (buttonClicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
+  (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
     (commit)                                             ; Commit the form of which it is a part
     (consume-for (componentNamed :table main-ui)            ; Consume the form data (in :item) and set into the table
       (fn [table data]
@@ -67,7 +67,7 @@
                     (.setEnabled stop-button false)
                     ))]
     (->                                                     ; Set up the Start button to subscribe to the timer
-      (buttonClicks start-button)
+      (button-clicks start-button)
       (rx/subscribe (fn [clickInfo]
                       (when-not @subscription               ; When it's not subscribed, subscribe and save the subscription
                         (swap! subscription                 ; Also indicate when we are done by using stop-fn
@@ -80,7 +80,7 @@
                         (.setEnabled stop-button true)
                         ))))
     (->                                                     ; Set up the Stop button to stop the action
-      (buttonClicks stop-button)
+      (button-clicks stop-button)
       (rx/subscribe stop-fn)))
   (.setPollInterval main-ui 500)                            ; Make the ProgressBar work - we could also use PUSH mode
   )

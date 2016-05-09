@@ -32,8 +32,7 @@
        (let [root# ~top-form]
          (if (instance? Component root#)
            (.setContent *current-ui* root#)
-           (throw
-             (UnsupportedOperationException. "The generated UI is not a Vaadin Component"))))
+           (unsupported-op "The generated UI is not a Vaadin Component")))
        )
      this-ui#))
 

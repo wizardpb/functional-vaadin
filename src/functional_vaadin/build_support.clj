@@ -62,7 +62,7 @@
 
     (letfn [(make-result [obj children]
               (if (and (not allow-children) (> (count children) 0))
-                (throw (IllegalArgumentException. (str (.getSimpleName cls) " does not allow children")))
+                (bad-argument (.getSimpleName cls) " does not allow children")
                 [obj children]))
             ]
 
@@ -83,7 +83,7 @@
             (make-result (.newInstance null-ctor (object-array 0)) args)
 
             ;; Otherwise, we fail
-            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
+            (bad-argument "Cannot create a " (.getSimpleName cls) " from " args)))))))
 
 (defn create-form-content [args]
   (let [[arg1 arg2] args]
@@ -104,14 +104,13 @@
 (defmulti add-children (fn [parent children] (class parent)))
 
 (defmethod add-children :default [parent children]
-  (throw (UnsupportedOperationException. (str "add-children udefined!!!" (class parent)))))
+  (unsupported-op "add-children udefined!!!" (class parent)))
 
 (defmethod add-children Panel [panel children]
   (if-let [content (.getContent panel)]
     (add-children content children)
     (if (> (count children) 0)
-      (throw (IllegalArgumentException.
-               "You must set the content of a Panel before adding children"))))
+      (bad-argument "You must set the content of a Panel before adding children")))
   panel)
 
 (defmethod add-children AbstractComponentContainer [parent children]

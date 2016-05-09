@@ -116,7 +116,7 @@
     (if f
       (do
         (apply f obj arg-list))
-      (unsupported-op (str "No such option for " (class obj) ": " attribute)))))
+      (unsupported-op "No such option for " (class obj) ": " attribute))))
 
 (defn do-configure [obj config]
   (doseq [attr-spec config]

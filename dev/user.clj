@@ -78,7 +78,17 @@
 (comment
   (def fm (form (button)))
   (def btn (.getComponent fm 0))
-  (rx/subscribe (->> (obs/buttonClicks btn)
+  (rx/subscribe (->> (obs/button-clicks btn)
                      (ops/commit)
                      ) (fn [v] (pp/pprintln v)))
+  (def o (obs/events-in
+           (fn [s end]
+             (println "Started " end)
+             (loop [i 0]
+               (when (< i end)
+                 (.onNext s i)
+                 (Thread/sleep 1000)
+                 (recur (inc i))))) 20))
+  (def sub (rx/subscribe o (fn [v] (println v))))
+  (rx/unsubscribed? sub)
   )

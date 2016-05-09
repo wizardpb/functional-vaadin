@@ -1,6 +1,7 @@
 (ns functional-vaadin.conversion
   "Utilities for converting between Clojure data strctures and Vaadin data binding objects -
   Property, Item and Container"
+  (:require [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.data.util ObjectProperty PropertysetItem IndexedContainer)
            (java.util Map Collection)
            (com.vaadin.data Property Item Container)))
@@ -80,7 +81,7 @@
   (create-container data add-data-map-item))
 
 (defmethod ->Container :Unknown [data]
-  (throw (IllegalArgumentException. (str "Cannot create a Container from " data))))
+  (bad-argument "Cannot create a Container from " data))
 
 (defn <-Container
   "Extract data from a Container in such a way that (<-Container (->Container data)) produces the original data content

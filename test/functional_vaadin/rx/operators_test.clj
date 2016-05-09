@@ -15,7 +15,7 @@
           b (.getComponent form 0)
           fired (atom nil)]
       (rx/subscribe
-        (->> (buttonClicks b)
+        (->> (button-clicks b)
             (commit))
         (fn [v] (swap! fired (fn [_] v))))
       (.click b)
@@ -28,7 +28,7 @@
     )
   (testing "Consume-for"
     (let [b (button) l (label) fired (atom nil)]
-      (->> (buttonClicks b)
+      (->> (button-clicks b)
            (consume-for l (fn [l v] (swap! fired (fn [_] {:component l :value v})))))
       (fn [v] (swap! fired (fn [_] v)))
       (.click b)
