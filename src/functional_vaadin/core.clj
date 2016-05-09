@@ -22,6 +22,8 @@
 
 ;; Primary build macro
 
+; TODO - better usage definition in doc strings
+
 (defmacro defui
   "Defines a Vaadin UI using the builder syntax. Given a com.vaadin.ui.UI object and a series of builder forms, creates
   and installs the generated components on the UI object."
@@ -60,7 +62,6 @@
 
 ;; Fields
 
-; TODO - add explicit bind option to specify form binding, with initial value (type implied from initial value) or explicit type
 ; TODO - field validation
 
 (defn text-field

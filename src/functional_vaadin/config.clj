@@ -113,13 +113,13 @@
                         :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
                         :execute   (fn [obj opt-key opt-val] (bind-field obj opt-val))
                         :error-msg "Id must be a String or Keyword"}
-   ; TODO - deprecated, remove  in favour of Rx
-   :onClick            {:validate  (fn [val] (ifn? val))
-                        :error-msg "Click handler must be a function"
-                        :execute   (fn [obj opt-key action] (onClick obj action))}
-   :onValueChange      {:validate  (fn [val] (ifn? val))
-                        :error-msg "Value change handler must be a function"
-                        :execute   (fn [obj opt-key action] (onValueChange obj action))}
+   ; deprecated, removed  in favour of Rx
+   ;:onClick            {:validate  (fn [val] (ifn? val))
+   ;                     :error-msg "Click handler must be a function"
+   ;                     :execute   (fn [obj opt-key action] (onClick obj action))}
+   ;:onValueChange      {:validate  (fn [val] (ifn? val))
+   ;                     :error-msg "Value change handler must be a function"
+   ;                     :execute   (fn [obj opt-key action] (onValueChange obj action))}
    })
 
 (defn- validate-option [errors [opt-key opt-val] specs]

@@ -15,8 +15,6 @@
            (java.util.concurrent TimeUnit)
            (rx Observable)))
 
-;TODO - add main method?
-
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
   (defui main-ui
