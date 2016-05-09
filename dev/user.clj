@@ -3,6 +3,7 @@
             [clojure.pprint :as pp]
             [functional-vaadin.core :refer :all]
             [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.build-support :refer :all]
             [functional-vaadin.rx.observers :as obs]
             [functional-vaadin.rx.operators :as ops]
             [functional-vaadin.utils :as u]

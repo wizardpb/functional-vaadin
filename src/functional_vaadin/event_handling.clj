@@ -13,8 +13,8 @@
   (act-fn (.getSource evt) evt))
 
 (defmulti onClick
-          "Add a an action that occurs when the component is clicked"
-          (fn [component action] (class component)))
+  "Add a an action that occurs when the component is clicked"
+  (fn [component action] (class component)))
 
 (defmethod onClick :default [component action]
   (unsupported-op "Click listeners on " (class component) " not yet supported"))
@@ -56,8 +56,8 @@
         ))))
 
 (defmulti onValueChange
-          "Add a an action that occurs when a components vaue changes"
-          (fn [component action] (class component)))
+  "Add a an action that occurs when a components vaue changes"
+  (fn [component action] (class component)))
 
 (defmethod onValueChange :default [comp action]
   (unsupported-op "Value change listeners on " (class comp) "not yet supported"))
@@ -65,11 +65,11 @@
 (defmethod onValueChange Property$ValueChangeNotifier [obj action]
   (let [act-fn action]
     (.addValueChangeListener
-     obj
-     (reify
-       Property$ValueChangeListener
-       (^void valueChange [this ^Property$ValueChangeEvent evt] (call-action act-fn evt))
-       ))))
+      obj
+      (reify
+        Property$ValueChangeListener
+        (^void valueChange [this ^Property$ValueChangeEvent evt] (call-action act-fn evt))
+        ))))
 
 (defmethod onValueChange Field [component action]
   (let [act-fn action]

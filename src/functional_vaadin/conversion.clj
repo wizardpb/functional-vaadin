@@ -22,16 +22,16 @@
   [data]
   {:pre [instance? Map data]}
   (reduce (fn [item [k v]] (.addItemProperty item k (->Property v)) item)
-          (PropertysetItem.)
-          data))
+    (PropertysetItem.)
+    data))
 
 (defn <-Item
   "Extract the data in an Item to a Clojure hash-map" [^Item item]
   {:pre [(instance? Item item)]}
   (persistent!
     (reduce (fn [map pid] (assoc! map pid (.getValue (.getItemProperty item pid))))
-            (transient {})
-            (.getItemPropertyIds item)))
+      (transient {})
+      (.getItemPropertyIds item)))
   )
 
 (defn- add-data-map-item
@@ -59,19 +59,19 @@
     container))
 
 (defmulti ->Container
-          "Create a Container from some data. The data structure determines how the data is added. Collections of Maps
-          add Items to the Container (as would be constructed by ->Item), and use the collection index as the Item id.
-           Collections of other objects use those objects as Item ids, but do not add Properties to those items. This is
-           useful for setting the data for selection components (derived from com.vaadin.ui.AbstractSelect)"
-          (fn [data]
-            {:pre [(instance? Collection data)]}
-            (let [vec-data (vec data)]
-              (cond
-               (empty? data) :CollectionAny
-               (instance? Map (first vec-data)) :CollectionMap
-               (not (instance? Collection (first vec-data))) :CollectionAny
-               true :Unknown))
-            ))
+  "Create a Container from some data. The data structure determines how the data is added. Collections of Maps
+  add Items to the Container (as would be constructed by ->Item), and use the collection index as the Item id.
+   Collections of other objects use those objects as Item ids, but do not add Properties to those items. This is
+   useful for setting the data for selection components (derived from com.vaadin.ui.AbstractSelect)"
+  (fn [data]
+    {:pre [(instance? Collection data)]}
+    (let [vec-data (vec data)]
+      (cond
+        (empty? data) :CollectionAny
+        (instance? Map (first vec-data)) :CollectionMap
+        (not (instance? Collection (first vec-data))) :CollectionAny
+        true :Unknown))
+    ))
 
 (defmethod ->Container :CollectionAny [data]
   (create-container data add-data-value-item))
@@ -90,13 +90,13 @@
   (let [item-ids (.getItemIds container)
         prop-ids (.getContainerPropertyIds container)]
     (if (or (empty? item-ids) (empty? prop-ids))
-     (vec item-ids)
-     (reduce (fn [data item-id]
-               (conj data
-                     (persistent!
-                  (reduce #(assoc! %1 %2 (.getValue (.getContainerProperty container item-id %2)))
-                          (transient {})
-                          prop-ids))))
-             []
-             item-ids)
-     )))
+      (vec item-ids)
+      (reduce (fn [data item-id]
+                (conj data
+                  (persistent!
+                    (reduce #(assoc! %1 %2 (.getValue (.getContainerProperty container item-id %2)))
+                      (transient {})
+                      prop-ids))))
+        []
+        item-ids)
+      )))

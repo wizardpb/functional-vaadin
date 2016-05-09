@@ -40,13 +40,13 @@
   (let [ks (parse-key key)
         ret (get-data component ks)]
     (.setData
-     component
-     (cond
-       (= 1 (count ks)) (dissoc (.getData component) (first ks))
-       true (let [front (take (dec (count ks)) ks)
-                  last (last ks)]
-              (update-in (.getData component) front #(dissoc %1 last)))
-       ))
+      component
+      (cond
+        (= 1 (count ks)) (dissoc (.getData component) (first ks))
+        true (let [front (take (dec (count ks)) ks)
+                   last (last ks)]
+               (update-in (.getData component) front #(dissoc %1 last)))
+        ))
     ret))
 
 (defn humanize
@@ -61,7 +61,7 @@
             (if ((set (keys r)) k)
               [(assoc l k (get r k)) (dissoc r k)]
               [l r]))
-          [{} m] rmkeys)
+    [{} m] rmkeys)
   )
 
 (defn get-field-group [component]
@@ -76,8 +76,8 @@
   [component]
   (if component
     (if (get-field-group component)
-     component
-     (recur (.getParent component)))))
+      component
+      (recur (.getParent component)))))
 
 (defn bad-argument [& args]
   (throw (IllegalArgumentException. ^String (apply str args))))

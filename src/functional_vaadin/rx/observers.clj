@@ -23,9 +23,11 @@
   and fg is the Fieldgroup of the form that the notifier is on, or nil if there is no form."
   [notifier]
   (rx/observable*
-    (fn [^Subscriber sub] (onValueChange notifier (fn
-                                                    ([source evt] (.onNext sub {:source source :event evt}))
-                                                    ([source evt fg] (.onNext sub {:source source :event evt :field-group fg})))))))
+    (fn [^Subscriber sub]
+      (onValueChange notifier
+        (fn
+          ([source evt] (.onNext sub {:source source :event evt}))
+          ([source evt fg] (.onNext sub {:source source :event evt :field-group fg})))))))
 
 (defn mouseClicks
   "Usage: (mouseClicks notifier)

@@ -13,12 +13,12 @@
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
              Table Tree TreeTable
-             Component UI Field Image ProgressBar)
+             Component UI Field Image ProgressBar MenuBar$MenuItem)
            (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)
-           (com.vaadin.data.util PropertysetItem)))
-
-;; TODO - Resources and conversions
+           (com.vaadin.data.util PropertysetItem)
+           (clojure.lang Keyword)
+           (com.vaadin.server Resource)))
 
 ;; Primary build macro
 
@@ -211,6 +211,26 @@ not the layout itself"
   (let [[sl children] (create-widget HorizontalSplitPanel args true)]
     (add-children sl children)))
 
+; A MenuBar acts like a container for MenuItems
+
+(defn menu-bar
+  "Create a MenuBar. Children must be MenuItem builders"
+  [& args]
+  (let [[mb items] (create-widget MenuBar args true)]
+    (add-children mb items)
+    mb))
+
+
+(defn menu-item
+  [name & args]
+  (if (not (instance? String name))
+    (bad-argument "Menu name must be a String: " name))
+  (parse-menu-item name args)
+  )
+
+(defn menu-separator []
+  (->MenItemSeparator))
+
 ;; Forms
 
 (defmacro form
@@ -261,5 +281,6 @@ not the layout itself"
   [& args]
   (let [[table children] (create-widget Table args true)]
     (add-children table children)))
+
 
 

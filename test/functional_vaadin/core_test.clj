@@ -7,11 +7,14 @@
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui TestUI]
-           (com.vaadin.data.util IndexedContainer PropertysetItem)))
+           (com.vaadin.data.util IndexedContainer PropertysetItem)
+           (functional_vaadin.build_support FunctionCommand)
+           (java.io File)
+           (com.vaadin.server FileResource)))
 
 (deftest ui-panel
   (testing "Building"
@@ -98,8 +101,8 @@
       (is (= 2 (.getRows layout)))
       (is (= 1 (.getColumns layout))))
     (let [layout (grid-layout 1 2
-                              (label {:caption "label" :position [0 0]})
-                              (button {:caption "Push Me" :position [0 1]}))]
+                   (label {:caption "label" :position [0 0]})
+                   (button {:caption "Push Me" :position [0 1]}))]
       (is (= 2 (.getComponentCount layout)))
       (is (= 2 (.getRows layout)))
       (is (= 1 (.getColumns layout))))
@@ -120,9 +123,9 @@
       (is (instance? HorizontalLayout (.getSecondComponent panel)))))
   (testing "Validation"
     (is (thrown-with-msg? UnsupportedOperationException #"Split panel can contain only two components"
-                          (vertical-split-panel {:firstComponent  (vertical-layout)
-                                                 :secondComponent (horizontal-layout)}
-                                                (button)))))
+          (vertical-split-panel {:firstComponent  (vertical-layout)
+                                 :secondComponent (horizontal-layout)}
+            (button)))))
   )
 
 (deftest ui-text-fields
@@ -216,20 +219,20 @@
     )
   (testing "Fields"
     (let [fm (form
-                 (text-field "prop1")
-                 (check-box "checked"))]
+               (text-field "prop1")
+               (check-box "checked"))]
       (is (instance? FormLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
     (let [fm (form (vertical-layout) {:id :layout}
-                 (text-field "prop1")
-                 (check-box "checked"))]
+               (text-field "prop1")
+               (check-box "checked"))]
       (is (instance? VerticalLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
     (let [fm (form {:content (vertical-layout) :id :layout}
-                 (text-field "prop1")
-                 (check-box "checked"))]
+               (text-field "prop1")
+               (check-box "checked"))]
       (is (instance? VerticalLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
@@ -252,16 +255,16 @@
 (deftest ui-tables
   (testing "Creation"
     (let [tbl (table "My Table"
-                     (table-column "Col1")
-                     (table-column "Col2"))]
+                (table-column "Col1")
+                (table-column "Col2"))]
       (is (instance? Table tbl))
       (is (= "My Table" (.getCaption tbl)))
       (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
       ))
   (testing "Column config options"
     (let [tbl (table "My Table"
-                     (table-column "Col1" {:type String :defaultValue "" :header "Column 1" :width 100})
-                     (table-column "Col2" {:type Integer :defaultValue 0 :header "Column 2" :width 50}))
+                (table-column "Col1" {:type String :defaultValue "" :header "Column 1" :width 100})
+                (table-column "Col2" {:type Integer :defaultValue 0 :header "Column 2" :width 50}))
           itemId (.addItem tbl)]
       (is (instance? Table tbl))
       (is (= "My Table" (.getCaption tbl)))
@@ -272,8 +275,8 @@
       ))
   (testing "Data"
     (let [tbl (table "My Table"
-                     (table-column "Col1")
-                     (table-column "Col2"))
+                (table-column "Col1")
+                (table-column "Col2"))
           data (IndexedContainer.)]
       (.addContainerProperty data "Col1" String "")
       (.addContainerProperty data "Col2" Long 0)
@@ -281,18 +284,80 @@
                 (.setValue (.getContainerProperty c index "Col1") (str "Cell 1," index))
                 (.setValue (.getContainerProperty c index "Col2") index)
                 c)
-              data (range 0 10))
+        data (range 0 10))
       (.setContainerDataSource tbl data)
       (is (= (.size tbl) 10)
+        )
+      )))
+
+(deftest ui-menu-bar
+  (testing "FunctionCommand"
+    (let [fired (atom nil)]
+      (.menuSelected (->FunctionCommand (fn [item] (swap! fired (fn [_] (.getText item))))) (.addItem (MenuBar.) "File" nil nil))
+      (is (= "File" @fired))
       )
-    )))
+    )
+
+  (testing "Creation"
+    (let [mb (menu-bar
+               (menu-item "File" (fn [item] "File")))
+          ]
+      (is (= 1 (count (.getItems mb))))
+      (is (instance? MenuBar$MenuItem (first (.getItems mb))))
+      (is (instance? FunctionCommand (.getCommand (first (.getItems mb)))))
+      (is (= "File" (.getText (first (.getItems mb)))))
+      )
+    (let [mb (menu-bar
+               (menu-item "File" (FileResource. (File. "it")) (fn [item]  "File")))
+          ]
+      (is (= 1 (count (.getItems mb))))
+      (is (instance? MenuBar$MenuItem (first (.getItems mb))))
+      (is (instance? FileResource (.getIcon (first (.getItems mb)))))
+      (is (instance? FunctionCommand (.getCommand (first (.getItems mb)))))
+      (is (= "File" (.getText (first (.getItems mb)))))
+      ))
+
+  (testing "Hierarchy"
+    (let [mb (menu-bar
+               (menu-item "File"
+                 (menu-item "Open" (fn [_]))
+                 (menu-item "Close" (fn [_]))
+                 (menu-separator)
+                 (menu-item "Find..." (fn [_]))))
+
+          ]
+      (is (= 1 (count (.getItems mb))))
+      (is (= 4 (count (.getChildren (first (.getItems mb))))))
+      (is (instance? MenuBar$MenuItem (first (.getItems mb))))
+      (is (instance? MenuBar$MenuItem (first (.getChildren (first (.getItems mb))))))
+      (is (= "File" (.getText (first (.getItems mb)))))
+      (is (= "Open" (.getText (first (.getChildren (first (.getItems mb)))))))
+      (is (= "Close" (.getText (second (.getChildren (first (.getItems mb)))))))
+      (is (.isSeparator (nth (.getChildren (first (.getItems mb))) 2)))
+      (is (= "Find..." (.getText (nth (.getChildren (first (.getItems mb))) 3))))
+      ))
+
+  (testing "Operation"
+    (let [fired (atom nil)
+          mb (menu-bar
+               (menu-item "File" (fn [item] (swap! fired not))))
+          mitem (first (.getItems mb))
+          ]
+      (.menuSelected (.getCommand mitem) mitem)
+      (is @fired)
+      (.menuSelected (.getCommand mitem) mitem)
+      (is (not @fired))
+      )
+    )
+
+  )
 
 (deftest ui-building
   (testing "Basic UI"
     (let [ui (defui (TestUI.)
-                    (vertical-layout
-                      (label "Label 1")
-                      (label "Label 2")))]
+               (vertical-layout
+                 (label "Label 1")
+                 (label "Label 2")))]
       (is (instance? TestUI ui))
       (let [vl (.getContent ui)]
         (is (instance? VerticalLayout vl))
@@ -302,32 +367,32 @@
 
   (testing "Complex UI"
     (let [ui (defui (TestUI.)
-                    (panel "Top Panel"
-                           (tab-sheet
-                             (vertical-layout {:caption "Tab 1"}
-                                              (label "Line 1") (label "Line 2")
-                                              (label "Line 3") (label "Line 4")
-                                              (label "Line 5") (label "Line 6")
-                                              (label "Line 7") (label "Line 8")
-                                              (label "Line 9") (label "Line 10")
-                                              )
-                             (panel "Tab 2"
-                                    (form
-                                      (text-field "name")
-                                      (text-field "address1")
-                                      (text-field "address2")
-                                      (text-field "city")
-                                      (text-field "state")))
-                             (panel "Tab 3"
-                                    (grid-layout 3 4
-                                                 (label "R1C1") (label "R1C2") (label "R1C3")
-                                                 (label "R2C1") (label "R2C2") (label "R2C3")
-                                                 (label "R3C1") (label "R3C2") (label "R3C3")
-                                                 (label "R4C1") (label "R4C2") (label "R4C3")
-                                                 )
-                                    )
-                             )
-                           )
-                    )
+               (panel "Top Panel"
+                 (tab-sheet
+                   (vertical-layout {:caption "Tab 1"}
+                     (label "Line 1") (label "Line 2")
+                     (label "Line 3") (label "Line 4")
+                     (label "Line 5") (label "Line 6")
+                     (label "Line 7") (label "Line 8")
+                     (label "Line 9") (label "Line 10")
+                     )
+                   (panel "Tab 2"
+                     (form
+                       (text-field "name")
+                       (text-field "address1")
+                       (text-field "address2")
+                       (text-field "city")
+                       (text-field "state")))
+                   (panel "Tab 3"
+                     (grid-layout 3 4
+                       (label "R1C1") (label "R1C2") (label "R1C3")
+                       (label "R2C1") (label "R2C2") (label "R2C3")
+                       (label "R3C1") (label "R3C2") (label "R3C3")
+                       (label "R4C1") (label "R4C2") (label "R4C3")
+                       )
+                     )
+                   )
+                 )
+               )
           ]
       )))

@@ -28,10 +28,10 @@
 
 (defn validate-margin [opt-val]
   (or (instance? Boolean opt-val)
-      (and (instance? Collection opt-val)
-           (<= (count opt-val) 4)
-           (every? #{:left :right :top :bottom :vertical :horizontal} opt-val)
-           )))
+    (and (instance? Collection opt-val)
+      (<= (count opt-val) 4)
+      (every? #{:left :right :top :bottom :vertical :horizontal} opt-val)
+      )))
 
 
 (defn ^MarginInfo ->MarginInfo [opt-val]
@@ -133,8 +133,8 @@
     (if (not (empty? errors))
       (bad-argument (str/join "\n" errors))))
   (->> config
-      (translate-config-keys)
-      (do-synthetic-options obj)
-      (do-configure obj))
+    (translate-config-keys)
+    (do-synthetic-options obj)
+    (do-configure obj))
   obj)
 

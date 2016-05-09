@@ -6,10 +6,11 @@
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer)
-           (java.util Map)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem)
+           (java.util Map Collection)
            (java.lang.reflect Constructor)
-           (clojure.lang Keyword)))
+           (clojure.lang Keyword)
+           (com.vaadin.server Resource)))
 
 
 ;; Widget creation
@@ -72,17 +73,17 @@
           (rest args))
 
         ;; Otherwise try and find a non-null constructor and use that
-       (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
-         (make-result
-           (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
-           (drop (.getParameterCount ctor) args))
+        (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
+          (make-result
+            (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
+            (drop (.getParameterCount ctor) args))
 
-         ;; Otherwise use the null constructor if any children satisfy allow-children
-         (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
-           (make-result (.newInstance null-ctor (object-array 0)) args)
+          ;; Otherwise use the null constructor if any children satisfy allow-children
+          (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
+            (make-result (.newInstance null-ctor (object-array 0)) args)
 
-           ;; Otherwise, we fail
-           (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
+            ;; Otherwise, we fail
+            (throw (IllegalArgumentException. (str "Cannot create a " (.getSimpleName cls) " from " args)))))))))
 
 (defn create-form-content [args]
   (let [[arg1 arg2] args]
@@ -93,8 +94,8 @@
                                                   (drop 1 args)]
       ; We have a content directly - configure it if the second argumen is a Map, otherwise that's the layout result
       (instance? ComponentContainer arg1) (if (instance? Map arg2)
-                                             [(configure arg1 arg2) (drop 2 args)]
-                                             [arg1 (drop 1 args)])
+                                            [(configure arg1 arg2) (drop 2 args)]
+                                            [arg1 (drop 1 args)])
       ; Otherwise defaul content is a normally-created FormLayout
       true (create-widget FormLayout args true))))
 
@@ -142,6 +143,78 @@
     (.addComponent parent child))
   parent)
 
+
+;; A Command that allows functions as Menu Items
+
+(defrecord FunctionCommand [cmd-fn]
+  MenuBar$Command
+  (^void menuSelected [this ^MenuBar$MenuItem item] (cmd-fn item)))
+
+(defprotocol IMenuItemSpec
+  (hasChildren? [this])
+  (addFrom [this mbi])
+  (getChildren [this])
+  )
+
+(deftype MenuItemSpec [name resource content]
+  IMenuItemSpec
+  (hasChildren? [this] (instance? Collection content))
+  (addFrom [this mbi]
+    {:pre [(or (nil? content) (fn? content))]}
+    (if (nil? content)
+      (.addSeparator mbi)
+      (.addItem mbi name resource (->FunctionCommand content))))
+  (getChildren [this] content)
+  )
+
+(defn ->MenItemSeparator []
+  (->MenuItemSpec nil nil nil))
+
+(defn parse-menu-item
+  "Determine the menu item type (cmd or sub-menu) by looking at the arguments passed"
+  [name args]
+  (letfn [(valid-fn [it] (fn? it))
+          (valid-resource [it] (instance? Resource it))
+          (valid-child [it] (instance? MenuItemSpec it))]
+    (cond
+      (zero? (count args)) (bad-argument "You must provide at least a function to a MenuItem: " name)
+      ; Just a functionn command
+      (= 1 (count args)) (let [[first] args]
+                           (cond
+                             (valid-fn first) (->MenuItemSpec name nil first )
+                             (valid-child first) (->MenuItemSpec name nil args)
+                             true (bad-argument "Argument for " name " is not a function: " first)))
+      ; Command or sub-menu with icon...
+      (= (count args) 2) (let [[first second] args]
+                           (cond
+                             (and (valid-resource first) (valid-fn second)) (->MenuItemSpec name first second)
+                             (and (valid-resource first) (valid-child second)) (->MenuItemSpec name first (list second))
+                             (every? valid-child args) (->MenuItemSpec name nil args)
+                             true (bad-argument "Incorrect arguments for " name ": " args)
+                             ))
+      (> (count args) 2) (let [[first & children] args]
+                           (cond
+                             (and                       ;Resource and menu-items
+                               (valid-resource first)
+                               (every? valid-child children)) (->MenuItemSpec name first args)
+                             (every? valid-child args) (->MenuItemSpec name nil args)
+                             true (bad-argument "Incorrect arguments for " name ": " args)
+                             )))))
+
+(defn add-menu-item [mbi item]
+  (let [sub-item (addFrom item mbi)]
+    (if (hasChildren? item)
+      (loop [children (getChildren item)]
+        (when-not (empty? children)
+          (add-menu-item sub-item (first children))
+          (recur (rest children)))
+        ))))
+
+(defmethod add-children MenuBar [mb mitems]
+  {:pre [(every? #(instance? MenuItemSpec %1) mitems)]}
+  (doseq [mitem mitems]
+    (add-menu-item mb mitem)))
+
 ;Tables
 
 (defn translate-column-options [propertyId column-config]
@@ -151,17 +224,17 @@
             (assoc tconfig
               (keyword (str "column" (capitalize (name opt-key))))
               [propertyId opt-arg]))
-          {}
-          column-config))
+    {}
+    column-config))
 
 (defmethod add-children Table [table children]
   ; Children are configuration Maps of Table setters for that column
   (doseq [child children]
     (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys child #{:propertyId :type :defaultValue})]
-     (.addContainerProperty table propertyId type defaultValue)
-     (->> column-config
-          (translate-column-options propertyId)
-          (configure table))))
+      (.addContainerProperty table propertyId type defaultValue)
+      (->> column-config
+        (translate-column-options propertyId)
+        (configure table))))
   table)
 
 ;; Field building
@@ -177,11 +250,11 @@
       (zero? (count args)) (bad-argument "You must supply at least a property id for a form field")
       (= 1 (count args)) (cond
                            (not (or (instance? String prop-id)
-                                    (instance? Keyword prop-id))) (bad-argument "Property id must be a String or keyword")
+                                  (instance? Keyword prop-id))) (bad-argument "Property id must be a String or keyword")
                            true [prop-id Object {}])
       (= 2 (count args)) (cond
                            (and (not (instance? Class prop-type))
-                                (not (instance? Map prop-type))) (bad-argument "Second argument shoud be type or config map")
+                             (not (instance? Map prop-type))) (bad-argument "Second argument shoud be type or config map")
                            true (if (instance? Class prop-type)
                                   [prop-id prop-type {}]
                                   [prop-id Object prop-type]));Second arg is the config
@@ -206,7 +279,7 @@
       (if (nil? (.getCaption field))
         (.setCaption field (humanize prop-id)))
       field
-    )
+      )
     (first (create-widget field-class args false)))
   )
 

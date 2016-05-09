@@ -24,21 +24,16 @@
   containing a key :field-group. For the former, just the item data is passed on, in the latter case, the data is added
   to the Map under a key :item. Simply passes on the received data if there is no field group."
   [^Observable xs]
-  (let [op (rx/operator* (fn [subscribed-o]
-                           (rx/subscriber
-                             subscribed-o
-                             (fn [recv-o v]
-                               (rx/on-next
-                                 recv-o
-                                 (condp #(instance? %1 %2) v
-                                   Map (if-let [fg (:field-group v)]
-                                         (do
-                                           (.commit fg)
-                                           (assoc v :item (.getItemDataSource fg))))
-                                   FieldGroup (do
-                                                (println " " v)
-                                                (.commit v)
-                                                (.getItemDataSource v))
-                                   true v))))
-                           ))]
+  (let [op (rx/operator*
+             (fn [subscribed-o]
+               (rx/subscriber subscribed-o
+                 (fn [recv-o v]
+                   (rx/on-next
+                     recv-o
+                     (condp #(instance? %1 %2) v
+                       Map (if-let [fg (:field-group v)]
+                             (do (.commit fg) (assoc v :item (.getItemDataSource fg))))
+                       FieldGroup (do (.commit v) (.getItemDataSource v))
+                       true v))))
+               ))]
     (rx/lift op xs)))
