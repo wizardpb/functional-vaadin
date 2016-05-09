@@ -72,12 +72,17 @@
   (attach-data component :field-group fg))
 
 (defn form-of
-  "Return the formthe component is a member of. Defined as the first parent component with a field group."
+  "Return the form the component is a member of. Defined as the first parent component with a field group."
   [component]
   (if component
     (if (get-field-group component)
       component
       (recur (.getParent component)))))
+
+(defn not-of-type
+  "True if val is an instance of one of the types in type list"
+  [val type-list]
+  (every? #(not (instance? %1 val)) type-list))
 
 (defn bad-argument [& args]
   (throw (IllegalArgumentException. ^String (apply str args))))

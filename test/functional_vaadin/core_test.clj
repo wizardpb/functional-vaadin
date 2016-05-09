@@ -180,31 +180,33 @@
 (deftest ui-form-fields
   (testing "Creation"
     (with-form
-      (is (instance? TextField (text-field "propId")))
-      (is (instance? CheckBox (check-box "checked?")))
-      (is (=  "Text Field" (.getCaption (text-field "text-field")))) ; Auto set of caption
-      (is (= "Field" (.getCaption (text-field "propId2" {:caption "Field"}))))
+      (is (instance? TextField (text-field {:bindTo "propId"})))
+      (is (instance? CheckBox (check-box {:bindTo "checked?"})))
+      (is (=  "Text Field" (.getCaption (text-field {:bindTo "text-field"})))) ; Auto set of caption
+      (is (= "Field" (.getCaption (text-field  {:bindTo "propId2" :caption "Field"}))))
       ))
   (testing "Binding"
     (let [fg (with-form
-               (text-field "tf1")
-               (text-field "tf2" String)
-               (text-field "tf3" {:caption "Text Field 3"})
-               (text-field "tf4" String {:caption "Text Field 4"})
-               (check-box "cb2"))]
+               (text-field {:bindTo "tf1"})
+               (text-field {:bindTo {:propertyId "tf2" :type String :initialValue "tf2"}})
+               (text-field {:bindTo "tf3" :caption "Text Field 3"})
+               (text-field {:bindTo ["tf4" String "tf4"] :caption "Text Field 4"})
+               (check-box {:bindTo "cb2"}))]
       (is (instance? FieldGroup fg))
       (is (= (count (.getFields fg)) 5))
       (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
       (is (= (set (.getBoundPropertyIds fg)) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
       (is (= "Text Field 3" (.getCaption (.getField fg "tf3") )))
       (is (= "Text Field 4" (.getCaption (.getField fg "tf4") )))
+      (is (= (.getValue (.getField fg "tf2")) "tf2" ))
+      (is (= (.getValue (.getField fg "tf4")) "tf4" ))
+
       (do
         (.setBuffered (.getField fg "tf3") false)
         (.setValue (.getItemProperty (.getItemDataSource fg) "tf3") "Text 3")
         (is (= "Text 3" (.getValue (.getField fg "tf3"))))))
     )
   )
-
 
 (deftest ui-forms
   (testing "Creation"
@@ -219,20 +221,20 @@
     )
   (testing "Fields"
     (let [fm (form
-               (text-field "prop1")
-               (check-box "checked"))]
+               (text-field {:bindTo "prop1"})
+               (check-box {:bindTo "checked"}))]
       (is (instance? FormLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
     (let [fm (form (vertical-layout) {:id :layout}
-               (text-field "prop1")
-               (check-box "checked"))]
+               (text-field {:bindTo "prop1"})
+               (check-box {:bindTo "checked"}))]
       (is (instance? VerticalLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))
     (let [fm (form {:content (vertical-layout) :id :layout}
-               (text-field "prop1")
-               (check-box "checked"))]
+               (text-field {:bindTo "prop1"})
+               (check-box {:bindTo "checked"}))]
       (is (instance? VerticalLayout fm))
       (is (= 2 (.getComponentCount fm)))
       (is (= [TextField CheckBox] (map #(class (.getComponent fm %1)) (range 0 2)))))

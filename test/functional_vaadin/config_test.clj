@@ -7,11 +7,19 @@
         [functional-vaadin.utils]
         )
 
-  (:import (com.vaadin.ui Button VerticalLayout Alignment)
+  (:import (com.vaadin.ui Button VerticalLayout Alignment TextField)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.server Sizeable)
            (java.util Map)
-           (functional_vaadin.ui TestUI)))
+           (functional_vaadin.ui TestUI)
+           (com.vaadin.data.util PropertysetItem)
+           (com.vaadin.data.fieldgroup FieldGroup)))
+
+(defmacro with-form [& forms]
+  `(with-bindings
+     {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
+     ~@forms
+     *current-field-group*))
 
 (deftest configuration
 
@@ -59,6 +67,35 @@
       (is (= (.getData b) {:parent-data {:position [0 0]}})))
     (let [b (button {:alignment Alignment/TOP_LEFT})]
       (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}})))
+    )
+
+  (testing "Binding"
+    (let [fg (with-form
+               (bind-field (TextField.) "propId"))
+          item (.getItemDataSource fg)]
+      (is (= (set (.getItemPropertyIds item)) #{"propId"}))
+      (is (identical? (.getType (.getItemProperty item "propId")) Object))
+      (is (nil? (.getValue (.getItemProperty item "propId"))))
+      )
+    (doseq [bval [["propId" String]
+                  {:propertyId "propId" :type String}]]
+      (let [fg (with-form
+                (bind-field (TextField.) bval))
+           item (.getItemDataSource fg)]
+       (is (= (set (.getItemPropertyIds item)) #{"propId"}))
+       (is (identical? (.getType (.getItemProperty item "propId")) String))
+       (is (nil? (.getValue (.getItemProperty item "propId"))))
+       ))
+    (doseq [bval [["propId" String "text"]
+                  {:propertyId "propId" :type String :initialValue "text"}]]
+      (let [fg (with-form
+                (bind-field (TextField.) bval))
+           item (.getItemDataSource fg)]
+       (is (= (set (.getItemPropertyIds item)) #{"propId"}))
+       (is (identical? (.getType (.getItemProperty item "propId")) String))
+       (is (= (.getValue (.getItemProperty item "propId")) "text"))
+       ))
+
     )
 
   (testing "Margin setting"

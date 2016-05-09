@@ -1,6 +1,7 @@
 (ns functional-vaadin.thread-vars
   (:import [com.vaadin.data.fieldgroup FieldGroup]))
 
+; TODO - replace with (UI/getCurrent) ?
 (def
   ^{:dynamic true}
   *current-ui*

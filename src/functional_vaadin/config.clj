@@ -6,6 +6,7 @@
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
             [functional-vaadin.naming :refer :all]
+            [functional-vaadin.conversion :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (java.util Map Collection)
            (clojure.lang Keyword)
@@ -45,6 +46,36 @@
       )
     ))
 
+; TODO - addStyleNamed
+
+(defn- validate-bind-args [propertyId type initialValue]
+  (if (not-of-type propertyId [String Keyword])
+    (bad-argument "Property Id '" propertyId "' must be a String or Keyword"))
+  (if (not (class? type))
+    (bad-argument "Type spec must be a Class"))
+  (if (not (or (nil? initialValue) (.isAssignableFrom type (class initialValue))))
+    (bad-argument "Specified initial value '" initialValue "' and type '" type "' are incompatible")))
+
+(defn- do-bind [field prop-id prop-type initVal]
+  {:pre [(not (nil? *current-field-group*))]}
+  (validate-bind-args prop-id prop-type initVal)
+  (let [data-source (.getItemDataSource *current-field-group*)
+        data-prop-ids (set (.getItemPropertyIds data-source))]
+    (if (not (contains? data-prop-ids prop-id))
+      (.addItemProperty data-source prop-id (->Property initVal prop-type)))
+    (.bind *current-field-group* field prop-id)
+    (if (nil? (.getCaption field))
+      (.setCaption field (humanize prop-id)))
+    field))
+
+(defn bind-field [field opt-val]
+  (condp instance? opt-val
+    String (do-bind field opt-val Object nil)
+    Map (let [{:keys [propertyId type initialValue]} opt-val]
+          (do-bind field propertyId (or type Object) initialValue))
+    Collection (let [[propertyId type initialValue] opt-val]
+                 (do-bind field propertyId (or type Object) initialValue))))
+
 (def synthetic-option-specs
   ""
   {
@@ -78,6 +109,11 @@
                                      (if *current-ui* (addComponent *current-ui* obj (keyword id)))
                                      (.setId obj (name id)))
                         :error-msg "Id must be a String or Keyword"}
+   :bindTo             {
+                        :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
+                        :execute   (fn [obj opt-key opt-val] (bind-field obj opt-val))
+                        :error-msg "Id must be a String or Keyword"}
+   ; TODO - deprecated, remove  in favour of Rx
    :onClick            {:validate  (fn [val] (ifn? val))
                         :error-msg "Click handler must be a function"
                         :execute   (fn [obj opt-key action] (onClick obj action))}

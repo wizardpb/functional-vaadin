@@ -17,8 +17,8 @@
       (horizontal-layout {:sizeFull [] :caption "Form and Table"}
         (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
           (form-layout
-            (text-field "first-name" String {:nullRepresentation ""})
-            (text-field "last-name" String {:nullRepresentation ""}))
+            (text-field {:bindTo ["first-name" String] :nullRepresentation ""})
+            (text-field {:bindTo ["last-name" String] :nullRepresentation ""}))
           (horizontal-layout
             (button {:caption "Save" :id :save-button}))
           )

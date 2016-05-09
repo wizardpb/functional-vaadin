@@ -46,21 +46,21 @@
 (defn button
   "Create a Button component from constructor arguments or a configuration Map"
   [& args]
-  (first (create-widget Button args false)))
+  (create-widget Button args))
 
 (defn link
   "Create a Link component from constructor arguments or a single configuration Map"
   [& args]
-  (first (create-widget Link args false)))
+  (create-widget Link args))
 
 (defn label
   "Create a Label component from constructor arguments or a configuration Map"
   [& args]
-  (first (create-widget Label args false)))
+  (create-widget Label args))
 
 ;; Fields
 
-; TODO - add explicit bind option to specify form bindng, with initial value (type implied from initial value) or explicit type
+; TODO - add explicit bind option to specify form binding, with initial value (type implied from initial value) or explicit type
 ; TODO - field validation
 
 (defn text-field
@@ -68,93 +68,93 @@
   When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
-  (create-field TextField args))
+  (create-widget TextField args))
 
 (defn password-field
   "Create a PassowrdField component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
-  (create-field PasswordField args))
+  (create-widget PasswordField args))
 
 (defn text-area
   "Create a TextArea component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field TextArea args))
+  (create-widget TextArea args))
 
 (defn rich-text-area
   "Create a RichTextArea component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
-  (create-field RichTextArea args))
+  (create-widget RichTextArea args))
 
 (defn inline-date-field
   "Create a InineDateField component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
   defined the data bindng property the field will bind to"
   [& args]
-  (create-field InlineDateField args))
+  (create-widget InlineDateField args))
 
 (defn popup-date-field
   "Create a PopupDateField component. When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field PopupDateField args))
+  (create-widget PopupDateField args))
 
 (defn slider
   "Create a Slider component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field Slider args))
+  (create-widget Slider args))
 
 (defn check-box
   "Create a CheckBox component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field CheckBox args))
+  (create-widget CheckBox args))
 
 (defn combo-box
   "Create a ComboBox component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field ComboBox args))
+  (create-widget ComboBox args))
 
 (defn twin-col-select
   "Create a TwinColSelect component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
 defined the data bindng property the field will bind to"
   [& args]
-  (create-field TwinColSelect args))
+  (create-widget TwinColSelect args))
 
 (defn native-select
   "Create a NativeSelect component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
-  (create-field NativeSelect args))
+  (create-widget NativeSelect args))
 
 (defn list-select
   "Create a ListSelect component from constructor arguments or a configuration Map. When used inside a form, will
   take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
-  (create-field ListSelect args))
+  (create-widget ListSelect args))
 
 (defn option-group
   "Create an OptionGroup component from constructor arguments or a configuration Map. When used inside a form,
   will take an extra intial argument that defined the data bindng property the field will bind to"
   [& args]
-  (create-field OptionGroup args))
+  (create-widget OptionGroup args))
 
 (defn progress-bar
   "Create a ProgressBar component from constructor arguments or a configuration Map. When used inside a form, will take
   an extra intial argument that\n  defined the data bindng property the field will bind to"
   [& args]
-  (create-field ProgressBar args))
+  (create-widget ProgressBar args))
 
 ;; Containers and layouts
 
@@ -253,12 +253,12 @@ not the layout itself"
 (defn image
   "Create an Image component from constructor arguments or a configuration Map."
   [& args]
-  (first (create-widget Image args false)))
+  (create-widget Image args))
 
 (defn embedded
   "Create an Embedded component from constructor arguments or a configuration Map."
   [& args]
-  (first (create-widget Embedded args false)))
+  (create-widget Embedded args))
 
 ;; Tables
 

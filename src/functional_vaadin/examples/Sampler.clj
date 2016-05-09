@@ -15,6 +15,8 @@
            (java.util.concurrent TimeUnit)
            (rx Observable)))
 
+;TODO - add main method?
+
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
   (defui main-ui
@@ -22,8 +24,8 @@
       (horizontal-layout {:sizeFull [] :caption "Form and Table"}
         (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
           (form-layout
-            (text-field "first-name" String {:nullRepresentation ""})
-            (text-field "last-name" String {:nullRepresentation ""}))
+            (text-field {:bindTo ["first-name" String] :nullRepresentation ""})
+            (text-field {:bindTo ["last-name" String] :nullRepresentation ""}))
           (horizontal-layout
             (button {:caption "Save" :id :save-button}))
           )
@@ -38,7 +40,9 @@
         (horizontal-layout {:margin true :spacing true}
           (button {:caption "Start" :id :start-button})
           (button {:caption "Stop" :id :stop-button :enabled false})
-          (progress-bar {:id :progress :value (float 0.0) :width "300px"}))
+          (vertical-layout
+            (progress-bar {:id :progress :value (float 0.0) :width "300px"})
+            (label {:value "Stopped" :id :running-state})))
         )
       )
     )
@@ -55,32 +59,34 @@
   ; at 1 second intervals. We update the progress by subscribing to these events.
   ;
   (let [subscription (atom nil)                             ; Indicate we are running by saving the timer subsciption
-        timer (Observable/interval 1 TimeUnit/SECONDS)      ; The timer that sends events
+        timer (Observable/interval 100 TimeUnit/MILLISECONDS)      ; The timer that sends events
         progress (componentNamed :progress main-ui )            ; The progress bar component
         start-button (componentNamed :start-button main-ui)    ; Start and stop button components
         stop-button (componentNamed :stop-button main-ui)
+        state-label (componentNamed :running-state main-ui)
         stop-fn (fn [clickInfo]                             ; A function that stops the 'background' job
                   (when @subscription                       ; When it's subscribed, timer is running, so unsubscribe and remove the subscription
                     (swap! subscription (fn [s] (rx/unsubscribe s) nil))
                     (.setValue progress (float 0.0))        ; Reset the progress bar, and flip button state
                     (.setEnabled start-button true)
                     (.setEnabled stop-button false)
-                    ))]
+                    (.setValue state-label "Stopped")
+                    ))
+        tick-fn (fn [t]                                     ; Function to count the timer ticks
+                  (.setValue progress (float (/ (inc t) 100)))
+                  (if (> t 99) (stop-fn {})))                ;Stop when we're done
+        ]
     (->                                                     ; Set up the Start button to subscribe to the timer
       (button-clicks start-button)
       (rx/subscribe (fn [clickInfo]
                       (when-not @subscription               ; When it's not subscribed, subscribe and save the subscription
-                        (swap! subscription                 ; Also indicate when we are done by using stop-fn
-                          (fn [_] (rx/subscribe timer
-                                    (fn [t]
-                                      (.setValue progress (float (/ (inc t) 10)))
-                                      (if (> t 9) (stop-fn {}))) ;Stop when we're done
-                                    )))
+                        (swap! subscription (fn [_] (rx/subscribe timer tick-fn)))
                         (.setEnabled start-button false)    ; Flip button state so Start is disabled and Stop enabled
                         (.setEnabled stop-button true)
+                        (.setValue state-label "Running...")
                         ))))
     (->                                                     ; Set up the Stop button to stop the action
       (button-clicks stop-button)
       (rx/subscribe stop-fn)))
-  (.setPollInterval main-ui 500)                            ; Make the ProgressBar work - we could also use PUSH mode
+  (.setPollInterval main-ui 50)                            ; Make the ProgressBar work - we could also use PUSH mode
   )

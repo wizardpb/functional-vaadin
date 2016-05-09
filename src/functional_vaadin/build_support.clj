@@ -46,7 +46,7 @@
     (let [ctor-list (sort #(>= (.getParameterCount %1) (.getParameterCount %2)) (seq (.getConstructors cls)))]
       (some match-ctor ctor-list))))
 
-(defn create-widget
+(defn- do-create-widget
   "Create Vaadin widgets using, if possible, the initial n items of args as constructor argument.
 
   For n > 0, try and match the types of a constructors parameters againt the first n arguments types. For multiple
@@ -84,6 +84,12 @@
 
             ;; Otherwise, we fail
             (bad-argument "Cannot create a " (.getSimpleName cls) " from " args)))))))
+
+(defn create-widget
+  ([cls args allow-children] (do-create-widget cls args allow-children))
+  ([cls args]
+   (let [[w c] (do-create-widget cls args false)]
+     w)))
 
 (defn create-form-content [args]
   (let [[arg1 arg2] args]
@@ -281,4 +287,5 @@
       )
     (first (create-widget field-class args false)))
   )
+
 

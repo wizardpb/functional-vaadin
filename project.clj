@@ -9,6 +9,7 @@
                  [com.vaadin/vaadin-server "7.6.5"]
                  [com.vaadin/vaadin-client-compiled "7.6.5"]
                  [com.vaadin/vaadin-themes "7.6.5"]]
+  :main functional-vaadin.examples.run
   :codox {:namespaces [functional-vaadin.core
                        functional-vaadin.conversion
                        functional-vaadin.rx.observers
