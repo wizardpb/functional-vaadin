@@ -113,6 +113,10 @@
                         :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
                         :execute   (fn [obj opt-key opt-val] (bind-field obj opt-val))
                         :error-msg "Id must be a String or Keyword"}
+   :addStyleName       {
+                        :validate  (fn [val] (instance? String val))
+                        :execute   (fn [obj opt-key opt-val] (.addStyleName obj opt-val))
+                        :error-msg "Style name must be a String"}
    ; deprecated, removed  in favour of Rx
    ;:onClick            {:validate  (fn [val] (ifn? val))
    ;                     :error-msg "Click handler must be a function"

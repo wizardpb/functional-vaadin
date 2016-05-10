@@ -66,7 +66,9 @@
     (let [b (button {:position [0 0]})]
       (is (= (.getData b) {:parent-data {:position [0 0]}})))
     (let [b (button {:alignment Alignment/TOP_LEFT})]
-      (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}})))
+      (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}}))
+      )
+    (button {:addStyleName "border"})                       ;How to verify ?
     )
 
   (testing "Binding"
