@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/functional_vaadin/validation.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_8_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/config_gen.clj" afterPath="$PROJECT_DIR$/dev/config_gen.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/user.clj" afterPath="$PROJECT_DIR$/dev/user.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/config.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/config_table.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/config_table.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/utils.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/utils.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,16 +57,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="observers_test.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/rx/observers_test.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="core_test.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-266">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            <state relative-caret-position="399">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -144,8 +120,18 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+            <state relative-caret-position="158">
+              <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="thread_vars.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/thread_vars.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -183,11 +169,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validation.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validation.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -246,8 +232,8 @@
       <file leaf-file-name="config.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+            <state relative-caret-position="125">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -304,15 +290,15 @@
         <option value="$PROJECT_DIR$/src/functional_vaadin/config_table.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/utils.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
         <option value="$PROJECT_DIR$/dev/user.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
       </list>
     </option>
   </component>
@@ -678,7 +664,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/ui" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1462997782996">{:repl-history {:ide [], :local [&quot;(menu-bar\n  (menu-item \&quot;File\&quot; (fn [item] \&quot;File\&quot;)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [_] (println \&quot;Fired\&quot;) \&quot;val\&quot;)) nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; ^Resource nil ^MenuBar$Command nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; nil nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; (FileResource. \&quot;name\&quot;) (-&gt;FunctionCommand (fn [_] 1)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [item] (.getText item))) (.addItem (MenuBar.) \&quot;File\&quot; nil nil))\n&quot; &quot;(let [[first] '( 1 2)] first)&quot; &quot;(menu-item \&quot;File\&quot; (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileRespurce \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. (File. \&quot;it\&quot;)) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (rx/on-next s x) (Thread/sleep 1000))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (do (rx/on-next s x) (Thread/sleep 1000)))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(u/one-of \&quot;prop\&quot; [String, Keyword])&quot; &quot;(not (instance? String \&quot;\&quot;))&quot; &quot;(not (instance? Keyword \&quot;\&quot;))&quot; &quot;(u/one-of \&quot;prop\&quot; [String,Keyword])&quot; &quot;(u/one-of \&quot;prop\&quot; [String Keyword])&quot; &quot;(every? #(%1) [true, true, true])&quot; &quot;(every? #(identity %1) [true, true, true])&quot; &quot;(every? #(identity %1) [false, true, true])&quot; &quot;(map #(not (instance? %1 \&quot;\&quot;)) [String Keyword])&quot; &quot;(instance? String Class)&quot; &quot;(isa? String Class)&quot; &quot;(= String Class)&quot; &quot;(class Class)&quot; &quot;(class? String)&quot; &quot;(run-my-tests)&quot; &quot;(.getState (button))&quot; &quot;(defprotocol CState (getState [this]))&quot; &quot;(extend-type Button CState (getState [this] (.getState this)))&quot; &quot;(getState (button))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;functional_vaadin/examples\&quot;)))&quot; &quot;(.list (File. \&quot;functional_vaadin/examples\&quot;))&quot; &quot;(.list (File. \&quot;src/functional_vaadin/examples/\&quot;))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;src/functional_vaadin/examples\&quot;)))&quot; &quot;(read)&quot; &quot;empty&quot; &quot;e&quot; &quot;2&quot; &quot;(println \&quot;c=\&quot;\n  )&quot; &quot;(println \&quot;c=\&quot; (read-line))&quot; &quot;functional-vaadin.utils&quot; &quot;1&quot; &quot;(run-and-wait \&quot;test\&quot;)&quot; &quot;satisfies?&quot; &quot;(println :hey\n  )&quot; &quot;r&quot; &quot;s&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0\\\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(re-qu)&quot; &quot;(str/re-quote-replacement \&quot;{0}\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0}\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(seq? [])&quot; &quot;(vec? [])&quot; &quot;(vector? [])&quot; &quot;(instance?\n  Iterable [])&quot; &quot;(instance? Iterable '())&quot; &quot;(instance? Iterable (range 0 1))&quot; &quot;(def fut (future (list 1 3)))&quot; &quot;(class fut)&quot; &quot;(gen-config-table)&quot; &quot;(doall (range 0 1))&quot; &quot;(doall (range 0 20))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot; &quot;*ns*&quot; &quot;(u/collection? (range 0 10))&quot; &quot;(u/collection? (list 1))&quot; &quot;(u/collection? #{})&quot; &quot;(u/collection? {})&quot; &quot;(u/collection? [])&quot; &quot;(class (future (println \&quot;Done\&quot;)))&quot; &quot;(fn? (future (println \&quot;Done\&quot;)))&quot; &quot;(macroexpand '(with-scheduled-ui-access (println 1) (prinln 2)))&quot; &quot;(UI/setCurrent (UI.))&quot; &quot;(UI.)&quot; &quot;(TestUI.)&quot; &quot;(UI/setCurent (TestUI.))&quot; &quot;(CurrentInstance/getInstances (false))&quot; &quot;(CurrentInstance/getInstances false)&quot; &quot;(UI/setCurrent (TestUI.))&quot; &quot;(UI/getCurrent)&quot; &quot;(do\n  (UI/setCurrent (TestUI.))\n  (loop [ui (UI/getCurrent)]\n    (when ui\n      (println ui)\n      (recur (UI/getCurrent)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- 4 (count \&quot;Sampler.clj\&quot;)))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- (count \&quot;Sampler.clj\&quot;) 4))&quot; &quot;&quot; &quot;(.stop server)&quot; &quot;(str/split \&quot;Sampler.clj\&quot; #\&quot;\\.\&quot;)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1462998037500">{:repl-history {:ide [], :local [&quot;(menu-bar\n  (menu-item \&quot;File\&quot; (fn [item] \&quot;File\&quot;)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [_] (println \&quot;Fired\&quot;) \&quot;val\&quot;)) nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; ^Resource nil ^MenuBar$Command nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; nil nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; (FileResource. \&quot;name\&quot;) (-&gt;FunctionCommand (fn [_] 1)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [item] (.getText item))) (.addItem (MenuBar.) \&quot;File\&quot; nil nil))\n&quot; &quot;(let [[first] '( 1 2)] first)&quot; &quot;(menu-item \&quot;File\&quot; (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileRespurce \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. (File. \&quot;it\&quot;)) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (rx/on-next s x) (Thread/sleep 1000))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (do (rx/on-next s x) (Thread/sleep 1000)))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(u/one-of \&quot;prop\&quot; [String, Keyword])&quot; &quot;(not (instance? String \&quot;\&quot;))&quot; &quot;(not (instance? Keyword \&quot;\&quot;))&quot; &quot;(u/one-of \&quot;prop\&quot; [String,Keyword])&quot; &quot;(u/one-of \&quot;prop\&quot; [String Keyword])&quot; &quot;(every? #(%1) [true, true, true])&quot; &quot;(every? #(identity %1) [true, true, true])&quot; &quot;(every? #(identity %1) [false, true, true])&quot; &quot;(map #(not (instance? %1 \&quot;\&quot;)) [String Keyword])&quot; &quot;(instance? String Class)&quot; &quot;(isa? String Class)&quot; &quot;(= String Class)&quot; &quot;(class Class)&quot; &quot;(class? String)&quot; &quot;(run-my-tests)&quot; &quot;(.getState (button))&quot; &quot;(defprotocol CState (getState [this]))&quot; &quot;(extend-type Button CState (getState [this] (.getState this)))&quot; &quot;(getState (button))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;functional_vaadin/examples\&quot;)))&quot; &quot;(.list (File. \&quot;functional_vaadin/examples\&quot;))&quot; &quot;(.list (File. \&quot;src/functional_vaadin/examples/\&quot;))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;src/functional_vaadin/examples\&quot;)))&quot; &quot;(read)&quot; &quot;empty&quot; &quot;e&quot; &quot;2&quot; &quot;(println \&quot;c=\&quot;\n  )&quot; &quot;(println \&quot;c=\&quot; (read-line))&quot; &quot;functional-vaadin.utils&quot; &quot;1&quot; &quot;(run-and-wait \&quot;test\&quot;)&quot; &quot;satisfies?&quot; &quot;(println :hey\n  )&quot; &quot;r&quot; &quot;s&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0\\\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(re-qu)&quot; &quot;(str/re-quote-replacement \&quot;{0}\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0}\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(seq? [])&quot; &quot;(vec? [])&quot; &quot;(vector? [])&quot; &quot;(instance?\n  Iterable [])&quot; &quot;(instance? Iterable '())&quot; &quot;(instance? Iterable (range 0 1))&quot; &quot;(def fut (future (list 1 3)))&quot; &quot;(class fut)&quot; &quot;(gen-config-table)&quot; &quot;(doall (range 0 1))&quot; &quot;(doall (range 0 20))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot; &quot;*ns*&quot; &quot;(u/collection? (range 0 10))&quot; &quot;(u/collection? (list 1))&quot; &quot;(u/collection? #{})&quot; &quot;(u/collection? {})&quot; &quot;(u/collection? [])&quot; &quot;(class (future (println \&quot;Done\&quot;)))&quot; &quot;(fn? (future (println \&quot;Done\&quot;)))&quot; &quot;(macroexpand '(with-scheduled-ui-access (println 1) (prinln 2)))&quot; &quot;(UI/setCurrent (UI.))&quot; &quot;(UI.)&quot; &quot;(TestUI.)&quot; &quot;(UI/setCurent (TestUI.))&quot; &quot;(CurrentInstance/getInstances (false))&quot; &quot;(CurrentInstance/getInstances false)&quot; &quot;(UI/setCurrent (TestUI.))&quot; &quot;(UI/getCurrent)&quot; &quot;(do\n  (UI/setCurrent (TestUI.))\n  (loop [ui (UI/getCurrent)]\n    (when ui\n      (println ui)\n      (recur (UI/getCurrent)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- 4 (count \&quot;Sampler.clj\&quot;)))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- (count \&quot;Sampler.clj\&quot;) 4))&quot; &quot;&quot; &quot;(.stop server)&quot; &quot;(str/split \&quot;Sampler.clj\&quot; #\&quot;\\.\&quot;)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -991,8 +977,8 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31490386" sideWeight="0.50429183" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.5493562" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.45064378" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.5522174" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.44778255" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761088" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1000,7 +986,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23748212" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36051503" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.47782546" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.47496423" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25608012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39302886" sideWeight="0.4527897" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
@@ -1072,7 +1058,8 @@
     <MESSAGE value="Removed old event handling config options" />
     <MESSAGE value="Now BETA, CHANGELOG updated" />
     <MESSAGE value="Added interactive cmd-line run, addStyleNamed config option" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added interactive cmd-line run, addStyleNamed config option" />
+    <MESSAGE value="Various additions/refactoring&#10;- Form vaiidation: new :addValidations config option, plus FunctionalValidator type&#10;- Added missing (window) builder&#10;- Added (with-ui-access) Rx operator&#10;- Added main run() function to interactivey run examples&#10;- Added utils, updated Sampler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various additions/refactoring&#10;- Form vaiidation: new :addValidations config option, plus FunctionalValidator type&#10;- Added missing (window) builder&#10;- Added (with-ui-access) Rx operator&#10;- Added main run() function to interactivey run examples&#10;- Added utils, updated Sampler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1088,13 +1075,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/Buffered.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5.jar!/com/vaadin/data/fieldgroup/FieldGroup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -1676,14 +1656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1706,14 +1678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1760,14 +1724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -1786,8 +1742,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/thread_vars.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>

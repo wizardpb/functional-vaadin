@@ -47,8 +47,6 @@
       )
     ))
 
-; TODO - addStyleNamed
-
 (defn- validate-bind-args [propertyId type initialValue]
   (if (not-of-type propertyId [String Keyword])
     (bad-argument "Property Id '" propertyId "' must be a String or Keyword"))
