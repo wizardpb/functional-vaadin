@@ -11,7 +11,8 @@
   (:import (java.util Map Collection)
            (clojure.lang Keyword)
            (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment)
-           (com.vaadin.shared.ui MarginInfo)))
+           (com.vaadin.shared.ui MarginInfo)
+           (javax.xml.validation Validator)))
 
 (def attribute-translation
   "A mapping for alternative names for configuration attribute keys"
@@ -76,6 +77,24 @@
     Collection (let [[propertyId type initialValue] opt-val]
                  (do-bind field propertyId (or type Object) initialValue))))
 
+(defn add-validations
+  "Add validators to the given fiels. Validators are a single or sequnce of Validator instances"
+  [field arg]
+  (let [validators (if (collection? arg) arg [arg])]
+    (reduce (fn [f v] (.addValidator f v) f) field validators)))
+
+(defn validator? [v]
+  (instance? Validator v))
+
+(defn check-validators [val]
+  (if (collection? val)
+    (every? validator? val)
+    (validator? val)))
+
+(defn add-validations [field arg]
+  (let [validators (if (iterable? arg) arg [arg])]
+    (reduce (fn [f v] (.addValidator f v) f) field validators)))
+
 (def synthetic-option-specs
   ""
   {
@@ -117,6 +136,10 @@
                         :validate  (fn [val] (instance? String val))
                         :execute   (fn [obj opt-key opt-val] (.addStyleName obj opt-val))
                         :error-msg "Style name must be a String"}
+   :validateWith       {
+                        :validate  check-validators
+                        :execute   (fn [obj opt-key opt-val] (add-validations obj opt-val))
+                        :error-msg "Arguments must all be validators"}
    ; deprecated, removed  in favour of Rx
    ;:onClick            {:validate  (fn [val] (ifn? val))
    ;                     :error-msg "Click handler must be a function"

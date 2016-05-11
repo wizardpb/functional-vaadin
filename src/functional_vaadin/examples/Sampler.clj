@@ -22,15 +22,19 @@
       (horizontal-layout {:sizeFull [] :caption "Form and Table"}
         (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
           (form-layout
-            (text-field {:bindTo ["first-name" String] :nullRepresentation ""})
-            (text-field {:bindTo ["last-name" String] :nullRepresentation ""}))
+            (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
+            (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
+            (text-field {:bindTo ["notes" String] :nullRepresentation "" })
+            )
           (horizontal-layout
             (button {:caption "Save" :id :save-button}))
           )
         (vertical-layout {:margin true :sizeFull []}
           (table {:caption "People" :sizeFull [] :id :table}
-            (table-column "first-name" {:header "First Name" :width 200})
+            (table-column "first-name" {:header "First Name" })
             (table-column "last-name" {:header "Last Name"})
+            (table-column "notes" {:header "Notes" :width 300})
+
             )
           )
         )
@@ -57,9 +61,11 @@
   ; at 1 second intervals. We update the progress by subscribing to these events.
   ;
   (let [subscription (atom nil)                             ; Indicate we are running by saving the timer subsciption
-        timer (Observable/interval 100 TimeUnit/MILLISECONDS)      ; The timer that sends events
-        progress (componentNamed :progress main-ui )            ; The progress bar component
-        start-button (componentNamed :start-button main-ui)    ; Start and stop button components
+        timer (->>                                          ; The timer that sends events - wrap it in UI access protection
+                (Observable/interval 100 TimeUnit/MILLISECONDS)
+                (with-ui-access))
+        progress (componentNamed :progress main-ui )        ; The progress bar component
+        start-button (componentNamed :start-button main-ui) ; Start and stop button components
         stop-button (componentNamed :stop-button main-ui)
         state-label (componentNamed :running-state main-ui)
         stop-fn (fn [clickInfo]                             ; A function that stops the 'background' job

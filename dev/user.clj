@@ -7,17 +7,11 @@
             [functional-vaadin.rx.observers :as obs]
             [functional-vaadin.rx.operators :as ops]
             [functional-vaadin.utils :as u]
+            [functional-vaadin.examples.run :refer [run-jetty]]
             [rx.lang.clojure.core :as rx])
-  (:use clojure.test
-        functional-vaadin.ui.test-ui-def
-        config-gen
-        )
+  (:use clojure.test functional-vaadin.ui.test-ui-def config-gen)
   (:import (java.io File)
-           (org.eclipse.jetty.server Server)
-           (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
            (org.apache.commons.io FileUtils)
-           [com.vaadin.server VaadinServlet]
-           (com.vaadin.ui Button Label)
            ))
 
 (def show-t true)
@@ -29,13 +23,11 @@
   (rx/unsubscribe ss)
   )
 
-(declare run-jetty)
-
 (comment
-  (def server (run-jetty "functional_vaadin.examples.Sampler"))
-  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler"))
-  (def server (run-jetty "functional_vaadin.ui.TestUI"))
-  (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI"))
+  (def server (run-jetty "functional_vaadin.examples.Sampler" true))
+  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
+  (def server (run-jetty "functional_vaadin.ui.TestUI" true))
+  (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI" true))
   )
 
 (def test-dir "test/")
@@ -59,21 +51,6 @@
     (doseq [fname test-files]
       (load-file fname))
     (apply run-tests (map test-ns-sym test-files))))
-
-(defn run-jetty [ui-name]
-  (let [server (Server. 8080)
-        ^ServletContextHandler context (ServletContextHandler. ServletContextHandler/SESSIONS)]
-    (.setContextPath context "/")
-    (.setInitParameter context "UI" ui-name)
-    (.setResourceBase context "dev-resources/public")
-
-    (.setHandler server context)
-    (.addServlet context VaadinServlet "/*")
-
-    (.start server)
-    server
-    ;(.join server)
-    ))
 
 (comment
   (def fm (form (button)))

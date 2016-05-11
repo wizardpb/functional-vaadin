@@ -23,6 +23,12 @@
       (is (nil? (.getCaption p)))
       (is (nil? (.getContent p))))
 
+    (let [p (panel (VerticalLayout.))]
+      (is (instance? Panel p))
+      (is (nil? (.getCaption p)))
+      (is (instance? VerticalLayout (.getContent p)))
+      )
+
     (let [p (panel "Caption")]
       (is (instance? Panel p))
       (is (nil? (.getContent p)))
@@ -33,7 +39,8 @@
       (is (instance? Panel p))
       (is (instance? VerticalLayout (.getContent p)))
       (is (= "Caption" (.getCaption p)))
-      (is (= 0 (.getComponentCount (.getContent p)))))
+      (is (= 0 (.getComponentCount (.getContent p))))
+      )
 
     (let [p (panel {:caption "Caption" :content (VerticalLayout.)})]
       (is (instance? Panel p))

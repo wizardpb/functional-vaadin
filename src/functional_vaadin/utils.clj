@@ -1,7 +1,8 @@
 (ns functional-vaadin.utils
   "Generally useful utility functions"
   (:require [clojure.string :as str])
-  (:import (com.vaadin.ui AbstractComponent)))
+  (:import (com.vaadin.ui AbstractComponent)
+           (java.util Collection)))
 
 (defn capitalize [s]
   (if (empty? s) s (str (.toUpperCase (subs s 0 1)) (subs s 1))))
@@ -78,6 +79,12 @@
     (if (get-field-group component)
       component
       (recur (.getParent component)))))
+
+(defn iterable? [obj]
+  (instance? Iterable obj))
+
+(defn collection? [obj]
+  (instance? Collection obj))
 
 (defn not-of-type
   "True if val is an instance of one of the types in type list"

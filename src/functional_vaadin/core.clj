@@ -13,7 +13,7 @@
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
              Table Tree TreeTable
-             Component UI Field Image ProgressBar MenuBar$MenuItem)
+             Component UI Field Image ProgressBar MenuBar$MenuItem Window)
            (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
@@ -38,7 +38,7 @@
        )
      this-ui#))
 
-;; Public named component access
+;; Public functions - named component access
 
 (defn componentNamed [key ui]
   (nm/componentAt ui key))
@@ -281,6 +281,17 @@ not the layout itself"
   [& args]
   (let [[table children] (create-widget Table args true)]
     (add-children table children)))
+
+;; Window
+
+(defn window
+  "Create a Window component from constructor arguments or a configuration Map. Allows only a single child which will
+   be set as the content"
+  [& args]
+  (if-let [ui (UI/getCurrent)]
+    (let [[window children] (create-widget Window args true)]
+     (add-children window children)
+     (.addWindow ui window))))
 
 
 

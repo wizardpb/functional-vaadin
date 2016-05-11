@@ -24,18 +24,18 @@
 
 (defn choose-example [examples]
   (loop []
-    (doseq [f (map-indexed #(str (inc %1) ". " (first (str/split %2 #"\."))) examples)]
+    (doseq [f (map-indexed #(str (inc %1) ". " (subs %2 0 (- (count %2) 4))) examples)]
       (println "  " f))
     (print "Choice? (Cntrl-C to exit) ") (flush)
-    (let [item (dec (Integer/parseInt (read-line)))]
-      (if (< item (count examples))
-        (nth examples item)
+    (let [item-number (dec (Integer/parseInt (read-line)))]
+      (if (< item-number (count examples))
+        (first (str/split (nth examples item-number) #"\."))
         (recur))))
   )
 
 (defn run-example [name prompt]
   (println prompt)
-  (run-jetty (str "functional-vaadin.examples." name ) true))
+  (run-jetty (str "functional_vaadin.examples." name ) true))
 
 (defn run-and-wait [name]
   (loop [server (run-example name (str "Running " name ". Type \"s\" to stop, \"r\" to restart"))]

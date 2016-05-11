@@ -8,7 +8,7 @@
              Label Embedded Link MenuBar Upload Button Calendar GridLayout
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
-             ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar)
+             ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar Window)
            ))
 
 (def configurable-classes
@@ -22,6 +22,7 @@
    Calendar
    GridLayout
    Panel
+   Window
    VerticalLayout
    HorizontalLayout
    FormLayout

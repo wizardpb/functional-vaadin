@@ -6,7 +6,7 @@
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window)
            (java.util Map Collection)
            (java.lang.reflect Constructor)
            (clojure.lang Keyword)
@@ -112,12 +112,22 @@
 (defmethod add-children :default [parent children]
   (unsupported-op "add-children udefined!!!" (class parent)))
 
+(defn- set-children-as-content [obj children]
+  (if (< 1 (count children))
+    (bad-argument "You must set the content of a " (.getSimpleName (class obj)) " before adding multiple children, or provide a single child as content")
+    (.setContent obj (if children (first children)))))
+
 (defmethod add-children Panel [panel children]
   (if-let [content (.getContent panel)]
     (add-children content children)
-    (if (> (count children) 0)
-      (bad-argument "You must set the content of a Panel before adding children")))
+    (set-children-as-content panel children))
   panel)
+
+(defmethod add-children Window [window children]
+  (if-let [content (.getContent window)]
+    (add-children content children)
+    (set-children-as-content window children))
+  window)
 
 (defmethod add-children AbstractComponentContainer [parent children]
   (doseq [child children]

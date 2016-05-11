@@ -1,9 +1,10 @@
 (ns functional-vaadin.config-test
   (:use [clojure.test]
+        [functional-vaadin.core]
+        [functional-vaadin.validation]
         [functional-vaadin.naming]
         [functional-vaadin.thread-vars]
         [functional-vaadin.config]
-        [functional-vaadin.core]
         [functional-vaadin.utils]
         )
 
@@ -13,7 +14,9 @@
            (java.util Map)
            (functional_vaadin.ui TestUI)
            (com.vaadin.data.util PropertysetItem)
-           (com.vaadin.data.fieldgroup FieldGroup)))
+           (com.vaadin.data.fieldgroup FieldGroup)
+           (com.vaadin.data.validator StringLengthValidator)
+           (functional_vaadin.validation FunctionalValidator)))
 
 (defmacro with-form [& forms]
   `(with-bindings
@@ -69,6 +72,15 @@
       (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}}))
       )
     (button {:addStyleName "border"})                       ;How to verify ?
+
+    (let [f (text-field {:validateWith (StringLengthValidator. "Length Error: {0}")})]
+      (is (= 1 (count (.getValidators f))))
+      (is (instance? StringLengthValidator (first (.getValidators f)))))
+    (let [f (text-field {:validateWith [
+                                        (StringLengthValidator. "Length Error: {0}")
+                                        (->FunctionalValidator (fn [obj] false) "Always fail {0}")]})]
+      (is (= 2 (count (.getValidators f))))
+      (is (= [StringLengthValidator FunctionalValidator] (map #(class %1) (.getValidators f)))))
     )
 
   (testing "Binding"

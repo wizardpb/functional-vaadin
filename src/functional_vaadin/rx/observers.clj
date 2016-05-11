@@ -11,7 +11,9 @@
   and fg is the Fieldgroup of the form that the btn is on, or nil if there is no form"
   [btn]
   (rx/observable*
-    (fn [^Subscriber sub] (onClick btn (fn [s evt fg] (.onNext sub {:source s :event evt :field-group fg}))))))
+    (fn [^Subscriber sub]
+      (onClick btn (fn [s evt fg]
+                     (.onNext sub {:source s :event evt :field-group fg}))))))
 
 (defn value-changes
   "Observe value changes for the given notifier. Returns the Observable. Subscribers will receive a Map
