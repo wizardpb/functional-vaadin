@@ -1,6 +1,7 @@
 (ns functional-vaadin.utils
   "Generally useful utility functions"
-  (:require [clojure.string :as str])
+  (:require [clojure.string :as str]
+            [rx.lang.clojure.core :as rx])
   (:import (com.vaadin.ui AbstractComponent)
            (java.util Collection)))
 
@@ -96,3 +97,7 @@
 
 (defn unsupported-op [& args]
   (throw (UnsupportedOperationException. ^String (apply str args))))
+
+(defmacro when-subscribed [o & body]
+  `(when-not (rx/unsubscribed? ~o)
+     ~@body))

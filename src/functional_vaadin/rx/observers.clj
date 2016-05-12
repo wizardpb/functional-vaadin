@@ -1,6 +1,7 @@
 (ns functional-vaadin.rx.observers
   "Reactive extensions to interface with RxClojure. These are functions to generate Observables from various Vaadin events."
   (:require [functional-vaadin.event-handling :refer :all]
+            [functional-vaadin.utils :refer :all]
             [rx.lang.clojure.core :as rx])
   (:import (rx Subscriber Observable)
            (com.vaadin.ui AbstractTextField)))
@@ -12,8 +13,8 @@
   [btn]
   (rx/observable*
     (fn [^Subscriber sub]
-      (onClick btn (fn [s evt fg]
-                     (.onNext sub {:source s :event evt :field-group fg}))))))
+      (onClick btn (fn [source evt fg]
+                     (.onNext sub {:source source :event evt :field-group fg}))))))
 
 (defn value-changes
   "Observe value changes for the given notifier. Returns the Observable. Subscribers will receive a Map
@@ -51,8 +52,9 @@
                     (future
                       (try
                         (apply act-fn (concat (list s) args))
-                        (rx/on-completed s)
-                        (catch Throwable e (rx/on-error s e)))))))
+                        (when-subscribed (.onCompleted s))
+                        (catch Throwable e
+                          (when-subscribed (.onError s e))))))))
 
 ; TODO - other observers - table clicks, component clicks - see notes.
 

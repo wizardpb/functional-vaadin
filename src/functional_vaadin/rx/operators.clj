@@ -9,10 +9,6 @@
            (com.vaadin.server ErrorHandlingRunnable)
            (com.vaadin.data Validator$EmptyValueException)))
 
-(defmacro when-subscribed [o & body]
-  `(when-not (rx/unsubscribed? ~o)
-     ~@body))
-
 (defn consume-for
   "Usage: (consume-for component fn xs)
   Subscribes to an Observable xs, calling the function fn with the given component for every event received
@@ -24,7 +20,6 @@
       (fn [e] )
       (fn [] )))
   )
-
 
 (defn- failure-message [e]
   (if (instance? Validator$EmptyValueException e)
