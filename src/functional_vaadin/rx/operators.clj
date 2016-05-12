@@ -2,19 +2,26 @@
   "Useful operators to transform streams from Vaadin component observables"
   (:require [functional-vaadin.core :refer :all]
             [rx.lang.clojure.core :as rx])
-  (:import (rx Observable)
+  (:import (rx Observable Observer)
            (com.vaadin.data.fieldgroup FieldGroup FieldGroup$FieldGroupInvalidValueException FieldGroup$CommitException)
            (java.util Map)
            (com.vaadin.ui UI)
            (com.vaadin.server ErrorHandlingRunnable)))
 
+(defmacro when-subscribed [o & body]
+  `(when-not (rx/unsubscribed? ~o)
+     ~@body))
+
 (defn consume-for
   "Usage: (consume-for component fn xs)
   Subscribes to an Observable xs, calling the function fn with the given component for every event received
-  from xs. Unsubscribes on error and complete"
+  from xs."
   [comp c-fn xs]
   (let [c comp]
-    (rx/subscribe xs (fn [v] (c-fn c v))))
+    (rx/subscribe xs
+      (fn [v] (c-fn c v))
+      (fn [e] )
+      (fn [] )))
   )
 
 (defn commit-error [e]
@@ -31,6 +38,26 @@
   (throw e)
   )
 
+(defmulti do-commit
+  "Commit a passed in FieldGroup, depending on the way it was passed"
+  (fn [v] (class v)))
+
+(defmethod do-commit Map [v]
+  (if-let [fg (:field-group v)]
+    (do
+      (.commit fg)
+      (assoc v :item (.getItemDataSource fg)))              ; Add the data Item to the Map
+    v))
+
+(defmethod do-commit FieldGroup [v]
+  (do
+    (.commit v)
+    (.getItemDataSource v)))                                ; Just return the data item
+
+(defmethod do-commit :default [v]                           ; Pass on the value by default
+  v)
+
+
 (defn commit
   "Usage: (commit [error-handler? xs])
 
@@ -42,17 +69,17 @@
    (let [op (rx/operator*
               (fn [subscribed-o]
                 (rx/subscriber subscribed-o
-                  (fn [recv-o v]
+                  (fn [^Observer recv-o v]
                     (try
-                      (rx/on-next recv-o
-                        (condp #(instance? %1 %2) v
-                          Map (if-let [fg (:field-group v)]
-                                (do (.commit fg) (assoc v :item (.getItemDataSource fg))))
-                          FieldGroup (do (.commit v) (.getItemDataSource v))
-                          true v))
+                      (when-subscribed recv-o
+                        (.onNext recv-o (do-commit v)))
                       (catch Exception e
                         (error-handler e)
-                        (rx/on-error recv-o e)))))
+                        (.onError recv-o e))))
+                  (fn [recv-o e]
+                    (when-subscribed recv-o
+                      (.onError recv-o e)))
+                  )
                 ))]
      (rx/lift op xs)))
   ([^Observable xs] (commit commit-error xs))
@@ -65,10 +92,20 @@
              (fn [subscribed-o]
                (rx/subscriber subscribed-o
                  (fn [recv-o v]                             ;on-next
-                   (.access (UI/getCurrent)
-                     (reify
-                       ErrorHandlingRunnable
-                       (^void run [this] (rx/on-next recv-o v))
-                       (^void handleError [this ^Exception e] (rx/on-error recv-o e))))))
+                   (when-subscribed recv-o
+                     (if-let [ui (UI/getCurrent)]
+                      (.access ui
+                        (reify
+                          ErrorHandlingRunnable
+                          (^void run [this] (rx/on-next recv-o v))
+                          (^void handleError [this ^Exception e] (rx/on-error recv-o e))))
+                      (try
+                        (rx/on-next recv-o v)
+                        (catch Exception e
+                          (rx/on-error recv-o e)))
+                      )))
+                 (fn [recv-o e]
+                   (when-subscribed recv-o
+                     (rx/on-error recv-o e))))
                ))]
     (rx/lift op xs)))

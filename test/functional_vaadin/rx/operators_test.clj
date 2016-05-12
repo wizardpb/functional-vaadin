@@ -6,8 +6,9 @@
             [functional-vaadin.rx.operators :refer :all]
             [functional-vaadin.utils :refer :all]
             )
-  (:import (com.vaadin.ui Button$ClickEvent)
-           (java.util Map)))
+  (:import (com.vaadin.ui Button$ClickEvent UI)
+           (java.util Map)
+           (rx Observable)))
 
 (deftest rx-operators
   (testing "Commit"
@@ -30,7 +31,7 @@
     (let [b (button) l (label) fired (atom nil)]
       (->> (button-clicks b)
            (consume-for l (fn [l v] (swap! fired (fn [_] {:component l :value v})))))
-      (fn [v] (swap! fired (fn [_] v)))
+      ;(fn [v] (swap! fired (fn [_] v)))
       (.click b)
       (is (identical? (:component @fired) l))
       (is (= (keys (:value @fired)) [:source :event :field-group]))
@@ -39,5 +40,34 @@
       )
     )
   (testing "with-ui-access"
+    (let [result (atom nil)
+          error (atom nil)
+          ui (proxy [UI] []
+               (access [rbl] (.run rbl))
+               (init [rqst] rqst))]
+      (UI/setCurrent ui)
+        (rx/subscribe (->>
+                        (Observable/just "It!")
+                        (with-ui-access))
+          (fn [v] (swap! result (fn [_] v)))
+          (fn [e] (swap! error (fn [_] e))))
+      (is (= @result "It!"))
+      (is (nil? @error))
+      )
+    (let [result (atom nil)
+          error (atom nil)
+          ui (proxy [UI] []
+               (access [rbl] (.run rbl))
+               (init [rqst] rqst))]
+      (UI/setCurrent ui)
+      (rx/subscribe (->>
+                      (Observable/error (NullPointerException. "Test"))
+                      (with-ui-access))
+        (fn [v] (swap! result (fn [_] v)))
+        (fn [e] (swap! error (fn [_] e))))
+      (is (nil? @result))
+      (is (instance? NullPointerException @error))
+      (is (= (.getMessage @error) "Test"))
+      )
     )
   )

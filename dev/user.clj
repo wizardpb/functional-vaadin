@@ -12,7 +12,7 @@
   (:use clojure.test functional-vaadin.ui.test-ui-def config-gen)
   (:import (java.io File)
            (org.apache.commons.io FileUtils)
-           ))
+           (com.vaadin.ui UI)))
 
 (def show-t true)
 (comment
@@ -69,3 +69,10 @@
   (def sub (rx/subscribe o (fn [v] (println v))))
   (rx/unsubscribed? sub)
   )
+
+(let [r (atom nil)
+      ui (proxy [UI] []
+           (access [this rbl] (.run rbl))
+           (init [this rqst]))]
+  (.access ui (reify Runnable (run [this] (swap! r (fn [_] "Ran!")))))
+  @r)

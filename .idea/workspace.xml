@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/config.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/user.clj" afterPath="$PROJECT_DIR$/dev/user.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,18 +31,48 @@
       <file leaf-file-name="user.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dev/user.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+            <state relative-caret-position="288">
+              <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="operators_test.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/core.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="2252" column="6" selection-start-line="2252" selection-start-column="6" selection-end-line="2252" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core_proxy.clj" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/core_proxy.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-184">
+              <caret line="308" column="10" selection-start-line="308" selection-start-column="10" selection-end-line="308" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="operators_test.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state relative-caret-position="363">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Observable.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.0.1/rxjava-1.0.1.jar!/rx/Observable.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="343" column="42" selection-start-line="343" selection-start-column="42" selection-end-line="343" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -50,8 +81,8 @@
       <file leaf-file-name="TestUI.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/TestUI.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="30">
+              <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -70,8 +101,8 @@
       <file leaf-file-name="operators.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <state relative-caret-position="-15">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -80,18 +111,18 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxclojure/1.0.0/rxclojure-1.0.0.jar!/rx/lang/clojure/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="98" column="18" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+            <state relative-caret-position="116">
+              <caret line="192" column="20" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="588">
+              <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -102,16 +133,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
               <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ErrorHandlingRunnable.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/server/ErrorHandlingRunnable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="26" column="55" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -137,20 +158,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config_test.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Runnable.java" pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/lang/Runnable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
+            <state relative-caret-position="131">
               <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
               <folding>
                 <element signature="e#0#2044#0" expanded="false" />
@@ -182,13 +193,14 @@
       <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="794" column="0" selection-start-line="794" selection-start-column="0" selection-end-line="794" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="1436" column="24" selection-start-line="1436" selection-start-column="24" selection-end-line="1436" selection-end-column="24" />
               <folding>
                 <element signature="e#10007#10008#0" expanded="true" />
                 <element signature="e#10033#10034#0" expanded="true" />
                 <element signature="e#26513#26514#0" expanded="true" />
                 <element signature="e#26573#26574#0" expanded="true" />
+                <element signature="e#27100#27101#0" expanded="true" />
                 <element signature="e#27152#27153#0" expanded="true" />
               </folding>
             </state>
@@ -205,16 +217,6 @@
                 <element signature="e#3073#3074#0" expanded="true" />
                 <element signature="e#6686#6687#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstantiationError.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/lang/InstantiationError.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="41" column="6" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -291,14 +293,14 @@
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/utils.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" />
-        <option value="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
-        <option value="$PROJECT_DIR$/dev/user.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
+        <option value="$PROJECT_DIR$/dev/user.clj" />
+        <option value="$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj" />
       </list>
     </option>
   </component>
@@ -664,7 +666,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/ui" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1462998037500">{:repl-history {:ide [], :local [&quot;(menu-bar\n  (menu-item \&quot;File\&quot; (fn [item] \&quot;File\&quot;)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [_] (println \&quot;Fired\&quot;) \&quot;val\&quot;)) nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; ^Resource nil ^MenuBar$Command nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; nil nil)&quot; &quot;(MenuBar$MenuItem. \&quot;File\&quot; (FileResource. \&quot;name\&quot;) (-&gt;FunctionCommand (fn [_] 1)))&quot; &quot;(.menuSelected (-&gt;FunctionCommand (fn [item] (.getText item))) (.addItem (MenuBar.) \&quot;File\&quot; nil nil))\n&quot; &quot;(let [[first] '( 1 2)] first)&quot; &quot;(menu-item \&quot;File\&quot; (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileRespurce \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. \&quot;it\&quot;) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(menu-item \&quot;File\&quot; (FileResource. (File. \&quot;it\&quot;)) (fn [item] (println \&quot;Fired\&quot;) \&quot;File\&quot;))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (rx/on-next s x) (Thread/sleep 1000))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(-&gt;\n    (obs/observe-execution\n      (fn [s end]\n        (for [x (range 0 end)] (do (rx/on-next s x) (Thread/sleep 1000)))))\n    (rx/subscribe (fn [v] (println v))))&quot; &quot;(u/one-of \&quot;prop\&quot; [String, Keyword])&quot; &quot;(not (instance? String \&quot;\&quot;))&quot; &quot;(not (instance? Keyword \&quot;\&quot;))&quot; &quot;(u/one-of \&quot;prop\&quot; [String,Keyword])&quot; &quot;(u/one-of \&quot;prop\&quot; [String Keyword])&quot; &quot;(every? #(%1) [true, true, true])&quot; &quot;(every? #(identity %1) [true, true, true])&quot; &quot;(every? #(identity %1) [false, true, true])&quot; &quot;(map #(not (instance? %1 \&quot;\&quot;)) [String Keyword])&quot; &quot;(instance? String Class)&quot; &quot;(isa? String Class)&quot; &quot;(= String Class)&quot; &quot;(class Class)&quot; &quot;(class? String)&quot; &quot;(run-my-tests)&quot; &quot;(.getState (button))&quot; &quot;(defprotocol CState (getState [this]))&quot; &quot;(extend-type Button CState (getState [this] (.getState this)))&quot; &quot;(getState (button))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;functional_vaadin/examples\&quot;)))&quot; &quot;(.list (File. \&quot;functional_vaadin/examples\&quot;))&quot; &quot;(.list (File. \&quot;src/functional_vaadin/examples/\&quot;))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;src/functional_vaadin/examples\&quot;)))&quot; &quot;(read)&quot; &quot;empty&quot; &quot;e&quot; &quot;2&quot; &quot;(println \&quot;c=\&quot;\n  )&quot; &quot;(println \&quot;c=\&quot; (read-line))&quot; &quot;functional-vaadin.utils&quot; &quot;1&quot; &quot;(run-and-wait \&quot;test\&quot;)&quot; &quot;satisfies?&quot; &quot;(println :hey\n  )&quot; &quot;r&quot; &quot;s&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0\\\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(re-qu)&quot; &quot;(str/re-quote-replacement \&quot;{0}\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0}\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(seq? [])&quot; &quot;(vec? [])&quot; &quot;(vector? [])&quot; &quot;(instance?\n  Iterable [])&quot; &quot;(instance? Iterable '())&quot; &quot;(instance? Iterable (range 0 1))&quot; &quot;(def fut (future (list 1 3)))&quot; &quot;(class fut)&quot; &quot;(gen-config-table)&quot; &quot;(doall (range 0 1))&quot; &quot;(doall (range 0 20))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot; &quot;*ns*&quot; &quot;(u/collection? (range 0 10))&quot; &quot;(u/collection? (list 1))&quot; &quot;(u/collection? #{})&quot; &quot;(u/collection? {})&quot; &quot;(u/collection? [])&quot; &quot;(class (future (println \&quot;Done\&quot;)))&quot; &quot;(fn? (future (println \&quot;Done\&quot;)))&quot; &quot;(macroexpand '(with-scheduled-ui-access (println 1) (prinln 2)))&quot; &quot;(UI/setCurrent (UI.))&quot; &quot;(UI.)&quot; &quot;(TestUI.)&quot; &quot;(UI/setCurent (TestUI.))&quot; &quot;(CurrentInstance/getInstances (false))&quot; &quot;(CurrentInstance/getInstances false)&quot; &quot;(UI/setCurrent (TestUI.))&quot; &quot;(UI/getCurrent)&quot; &quot;(do\n  (UI/setCurrent (TestUI.))\n  (loop [ui (UI/getCurrent)]\n    (when ui\n      (println ui)\n      (recur (UI/getCurrent)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- 4 (count \&quot;Sampler.clj\&quot;)))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- (count \&quot;Sampler.clj\&quot;) 4))&quot; &quot;&quot; &quot;(.stop server)&quot; &quot;(str/split \&quot;Sampler.clj\&quot; #\&quot;\\.\&quot;)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1463012898613">{:repl-history {:ide [], :local [&quot;(every? #(%1) [true, true, true])&quot; &quot;(every? #(identity %1) [true, true, true])&quot; &quot;(every? #(identity %1) [false, true, true])&quot; &quot;(map #(not (instance? %1 \&quot;\&quot;)) [String Keyword])&quot; &quot;(instance? String Class)&quot; &quot;(isa? String Class)&quot; &quot;(= String Class)&quot; &quot;(class Class)&quot; &quot;(class? String)&quot; &quot;(.getState (button))&quot; &quot;(defprotocol CState (getState [this]))&quot; &quot;(extend-type Button CState (getState [this] (.getState this)))&quot; &quot;(getState (button))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;functional_vaadin/examples\&quot;)))&quot; &quot;(.list (File. \&quot;functional_vaadin/examples\&quot;))&quot; &quot;(.list (File. \&quot;src/functional_vaadin/examples/\&quot;))&quot; &quot;(filter #(re-matches #\&quot;[A-Z].*\\.clj\&quot; %1) (.list (File. \&quot;src/functional_vaadin/examples\&quot;)))&quot; &quot;(read)&quot; &quot;empty&quot; &quot;e&quot; &quot;2&quot; &quot;(println \&quot;c=\&quot;\n  )&quot; &quot;(println \&quot;c=\&quot; (read-line))&quot; &quot;functional-vaadin.utils&quot; &quot;1&quot; &quot;(run-and-wait \&quot;test\&quot;)&quot; &quot;satisfies?&quot; &quot;(println :hey\n  )&quot; &quot;r&quot; &quot;s&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;{0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0\\\\}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\\\{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; #\&quot;\\{0\\}\&quot; \&quot;text\&quot;)&quot; &quot;(re-qu)&quot; &quot;(str/re-quote-replacement \&quot;{0}\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;0\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0)\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(str/replace \&quot;a {0}\&quot; \&quot;{0}\&quot; \&quot;text\&quot;)&quot; &quot;(seq? [])&quot; &quot;(vec? [])&quot; &quot;(vector? [])&quot; &quot;(instance?\n  Iterable [])&quot; &quot;(instance? Iterable '())&quot; &quot;(instance? Iterable (range 0 1))&quot; &quot;(def fut (future (list 1 3)))&quot; &quot;(class fut)&quot; &quot;(gen-config-table)&quot; &quot;(doall (range 0 1))&quot; &quot;(doall (range 0 20))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot;))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot; &quot;*ns*&quot; &quot;(u/collection? (range 0 10))&quot; &quot;(u/collection? (list 1))&quot; &quot;(u/collection? #{})&quot; &quot;(u/collection? {})&quot; &quot;(u/collection? [])&quot; &quot;(class (future (println \&quot;Done\&quot;)))&quot; &quot;(fn? (future (println \&quot;Done\&quot;)))&quot; &quot;(macroexpand '(with-scheduled-ui-access (println 1) (prinln 2)))&quot; &quot;(UI/setCurrent (UI.))&quot; &quot;(UI.)&quot; &quot;(TestUI.)&quot; &quot;(UI/setCurent (TestUI.))&quot; &quot;(CurrentInstance/getInstances (false))&quot; &quot;(CurrentInstance/getInstances false)&quot; &quot;(UI/setCurrent (TestUI.))&quot; &quot;(UI/getCurrent)&quot; &quot;(do\n  (UI/setCurrent (TestUI.))\n  (loop [ui (UI/getCurrent)]\n    (when ui\n      (println ui)\n      (recur (UI/getCurrent)))))&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)))))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- 4 (count \&quot;Sampler.clj\&quot;)))&quot; &quot;(subs \&quot;Sampler.clj\&quot; 0 (- (count \&quot;Sampler.clj\&quot;) 4))&quot; &quot;&quot; &quot;(.stop server)&quot; &quot;(str/split \&quot;Sampler.clj\&quot; #\&quot;\\.\&quot;)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; false))&quot; &quot;(panel \&quot;Caption\&quot;)&quot; &quot;(first nil)&quot; &quot;(count nil)&quot; &quot;(count '(1))&quot; &quot;(.getContent (panel))&quot; &quot;(panel)&quot; &quot;(panel \&quot;Cap\&quot; (VerticalLayout.))&quot; &quot;(panel (VerticalLayout.))&quot; &quot;(.getContent (panel (VerticalLayout.)))&quot; &quot;(.getContent (panel \&quot;Cap\&quot; (VerticalLayout.)))&quot; &quot;(.getContent (panel ))&quot; &quot;(.getContent (panel \&quot;Cap\&quot;))&quot; &quot;(run)&quot; &quot;(run-my-tests)&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(macroexpand '(when-subscribed 1 (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;) (rx/on-next a b)))&quot; &quot;(macroexpand `(proxy [UI] []\n   (access [this runable] (println this runnable))))&quot; &quot;(macroexpand '(proxy [UI]\n        (access [this runable] (println this runnable))))&quot; &quot;(proxy [UI]\n       (access [this runable] (println this runnable)))&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -977,8 +979,8 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31490386" sideWeight="0.50429183" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.5522174" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45552886" sideWeight="0.44778255" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4939904" sideWeight="0.5550787" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4939904" sideWeight="0.4449213" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761088" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1059,7 +1061,8 @@
     <MESSAGE value="Now BETA, CHANGELOG updated" />
     <MESSAGE value="Added interactive cmd-line run, addStyleNamed config option" />
     <MESSAGE value="Various additions/refactoring&#10;- Form vaiidation: new :addValidations config option, plus FunctionalValidator type&#10;- Added missing (window) builder&#10;- Added (with-ui-access) Rx operator&#10;- Added main run() function to interactivey run examples&#10;- Added utils, updated Sampler" />
-    <option name="LAST_COMMIT_MESSAGE" value="Various additions/refactoring&#10;- Form vaiidation: new :addValidations config option, plus FunctionalValidator type&#10;- Added missing (window) builder&#10;- Added (with-ui-access) Rx operator&#10;- Added main run() function to interactivey run examples&#10;- Added utils, updated Sampler" />
+    <MESSAGE value="Updated TODOs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated TODOs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1075,20 +1078,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5.jar!/com/vaadin/data/fieldgroup/FieldGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="672" column="13" selection-start-line="672" selection-start-column="13" selection-end-line="672" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.0.1/rxjava-1.0.1.jar!/rx/plugins/RxJavaObservableExecutionHookDefault.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.0.1/rxjava-1.0.1.jar!/rx/Subscriber.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1114,13 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="32" column="66" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.0.1/rxjava-1.0.1.jar!/rx/Observable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="161" column="55" selection-start-line="161" selection-start-column="55" selection-end-line="161" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1606,16 +1588,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#2044#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/server/ErrorHandlingRunnable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1624,34 +1596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/TestUI.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxclojure/1.0.0/rxclojure-1.0.0.jar!/rx/lang/clojure/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="98" column="18" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1694,48 +1642,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="794" column="0" selection-start-line="794" selection-start-column="0" selection-end-line="794" selection-end-column="0" />
-          <folding>
-            <element signature="e#10007#10008#0" expanded="true" />
-            <element signature="e#10033#10034#0" expanded="true" />
-            <element signature="e#26513#26514#0" expanded="true" />
-            <element signature="e#26573#26574#0" expanded="true" />
-            <element signature="e#27152#27153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev/user.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="126" column="40" selection-start-line="126" selection-start-column="40" selection-end-line="126" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1774,8 +1684,105 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="588">
+          <caret line="52" column="61" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="126" column="40" selection-start-line="126" selection-start-column="40" selection-end-line="126" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxclojure/1.0.0/rxclojure-1.0.0.jar!/rx/lang/clojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="192" column="20" selection-start-line="192" selection-start-column="20" selection-end-line="192" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/core_proxy.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="308" column="10" selection-start-line="308" selection-start-column="10" selection-end-line="308" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#2044#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/ui/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="1436" column="24" selection-start-line="1436" selection-start-column="24" selection-end-line="1436" selection-end-column="24" />
+          <folding>
+            <element signature="e#10007#10008#0" expanded="true" />
+            <element signature="e#10033#10034#0" expanded="true" />
+            <element signature="e#26513#26514#0" expanded="true" />
+            <element signature="e#26573#26574#0" expanded="true" />
+            <element signature="e#27100#27101#0" expanded="true" />
+            <element signature="e#27152#27153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/TestUI.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="79" selection-start-line="2" selection-start-column="79" selection-end-line="2" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/user.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="76" column="14" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.8.0/clojure-1.8.0.jar!/clojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="2252" column="6" selection-start-line="2252" selection-start-column="6" selection-end-line="2252" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/reactivex/rxjava/1.0.1/rxjava-1.0.1.jar!/rx/Observable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="343" column="42" selection-start-line="343" selection-start-column="42" selection-end-line="343" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/rx/operators_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding />
         </state>
       </provider>
