@@ -291,7 +291,9 @@ not the layout itself"
   (if-let [ui (UI/getCurrent)]
     (let [[window children] (create-widget Window args true)]
      (add-children window children)
-     (.addWindow ui window))))
+     (.addWindow ui window)
+     window)))
+
 
 
 

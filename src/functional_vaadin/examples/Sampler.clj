@@ -53,7 +53,7 @@
     (consume-for (componentNamed :table main-ui)            ; Consume the form data (in :item) and set into the table
       (fn [table data]
         (let [{:keys [item]} data
-              row (object-array (map #(.getValue (.getItemProperty item %1)) ["first-name" "last-name"]))]
+              row (object-array (map #(.getValue (.getItemProperty item %1)) ["first-name" "last-name" "notes"]))]
           (.addItem table row nil))
         )))
   ;

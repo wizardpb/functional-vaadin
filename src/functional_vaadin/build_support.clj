@@ -6,7 +6,7 @@
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window Component)
            (java.util Map Collection)
            (java.lang.reflect Constructor)
            (clojure.lang Keyword)
@@ -46,6 +46,21 @@
     (let [ctor-list (sort #(>= (.getParameterCount %1) (.getParameterCount %2)) (seq (.getConstructors cls)))]
       (some match-ctor ctor-list))))
 
+(defn- unwrap-sequence-args
+  "When computing children, the result often ends up as some kind of list/vector of the children. create-widget
+  expects it's args value to a list of the children, but in the computed case, args is a single element list that
+  *contains* the list of children. This function detects this and unpacks it."
+  [args]
+  (if (and
+        (collection? args)
+        (= 1 (count args))
+        (collection? (first args))
+        (every? #(instance? Component %1) (first args))
+        )
+    (first args)
+    args)
+  )
+
 (defn- do-create-widget
   "Create Vaadin widgets using, if possible, the initial n items of args as constructor argument.
 
@@ -60,10 +75,11 @@
   (let [first-arg (first args)
         null-ctor (.getConstructor cls (make-array Class 0))]
 
-    (letfn [(make-result [obj children]
-              (if (and (not allow-children) (> (count children) 0))
-                (bad-argument (.getSimpleName cls) " does not allow children")
-                [obj children]))
+    (letfn [(make-result [obj computed-children?]
+              (let [children (unwrap-sequence-args computed-children?)]
+                (if (and (not allow-children) (> (count children) 0))
+                 (bad-argument (.getSimpleName cls) " does not allow children")
+                 [obj children])))
             ]
 
       ;; First try for configuration
@@ -83,7 +99,7 @@
             (make-result (.newInstance null-ctor (object-array 0)) args)
 
             ;; Otherwise, we fail
-            (bad-argument "Cannot create a " (.getSimpleName cls) " from " args)))))))
+            (bad-argument "Cannot create a " (.getSimpleName cls) " from " (unwrap-sequence-args args))))))))
 
 (defn create-widget
   ([cls args allow-children] (do-create-widget cls args allow-children))

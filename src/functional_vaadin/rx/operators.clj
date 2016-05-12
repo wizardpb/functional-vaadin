@@ -5,8 +5,9 @@
   (:import (rx Observable Observer)
            (com.vaadin.data.fieldgroup FieldGroup FieldGroup$FieldGroupInvalidValueException FieldGroup$CommitException)
            (java.util Map)
-           (com.vaadin.ui UI)
-           (com.vaadin.server ErrorHandlingRunnable)))
+           (com.vaadin.ui UI Window)
+           (com.vaadin.server ErrorHandlingRunnable)
+           (com.vaadin.data Validator$EmptyValueException)))
 
 (defmacro when-subscribed [o & body]
   `(when-not (rx/unsubscribed? ~o)
@@ -24,18 +25,22 @@
       (fn [] )))
   )
 
+
+(defn- failure-message [e]
+  (if (instance? Validator$EmptyValueException e)
+    "Required"
+    (.getMessage e)))
+
 (defn commit-error [e]
-  ;(if (instance? FieldGroup$CommitException e)
-  ;  (let [w
-  ;        (window "Field Errors"
-  ;            (apply vertical-layout
-  ;              (doall (map
-  ;                       (fn [[f exp]]
-  ;                         (label (str (.getCaption f) ": " (.getMessage exp))))
-  ;                       (.getInvalidFields e)))))]
-  ;    (.center w))
-  ;  (throw e))
-  (throw e)
+  (if (instance? FieldGroup$CommitException e)
+    (.center
+      (window "Field Errors"
+        (vertical-layout {:margin true :spacing true}
+          (doall (map
+                   (fn [[f exp]]
+                     (label (str (.getCaption f) ": " (failure-message exp))))
+                   (.getInvalidFields e))))))
+    (throw e))
   )
 
 (defmulti do-commit
