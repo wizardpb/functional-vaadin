@@ -1,6 +1,7 @@
 (ns functional-vaadin.rx.operators
   "Useful operators to transform streams from Vaadin component observables"
   (:require [functional-vaadin.core :refer :all]
+            [functional-vaadin.utils :refer :all]
             [rx.lang.clojure.core :as rx])
   (:import (rx Observable Observer)
            (com.vaadin.data.fieldgroup FieldGroup FieldGroup$FieldGroupInvalidValueException FieldGroup$CommitException)

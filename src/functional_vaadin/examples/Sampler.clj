@@ -15,39 +15,36 @@
            (java.util.concurrent TimeUnit)
            (rx Observable)))
 
-(defn -init [^UI main-ui request]
-  ; Define our UI. Use :id to capture components we'll need later
-  (defui main-ui
-    (panel "Functional Vaadin Sampler" (tab-sheet)
-      (horizontal-layout {:sizeFull [] :caption "Form and Table"}
-        (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
-          (form-layout
-            (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
-            (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
-            (text-field {:bindTo ["notes" String] :nullRepresentation "" })
-            )
-          (horizontal-layout
-            (button {:caption "Save" :id :save-button}))
-          )
-        (vertical-layout {:margin true :sizeFull []}
-          (table {:caption "People" :sizeFull [] :id :table}
-            (table-column "first-name" {:header "First Name" })
-            (table-column "last-name" {:header "Last Name"})
-            (table-column "notes" {:header "Notes" :width 300})
+; TODO - add To-Do tab
 
-            )
-          )
+(defn- form-and-table []
+  (horizontal-layout {:sizeFull [] :caption "Form and Table"}
+    (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
+      (form-layout
+        (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
+        (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
+        (text-field {:bindTo ["notes" String] :nullRepresentation "" })
         )
-      (vertical-layout {:caption "Background Task"}
-        (horizontal-layout {:margin true :spacing true}
-          (button {:caption "Start" :id :start-button})
-          (button {:caption "Stop" :id :stop-button :enabled false})
-          (vertical-layout
-            (progress-bar {:id :progress :value (float 0.0) :width "300px"})
-            (label {:value "Stopped" :id :running-state})))
-        )
+      (horizontal-layout
+        (button {:caption "Save" :id :save-button}))
       )
-    )
+    (vertical-layout {:margin true :sizeFull []}
+      (table {:caption "People" :sizeFull [] :id :table}
+        (table-column "first-name" {:header "First Name" })
+        (table-column "last-name" {:header "Last Name"})
+        (table-column "notes" {:header "Notes" :width 300})
+        ))))
+
+(defn- background-task []
+  (vertical-layout {:caption "Background Task"}
+    (horizontal-layout {:margin true :spacing true}
+      (button {:caption "Start" :id :start-button})
+      (button {:caption "Stop" :id :stop-button :enabled false})
+      (vertical-layout
+        (progress-bar {:id :progress :value (float 0.0) :width "300px"})
+        (label {:value "Stopped" :id :running-state})))))
+
+(defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
     (commit)                                             ; Commit the form of which it is a part
     (consume-for (componentNamed :table main-ui)            ; Consume the form data (in :item) and set into the table
@@ -55,11 +52,13 @@
         (let [{:keys [item]} data
               row (object-array (map #(.getValue (.getItemProperty item %1)) ["first-name" "last-name" "notes"]))]
           (.addItem table row nil))
-        )))
-  ;
-  ; Simulate a background job for the progress indicator by using a timer to send events (increasing integers)
-  ; at 1 second intervals. We update the progress by subscribing to these events.
-  ;
+        ))))
+
+;
+; Simulate a background job for the progress indicator by using a timer to send events (increasing integers)
+; at 1 second intervals. We update the progress by subscribing to these events.
+;
+(defn- setup-background-actions [main-ui]
   (let [subscription (atom nil)                             ; Indicate we are running by saving the timer subsciption
         timer (->>                                          ; The timer that sends events - wrap it in UI access protection
                 (Observable/interval 100 TimeUnit/MILLISECONDS)
@@ -91,6 +90,19 @@
                         ))))
     (->                                                     ; Set up the Stop button to stop the action
       (button-clicks stop-button)
-      (rx/subscribe stop-fn)))
+      (rx/subscribe stop-fn))))
+
+(defn -init [^UI main-ui request]
+  ; Define our UI. Use :id to capture components we'll need later
+  (defui main-ui
+    (panel "Functional Vaadin Sampler" (tab-sheet)
+      (form-and-table)
+      (background-task)
+      )
+    )
+
+  (setup-form-actions main-ui)
+  (setup-background-actions main-ui)
+
   (.setPollInterval main-ui 50)                            ; Make the ProgressBar work - we could also use PUSH mode
   )
