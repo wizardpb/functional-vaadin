@@ -62,8 +62,6 @@
 
 ;; Fields
 
-; TODO - default validation failure handling
-
 (defn text-field
   "Create a TextField component from constructor arguments or a configuration Map.
   When used inside a form, will take an extra intial argument that
