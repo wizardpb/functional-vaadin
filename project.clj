@@ -21,6 +21,7 @@
                         :source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
                                        [org.clojure/tools.nrepl "0.2.11"]
+                                       [org.clojure/tools.namespace "0.2.11"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        ]

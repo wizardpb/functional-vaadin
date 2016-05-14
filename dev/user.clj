@@ -8,7 +8,8 @@
             [functional-vaadin.rx.operators :as ops]
             [functional-vaadin.utils :as u]
             [functional-vaadin.examples.run :refer [run-jetty]]
-            [rx.lang.clojure.core :as rx])
+            [rx.lang.clojure.core :as rx]
+            [clojure.tools.namespace.repl :refer [refresh]])
   (:use clojure.test functional-vaadin.ui.test-ui-def config-gen)
   (:import (java.io File)
            (org.apache.commons.io FileUtils)

@@ -15,7 +15,7 @@
            (java.util.concurrent TimeUnit)
            (rx Observable)))
 
-; TODO - add To-Do tab
+; TODO - add To-Do tab˙
 
 (defn- form-and-table []
   (horizontal-layout {:sizeFull [] :caption "Form and Table"}

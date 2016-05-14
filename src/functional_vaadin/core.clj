@@ -1,6 +1,22 @@
 (ns functional-vaadin.core
-  "The primary namespace for the project, contains all publically accesible buidlers and vars. This should be the only
-  required namespace for use in a project"
+  "The primary namespace for the project, contains all publically accesible buidlers and vars.
+
+  All builder functions take a variable number of orguments, all of a similar form:
+
+  (<builder> ctor-arguments? config? & children)
+
+  where:
+
+  ctor-arguments: are any set of constructor arguments for the corresponding component, as defined in the Vaadin javadoc.
+                  if this is not supplied, the null constructor will be used.
+
+  config:         is a Map of attribute-vaue pairs corresponding to setters on the Component. The names are the same as the
+                  setter name, minus the 'set' prefix, and all lower case e.g. the config '{:id \"this-como\"} will set
+                  the 'id' attribute using setId(val)
+
+  children:       are the Components child Components, which will be added as appropriate
+                  "
+
   (:require [clojure.set :as set]
             [functional-vaadin.naming :as nm]
             [functional-vaadin.thread-vars :refer :all]
@@ -40,7 +56,9 @@
 
 ;; Public functions - named component access
 
-(defn componentNamed [key ui]
+(defn componentNamed
+  "Return a component named with an : configuration attriute in the given UI"
+  [key ui]
   (nm/componentAt ui key))
 
 ;; Base components - Button, Link, Label etc.
@@ -49,6 +67,7 @@
   "Create a Button component from constructor arguments or a configuration Map"
   [& args]
   (create-widget Button args))
+
 
 (defn link
   "Create a Link component from constructor arguments or a single configuration Map"
@@ -212,7 +231,7 @@ not the layout itself"
 ; A MenuBar acts like a container for MenuItems
 
 (defn menu-bar
-  "Create a MenuBar. Children must be MenuItem builders"
+  "Create a MenuBar. Children must be MenuItem builders."
   [& args]
   (let [[mb items] (create-widget MenuBar args true)]
     (add-children mb items)
@@ -220,13 +239,16 @@ not the layout itself"
 
 
 (defn menu-item
+  "Create a menu item for the contaning menu. Children cause a sub0menu to be created."
   [name & args]
   (if (not (instance? String name))
     (bad-argument "Menu name must be a String: " name))
   (parse-menu-item name args)
   )
 
-(defn menu-separator []
+(defn menu-separator
+  "Create a menu separator in a menu."
+  []
   (->MenItemSeparator))
 
 ;; Forms
