@@ -15,16 +15,10 @@
            (org.apache.commons.io FileUtils)
            (com.vaadin.ui UI)))
 
-(def show-t true)
-(comment
-  (gen-config-table)
-  (def timer (Observable/interval 1 TimeUnit/SECONDS) )
-  (def ss (rx/subscribe timer (fn [t] (if show-t (println t)))))
-  (def show-t false)
-  (rx/unsubscribe ss)
-  )
 
 (comment
+  (gen-config-table)
+
   (def server (run-jetty "functional_vaadin.examples.Sampler" true))
   (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
   (def server (run-jetty "functional_vaadin.ui.TestUI" true))

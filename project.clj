@@ -1,4 +1,4 @@
-(defproject com.prajnainc/functional-vaadin "0.1.0-BETA"
+(defproject com.prajnainc/functional-vaadin "0.1.0"
   :description "A functional interface to Vaadin"
   :url "https://github.com/wizardpb/functional-vaadin"
   :license {:name "Eclipse Public License"
