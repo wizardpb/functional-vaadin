@@ -289,9 +289,10 @@ not the layout itself"
   (:default) of the property, plus any of the table setColumnXXX setters. These will be configured on the table as
   for other config options"
   ([propertyId config]
-   (assoc
-     (merge {:type Object :defaultValue nil} config)
-     :propertyId propertyId)
+   (->TableColumn
+     (assoc
+      (merge {:type Object :defaultValue nil} config)
+      :propertyId propertyId))
    )
   ([propertyId] (table-column propertyId {}))
   )

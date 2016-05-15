@@ -4,7 +4,8 @@
   (:import (org.eclipse.jetty.server Server)
            (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
            [com.vaadin.server VaadinServlet]
-           (java.io File))  )
+           (java.io File))
+  (:gen-class))
 
 (defn run-jetty [ui-name bg?]
   (let [server (Server. 8080)
@@ -61,3 +62,4 @@
 (defn -main
   ([] (prompt-loop nil))
   ([examples-dir] (prompt-loop examples-dir)))
+

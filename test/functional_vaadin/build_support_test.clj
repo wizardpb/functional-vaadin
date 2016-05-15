@@ -6,12 +6,14 @@
            (com.vaadin.server Resource ClassResource)))
 
 (deftest new-instance
+
   (testing "Ctor choosing"
     (doseq [args [
                   (list "Caption")
                   (list (ClassResource. "file"))
                   (list "Caption" (ClassResource. "file"))
                   (list {:caption "Caption"})
+                  (list "Caption" {:icon (ClassResource. "file")})
                   ]
             ]
       (let [[b c] (create-widget Button args false)]
@@ -24,15 +26,17 @@
     (is (thrown-with-msg? IllegalArgumentException #"Cannot create a Button from \(1 2\)"
                           (create-widget Button '(1 2) false)))
     (doseq [args [
-                  (list "Caption" :a :b)
-                  (list (VerticalLayout.) :a :b)
-                  (list "Caption" (VerticalLayout.) :a :b)
-                  (list {:caption "Caption" :content (VerticalLayout.)} :a :b)
+                  (list (VerticalLayout.) (Label. "a") (Label. "b"))
+                  (list "Caption" (VerticalLayout.) (Label. "a") (Label. "b"))
+                  (list {:caption "Caption" :content (VerticalLayout.)} (Label. "a") (Label. "b"))
                   ]
             ]
       (let [[b c] (create-widget Panel args true)]
         (is (instance? Panel b))
-        (is (= [:a :b] c))
+        (is (collection? c))
+        (is (= 2 (count c)))
+        (is (every? #(instance? Label %1) c))
+        (is (= ["a" "b"] (map (fn [it] (.getValue it)) c)))
         (is (= (if (and (instance? VerticalLayout (first args)) (= 3 (count args))) nil "Caption" ) (.getCaption b)))))
 
     (doseq [args [
@@ -45,4 +49,5 @@
         (is (= 1 (count c))))))
 
   )
+
 

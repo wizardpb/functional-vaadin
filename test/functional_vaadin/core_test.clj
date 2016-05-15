@@ -14,7 +14,20 @@
            (com.vaadin.data.util IndexedContainer PropertysetItem)
            (functional_vaadin.build_support FunctionCommand)
            (java.io File)
-           (com.vaadin.server FileResource)))
+           (com.vaadin.server FileResource)
+           (com.vaadin.shared.ui.label ContentMode)))
+
+(deftest ui-label
+  (testing "Constructors"
+    (is (instance? Label (label)))
+    (is (= "Value" (.getValue (label "Value"))))
+    (is (= "Value" (.getValue (label {:value "Value"}))))
+    (is (= "Value" (.getValue (label "Overwrite" {:value "Value"}))))
+    (is (= "Value" (.getValue (label "Value" ContentMode/TEXT))))
+    (is (= "Value" (.getValue (label "Value" ContentMode/TEXT))))
+    (is (= "<strong>Value</strong>"
+          (.getValue (label {:value "<strong>Value</strong>" :contentMode ContentMode/HTML}))))
+    ))
 
 (deftest ui-panel
   (testing "Building"
@@ -63,6 +76,10 @@
       (is (= 1 (.getComponentCount (.getContent p))))
       (is (instance? Label (.getComponent (.getContent p) 0)))
       )
+
+    (is (instance? TextField (.getContent (panel (text-field)))))
+    (is (instance? TextField (.getContent (panel {:content (text-field)}))))
+
     )
   )
 

@@ -16,14 +16,6 @@
            (com.vaadin.ui UI)))
 
 
-(comment
-  (gen-config-table)
-
-  (def server (run-jetty "functional_vaadin.examples.Sampler" true))
-  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
-  (def server (run-jetty "functional_vaadin.ui.TestUI" true))
-  (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI" true))
-  )
 
 (def test-dir "test/")
 
@@ -47,20 +39,15 @@
       (load-file fname))
     (apply run-tests (map test-ns-sym test-files))))
 
+
 (comment
-  (def fm (form (button)))
-  (def btn (.getComponent fm 0))
-  (rx/subscribe (->> (obs/button-clicks btn)
-                     (ops/commit)
-                     ) (fn [v] (pp/pprintln v)))
-  (def o (obs/events-in
-           (fn [s end]
-             (println "Started " end)
-             (loop [i 0]
-               (when (< i end)
-                 (.onNext s i)
-                 (Thread/sleep 1000)
-                 (recur (inc i))))) 20))
-  (def sub (rx/subscribe o (fn [v] (println v))))
-  (rx/unsubscribed? sub)
+  (gen-config-table)
+  (do (refresh) (run-my-tests))
+  (def server (run-jetty "functional_vaadin.examples.Sampler" true))
+  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
+  (def server (run-jetty "functional_vaadin.ui.TestUI" true))
+  (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI" true))
+  (def server (run-jetty "functional_vaadin.examples.ToDo" true))
+  (do (.stop server) (def server (run-jetty "functional_vaadin.examples.ToDo" true)))
   )
+

@@ -26,23 +26,6 @@
 
 (deftest configuration
 
-  (testing "Computed children"
-    (let [l (vertical-layout (map #(label (str "Label " %1)) (range 0 10)))]
-      (is (= (.getComponentCount l) 10))
-      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))
-      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str "Label " %1 )) (range (.getComponentCount l)))))
-
-      )
-    (let [l (vertical-layout {:margin true :spacing true} (map #(label (str "Label " %1)) (range 0 10)))]
-      (is (.getMargin l))
-      (is (.isSpacing l))
-      (is (= (.getComponentCount l) 10))
-      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))
-      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str "Label " %1 )) (range (.getComponentCount l)))))
-
-      )
-    )
-
   (testing "Single option args"
     (let [obj (Button.)]
       (is (identical? (configure obj {:caption "Caption"}) obj))
@@ -144,6 +127,23 @@
       (is (= (.getMargin l) (MarginInfo. false true))))
     (let [l (vertical-layout {:margin [:top :left]})]
       (is (= (.getMargin l) (MarginInfo. true false false true))))
+    )
+
+  (testing "Computed children"
+    (let [l (vertical-layout (map #(label (str "Label " %1)) (range 0 10)))]
+      (is (= (.getComponentCount l) 10))
+      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))
+      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str "Label " %1 )) (range (.getComponentCount l)))))
+
+      )
+    (let [l (vertical-layout {:margin true :spacing true} (map #(label (str "Label " %1)) (range 0 10)))]
+      (is (.getMargin l))
+      (is (.isSpacing l))
+      (is (= (.getComponentCount l) 10))
+      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))
+      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str "Label " %1 )) (range (.getComponentCount l)))))
+
+      )
     )
 
   (testing "Error handling"

@@ -10,7 +10,8 @@
            (java.util Map Collection)
            (java.lang.reflect Constructor)
            (clojure.lang Keyword)
-           (com.vaadin.server Resource)))
+           (com.vaadin.server Resource)
+           ))
 
 
 ;; Widget creation
@@ -69,24 +70,30 @@
   and there is a null constructor, prefer that to any constructors, and construct and congfigure the widget from the
   map. If no constructors match, and there is a null constructor, create a widget using that
 
-  Any remaining arguments are treated as children, unless allow-children is false. The new object and children are
+  Any remaining arguments are treated as an optionanl configuration Map, folloed by any children, unless allow-children
+  is false. The new object is configured from the optional configuration Map, and this and any children are
   returned in a vector. If there is no match to the arguments are made, and exception is thrown"
-  [cls args allow-children]
-  (let [first-arg (first args)
-        null-ctor (.getConstructor cls (make-array Class 0))]
 
-    (letfn [(make-result [obj computed-children?]
+  [cls args allow-children]
+  (let [null-ctor (.getConstructor cls (make-array Class 0))]
+
+    (letfn [
+            (unwrap-children [obj computed-children?]
               (let [children (unwrap-sequence-args computed-children?)]
                 (if (and (not allow-children) (> (count children) 0))
                  (bad-argument (.getSimpleName cls) " does not allow children")
                  [obj children])))
+
+            (make-result [obj children]
+              (let [config (first children)]
+                (if (instance? Map config)         ; Configure if needed and check/unwrap children
+                 (unwrap-children (configure obj config) (drop 1 children))
+                 (unwrap-children obj children))))
             ]
 
-      ;; First try for configuration
-      (if (and null-ctor (instance? Map first-arg))
-        (make-result
-          (configure (.newInstance null-ctor (object-array 0)) first-arg)
-          (rest args))
+      ;; First try for configuration only
+      (if (and null-ctor (instance? Map (first args)))
+        (make-result (.newInstance null-ctor (object-array 0)) args)
 
         ;; Otherwise try and find a non-null constructor and use that
         (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
@@ -126,7 +133,7 @@
 (defmulti add-children (fn [parent children] (class parent)))
 
 (defmethod add-children :default [parent children]
-  (unsupported-op "add-children udefined!!!" (class parent)))
+  (unsupported-op "add-children undefined!!!" (class parent)))
 
 (defn- set-children-as-content [obj children]
   (if (< 1 (count children))
@@ -135,7 +142,8 @@
 
 (defmethod add-children Panel [panel children]
   (if-let [content (.getContent panel)]
-    (add-children content children)
+    (when-not (zero? (count children))
+      (add-children content children))
     (set-children-as-content panel children))
   panel)
 
@@ -173,7 +181,6 @@
   (doseq [child children]
     (.addComponent parent child))
   parent)
-
 
 ;; A Command that allows functions as Menu Items
 
@@ -248,9 +255,10 @@
 
 ;Tables
 
+
 (defn translate-column-options [propertyId column-config]
   ; translate option :XXX to :columnXXX. This gets further translated to :setColumnXXX by (configure)
-  ; Also add in the propertyIs as the first argument
+  ; Also add in the propertyId as the first argument
   (reduce (fn [tconfig [opt-key opt-arg]]
             (assoc tconfig
               (keyword (str "column" (capitalize (name opt-key))))
@@ -258,14 +266,22 @@
     {}
     column-config))
 
-(defmethod add-children Table [table children]
-  ; Children are configuration Maps of Table setters for that column
-  (doseq [child children]
-    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys child #{:propertyId :type :defaultValue})]
+(defprotocol ITableColumn
+  (addToTable [this table]))
+
+(deftype TableColumn [options]
+  ITableColumn
+  (addToTable [this table]
+    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys options #{:propertyId :type :defaultValue})]
       (.addContainerProperty table propertyId type defaultValue)
       (->> column-config
         (translate-column-options propertyId)
-        (configure table))))
+        (configure table)))))
+
+(defmethod add-children Table [table children]
+  ; Children are configuration Maps of Table setters for that column
+  (doseq [child children]
+    (addToTable child table))
   table)
 
 ;; Field building
