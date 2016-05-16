@@ -63,13 +63,40 @@
     (handleAction [sender target] (a-fn this sender target)))
   )
 
-(defn with-actions [component actions]
+(defn with-action-events
+  "Add a set of shortcut actions to a Panel or Window, and generate events that track their activation. Actions are a
+  list of action specs, which are Maps with keys :name and :keycode. These specify the action and keycode for eact action.
+
+  On activation, sunscribers will receive a value that is a Map of :action, :sender and :target keys. These are as passed
+  to the handleAction method of the Action.Listener interface."
+  [component actions]
   (rx/observable*
     (fn [^rx.Subscriber o]
       (doseq [action actions]
         (.addAction component
           (event-shortcut action (fn [a s t] (when-subscribed o (.onNext o {:action a :sender s :target t})))))))))
 
-; TODO - other observers - table clicks, component clicks - see notes.
+(defn header-clicks
+  "Generate events from mouse clicks in a table header. Subscribers will receive a value that is a Map with keys
+  :source :event :propertyId"
+  [table]
+  (rx/observable*
+    (fn [^Subscriber sub]
+      (onHeaderClick table
+        (fn [source evt propertyId]
+          (.onNext sub {:source source :event evt :propertyId propertyId})))))
+  )
+
+(defn footer-clicks
+  "Generate events from mouse clicks in a table header. Subscribers will receive a value that is a Map with keys
+  :source :event :propertyId"
+  [table]
+  (rx/observable*
+    (fn [^Subscriber sub]
+      (onFooterClick table
+        (fn [source evt propertyId]
+          (.onNext sub {:source source :event evt :properyId propertyId})))))
+  )
+; TODO - other observers - component clicks - see notes.
 
 

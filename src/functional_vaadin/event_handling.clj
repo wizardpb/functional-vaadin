@@ -1,7 +1,7 @@
 (ns functional-vaadin.event-handling
   (:require [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent AbstractTextField)
+  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent AbstractTextField Table Table$HeaderClickListener Table$HeaderClickEvent Table$FooterClickListener Table$FooterClickEvent)
            (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent FieldEvents$TextChangeListener FieldEvents$TextChangeEvent FieldEvents$TextChangeNotifier)
            (com.vaadin.data Property$ValueChangeListener Property$ValueChangeEvent Property$ValueChangeNotifier)))
 
@@ -87,4 +87,24 @@
       (reify
         FieldEvents$TextChangeListener
         (^void textChange [this ^FieldEvents$TextChangeEvent evt] (call-form-action act-fn evt))
+        ))))
+
+(defn onHeaderClick [table action]
+  (let [act-fn action]
+    (.addHeaderClickListener
+      table
+      (reify
+        Table$HeaderClickListener
+        (^void headerClick [this ^Table$HeaderClickEvent evt]
+          (act-fn (.getSource evt) evt (.getPropertyId evt)))
+        ))))
+
+(defn onFooterClick [table action]
+  (let [act-fn action]
+    (.addFooterClickListener
+      table
+      (reify
+        Table$FooterClickListener
+        (^void footerClick [this ^Table$FooterClickEvent evt]
+          (act-fn (.getSource evt) evt (.getPropertyId evt)))
         ))))

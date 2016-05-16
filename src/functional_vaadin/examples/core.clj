@@ -32,59 +32,73 @@
           (.setValue l (if (.getValue source) (str "<s style=\"color: #a3a3a3\">" item "</s>") item)))))
     (object-array [cb lbl])))
 
+(def max-page-length 10)
+
+(defn set-item-count [ui table n]
+  (.setValue
+    (componentNamed :item-count ui)
+    (str n " item" (if (> n 1) "s")))
+  (.setVisible (.getParent table) (not (zero? n)))
+  )
+
+(defn inc-item-count [ui table]
+  (let [n (.incItemCount ui)]
+    (.setPageLength table (min n max-page-length))
+    (set-item-count ui table n))
+  )
+
+(defn dec-item-count [ui table]
+  (let [n (.decItemCount ui)]
+    (.setPageLength table (min n max-page-length))
+    (set-item-count ui table n)))
+
 (defn add-todo-item [table {:keys [action sender target]}]
-  (let [ui (.getUI table)
-        page-length (inc (.getPageLength table))]
-    (.setPageLength table page-length)
+  (let [ui (.getUI table)]
     (.addItem table (data-row-for (.getValue target)) nil)
     (.clear target)
-    (.setValue (componentNamed :item-count ui) (str page-length " item" (if (> page-length 1) "s")))
-    (.setVisible (componentNamed :table-panel ui) (not (zero? (.getPageLength table))))))
+    (inc-item-count ui table)
+    ))
 
 (defn remove-completed [table]
   (let [^IndexedContainer data-source (.getContainerDataSource table)
-        filters (.getContainerFilters data-source)]
+        filters (.getContainerFilters data-source)
+        ui (.getUI table)]
     (.removeAllContainerFilters data-source)
     (doseq [itemId (.getItemIds data-source)]
-      (if (.getValue (.getValue (.getContainerProperty data-source itemId "check-box")))
+      (when (.getValue (.getValue (.getContainerProperty data-source itemId "check-box")))
+        (dec-item-count ui table)
         (.removeItem data-source itemId)))
     (doseq [f filters] (.addContainerFilter data-source f)))
   )
 
+(defn select-items [source table filter]
+  (let [ui (.getUI table)]
+    (.removeAllContainerFilters (.getContainerDataSource table))
+    (if filter (.addContainerFilter (.getContainerDataSource table) filter))
+    (doseq [b-id [:button-all :button-complete :button-todo]]
+      (.setEnabled (componentNamed b-id ui) (not= b-id (keyword (.getId source))))))
+  )
+
 (defn animate [ui]
-  ;; Enter adds a todo item
+  ;; Enter adds an item
   (->>
-    (obs/with-actions (componentNamed :text-panel ui) [{:name "Enter" :keycode 13}])
+    (obs/with-action-events (componentNamed :text-panel ui) [{:name "Enter" :keycode 13}])
     (ops/consume-for (componentNamed :todo-list ui) add-todo-item))
 
-  ;; Selection button observers for all three selction buttons
+  ;; Selection button observers for all three selection buttons
   (let [table (componentNamed :todo-list ui)]
     (->>
       (obs/button-clicks (componentNamed :button-all ui))
       (ops/consume-for table
-        (fn [t {:keys [source]}]
-          (.removeAllContainerFilters (.getContainerDataSource t))
-          (.setEnabled source false)
-          (doseq [b [:button-complete :button-todo]] (.setEnabled (componentNamed b ui) true))
-          )))
+        (fn [t {:keys [source]}] (select-items source t nil))))
     (->>
       (obs/button-clicks (componentNamed :button-complete ui))
       (ops/consume-for table
-        (fn [t {:keys [source]}]
-          (.removeAllContainerFilters (.getContainerDataSource t))
-          (.addContainerFilter (.getContainerDataSource t) (->CompletedFilter))
-          (.setEnabled source false)
-          (doseq [b [:button-all :button-todo]] (.setEnabled (componentNamed b ui) true))
-          )))
+        (fn [t {:keys [source]}] (select-items source t (->CompletedFilter)))))
     (->>
       (obs/button-clicks (componentNamed :button-todo ui))
       (ops/consume-for table
-        (fn [t {:keys [source]}]
-          (.removeAllContainerFilters (.getContainerDataSource t))
-          (.addContainerFilter (.getContainerDataSource t) (->PendingFilter))
-          (.setEnabled source false)
-          (doseq [b [:button-complete :button-all]] (.setEnabled (componentNamed b ui) true))
-          )))
+        (fn [t {:keys [source]}] (select-items source t (->PendingFilter)))))
 
     ; Clear completed items
     (->>
@@ -92,6 +106,17 @@
       (ops/consume-for table
         (fn [t {:keys [source]}] (remove-completed t))))
 
+    ; Header click to mark all
+    (->>
+      (obs/header-clicks table)
+      (ops/consume-for table
+        (fn [t {:keys [source event propertyId]}]
+          (when (= propertyId "check-box")
+            (select-items (componentNamed :button-all (.getUI t)) t nil)
+            (doseq [itemId (.getItemIds t)]
+              (print itemId) (flush)
+              (.setValue (.getValue (.getContainerProperty t itemId "check-box")) true))
+            (println)))))
     ))
 
 (defn button-panel []
@@ -119,7 +144,8 @@
                         :visible false
                         :alignment Alignment/MIDDLE_CENTER}
         (table {:id :todo-list
-               :alignment Alignment/MIDDLE_CENTER :width "99%" :pageLength 0}
+                :alignment Alignment/MIDDLE_CENTER :width "99%" :pageLength 0
+                :sortDisabled true}
          (table-column "check-box" {:width 60 :header "" :icon FontAwesome/CHEVRON_DOWN :type CheckBox :alignment Table$Align/CENTER})
          (table-column "list-item" {:type Label :header ""}))
         (button-panel)
