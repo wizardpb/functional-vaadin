@@ -12,6 +12,7 @@
         ^ServletContextHandler context (ServletContextHandler. ServletContextHandler/SESSIONS)]
     (.setContextPath context "/")
     (.setInitParameter context "UI" ui-name)
+    (.setInitParameter context "legacyPropertyToString" "true")
     (.setResourceBase context "dev-resources/public")
 
     (.setHandler server context)

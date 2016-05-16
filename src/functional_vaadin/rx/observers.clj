@@ -4,7 +4,8 @@
             [functional-vaadin.utils :refer :all]
             [rx.lang.clojure.core :as rx])
   (:import (rx Subscriber Observable)
-           (com.vaadin.ui AbstractTextField)))
+           (com.vaadin.ui AbstractTextField)
+           (com.vaadin.event Action$Listener ShortcutAction)))
 
 (defn button-clicks
   "Observe button clicks for the given button. Returns the Observable. Subscribers will receive a Map
@@ -55,6 +56,19 @@
                         (when-subscribed (.onCompleted s))
                         (catch Throwable e
                           (when-subscribed (.onError s e))))))))
+
+(defn- event-shortcut
+  [{:keys [name keycode modifiers]} a-fn]
+  (proxy [ShortcutAction Action$Listener] [name (int keycode) (int-array (or modifiers []))]
+    (handleAction [sender target] (a-fn this sender target)))
+  )
+
+(defn with-actions [component actions]
+  (rx/observable*
+    (fn [^rx.Subscriber o]
+      (doseq [action actions]
+        (.addAction component
+          (event-shortcut action (fn [a s t] (when-subscribed o (.onNext o {:action a :sender s :target t})))))))))
 
 ; TODO - other observers - table clicks, component clicks - see notes.
 

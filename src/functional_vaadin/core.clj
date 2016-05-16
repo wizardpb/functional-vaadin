@@ -34,7 +34,8 @@
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
            (clojure.lang Keyword)
-           (com.vaadin.server Resource)))
+           (com.vaadin.server Resource)
+           (com.vaadin.event ShortcutAction Action$Listener)))
 
 ;; Primary build macro
 
@@ -60,6 +61,14 @@
   "Return a component named with an : configuration attriute in the given UI"
   [key ui]
   (nm/componentAt ui key))
+
+;; Auxiliary objects - actions, etc.
+
+(defn shortcutAction
+  ([name keycode a-fn modifiers]
+   (proxy [ShortcutAction Action$Listener] [name (int keycode) (int-array modifiers)]
+     (handleAction [sender target] (a-fn this sender target))))
+  ([name keycode a-fn] (shortcutAction name keycode a-fn [])))
 
 ;; Base components - Button, Link, Label etc.
 

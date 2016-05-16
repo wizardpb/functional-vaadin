@@ -76,12 +76,19 @@
     (let [f (text-field {:validateWith (StringLengthValidator. "Length Error: {0}")})]
       (is (= 1 (count (.getValidators f))))
       (is (instance? StringLengthValidator (first (.getValidators f)))))
+
     (let [f (text-field {:validateWith [
                                         (StringLengthValidator. "Length Error: {0}")
                                         (->FunctionalValidator (fn [obj] false) "Always fail {0}")]})]
       (is (= 2 (count (.getValidators f))))
       (is (= [StringLengthValidator FunctionalValidator] (map #(class %1) (.getValidators f)))))
     )
+
+  (testing "Actions"
+    (let [action (shortcutAction "Enter" 13 (fn [sender target] (println sender target)))
+          p (panel {:actions
+                    [action]})]
+      (.removeAction p action)))
 
   (testing "Binding"
     (let [fg (with-form

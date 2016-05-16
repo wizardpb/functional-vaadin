@@ -12,7 +12,8 @@
            (clojure.lang Keyword)
            (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment)
            (com.vaadin.shared.ui MarginInfo)
-           (javax.xml.validation Validator)))
+           (javax.xml.validation Validator)
+           (com.vaadin.event Action Action$Listener Action$Notifier)))
 
 (def attribute-translation
   "A mapping for alternative names for configuration attribute keys"
@@ -138,13 +139,15 @@
                         :validate  check-validators
                         :execute   (fn [obj opt-key opt-val] (add-validations obj opt-val))
                         :error-msg "Arguments must all be validators"}
-   ; deprecated, removed  in favour of Rx
-   ;:onClick            {:validate  (fn [val] (ifn? val))
-   ;                     :error-msg "Click handler must be a function"
-   ;                     :execute   (fn [obj opt-key action] (onClick obj action))}
-   ;:onValueChange      {:validate  (fn [val] (ifn? val))
-   ;                     :error-msg "Value change handler must be a function"
-   ;                     :execute   (fn [obj opt-key action] (onValueChange obj action))}
+   :actions            {
+                        :validate  (fn [val] (every? #(and (instance? Action %1) (instance? Action$Listener %1)) val))
+                        :execute   (fn [obj opt-key opt-val]
+                                     (if (not (instance? Action$Notifier obj))
+                                       (bad-argument "Actions cannot be added to a " (.getSimpleName (class obj))))
+                                     (doseq [action opt-val] (.addAction obj action)))
+                        :error-msg "Arguments must all be Actions"
+                        }
+
    })
 
 (defn- validate-option [errors [opt-key opt-val] specs]
