@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="Added header click clearing, minor refactoring">
+    <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/event_handling.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/event_handling.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/ToDo.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/ToDo.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/core.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="116" column="88" selection-start-line="116" selection-start-column="88" selection-end-line="116" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -69,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="observers.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="97" column="15" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="15" />
+            <state relative-caret-position="298">
+              <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -104,6 +101,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="158">
               <caret line="5361" column="44" selection-start-line="5361" selection-start-column="44" selection-end-line="5361" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/run.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -476,7 +483,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/ui" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1463426523170">{:repl-history {:ide [], :local [&quot;(panel \&quot;Caption\&quot;)&quot; &quot;(first nil)&quot; &quot;(count nil)&quot; &quot;(count '(1))&quot; &quot;(.getContent (panel))&quot; &quot;(panel)&quot; &quot;(panel \&quot;Cap\&quot; (VerticalLayout.))&quot; &quot;(panel (VerticalLayout.))&quot; &quot;(.getContent (panel (VerticalLayout.)))&quot; &quot;(.getContent (panel \&quot;Cap\&quot; (VerticalLayout.)))&quot; &quot;(.getContent (panel ))&quot; &quot;(.getContent (panel \&quot;Cap\&quot;))&quot; &quot;(run)&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(macroexpand '(when-subscribed 1 (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;) (rx/on-next a b)))&quot; &quot;(macroexpand `(proxy [UI] []\n   (access [this runable] (println this runnable))))&quot; &quot;(macroexpand '(proxy [UI]\n        (access [this runable] (println this runnable))))&quot; &quot;(proxy [UI]\n       (access [this runable] (println this runnable)))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl]) (swap! r (fn [_] (.run rbl))))]\n  (.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(UI.)&quot; &quot;(proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))]\n  ;(.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))]\n  (.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(reify Runnable (run [this] \&quot;Ran!\&quot;))&quot; &quot;(.run (reify Runnable (run [this] \&quot;Ran!\&quot;)))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this]))]\n  (.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this]))]\n  ;(.access ui (reify Runnable (run [this] \n                                (swap! r (fn [_] \&quot;Ran!\&quot;))\n                                ;)))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this rqst]))]\n  (.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))\n  @r)&quot; &quot;(def ui (proxy [UI] []\n          (access [this rbl] (.run rbl))\n          (init [this rqst])))&quot; &quot;(.access ui)&quot; &quot;(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;(def r (atom nil))\n(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;(def r (atom nil))\n(swap! r (fn [_] \&quot;Ran!\&quot;))&quot; &quot;(def r (atom nil))\n(.run (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;ui&quot; &quot;(.init ui)&quot; &quot;(.init ui nil nil)&quot; &quot;(def ui (proxy [UI] []\n          (access [rbl] (.run rbl))\n          (init [ rqst])))&quot; &quot;(.init ui nil)&quot; &quot;(def ui (proxy [UI] []\n          (access [rbl] (.run rbl))\n          (init [ rqst] rqst)))&quot; &quot;(.init ui {})&quot; &quot;(.accesss ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran2!\&quot;)))))&quot; &quot;(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran2!\&quot;)))))&quot; &quot;@r&quot; &quot;(vertical-layout (map #(label (str \&quot;Label 1\&quot;)) (range 0 10)))&quot; &quot;(every? #(instance? Component %1) (first ()))&quot; &quot;(every? #(instance? Component %1) (first ((label))))&quot; &quot;(every? #(instance? Component %1) (first (list (list (label) (label)))))&quot; &quot;(unwrap-sequence-args (list (list (Label.) (Label.))))&quot; &quot;(unwrap-sequence-args (list (list)))&quot; &quot;(unwrap-sequence-args (list (Label.)))&quot; &quot;(unwrap-sequence-args (map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10)))&quot; &quot;(map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label 1\&quot;))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label \&quot; %1))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10))))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount l)))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount vl)))&quot; &quot;(.getCaption (label \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label.))&quot; &quot;(.getCaption (label {:caption \&quot;Caption\&quot;}))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.getValue (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(-&gt;TableColumn nil nil nil)&quot; &quot;(instance? Map (-&gt;TableColumn nil nil nil))&quot; &quot;(panel (text-field))&quot; &quot;(panel (TextField.))&quot; &quot;(compile)&quot; &quot;(-main)&quot; &quot;2&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(run-my-tests)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener]\n        (handleAction [this, sender, target]) (println \&quot;Handled \&quot; this sender target)))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13 []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) '()]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(.handleAction sa )&quot; &quot;(.handleAction sa nil nil)&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [sender target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(refresh)&quot; &quot;(.stop server)&quot; &quot;(.deref ui)&quot; &quot;@ui&quot; &quot;(deref ui)&quot; &quot;(state ui)&quot; &quot;(compile functional-vaadin.examples.ToDo)&quot; &quot;(incItemCount ui)&quot; &quot;(.state ui)&quot; &quot;(def ui (ToDo.))&quot; &quot;(.incItemCount ui)&quot; &quot;(.decItemCount ui)&quot; &quot;(.getItemCount ui)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.ToDo\&quot; true))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1463426609393">{:repl-history {:ide [], :local [&quot;(panel \&quot;Caption\&quot;)&quot; &quot;(first nil)&quot; &quot;(count nil)&quot; &quot;(count '(1))&quot; &quot;(.getContent (panel))&quot; &quot;(panel)&quot; &quot;(panel \&quot;Cap\&quot; (VerticalLayout.))&quot; &quot;(panel (VerticalLayout.))&quot; &quot;(.getContent (panel (VerticalLayout.)))&quot; &quot;(.getContent (panel \&quot;Cap\&quot; (VerticalLayout.)))&quot; &quot;(.getContent (panel ))&quot; &quot;(.getContent (panel \&quot;Cap\&quot;))&quot; &quot;(run)&quot; &quot;(def sub (do (UI/setCurrent (TestUI.))\n     (rx/subscribe\n       (-&gt;&gt; (Observable/interval 1 TimeUnit/SECONDS)\n         (with-ui-access)\n         ) (fn [v] (println v)) (fn [e] (println \&quot;Error: \&quot; e)))))&quot; &quot;(macroexpand '(when-subscribed 1 (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;)))&quot; &quot;(macroexpand '(when-subscribed o (println \&quot;wally\&quot;) (rx/on-next a b)))&quot; &quot;(macroexpand `(proxy [UI] []\n   (access [this runable] (println this runnable))))&quot; &quot;(macroexpand '(proxy [UI]\n        (access [this runable] (println this runnable))))&quot; &quot;(proxy [UI]\n       (access [this runable] (println this runnable)))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl]) (swap! r (fn [_] (.run rbl))))]\n  (.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(UI.)&quot; &quot;(proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))]\n  ;(.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (swap! r (fn [_] (.run rbl))))\n           (init [this]))]\n  (.access ui (reify Runnable (run [this] \&quot;Ran!\&quot;)))\n  @r)&quot; &quot;(reify Runnable (run [this] \&quot;Ran!\&quot;))&quot; &quot;(.run (reify Runnable (run [this] \&quot;Ran!\&quot;)))&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this]))]\n  (.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this]))]\n  ;(.access ui (reify Runnable (run [this] \n                                (swap! r (fn [_] \&quot;Ran!\&quot;))\n                                ;)))\n  @r)&quot; &quot;(let [r (atom nil)\n      ui (proxy [UI] []\n           (access [this rbl] (.run rbl))\n           (init [this rqst]))]\n  (.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))\n  @r)&quot; &quot;(def ui (proxy [UI] []\n          (access [this rbl] (.run rbl))\n          (init [this rqst])))&quot; &quot;(.access ui)&quot; &quot;(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;(def r (atom nil))\n(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;(def r (atom nil))\n(swap! r (fn [_] \&quot;Ran!\&quot;))&quot; &quot;(def r (atom nil))\n(.run (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran!\&quot;)))))&quot; &quot;ui&quot; &quot;(.init ui)&quot; &quot;(.init ui nil nil)&quot; &quot;(def ui (proxy [UI] []\n          (access [rbl] (.run rbl))\n          (init [ rqst])))&quot; &quot;(.init ui nil)&quot; &quot;(def ui (proxy [UI] []\n          (access [rbl] (.run rbl))\n          (init [ rqst] rqst)))&quot; &quot;(.init ui {})&quot; &quot;(.accesss ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran2!\&quot;)))))&quot; &quot;(.access ui (reify Runnable (run [this] (swap! r (fn [_] \&quot;Ran2!\&quot;)))))&quot; &quot;@r&quot; &quot;(vertical-layout (map #(label (str \&quot;Label 1\&quot;)) (range 0 10)))&quot; &quot;(every? #(instance? Component %1) (first ()))&quot; &quot;(every? #(instance? Component %1) (first ((label))))&quot; &quot;(every? #(instance? Component %1) (first (list (list (label) (label)))))&quot; &quot;(unwrap-sequence-args (list (list (Label.) (Label.))))&quot; &quot;(unwrap-sequence-args (list (list)))&quot; &quot;(unwrap-sequence-args (list (Label.)))&quot; &quot;(unwrap-sequence-args (map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10)))&quot; &quot;(map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label 1\&quot;))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label \&quot; %1))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10))))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount l)))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount vl)))&quot; &quot;(.getCaption (label \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label.))&quot; &quot;(.getCaption (label {:caption \&quot;Caption\&quot;}))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.getValue (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(-&gt;TableColumn nil nil nil)&quot; &quot;(instance? Map (-&gt;TableColumn nil nil nil))&quot; &quot;(panel (text-field))&quot; &quot;(panel (TextField.))&quot; &quot;(compile)&quot; &quot;(-main)&quot; &quot;2&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(run-my-tests)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener]\n        (handleAction [this, sender, target]) (println \&quot;Handled \&quot; this sender target)))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13 []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) '()]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(.handleAction sa )&quot; &quot;(.handleAction sa nil nil)&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [sender target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(refresh)&quot; &quot;(.stop server)&quot; &quot;(.deref ui)&quot; &quot;@ui&quot; &quot;(deref ui)&quot; &quot;(state ui)&quot; &quot;(compile functional-vaadin.examples.ToDo)&quot; &quot;(incItemCount ui)&quot; &quot;(.state ui)&quot; &quot;(def ui (ToDo.))&quot; &quot;(.incItemCount ui)&quot; &quot;(.decItemCount ui)&quot; &quot;(.getItemCount ui)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.ToDo\&quot; true))&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -811,8 +818,8 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31490386" sideWeight="0.50429183" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40745193" sideWeight="0.5872675" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40745193" sideWeight="0.41273248" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40745193" sideWeight="0.58941346" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40745193" sideWeight="0.41058657" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2360515" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.4248927" order="3" side_tool="false" content_ui="tabs" />
@@ -820,7 +827,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23748212" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21173105" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.4434907" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.44062948" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25608012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31971154" sideWeight="0.7360515" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
@@ -1225,14 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/run.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/AbstractInMemoryContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1314,14 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/event_handling.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -1332,8 +1323,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="97" column="15" selection-start-line="97" selection-start-column="15" selection-end-line="97" selection-end-column="15" />
+        <state relative-caret-position="298">
+          <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/run.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="116" column="88" selection-start-line="116" selection-start-column="88" selection-end-line="116" selection-end-column="88" />
           <folding />
         </state>
       </provider>

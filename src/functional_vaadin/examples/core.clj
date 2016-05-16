@@ -114,9 +114,7 @@
           (when (= propertyId "check-box")
             (select-items (componentNamed :button-all (.getUI t)) t nil)
             (doseq [itemId (.getItemIds t)]
-              (print itemId) (flush)
-              (.setValue (.getValue (.getContainerProperty t itemId "check-box")) true))
-            (println)))))
+              (.setValue (.getValue (.getContainerProperty t itemId "check-box")) true))))))
     ))
 
 (defn button-panel []
