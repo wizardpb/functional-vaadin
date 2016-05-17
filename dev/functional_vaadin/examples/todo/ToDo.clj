@@ -1,6 +1,6 @@
-(ns functional-vaadin.examples.ToDo
-  (:require [functional-vaadin.examples.core :refer :all])
-  (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.ToDo
+(ns functional-vaadin.examples.todo.ToDo
+  (:require [functional-vaadin.examples.todo.core :refer :all])
+  (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.todo.ToDo
               :extends com.vaadin.ui.UI
               :main false
               :state state

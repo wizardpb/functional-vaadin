@@ -2,9 +2,8 @@
   "A main function namespace to run examples in a jetty container"
   (:require [clojure.string :as str])
   (:import (org.eclipse.jetty.server Server)
-           (org.eclipse.jetty.servlet DefaultServlet ServletContextHandler)
-           [com.vaadin.server VaadinServlet]
-           (java.io File))
+           (org.eclipse.jetty.servlet ServletContextHandler)
+           [com.vaadin.server VaadinServlet])
   (:gen-class))
 
 (defn run-jetty [ui-name bg?]
@@ -26,12 +25,12 @@
 
 (defn choose-example [examples]
   (loop []
-    (doseq [f (map-indexed #(str (inc %1) ". " (subs %2 0 (- (count %2) 4))) examples)]
+    (doseq [f (map-indexed #(str (inc %1) ". " %2) examples)]
       (println "  " f))
     (print "Choice? (Cntrl-C to exit) ") (flush)
     (let [item-number (dec (Integer/parseInt (read-line)))]
       (if (< item-number (count examples))
-        (first (str/split (nth examples item-number) #"\."))
+        (nth examples item-number)
         (recur))))
   )
 
@@ -53,9 +52,7 @@
 
 (defn prompt-loop [examples-dir]
   (loop []
-    (let [files (filter
-                 #(re-matches #"[A-Z].*\.clj" %1)
-                 (.list (File. (or examples-dir "src/functional_vaadin/examples"))))]
+    (let [files ["Sampler" "todo.ToDo"]]
      (let [item (choose-example files)]
        (run-and-wait item)))
     (recur)))

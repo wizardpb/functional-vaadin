@@ -47,7 +47,7 @@
   (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
   (def server (run-jetty "functional_vaadin.ui.TestUI" true))
   (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI" true))
-  (def server (run-jetty "functional_vaadin.examples.ToDo" true))
-  (do (.stop server) (def server (run-jetty "functional_vaadin.examples.ToDo" true)))
+  (def server (run-jetty "functional_vaadin.examples.todo.ToDo" true))
+  (do (.stop server) (def server (run-jetty "functional_vaadin.examples.todo.ToDo" true)))
   )
 

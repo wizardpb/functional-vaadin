@@ -1,4 +1,4 @@
-(ns functional-vaadin.examples.core
+(ns functional-vaadin.examples.todo.core
   (:require [functional-vaadin.core :refer :all]
             [functional-vaadin.rx.observers :as obs]
             [functional-vaadin.rx.operators :as ops])
