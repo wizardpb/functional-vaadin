@@ -2,7 +2,7 @@
   "Utilities for converting between Clojure data strctures and Vaadin data binding objects -
   Property, Item and Container"
   (:require [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.data.util ObjectProperty PropertysetItem IndexedContainer)
+  (:import (com.vaadin.data.util ObjectProperty PropertysetItem IndexedContainer HierarchicalContainer)
            (java.util Map Collection)
            (com.vaadin.data Property Item Container)))
 
@@ -101,3 +101,30 @@
         []
         item-ids)
       )))
+
+(defmulti add-node (fn [con p c] (if (instance? Map c) :tree :leaf)))
+
+(defmethod add-node :leaf [container parent child]
+  (.addItem container child)
+  (when parent (.setParent container child parent)))
+
+(defn add-tree [container parent tree-parent children]
+  {:pre [(not (instance? Map tree-parent)), (collection? children)]}
+  (add-node container parent tree-parent)
+  (doseq [child children]
+    (add-node container tree-parent child)))
+
+(defmethod add-node :tree [container parent tree]
+  (let [tree-parent (first (keys tree))]
+    (add-tree container parent tree-parent (get tree tree-parent))))
+
+(defn add-hierarchy
+  "Add data to a Container$Hierarchical. The data are (recursively) a Sequence of Maps, each Map defining a parent (the key)
+  and the children (the value, another Sequence of Maps). Values can be any object, but are often Strings"
+  [container hdef]
+  (doseq [top-node hdef] (add-node container nil top-node))
+  container
+  )
+
+(defn ->Hierarchical [hdef]
+  (add-hierarchy (HierarchicalContainer.) hdef))
