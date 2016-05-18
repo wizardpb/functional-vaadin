@@ -37,9 +37,13 @@
            (com.vaadin.server Resource)
            (com.vaadin.event ShortcutAction Action$Listener)))
 
-;; Primary build macro
 
 ; TODO - better usage definition in doc strings
+; TODO - tree, treeTable, upload, calendar, popupview
+; TODO - layouts: accodian, absolute, css, custom(?)
+; TODO - registering custom components?
+
+;; Primary build macro
 
 (defmacro defui
   "Defines a Vaadin UI using the builder syntax. Given a com.vaadin.ui.UI object and a series of builder forms, creates

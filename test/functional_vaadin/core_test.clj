@@ -215,15 +215,18 @@
                (text-field {:bindTo {:propertyId "tf2" :type String :initialValue "tf2"}})
                (text-field {:bindTo "tf3" :caption "Text Field 3"})
                (text-field {:bindTo ["tf4" String "tf4"] :caption "Text Field 4"})
+               (text-field "Text Field 5" {:bindTo "tf5"})
                (check-box {:bindTo "cb2"}))]
       (is (instance? FieldGroup fg))
-      (is (= (count (.getFields fg)) 5))
-      (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
-      (is (= (set (.getBoundPropertyIds fg)) #{"tf1" "tf2" "tf3" "tf4" "cb2"}))
+      (is (= (count (.getFields fg)) 6))
+      (is (= (set (map #(.getPropertyId fg %1) (.getFields fg))) #{"tf1" "tf2" "tf3" "tf4" "tf5" "cb2"}))
+      (is (= (set (.getBoundPropertyIds fg)) #{"tf1" "tf2" "tf3" "tf4" "tf5" "cb2"}))
       (is (= "Text Field 3" (.getCaption (.getField fg "tf3") )))
       (is (= "Text Field 4" (.getCaption (.getField fg "tf4") )))
       (is (= (.getValue (.getField fg "tf2")) "tf2" ))
       (is (= (.getValue (.getField fg "tf4")) "tf4" ))
+      (is (= "Text Field 5" (.getCaption (.getField fg "tf5") )))
+
 
       (do
         (.setBuffered (.getField fg "tf3") false)
