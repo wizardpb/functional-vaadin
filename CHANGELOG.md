@@ -22,3 +22,21 @@
 - Full Action definition and handling
 - Various event observers: Upload, Component click, etc.
 
+## [0.1.1] - 2016-05-15
+
+### Added
+- Better documentation, better jar constructions
+
+<!---
+## [0.2.0]
+
+### Added
+- Added Tree, TreeTable, Accordion builders
+- Added Container$Hierarchical builder
+
+### Changed
+- Improved documentation
+--->
+
+
+
