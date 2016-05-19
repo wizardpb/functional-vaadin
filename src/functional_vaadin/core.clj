@@ -28,19 +28,16 @@
              Panel VerticalLayout HorizontalLayout FormLayout GridLayout TabSheet VerticalSplitPanel HorizontalSplitPanel
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
-             Table Tree TreeTable
+             Table Tree TreeTable Accordion
              Component UI Field Image ProgressBar MenuBar$MenuItem Window)
-           (java.util Date Map)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
-           (clojure.lang Keyword)
-           (com.vaadin.server Resource)
-           (com.vaadin.event ShortcutAction Action$Listener)))
+           (com.vaadin.event ShortcutAction Action$Listener)
+           ))
 
 
-; TODO - better usage definition in doc strings
-; TODO - tree, treeTable, upload, calendar, popupview
-; TODO - layouts: accodian, absolute, css, custom(?)
+; TODO - upload, calendar, popupview
+; TODO - layouts: absolute, css, custom(?)
 ; TODO - registering custom components?
 
 ;; Primary build macro
@@ -83,160 +80,203 @@
 
 
 (defn link
-  "Create a Link component from constructor arguments or a single configuration Map"
+  "Usage: (button ctor_args? config_map?)
+
+  Create a Link component from constructor arguments or a single configuration Map"
   [& args]
   (create-widget Link args))
 
 (defn label
-  "Create a Label component from constructor arguments or a configuration Map"
+  "Usage: (label ctor_args? config_map?)
+
+  Create a Label component from constructor arguments or a configuration Map"
   [& args]
   (create-widget Label args))
 
 ;; Fields
 
 (defn text-field
-  "Create a TextField component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-  defined the data bindng property the field will bind to"
+  "Usage: (text-field ctor_args? config_map?)
+
+  Create a TextField component from constructor arguments or a configuration Map."
   [& args]
   (create-widget TextField args))
 
 (defn password-field
-  "Create a PassowrdField component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-  defined the data bindng property the field will bind to"
+  "Usage: (password-field ctor_args? config_map?)
+
+  Create a PassowrdField component from constructor arguments or a configuration Map"
   [& args]
   (create-widget PasswordField args))
 
 (defn text-area
-  "Create a TextArea component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (text-area ctor_args? config_map?)
+
+  Create a TextArea component from constructor arguments or a configuration Map."
   [& args]
   (create-widget TextArea args))
 
 (defn rich-text-area
-  "Create a RichTextArea component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-  defined the data bindng property the field will bind to"
+  "Usage: (rich-text-area ctor_args? config_map?)
+
+  Create a RichTextArea component from constructor arguments or a configuration Map."
   [& args]
   (create-widget RichTextArea args))
 
 (defn inline-date-field
-  "Create a InineDateField component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-  defined the data bindng property the field will bind to"
+  "Usage: (inline-date-field ctor_args? config_map?)
+
+  Create a InineDateField component from constructor arguments or a configuration Map."
   [& args]
   (create-widget InlineDateField args))
 
 (defn popup-date-field
-  "Create a PopupDateField component. When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (popup-date-field ctor_args? config_map?)
+
+  Create a PopupDateField component from constructor arguments and/or a configuration Map."
   [& args]
   (create-widget PopupDateField args))
 
 (defn slider
-  "Create a Slider component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (slider ctor_args? config_map?)
+
+  Create a Slider component from constructor arguments or a configuration Map."
   [& args]
   (create-widget Slider args))
 
 (defn check-box
-  "Create a CheckBox component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (check-box ctor_args? config_map?)
+
+  Create a CheckBox component from constructor arguments or a configuration Map."
   [& args]
   (create-widget CheckBox args))
 
 (defn combo-box
-  "Create a ComboBox component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (combo-box ctor_args? config_map?)
+
+  Create a ComboBox component from constructor arguments or a configuration Map."
   [& args]
   (create-widget ComboBox args))
 
 (defn twin-col-select
-  "Create a TwinColSelect component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that
-defined the data bindng property the field will bind to"
+  "Usage: (twin-col-select ctor_args? config_map?)
+
+  Create a TwinColSelect component from constructor arguments or a configuration Map."
   [& args]
   (create-widget TwinColSelect args))
 
 (defn native-select
-  "Create a NativeSelect component from constructor arguments or a configuration Map.
-  When used inside a form, will take an extra intial argument that defined the data bindng property the field will bind to"
+  "Usage: (native-select ctor_args? config_map?)
+
+  Create a NativeSelect component from constructor arguments or a configuration Map."
   [& args]
   (create-widget NativeSelect args))
 
 (defn list-select
-  "Create a ListSelect component from constructor arguments or a configuration Map. When used inside a form, will
-  take an extra intial argument that defined the data bindng property the field will bind to"
+  "Usage: (list-select ctor_args? config_map?)
+
+  Create a ListSelect component from constructor arguments or a configuration Map."
   [& args]
   (create-widget ListSelect args))
 
 (defn option-group
-  "Create an OptionGroup component from constructor arguments or a configuration Map. When used inside a form,
-  will take an extra intial argument that defined the data bindng property the field will bind to"
+  "Usage: (option-group ctor_args? config_map?)
+
+  Create an OptionGroup component from constructor arguments or a configuration Map."
   [& args]
   (create-widget OptionGroup args))
 
 (defn progress-bar
-  "Create a ProgressBar component from constructor arguments or a configuration Map. When used inside a form, will take
-  an extra intial argument that\n  defined the data bindng property the field will bind to"
+  "Usage: (progress-bar ctor_args? config_map?)
+
+  Create a ProgressBar component from constructor arguments or a configuration Map."
   [& args]
   (create-widget ProgressBar args))
+
+(defn tree
+  "Usage: (tree ctor_args? config_map?)
+
+  Create a Tree component from constructor arguments or a configuration Map."
+  [& args]
+  (create-widget Tree args))
 
 ;; Containers and layouts
 
 (defn panel
-  "Create a Panel component from constructor arguments or a configuration Map. Allows only a single child which will be set as the content" [& args]
+  "Usage: (panel ctor_args? config_map? children?)
+
+  Create a Panel component from constructor arguments or a configuration Map. Content can be set as either a constructor argument,
+  configuration option, or a single child. If the content is set via constructor or configuration, multiple children may be given,
+  and will be added as children of the panel content (if applicable)"
+  [& args]
   (let [[panel children] (create-widget Panel args true)]
     (add-children panel children)))
 
 (defn vertical-layout
-  "Create a VerticalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
-  Expansion ration and alignment parameters are placed on the children,
-  not the layout itself"
+  "Usage: (vertical-layout ctor_args? config_map? children?)
+
+  Create a VerticalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  Expansion ration and alignment parameters are placed on the children, not the layout itself"
   [& args]
   (let [[vl children] (create-widget VerticalLayout args true)]
     (add-children vl children)))
 
 (defn horizontal-layout
-  "Create a HorizontalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
-  Expansion ration a alignment parameters  areplaced on the children,
-not the layout itself"
+  "Usage: (horizontal-layout ctor_args? config_map? children?)
+
+  Create a HorizontalLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  Expansion ration a alignment parameters  areplaced on the children, not the layout itself"
   [& args]
   (let [[hl children] (create-widget HorizontalLayout args true)]
     (add-children hl children)))
 
 (defn form-layout
-  "Create a FormLayout component from constructor arguments or a configuration Map. Remaining arguments are children.."
+  "Usage: (form-layout ctor_args? config_map? children?)
+
+  Create a FormLayout component from constructor arguments or a configuration Map. Remaining arguments are children.."
   [& args]
   (let [[hl children] (create-widget FormLayout args true)]
     (add-children hl children)))
 
 (defn grid-layout
-  "Create a GridLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
+  "Usage: (grid-layout ctor_args? config_map? children?)
+
+  Create a GridLayout component from constructor arguments or a configuration Map. Remaining arguments are children.
   Childen may have :position and :span configuration options to specify their position and size"
   [& args]
   (let [[hl children] (create-widget GridLayout args true)]
     (add-children hl children)))
 
 (defn tab-sheet
-  "Create a TabSheet componentfrom constructor arguments or a configuration Map. Remaining arguments are children.."
+  "Usage: (tab-sheet ctor_args? config_map? children?)
+
+  Create a TabSheet componentfrom constructor arguments or a configuration Map. Remaining arguments are children.."
   [& args]
   (let [[ts children] (create-widget TabSheet args true)]
     (add-children ts children)))
 
+(defn accordion
+  "Usage: (accordion ctor_args? config_map? children?)
+
+  Create an Accordion component from constructor arguments or a configuration Map. Remaining arguments are children.."
+  [& args]
+  (let [[acc children] (create-widget Accordion args true)]
+    (add-children acc children)))
+
 (defn vertical-split-panel
-  "Create a VerticalSplitPanel component from constructor arguments or a configuration Map. Remaining arguments are children."
+  "Usage: (vertical-split-panel ctor_args? config_map? children?)
+
+  Create a VerticalSplitPanel component from constructor arguments or a configuration Map. Only zero or two children may
+  be specified"
   [& args]
   (let [[sl children] (create-widget VerticalSplitPanel args true)]
     (add-children sl children)))
 
 (defn horizontal-split-panel
-  "Create a HorizontalSplitPanel component from constructor arguments or a configuration Map. Remaining arguments are children."
+  "Usage: (horizontal-split-panel ctor_args? config_map? children?)
+
+  Create a HorizontalSplitPanel component from constructor arguments or a configuration Map. Only zero or two children may
+  be specified"
   [& args]
   (let [[sl children] (create-widget HorizontalSplitPanel args true)]
     (add-children sl children)))
@@ -244,7 +284,9 @@ not the layout itself"
 ; A MenuBar acts like a container for MenuItems
 
 (defn menu-bar
-  "Create a MenuBar. Children must be MenuItem builders."
+  "Usage: (menu-bar ctor_args? config_map? menu-items?)
+
+  Create a MenuBar. Children must be MenuItem builders."
   [& args]
   (let [[mb items] (create-widget MenuBar args true)]
     (add-children mb items)
@@ -252,7 +294,9 @@ not the layout itself"
 
 
 (defn menu-item
-  "Create a menu item for the contaning menu. Children cause a sub0menu to be created."
+  "Usage: (menu-item ctor_args? config_map? menu-items?)
+
+  Create a menu item for the contaning menu. Children cause a sub-menu to be created."
   [name & args]
   (if (not (instance? String name))
     (bad-argument "Menu name must be a String: " name))
@@ -260,7 +304,9 @@ not the layout itself"
   )
 
 (defn menu-separator
-  "Create a menu separator in a menu."
+  "Usage: (menu-separator)
+
+  Create a menu separator in a menu."
   []
   (->MenItemSeparator))
 
@@ -285,19 +331,25 @@ not the layout itself"
 ;; Embedded items
 
 (defn image
-  "Create an Image component from constructor arguments or a configuration Map."
+  "Usage: (image ctor_args? config_map?)
+
+  Create an Image component from constructor arguments or a configuration Map."
   [& args]
   (create-widget Image args))
 
 (defn embedded
-  "Create an Embedded component from constructor arguments or a configuration Map."
+  "Usage: (embedded ctor_args? config_map?)
+
+  Create an Embedded component from constructor arguments or a configuration Map."
   [& args]
   (create-widget Embedded args))
 
 ;; Tables
 
 (defn table-column
-  "Create a table column. Only valid as a child of a Table component. The first argument must be the name of the
+  "Usage: (table-column property_id config_map)
+
+  Create a table column. Only valid as a child of a Table component. The first argument must be the name of the
   data binding property that the column will bind to. Other config options can be the type (:type) and default value
   (:default) of the property, plus any of the table setColumnXXX setters. These will be configured on the table as
   for other config options"
@@ -311,16 +363,27 @@ not the layout itself"
   )
 
 (defn table
-  "Create a Table component from constructor arguments or a configuration Map. Children must be table-column specifications"
+  "Usage: (table ctor_args? config_map? table-columns?)
+
+  Create a Table component from constructor arguments or a configuration Map. Children must be table-column specifications"
   [& args]
   (let [[table children] (create-widget Table args true)]
     (add-children table children)))
 
+(defn tree-table
+  "Usage: (tree-table ctor_args? config_map? table-columns?)
+
+  Create a TreeTable component from constructor arguments or a configuration Map. Children must be table-column specifications"
+  [& args]
+  (let [[tree-table children] (create-widget TreeTable args true)]
+    (add-children tree-table children)))
+
 ;; Window
 
 (defn window
-  "Create a Window component from constructor arguments or a configuration Map. Allows only a single child which will
-   be set as the content"
+  "Usage: (window ctor_args? config_map? children?)
+
+  Create a Window component from constructor arguments or a configuration Map. Content may be specified as for a Panel"
   [& args]
   (if-let [ui (UI/getCurrent)]
     (let [[window children] (create-widget Window args true)]

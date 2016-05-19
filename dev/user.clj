@@ -44,7 +44,7 @@
   (gen-config-table)
   (do (refresh) (run-my-tests))
   (def server (run-jetty "functional_vaadin.examples.Sampler" true))
-  (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true))
+  (do (.stop server) (def server (run-jetty "functional_vaadin.examples.Sampler" true)))
   (def server (run-jetty "functional_vaadin.ui.TestUI" true))
   (.stop server) (def server (run-jetty "functional_vaadin.ui.TestUI" true))
   (def server (run-jetty "functional_vaadin.examples.todo.ToDo" true))

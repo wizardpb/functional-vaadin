@@ -102,28 +102,78 @@
         item-ids)
       )))
 
-(defmulti add-node (fn [con p c] (if (instance? Map c) :tree :leaf)))
+(defn add-item-as-id [container last-id data]
+  (.addItem container data)
+  data)
 
-(defmethod add-node :leaf [container parent child]
-  (.addItem container child)
-  (when parent (.setParent container child parent)))
+(defn add-item-gen-id [container last-id data]
+  (let [id (inc last-id)
+        row (if (collection? data) data [data])
+        props (vec (.getContainerPropertyIds container))]
+    (.addItem container id)
+    (doseq [i (range 0 (count props))]
+      (when (< i (count row))
+        (.setValue (.getContainerProperty container id (props i)) (row i)))
+      )
+    id))
 
-(defn add-tree [container parent tree-parent children]
+(defmulti add-node (fn [container allow-children parent-id last-id child add-fn] (if (instance? Map child) :tree :leaf)))
+
+(declare add-tree)
+
+(defmethod add-node :leaf [container allow-children parent-id last-id child add-fn]
+  (let [child-id (add-fn container last-id child)]
+    (.setChildrenAllowed container child-id allow-children)
+    (when parent-id
+      (.setParent container child-id parent-id))
+    child-id))
+
+(defmethod add-node :tree [container allow-children parent-id last-id child add-fn]
+  (let [tree-parent (first (keys child))]
+    (add-tree container allow-children parent-id last-id tree-parent (get child tree-parent) add-fn)))
+
+(defn add-tree [container allow-children parent-id last-id tree-parent children add-fn]
   {:pre [(not (instance? Map tree-parent)), (collection? children)]}
-  (add-node container parent tree-parent)
-  (doseq [child children]
-    (add-node container tree-parent child)))
+  (let [tree-parent-id (add-node container true parent-id last-id tree-parent add-fn)]
+    (loop [remaining-children children
+           last-id tree-parent-id]
+      (if (empty? remaining-children)
+        last-id
+        (recur
+          (rest remaining-children)
+          (add-node container allow-children tree-parent-id last-id (first remaining-children) add-fn))))))
 
-(defmethod add-node :tree [container parent tree]
-  (let [tree-parent (first (keys tree))]
-    (add-tree container parent tree-parent (get tree tree-parent))))
+(defn- choose-id-gen
+  "Decide on the add method depending on the form of the data spec. Collection nodes use :gen-id, otherwise it's :add-id"
+  [hdef]
+  (if (or
+        (empty? hdef)
+        (collection? (first hdef))
+        (and (instance? Map (first hdef)) (collection? (first (keys (first hdef))))))
+    :gen-id
+    :as-id))
 
 (defn add-hierarchy
   "Add data to a Container$Hierarchical. The data are (recursively) a Sequence of Maps, each Map defining a parent (the key)
-  and the children (the value, another Sequence of Maps). Values can be any object, but are often Strings"
-  [container hdef]
-  (doseq [top-node hdef] (add-node container nil top-node))
-  container
+  and the children (the value, another Sequence of Maps).
+
+  add-as determines how items are added. :gen-id causes item ids to be generated, based on add index, :as-id uses the parent itself
+  as the id. The former is generally used when adding to a container with item properties (such as a TreeTable), the later when the
+  container only consideres the item ids themselves (as in a Tree). In the :gen-id case, keys and values are assumed to be Collections,
+  and are mapped by index to the Container properties."
+  ([container hdef allow-children add-as]
+   (when-not (#{:gen-id :as-id} add-as)
+     (bad-argument "Incorrect add specification: " add-as))
+   (let [add-fn (if (= add-as :gen-id) add-item-gen-id add-item-as-id)]
+     (loop
+      [remaining-nodes hdef
+       last-id -1]
+      (if (empty? remaining-nodes)
+        container
+        (recur
+          (rest remaining-nodes)
+          (add-node container allow-children nil last-id (first remaining-nodes) add-fn))))))
+  ([container hdef] (add-hierarchy container hdef false (choose-id-gen hdef)))
   )
 
 (defn ->Hierarchical [hdef]

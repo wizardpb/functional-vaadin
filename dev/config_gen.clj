@@ -5,7 +5,7 @@
         [clojure.java.io]
         [clojure.test])
   (:import (com.vaadin.ui
-             Label Embedded Link MenuBar Upload Button Calendar GridLayout
+             Label Embedded Link MenuBar Upload Button Calendar GridLayout Accordion
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
              ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar Window)
@@ -27,6 +27,7 @@
    HorizontalLayout
    FormLayout
    TabSheet
+   Accordion
    VerticalSplitPanel
    HorizontalSplitPanel
    Slider

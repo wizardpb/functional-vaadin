@@ -3,15 +3,16 @@
         [functional-vaadin.thread-vars]
         [functional-vaadin.core]
         [functional-vaadin.build-support]
+        [functional-vaadin.conversion]
         [functional-vaadin.utils]
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar TreeTable)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui TestUI]
-           (com.vaadin.data.util IndexedContainer PropertysetItem)
+           (com.vaadin.data.util IndexedContainer PropertysetItem HierarchicalContainer)
            (functional_vaadin.build_support FunctionCommand)
            (java.io File)
            (com.vaadin.server FileResource)
@@ -317,6 +318,55 @@
       (.setContainerDataSource tbl data)
       (is (= (.size tbl) 10)
         )
+      )))
+
+(deftest ui-tree-table
+  (testing "Creation"
+    (let [tbl (tree-table "My Table"
+                (table-column "Col1")
+                (table-column "Col2"))]
+      (is (instance? TreeTable tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      ))
+  (testing "Column config options"
+    (let [tbl (tree-table "My Table"
+                (table-column "Col1" {:type String :defaultValue "" :header "Column 1" :width 100})
+                (table-column "Col2" {:type Integer :defaultValue 0 :header "Column 2" :width 50}))
+          itemId (.addItem tbl)]
+      (is (instance? TreeTable tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      (is (= [100 50] (map #(.getColumnWidth tbl %1) ["Col1" "Col2"])))
+      (is (= [String Integer] (map #(.getType (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
+      (is (= ["" 0] (map #(.getValue (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
+      ))
+  (testing "Data"
+    (let [tbl (tree-table "My Table"
+                ;(table-column "Col1")
+                ;(table-column "Col2")
+                ;(table-column "Col3")
+                )
+          data (add-hierarchy
+                 (doto (HierarchicalContainer.)
+                   (.addContainerProperty "Col1" String "")
+                   (.addContainerProperty "Col2" String "")
+                   (.addContainerProperty "Col3" String "")
+                   )
+                 [{["Row11"]
+                   [["Row21" "Row22" "Row23"]
+                    ["Row31" "Row32" "Row33"]]}
+                  {["Row41"]
+                   [["Row51" "Row52" "Row53"]
+                    {["Row61"]
+                     [["Row71" "Row72" "Row73"]
+                      ["Row81" "Row82" "Row83"]]}]}
+                  ])]
+      (.setContainerDataSource tbl data)
+      (doseq [i (range 0 8)] (.setCollapsed tbl i false))
+      (is (instance? TreeTable tbl))
+      (is (= #{"Col1" "Col2" "Col3"} (set (.getContainerPropertyIds tbl))))
+      (is (= (.size tbl) 8))
       )))
 
 (deftest ui-menu-bar

@@ -2,6 +2,7 @@
   "A simple UI that presents some UI examples in a TabSheet: a form and a table. progress bar, etc..
   The table can be filed by filling in the form and clicking 'Save'"
   (:use functional-vaadin.core
+        functional-vaadin.conversion
         functional-vaadin.rx.observers
         functional-vaadin.rx.operators
         functional-vaadin.utils)
@@ -9,7 +10,7 @@
   (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.Sampler
               :extends com.vaadin.ui.UI
               :main false)
-  (:import (com.vaadin.ui VerticalLayout Button Table UI)
+  (:import (com.vaadin.ui VerticalLayout Button Table UI Alignment)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.annotations Theme)
            (java.util.concurrent TimeUnit)
@@ -43,6 +44,20 @@
       (vertical-layout
         (progress-bar {:id :progress :value (float 0.0) :width "300px"})
         (label {:value "Stopped" :id :running-state})))))
+
+(defn food-menu []
+  (vertical-layout {:caption "Food Menu" :margin true :spacing true}
+    (add-hierarchy (tree-table {:alignment Alignment/MIDDLE_CENTER }
+                    (table-column "Name" {:type String :defaultValue "" :width 200})
+                    (table-column "Number" {:type Long :defaultValue nil :width 100}))
+      [{["Menu"]
+        [{"Beverages"
+          [["Coffee" 23]
+           ["Tea" 42]]}
+         {"Food"
+          [["Bread" 13]
+           ["Cake" 11]]}]}]
+      )))
 
 (defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
@@ -98,6 +113,7 @@
     (panel "Functional Vaadin Sampler" (tab-sheet)
       (form-and-table)
       (background-task)
+      (food-menu)
       )
     )
 
