@@ -33,12 +33,15 @@
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
            (com.vaadin.event ShortcutAction Action$Listener)
-           ))
+           (com.vaadin.data.util.converter Converter)))
 
 
 ; TODO - upload, calendar, popupview
+; TODO - generated table columns, table clicks, editing?
+; TODO - actions, esp. on tables
 ; TODO - layouts: absolute, css, custom(?)
 ; TODO - registering custom components?
+; TODO - Function-based converters
 
 ;; Primary build macro
 
@@ -70,6 +73,14 @@
    (proxy [ShortcutAction Action$Listener] [name (int keycode) (int-array modifiers)]
      (handleAction [sender target] (a-fn this sender target))))
   ([name keycode a-fn] (shortcutAction name keycode a-fn [])))
+
+(deftype FunctionalConverter [to-model-fn to-presn-fn model-type presn-type]
+  Converter
+  (convertToModel [this value type locale] (to-model-fn value type locale))
+  (convertToPresentation [this value type locale] (to-presn-fn value type locale))
+  (getModelType [this] model-type)
+  (getPresentationType [this] presn-type)
+  )
 
 ;; Base components - Button, Link, Label etc.
 
