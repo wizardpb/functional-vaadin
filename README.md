@@ -15,9 +15,9 @@ construction and run time.
 - a simpler event handing mechanism, along with integration with RxClosure
 - conversion functions to interface Clojures immutable data structures with Vaadin data binding objects
 
-## Release
+## Latest Release
 
-Latest release is ![](https://clojars.org/com.prajnainc/functional-vaadin/latest-version.svg)
+![](https://clojars.org/com.prajnainc/functional-vaadin/latest-version.svg)
 
 ## Install
 Add the following to you project.clj file:

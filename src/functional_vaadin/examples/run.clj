@@ -52,7 +52,7 @@
 
 (defn prompt-loop [examples-dir]
   (loop []
-    (let [files ["Sampler" "todo.ToDo"]]
+    (let [files ["Sampler"]]
      (let [item (choose-example files)]
        (run-and-wait item)))
     (recur)))
