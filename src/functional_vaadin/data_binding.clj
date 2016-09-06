@@ -71,7 +71,7 @@
         (empty? data) :CollectionAny
         (instance? Map (first vec-data)) :CollectionMap
         (not (instance? Collection (first vec-data))) :CollectionAny
-        true :Unknown))
+        :else :Unknown))
     ))
 
 (defmethod ->Container :CollectionAny [data]

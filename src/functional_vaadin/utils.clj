@@ -45,7 +45,7 @@
       component
       (cond
         (= 1 (count ks)) (dissoc (.getData component) (first ks))
-        true (let [front (take (dec (count ks)) ks)
+        :else (let [front (take (dec (count ks)) ks)
                    last (last ks)]
                (update-in (.getData component) front #(dissoc %1 last)))
         ))

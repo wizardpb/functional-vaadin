@@ -46,7 +46,7 @@
         (= response "r") (do
                            (.stop server)
                            (recur (run-example name "Restarting...")))
-        true (recur server)
+        :else (recur server)
            )))
   )
 

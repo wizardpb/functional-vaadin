@@ -33,7 +33,7 @@
             (cond
               (and (= ctor-type Integer/TYPE) (= (class arg) Long)) (int arg)
               (.isAssignableFrom ctor-type (class arg)) arg
-              true nil))
+              :else nil))
           (match-args                                       ;Match arguments with ctor types. Return (possibly converted) arguments
             [ctor-param-types args]
             (if (and (> (count ctor-param-types) 0) (= (count ctor-param-types) (count args)))
@@ -126,7 +126,7 @@
                                             [(configure arg1 arg2) (drop 2 args)]
                                             [arg1 (drop 1 args)])
       ; Otherwise defaul content is a normally-created FormLayout
-      true (create-widget FormLayout args true))))
+      :else (create-widget FormLayout args true))))
 
 ;; Adding content
 
@@ -221,14 +221,14 @@
                            (cond
                              (valid-fn first) (->MenuItemSpec name nil first )
                              (valid-child first) (->MenuItemSpec name nil args)
-                             true (bad-argument "Argument for " name " is not a function: " first)))
+                             :else (bad-argument "Argument for " name " is not a function: " first)))
       ; Command or sub-menu with icon...
       (= (count args) 2) (let [[first second] args]
                            (cond
                              (and (valid-resource first) (valid-fn second)) (->MenuItemSpec name first second)
                              (and (valid-resource first) (valid-child second)) (->MenuItemSpec name first (list second))
                              (every? valid-child args) (->MenuItemSpec name nil args)
-                             true (bad-argument "Incorrect arguments for " name ": " args)
+                             :else (bad-argument "Incorrect arguments for " name ": " args)
                              ))
       (> (count args) 2) (let [[first & children] args]
                            (cond
@@ -236,7 +236,7 @@
                                (valid-resource first)
                                (every? valid-child children)) (->MenuItemSpec name first args)
                              (every? valid-child args) (->MenuItemSpec name nil args)
-                             true (bad-argument "Incorrect arguments for " name ": " args)
+                             :else (bad-argument "Incorrect arguments for " name ": " args)
                              )))))
 
 (defn add-menu-item [mbi item]
