@@ -6,7 +6,7 @@
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
             [functional-vaadin.naming :refer :all]
-            [functional-vaadin.conversion :refer :all]
+            [functional-vaadin.data-binding :refer :all]
             [functional-vaadin.utils :refer :all])
   (:import (java.util Map Collection)
            (clojure.lang Keyword)

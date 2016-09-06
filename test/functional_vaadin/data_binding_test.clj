@@ -1,7 +1,7 @@
-(ns functional-vaadin.conversion-test
+(ns functional-vaadin.data-binding-test
   (:use [clojure.test]
         [functional-vaadin.core]
-        [functional-vaadin.conversion])
+        [functional-vaadin.data-binding])
   (:import (com.vaadin.data.util HierarchicalContainer)
            (com.vaadin.ui TreeTable)
            (com.vaadin.data Container$Hierarchical)))

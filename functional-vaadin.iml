@@ -16,13 +16,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
     <orderEntry type="library" name="Leiningen: com.vaadin.external.flute/flute:1.3.0.gg2" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin.external.google/guava:16.0.1.vaadin1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin.external.streamhtmlparser/streamhtmlparser-jsilver:0.0.10.vaadin1" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-client-compiled:7.6.5" level="project" />
+    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-client-compiled:7.7.0" level="project" />
     <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-sass-compiler:0.9.13" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-server:7.6.5" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-shared:7.6.5" level="project" />
-    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-themes:7.6.5" level="project" />
+    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-server:7.7.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-shared:7.7.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.vaadin/vaadin-themes:7.7.0" level="project" />
     <orderEntry type="library" name="Leiningen: com.yahoo.platform.yui/yuicompressor:2.4.8" level="project" />
     <orderEntry type="library" name="Leiningen: commons-io:2.4" level="project" />
     <orderEntry type="library" name="Leiningen: io.reactivex/rxclojure:1.0.0" level="project" />

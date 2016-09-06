@@ -12,15 +12,14 @@
                        functional-vaadin.rx.observers
                        functional-vaadin.rx.operators
                        functional-vaadin.examples.Sampler]}
-  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.6.5"]
-                                       [com.vaadin/vaadin-client-compiled "7.6.5"]
-                                       [com.vaadin/vaadin-themes "7.6.5"]
+  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.0"]
+                                       [com.vaadin/vaadin-client-compiled "7.7.0"]
+                                       [com.vaadin/vaadin-themes "7.7.0"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:main functional-vaadin.examples.run
                         :aot [functional-vaadin.ui.TestUI
-                              functional-vaadin.examples.todo.ToDo
                               functional-vaadin.examples.Sampler]
                         :source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]
@@ -31,9 +30,9 @@
              :uberjar  {:aot [functional-vaadin.examples.Sampler]
                         :main functional-vaadin.examples.run
                         :dependencies [[io.reactivex/rxclojure "1.0.0"]
-                                       [com.vaadin/vaadin-server "7.6.5"]
-                                       [com.vaadin/vaadin-client-compiled "7.6.5"]
-                                       [com.vaadin/vaadin-themes "7.6.5"]
+                                       [com.vaadin/vaadin-server "7.7.0"]
+                                       [com.vaadin/vaadin-client-compiled "7.7.0"]
+                                       [com.vaadin/vaadin-themes "7.7.0"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]

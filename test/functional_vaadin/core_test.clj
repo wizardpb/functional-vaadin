@@ -3,7 +3,7 @@
         [functional-vaadin.thread-vars]
         [functional-vaadin.core]
         [functional-vaadin.build-support]
-        [functional-vaadin.conversion]
+        [functional-vaadin.data-binding]
         [functional-vaadin.utils]
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label

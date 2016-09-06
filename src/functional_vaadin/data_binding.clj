@@ -1,5 +1,5 @@
-(ns functional-vaadin.conversion
-  "Utilities for converting between Clojure data strctures and Vaadin data binding objects -
+(ns functional-vaadin.data-binding
+  "Utilities for converting between Clojure data structures and Vaadin data binding objects -
   Property, Item and Container"
   (:require [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.data.util ObjectProperty PropertysetItem IndexedContainer HierarchicalContainer)

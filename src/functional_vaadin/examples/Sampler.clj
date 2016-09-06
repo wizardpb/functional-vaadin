@@ -2,7 +2,7 @@
   "A simple UI that presents some UI examples in a TabSheet: a form and a table. progress bar, etc..
   The table can be filed by filling in the form and clicking 'Save'"
   (:use functional-vaadin.core
-        functional-vaadin.conversion
+        functional-vaadin.data-binding
         functional-vaadin.rx.observers
         functional-vaadin.rx.operators
         functional-vaadin.utils)

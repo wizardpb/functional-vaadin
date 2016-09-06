@@ -41,7 +41,6 @@
 ; TODO - actions, esp. on tables
 ; TODO - layouts: absolute, css, custom(?)
 ; TODO - registering custom components?
-; TODO - Function-based converters
 
 ;; Primary build macro
 
