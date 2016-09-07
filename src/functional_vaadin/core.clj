@@ -304,9 +304,11 @@
 
 
 (defn menu-item
-  "Usage: (menu-item ctor_args? config_map? menu-items?)
+  "Usage: (menu-item name icon_resource? [menu-fn | menu-items])
 
-  Create a menu item for the contaning menu. Children cause a sub-menu to be created."
+  Create a menu item for the contaning menu. \"name\" is the menu item name, \"icon\" is and optional Resource that defines the menu item
+  icon. Further arguments are either a single fn defining teh menu action, or further menu-items defining a sub-menu"
+
   [name & args]
   (if (not (instance? String name))
     (bad-argument "Menu name must be a String: " name))
