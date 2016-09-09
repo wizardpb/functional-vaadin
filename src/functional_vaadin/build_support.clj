@@ -208,37 +208,6 @@
 (defn ->MenItemSeparator []
   (->MenuItemSpec nil nil nil))
 
-(defn parse-menu-item
-  "Determine the menu item type (cmd or sub-menu) by looking at the arguments passed"
-  [name args]
-  (letfn [(valid-fn [it] (fn? it))
-          (valid-resource [it] (instance? Resource it))
-          (valid-child [it] (instance? MenuItemSpec it))]
-    (cond
-      (zero? (count args)) (bad-argument "You must provide at least a function to a MenuItem: " name)
-      ; Just a functionn command
-      (= 1 (count args)) (let [[first] args]
-                           (cond
-                             (valid-fn first) (->MenuItemSpec name nil first )
-                             (valid-child first) (->MenuItemSpec name nil args)
-                             :else (bad-argument "Argument for " name " is not a function: " first)))
-      ; Command or sub-menu with icon...
-      (= (count args) 2) (let [[first second] args]
-                           (cond
-                             (and (valid-resource first) (valid-fn second)) (->MenuItemSpec name first second)
-                             (and (valid-resource first) (valid-child second)) (->MenuItemSpec name first (list second))
-                             (every? valid-child args) (->MenuItemSpec name nil args)
-                             :else (bad-argument "Incorrect arguments for " name ": " args)
-                             ))
-      (> (count args) 2) (let [[first & children] args]
-                           (cond
-                             (and                       ;Resource and menu-items
-                               (valid-resource first)
-                               (every? valid-child children)) (->MenuItemSpec name first args)
-                             (every? valid-child args) (->MenuItemSpec name nil args)
-                             :else (bad-argument "Incorrect arguments for " name ": " args)
-                             )))))
-
 (defn add-menu-item [mbi item]
   (let [sub-item (addFrom item mbi)]
     (if (hasChildren? item)
@@ -254,7 +223,6 @@
     (add-menu-item mb mitem)))
 
 ;Tables
-
 
 (defn translate-column-options [propertyId column-config]
   ; translate option :XXX to :columnXXX. This gets further translated to :setColumnXXX by (configure)

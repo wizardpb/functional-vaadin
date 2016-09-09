@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/functional_vaadin/specs.clj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional_vaadin/specs_test.clj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_9_0_alpha11.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/user.clj" afterPath="$PROJECT_DIR$/dev/user.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional-vaadin.iml" afterPath="$PROJECT_DIR$/functional-vaadin.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
@@ -26,21 +33,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dev/user.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="257">
+              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sampler.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj">
+      <file leaf-file-name="specs.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/specs.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="80" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
+            <state relative-caret-position="150">
+              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils_test.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/utils_test.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="specs_test.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/specs_test.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event_handling_test.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/event_handling_test.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -69,8 +106,18 @@
       <file leaf-file-name="core_test.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="378" column="0" selection-start-line="378" selection-start-column="0" selection-end-line="378" selection-end-column="0" />
+            <state relative-caret-position="236">
+              <caret line="406" column="11" selection-start-line="406" selection-start-column="11" selection-end-line="406" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_support_test.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -89,10 +136,10 @@
       <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="34" column="71" selection-start-line="34" selection-start-column="71" selection-end-line="34" selection-end-column="71" />
+            <state relative-caret-position="105">
+              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
               <folding>
-                <marker date="1473193350000" expanded="true" signature="0:2479" ph="(defproject com.prajnainc/functional-vaadin ...)" />
+                <marker date="1473285188000" expanded="true" signature="0:2487" ph="(defproject com.prajnainc/functional-vaadin ...)" />
               </folding>
             </state>
           </provider>
@@ -101,8 +148,18 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="314" column="18" selection-start-line="314" selection-start-column="3" selection-end-line="314" selection-end-column="18" />
+            <state relative-caret-position="165">
+              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.9.0-alpha11/clojure-1.9.0-alpha11.jar!/clojure/core.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="6023" column="6" selection-start-line="6023" selection-start-column="6" selection-end-line="6023" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -111,8 +168,8 @@
       <file leaf-file-name="utils.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+            <state relative-caret-position="228">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -148,87 +205,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="270">
-                <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="MarkdownFxPreviewEditor">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="validation.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringToDateConverter.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/converter/StringToDateConverter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#3867#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#3611#3612#0" expanded="false" />
-                <element signature="e#3644#3645#0" expanded="false" />
-                <element signature="e#3827#3828#0" expanded="false" />
-                <element signature="e#3862#3863#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DateToLongConverter.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/converter/DateToLongConverter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#2374#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#2122#2123#0" expanded="false" />
-                <element signature="e#2155#2156#0" expanded="false" />
-                <element signature="e#2336#2337#0" expanded="false" />
-                <element signature="e#2369#2370#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="555">
-                <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-          <provider editor-type-id="MarkdownFxPreviewEditor">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="237" column="29" selection-start-line="237" selection-start-column="29" selection-end-line="237" selection-end-column="29" />
+            <state relative-caret-position="116">
+              <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -268,8 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/functional_vaadin/ui/IUIDataStore.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/examples/test_ui_def.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/form_and_table_def.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/ui/naming.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/ui/FormAndTableUI.clj" />
@@ -306,18 +285,20 @@
         <option value="$PROJECT_DIR$/dev/config_gen.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/config_table.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
-        <option value="$PROJECT_DIR$/dev/user.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/conversion_test.clj" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/project.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/conversion.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/data_binding_test.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/data_binding.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/utils.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/dev/user.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/specs.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
+        <option value="$PROJECT_DIR$/test/functional_vaadin/specs_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
       </list>
     </option>
@@ -544,50 +525,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional_vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional_vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="doc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -691,7 +628,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="settings.editor.selected.configurable" value="LeiningenProject" />
+    <property name="settings.editor.selected.configurable" value="Keybindings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="FullScreen" value="true" />
@@ -712,7 +649,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1473282358403">{:repl-history {:ide [], :local [&quot;(every? #(instance? Component %1) (first (list (list (label) (label)))))&quot; &quot;(unwrap-sequence-args (list (list (Label.) (Label.))))&quot; &quot;(unwrap-sequence-args (list (list)))&quot; &quot;(unwrap-sequence-args (list (Label.)))&quot; &quot;(unwrap-sequence-args (map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10)))&quot; &quot;(map #((Label. (str \&quot;Label 1\&quot;))) (range 0 10))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label 1\&quot;))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #((label (str \&quot;Label \&quot; %1))) (range 0 10))))&quot; &quot;(def vl (vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10))))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount l)))&quot; &quot;(map #(.getCaption (.getComponent vl %1))  (range (.getComponentCount vl)))&quot; &quot;(.getCaption (label \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot;))&quot; &quot;(.getCaption (Label.))&quot; &quot;(.getCaption (label {:caption \&quot;Caption\&quot;}))&quot; &quot;(.getCaption (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.getValue (Label. \&quot;Caption\&quot; ContentMode/TEXT))&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(-&gt;TableColumn nil nil nil)&quot; &quot;(instance? Map (-&gt;TableColumn nil nil nil))&quot; &quot;(panel (text-field))&quot; &quot;(panel (TextField.))&quot; &quot;(compile)&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener]\n        (handleAction [this, sender, target]) (println \&quot;Handled \&quot; this sender target)))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13 []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; 13]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) []]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) '()]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [this, sender, target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(.handleAction sa )&quot; &quot;(.handleAction sa nil nil)&quot; &quot;(def sa (proxy [ShortcutAction Action$Listener] [\&quot;TestA\&quot; (int 13) (int-array 0)]\n          (handleAction [sender target] (println \&quot;Handled \&quot; this sender target))))&quot; &quot;(.deref ui)&quot; &quot;@ui&quot; &quot;(deref ui)&quot; &quot;(state ui)&quot; &quot;(compile functional-vaadin.examples.ToDo)&quot; &quot;(incItemCount ui)&quot; &quot;(.state ui)&quot; &quot;(def ui (ToDo.))&quot; &quot;(.incItemCount ui)&quot; &quot;(.decItemCount ui)&quot; &quot;(.getItemCount ui)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.ToDo\&quot; true))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.todo.ToDo\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(-main)&quot; &quot;2&quot; &quot;(with-form (text-field \&quot;Caption\&quot; {:bindTo \&quot;p1\&quot;}))&quot; &quot;(doseq [[p c] {:a 1 :b 2}] (println p c))&quot; &quot;(let [[k v] {:a 1}] [k v])&quot; &quot;(first (keys {:a 1}))&quot; &quot;(associative? [])&quot; &quot;(gen-config-table)&quot; &quot;(def i 1) (i [0 2])&quot; &quot;(def i 1) ([0 2] i)&quot; &quot;(def i 3) ([0 2] i)&quot; &quot;(def i 2) ([0 2] i)&quot; &quot;(instance? ISeq [])&quot; &quot;(container (add-hierarchy (HierarchicalContainer.)\n             [{[\&quot;Row11\&quot;]\n               [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n              {[\&quot;Row41\&quot;]\n               [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                [{[\&quot;Row61\&quot;]\n                  [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                   [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]]}\n              ]))&quot; &quot;(.getParent container 0)&quot; &quot;(.getParent container 1)&quot; &quot;(.getParent container 2)&quot; &quot;(.getParent container 3)&quot; &quot;(map #(.getParent %1) (.getItemIds container))&quot; &quot;(map #(.getParent container %1) (.getItemIds container))&quot; &quot;(map #((vector %1 (.getParent container %1))) (.getItemIds container))&quot; &quot;()&quot; &quot;(map #(vector %1 (class (.getParent container %1))) (.getItemIds container))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n             [{[\&quot;Row11\&quot;]\n               [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n              {[\&quot;Row41\&quot;]\n               [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                [{[\&quot;Row61\&quot;]\n                  [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                   [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]]}\n              ]))&quot; &quot;(= [1 0] (second (map #(vector %1 (.getParent container %1)) (.getItemIds container))))&quot; &quot;(map #(vector %1 (.getParent container %1)) (.getItemIds container))&quot; &quot;(map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n             [{[\&quot;Row11\&quot;]\n               [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n              {[\&quot;Row41\&quot;]\n               [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                {[\&quot;Row61\&quot;]\n                 [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                  [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n              ]))&quot; &quot;(map (fn [id] \n       (map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))) \n  (.getContainerPropertyIds container))&quot; &quot;(.getItemIds container)&quot; &quot;(.getContainerPropertyIds container)\n&quot; &quot;(def container (add-hierarchy\n                 (tree-table (table-column \&quot;Col1\&quot;) (table-column \&quot;Col2\&quot;)(table-column \&quot;Col3\&quot;))\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(vec (.getContainerPropertyIds container))\n&quot; &quot;(map (fn [id] \n       (map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))) \n  (.getItemIds container))&quot; &quot;(new TreeTable)&quot; &quot;(add-hierarchy\n  (doto (TreeTable.)\n    (.addContainerProperty \&quot;Col1\&quot; String nil)\n    (.addContainerProperty \&quot;Col2\&quot; String nil)\n    (.addContainerProperty \&quot;Col3\&quot; String nil)\n    )\n  [{[\&quot;Row11\&quot;]\n    [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n     [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n   {[\&quot;Row41\&quot;]\n    [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n     {[\&quot;Row61\&quot;]\n      [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n       [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n   ])&quot; &quot;(def container (add-hierarchy\n                 (doto c\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(= (set (.rootItemIds container)) #{0 3})&quot; &quot;(def container (add-hierarchy\n                 (doto (TreeTable.)\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n                 [{\&quot;Parent1\&quot;\n                   [\&quot;Leaf11\&quot; {\&quot;Parent21\&quot;\n                              [\&quot;Leaf12\&quot; \&quot;Leaf22\&quot;]}]}\n                  {\&quot;Parent2\&quot;\n                   []}\n                  {\&quot;Parent3\&quot;\n                   [\&quot;Leaf13\&quot; \&quot;Leaf23\&quot; \&quot;Leaf33\&quot;]}]))&quot; &quot;(instance? HierarchicalContainer container)&quot; &quot;(every? (fn [[c p]] (= (.getParent container c) p))\n  [[\&quot;Parent1\&quot; nil] [\&quot;Parent2\&quot; nil] [\&quot;Parent2\&quot; nil]\n   [\&quot;Leaf11\&quot; \&quot;Parent1\&quot;] [\&quot;Parent21\&quot; \&quot;Parent1\&quot;]\n   [\&quot;Leaf12\&quot; \&quot;Parent21\&quot;] [\&quot;Leaf22\&quot; \&quot;Parent21\&quot;]\n   [\&quot;Leaf13\&quot; \&quot;Parent3\&quot;] [\&quot;Leaf23\&quot; \&quot;Parent3\&quot;] [\&quot;Leaf33\&quot; \&quot;Parent3\&quot;]\n   ])&quot; &quot;container (add-hierarchy\n            (doto c\n              (.addContainerProperty \&quot;Col1\&quot; String nil)\n              (.addContainerProperty \&quot;Col2\&quot; String nil)\n              (.addContainerProperty \&quot;Col3\&quot; String nil)\n              )\n            [{[\&quot;Row11\&quot;]\n              [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n               [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n             {[\&quot;Row41\&quot;]\n              [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n               {[\&quot;Row61\&quot;]\n                [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                 [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n             ])&quot; &quot;container (add-hierarchy\n            (doto (HierarchicalContainer.)\n              (.addContainerProperty \&quot;Col1\&quot; String nil)\n              (.addContainerProperty \&quot;Col2\&quot; String nil)\n              (.addContainerProperty \&quot;Col3\&quot; String nil)\n              )\n            [{[\&quot;Row11\&quot;]\n              [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n               [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n             {[\&quot;Row41\&quot;]\n              [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n               {[\&quot;Row61\&quot;]\n                [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                 [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n             ])&quot; &quot;(.rootItemIds container)&quot; &quot;(def container (add-hierarchy\n                 (doto (HierarchicalContainer.)\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(map #(vector %1 (.getParent container %1)) (.getItemIds container))\n&quot; &quot;(println (map #(vector %1 (.getParent container (int %1))) (.getItemIds container)))\n&quot; &quot;(do (.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(run-)&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(run-my-tests)&quot; &quot;(refresh)&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1473379774329">{:repl-history {:ide [], :local [&quot;(.getParent container 1)&quot; &quot;(.getParent container 2)&quot; &quot;(.getParent container 3)&quot; &quot;(map #(.getParent %1) (.getItemIds container))&quot; &quot;(map #(.getParent container %1) (.getItemIds container))&quot; &quot;(map #((vector %1 (.getParent container %1))) (.getItemIds container))&quot; &quot;()&quot; &quot;(map #(vector %1 (class (.getParent container %1))) (.getItemIds container))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n             [{[\&quot;Row11\&quot;]\n               [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n              {[\&quot;Row41\&quot;]\n               [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                [{[\&quot;Row61\&quot;]\n                  [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                   [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]]}\n              ]))&quot; &quot;(= [1 0] (second (map #(vector %1 (.getParent container %1)) (.getItemIds container))))&quot; &quot;(map #(vector %1 (.getParent container %1)) (.getItemIds container))&quot; &quot;(map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n             [{[\&quot;Row11\&quot;]\n               [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n              {[\&quot;Row41\&quot;]\n               [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                {[\&quot;Row61\&quot;]\n                 [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                  [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n              ]))&quot; &quot;(map (fn [id] \n       (map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))) \n  (.getContainerPropertyIds container))&quot; &quot;(.getItemIds container)&quot; &quot;(.getContainerPropertyIds container)\n&quot; &quot;(def container (add-hierarchy\n                 (tree-table (table-column \&quot;Col1\&quot;) (table-column \&quot;Col2\&quot;)(table-column \&quot;Col3\&quot;))\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(vec (.getContainerPropertyIds container))\n&quot; &quot;(map (fn [id] \n       (map #(.getValue (.getContainerProperty container (int id) %1)) (.getContainerPropertyIds container))) \n  (.getItemIds container))&quot; &quot;(new TreeTable)&quot; &quot;(add-hierarchy\n  (doto (TreeTable.)\n    (.addContainerProperty \&quot;Col1\&quot; String nil)\n    (.addContainerProperty \&quot;Col2\&quot; String nil)\n    (.addContainerProperty \&quot;Col3\&quot; String nil)\n    )\n  [{[\&quot;Row11\&quot;]\n    [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n     [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n   {[\&quot;Row41\&quot;]\n    [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n     {[\&quot;Row61\&quot;]\n      [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n       [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n   ])&quot; &quot;(def container (add-hierarchy\n                 (doto c\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(= (set (.rootItemIds container)) #{0 3})&quot; &quot;(def container (add-hierarchy\n                 (doto (TreeTable.)\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(def container (add-hierarchy (HierarchicalContainer.)\n                 [{\&quot;Parent1\&quot;\n                   [\&quot;Leaf11\&quot; {\&quot;Parent21\&quot;\n                              [\&quot;Leaf12\&quot; \&quot;Leaf22\&quot;]}]}\n                  {\&quot;Parent2\&quot;\n                   []}\n                  {\&quot;Parent3\&quot;\n                   [\&quot;Leaf13\&quot; \&quot;Leaf23\&quot; \&quot;Leaf33\&quot;]}]))&quot; &quot;(instance? HierarchicalContainer container)&quot; &quot;(every? (fn [[c p]] (= (.getParent container c) p))\n  [[\&quot;Parent1\&quot; nil] [\&quot;Parent2\&quot; nil] [\&quot;Parent2\&quot; nil]\n   [\&quot;Leaf11\&quot; \&quot;Parent1\&quot;] [\&quot;Parent21\&quot; \&quot;Parent1\&quot;]\n   [\&quot;Leaf12\&quot; \&quot;Parent21\&quot;] [\&quot;Leaf22\&quot; \&quot;Parent21\&quot;]\n   [\&quot;Leaf13\&quot; \&quot;Parent3\&quot;] [\&quot;Leaf23\&quot; \&quot;Parent3\&quot;] [\&quot;Leaf33\&quot; \&quot;Parent3\&quot;]\n   ])&quot; &quot;container (add-hierarchy\n            (doto c\n              (.addContainerProperty \&quot;Col1\&quot; String nil)\n              (.addContainerProperty \&quot;Col2\&quot; String nil)\n              (.addContainerProperty \&quot;Col3\&quot; String nil)\n              )\n            [{[\&quot;Row11\&quot;]\n              [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n               [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n             {[\&quot;Row41\&quot;]\n              [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n               {[\&quot;Row61\&quot;]\n                [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                 [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n             ])&quot; &quot;container (add-hierarchy\n            (doto (HierarchicalContainer.)\n              (.addContainerProperty \&quot;Col1\&quot; String nil)\n              (.addContainerProperty \&quot;Col2\&quot; String nil)\n              (.addContainerProperty \&quot;Col3\&quot; String nil)\n              )\n            [{[\&quot;Row11\&quot;]\n              [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n               [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n             {[\&quot;Row41\&quot;]\n              [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n               {[\&quot;Row61\&quot;]\n                [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                 [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n             ])&quot; &quot;(.rootItemIds container)&quot; &quot;(def container (add-hierarchy\n                 (doto (HierarchicalContainer.)\n                   (.addContainerProperty \&quot;Col1\&quot; String nil)\n                   (.addContainerProperty \&quot;Col2\&quot; String nil)\n                   (.addContainerProperty \&quot;Col3\&quot; String nil)\n                   )\n                 [{[\&quot;Row11\&quot;]\n                   [[\&quot;Row21\&quot; \&quot;Row22\&quot; \&quot;Row23\&quot;]\n                    [\&quot;Row31\&quot; \&quot;Row32\&quot; \&quot;Row33\&quot;]]}\n                  {[\&quot;Row41\&quot;]\n                   [[\&quot;Row51\&quot; \&quot;Row52\&quot; \&quot;Row53\&quot;]\n                    {[\&quot;Row61\&quot;]\n                     [[\&quot;Row71\&quot; \&quot;Row72\&quot; \&quot;Row73\&quot;]\n                      [\&quot;Row81\&quot; \&quot;Row82\&quot; \&quot;Row83\&quot;]]}]}\n                  ]))&quot; &quot;(map #(vector %1 (.getParent container %1)) (.getItemIds container))\n&quot; &quot;(println (map #(vector %1 (.getParent container (int %1))) (.getItemIds container)))\n&quot; &quot;(do (.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(run-)&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(refresh)&quot; &quot;(require clojure.spec :as s)&quot; &quot;(s/conform (s/spec (s/cat (s/? #(not (map? %))))) [1 2 3 4])&quot; &quot;(s/conform (s/spec (s/cat :ctor-args (s/? #(not (map? %))))) [1 2 3 4])&quot; &quot;(s/explain (s/spec (s/cat :ctor-args (s/? #(not (map? %))))) [1 2 3 4])&quot; &quot;(s/explain (s/spec (s/cat :ctor-args (s/+ #(not (map? %))))) [1 2 3 4])&quot; &quot;(s/conform (s/spec (s/cat :ctor-args (s/+ #(not (map? %))))) [1 2 3 4])&quot; &quot;(s/conform (s/spec (s/alt :numbers (s/coll-of integer?) :kws (s/coll-of keyword?))) [1 2 3 4])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/coll-of integer?) :kws (s/coll-of keyword?))) [1 2 3 4])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [1 2 3 4])&quot; &quot;(s/conform (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [1 2 3 4])&quot; &quot;(s/conform (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:me :u])&quot; &quot;(s/conform (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:me :u 1 2])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:me :u 1 2])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:me :u 1])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:me :u 2])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [3 1 :w])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [3 :w])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:w])&quot; &quot;(s/explain (s/spec (s/alt :numbers (s/+ integer?) :kws (s/+ keyword?))) [:w 1])&quot; &quot;(s/explain (s/spec (s/cat :numbers (s/+ integer?) :kws (s/+ keyword?))) [:w 1])&quot; &quot;(s/explain (s/spec (s/cat :numbers (s/+ integer?) :kws (s/+ keyword?))) [1 :w])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/+ integer?) :kws (s/+ keyword?))) [1 :w])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/+ integer?) :kws (s/+ keyword?))) [1])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* integer?) :kws (s/* keyword?))) [1])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* integer?) :kws (s/* keyword?))) [])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))) [])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))) [1 \&quot;str\&quot; :me {:a 1}])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))) [1 \&quot;str\&quot; :me])&quot; &quot;(s/conform (s/spec (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))) [{:a 1} 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))\n                     (s/cat  :kws (s/* map?) :numbers (s/* #(not (map? %)))))) [{:a 1} 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nk (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))\n                     :kn (s/cat  :kws (s/* map?) :numbers (s/* #(not (map? %)))))) [{:a 1} 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nk (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))\n                     :kn (s/cat  :kws (s/* map?) :numbers (s/* #(not (map? %)))))) [3 {:a 1}])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [1 2 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q :b])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q 1])&quot; &quot;(s/conform ::men_item_args (\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::men_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(fn? (fn [i] (println 1)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. \&quot;str\&quot;) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. (File. \&quot;fname\&quot;)) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(get-in parsed-args [:children :item_fn])&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(-&gt;MapEntry :a \&quot;b\&quot;)&quot; &quot;(MapEntry. :a \&quot;b\&quot;)&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/explain :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list (\&quot;item\&quot; (fn [item] (println item)))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; (fn [item] (println item)))})&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)})&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -1045,21 +982,21 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.4914163" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.49425286" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1923077" sideWeight="0.60658085" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.48497853" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1240" height="700" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36177886" sideWeight="0.6280401" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36177886" sideWeight="0.37195995" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36177886" sideWeight="0.6323319" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36177886" sideWeight="0.3676681" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24678111" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13447782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.416309" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23676682" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.42632332" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.4241774" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25608012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.45565093" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.51216024" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1106,7 +1043,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added interactive cmd-line run, addStyleNamed config option" />
     <MESSAGE value="Various additions/refactoring&#10;- Form vaiidation: new :addValidations config option, plus FunctionalValidator type&#10;- Added missing (window) builder&#10;- Added (with-ui-access) Rx operator&#10;- Added main run() function to interactivey run examples&#10;- Added utils, updated Sampler" />
     <MESSAGE value="Updated TODOs" />
     <MESSAGE value="Refactoring&#10;- Better error handling for operators&#10;- Added test for with-ui-access" />
@@ -1131,14 +1067,15 @@
     <MESSAGE value="Added FunctionalConveter" />
     <MESSAGE value="Minor refactoring, update to use Vaadin 7.7.0&#10;- namespace change: conversion -&gt; data-binding&#10;- Comment update&#10;" />
     <MESSAGE value="Refactoring - more idiomatic cond statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring - more idiomatic cond statements" />
+    <MESSAGE value="Fixed incorrect comment for menu-item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed incorrect comment for menu-item" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="172" />
+      <option name="time" value="180" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1147,48 +1084,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/server/FontIcon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/server/FontAwesome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9334">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/filter/Compare.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/ui/AbstractField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/ui/AbstractSelect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="1088" column="21" selection-start-line="1088" selection-start-column="21" selection-end-line="1088" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/AbstractInMemoryContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="424" column="19" selection-start-line="424" selection-start-column="19" selection-end-line="424" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.6.5/vaadin-server-7.6.5-sources.jar!/com/vaadin/data/util/IndexedContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1794,28 +1689,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="34" column="71" selection-start-line="34" selection-start-column="71" selection-end-line="34" selection-end-column="71" />
-          <folding>
-            <marker date="1473193350000" expanded="true" signature="0:2479" ph="(defproject com.prajnainc/functional-vaadin ...)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/data_binding_test.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1852,14 +1729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/run.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -1884,34 +1753,108 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/user.clj">
+    <entry file="file://$PROJECT_DIR$/project.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding>
+            <marker date="1473285188000" expanded="true" signature="0:2487" ph="(defproject com.prajnainc/functional-vaadin ...)" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/data_binding_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/utils_test.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="378" column="0" selection-start-line="378" selection-start-column="0" selection-end-line="378" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="314" column="18" selection-start-line="314" selection-start-column="3" selection-end-line="314" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/clojure/clojure/1.9.0-alpha11/clojure-1.9.0-alpha11.jar!/clojure/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="6023" column="6" selection-start-line="6023" selection-start-column="6" selection-end-line="6023" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="237" column="29" selection-start-line="237" selection-start-column="29" selection-end-line="237" selection-end-column="29" />
+        <state relative-caret-position="116">
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="406" column="11" selection-start-line="406" selection-start-column="11" selection-end-line="406" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/specs.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/event_handling_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/specs_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/user.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding />
         </state>
       </provider>

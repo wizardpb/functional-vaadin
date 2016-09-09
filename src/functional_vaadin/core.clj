@@ -18,10 +18,12 @@
                   "
 
   (:require [clojure.set :as set]
+            [clojure.spec :as s]
             [functional-vaadin.naming :as nm]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]
-            [functional-vaadin.utils  :refer :all])
+            [functional-vaadin.utils :refer :all]
+            [functional_vaadin.specs :as fvs])
   (:import (com.vaadin.ui
              MenuBar
              Label Embedded Link Upload Button Calendar
@@ -309,10 +311,18 @@
   Create a menu item for the contaning menu. \"name\" is the menu item name, \"icon\" is and optional Resource that defines the menu item
   icon. Further arguments are either a single fn defining teh menu action, or further menu-items defining a sub-menu"
 
-  [name & args]
-  (if (not (instance? String name))
-    (bad-argument "Menu name must be a String: " name))
-  (parse-menu-item name args)
+  ;[name & args]
+  ;(if (not (instance? String name))
+  ;  (bad-argument "Menu name must be a String: " name))
+  ;(parse-menu-item name args)
+  [& args]
+  (let [parsed-args (s/conform ::fvs/menu_item_args args)]
+    (if (= parsed-args ::s/invalid)
+      (bad-argument (s/explain-str ::fvs/menu_item_args args))
+      (->MenuItemSpec
+        (:name parsed-args)
+        (:icon_resource parsed-args)
+        (second (:children parsed-args)))))
   )
 
 (defn menu-separator

@@ -27,7 +27,7 @@
     <orderEntry type="library" name="Leiningen: io.reactivex/rxjava:1.0.1" level="project" />
     <orderEntry type="library" name="Leiningen: javax.servlet/javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.apache.directory.studio/org.apache.commons.io:2.4" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0-alpha11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.eclipse.jetty/jetty-http:9.3.8.v20160314" level="project" />
