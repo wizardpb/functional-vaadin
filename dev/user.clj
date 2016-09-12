@@ -16,8 +16,6 @@
            (org.apache.commons.io FileUtils)
            (com.vaadin.ui UI)))
 
-
-
 (def test-dir "test/")
 
 (defn test-ns-sym [fname]

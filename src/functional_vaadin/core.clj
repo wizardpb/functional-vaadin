@@ -22,8 +22,7 @@
             [functional-vaadin.naming :as nm]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]
-            [functional-vaadin.utils :refer :all]
-            [functional_vaadin.specs :as fvs])
+            [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui
              MenuBar
              Label Embedded Link Upload Button Calendar
@@ -38,11 +37,12 @@
            (com.vaadin.data.util.converter Converter)))
 
 
-; TODO - upload, calendar, popupview
+; TODO - notification, login-form, upload, calendar, popupview, audio, video, browser-frame, color picker, flash, grid
 ; TODO - generated table columns, table clicks, editing?
 ; TODO - actions, esp. on tables
 ; TODO - layouts: absolute, css, custom(?)
-; TODO - registering custom components?
+; TODO - registering custom components? Custon layout, field, component
+; TODO - drag and drop
 
 ;; Primary build macro
 
@@ -316,9 +316,9 @@
   ;  (bad-argument "Menu name must be a String: " name))
   ;(parse-menu-item name args)
   [& args]
-  (let [parsed-args (s/conform ::fvs/menu_item_args args)]
+  (let [parsed-args (s/conform ::functional-vaadin.build-support/menu-item-args args)]
     (if (= parsed-args ::s/invalid)
-      (bad-argument (s/explain-str ::fvs/menu_item_args args))
+      (bad-argument (s/explain-str ::functional-vaadin.build-support/menu-item-args args))
       (->MenuItemSpec
         (:name parsed-args)
         (:icon_resource parsed-args)

@@ -4,7 +4,8 @@
             [functional-vaadin.config :refer :all]
             [functional-vaadin.data-binding :refer :all]
             [functional-vaadin.utils :refer :all]
-            [clojure.set :as set])
+            [clojure.set :as set]
+            [clojure.spec :as s])
   (:import (com.vaadin.ui
              Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window Component)
            (java.util Map Collection)
@@ -13,6 +14,44 @@
            (com.vaadin.server Resource)
            ))
 
+;; A MenuBar.Command that allows functions as Menu Items
+
+(defrecord FunctionCommand [cmd-fn]
+  MenuBar$Command
+  (^void menuSelected [this ^MenuBar$MenuItem item] (cmd-fn item)))
+
+;; An interface for defining MenuItems
+
+(defprotocol IMenuItemSpec
+  (hasChildren? [this])
+  (addFrom [this mbi])
+  (getChildren [this])
+  )
+
+(deftype MenuItemSpec [name resource content]
+  IMenuItemSpec
+  (hasChildren? [this] (instance? Collection content))
+  (addFrom [this mbi]
+    {:pre [(or (nil? content) (fn? content))]}
+    (if (nil? content)
+      (.addSeparator mbi)
+      (.addItem mbi name resource (->FunctionCommand content))))
+  (getChildren [this] content)
+  )
+
+;; Argument parsing
+
+(s/def ::menu-items (s/* #(instance? IMenuItemSpec %)))
+(s/def ::menu-item-args
+  (s/cat :name string?
+    :icon_resource (s/? #(instance? Resource %))
+    :children (s/alt :item_fn fn? :sub_items (s/+ #(instance? MenuItemSpec %)))))
+
+(s/def ::component-args
+  (s/cat
+    :initial-args (s/* #(not (instance? Map %)))
+    :config (s/? #(instance? Map %))
+    :children (s/* #(instance? Component %))))
 
 ;; Widget creation
 
@@ -24,89 +63,123 @@
     (do-configure parent config))
   )
 
-(defn find-constructor
-  "Find a constructor for the given class and arguments, matching argument types against the arguments
-  Longer matches take precendent, and assignability determines an argument match. The null constructor is ignored"
-  [cls args]
-  (letfn [(match-arg                                        ;Match an arg and convert - deal with Long->int
-            [^Class ctor-type arg]
-            (cond
-              (and (= ctor-type Integer/TYPE) (= (class arg) Long)) (int arg)
-              (.isAssignableFrom ctor-type (class arg)) arg
-              :else nil))
-          (match-args                                       ;Match arguments with ctor types. Return (possibly converted) arguments
-            [ctor-param-types args]
-            (if (and (> (count ctor-param-types) 0) (= (count ctor-param-types) (count args)))
-              (let [conv-args (map match-arg ctor-param-types args)]
-                (if (every? identity conv-args)
-                  conv-args)))
-            )
-          (match-ctor [ctor]
-            (if-let [conv-args (match-args (seq (.getParameterTypes ctor)) (take (.getParameterCount ctor) args))]
-              [ctor conv-args]))]
-    (let [ctor-list (sort #(>= (.getParameterCount %1) (.getParameterCount %2)) (seq (.getConstructors cls)))]
-      (some match-ctor ctor-list))))
+(defn- match-arg
+  "Return the argument if it's type matches ctor-type. Matching is done using Java assignability. Since Clojure uses
+  integer Long types exclusively, Integer types match a Long argument, and it is converted to a raw int. Return nil
+  if there is no match"
+  [^Class ctor-type arg]
+  (cond
+    (and (= ctor-type Integer/TYPE) (= (class arg) Long)) (int arg)
+    (.isAssignableFrom ctor-type (class arg)) arg
+    :else nil))
 
-(defn- unwrap-sequence-args
-  "When computing children, the result often ends up as some kind of list/vector of the children. create-widget
-  expects it's args value to a list of the children, but in the computed case, args is a single element list that
-  *contains* the list of children. This function detects this and unpacks it."
-  [args]
-  (if (and
-        (collection? args)
-        (= 1 (count args))
-        (collection? (first args))
-        (every? #(instance? Component %1) (first args))
-        )
-    (first args)
-    args)
+(defn- match-args
+  " Match possible (non-empty) arguments with ctor argument types. Return matched (possibly converted) arguments"
+  [ctor-param-types args]
+  (if (and (> (count args) 0) (= (count ctor-param-types) (count args)))
+    (let [conv-args (map match-arg ctor-param-types args)] (if (every? identity conv-args) conv-args)))
   )
 
+(defn- null-ctor-for [cls]
+  {:ctor (.getConstructor cls (make-array Class 0)) :ctor-args '()})
+
+(defn- buildable-childen?
+  "Can all these args be considered vald children of a widget? True if they are all Components or all MenuItemSpecs"
+  [args]
+  (or
+    (every? #(instance? Component %) args)
+    (every? #(instance? MenuItemSpec %) args)))
+
+(defn- find-constructor
+  "Find a constructor for the given class and arguments, matching argument types against the arguments
+  Longer matches take precendent, and assignability determines an argument match.
+
+  If no arguments are passed, just return the no-arg constructor.
+
+  If no constructor is found, but all arguments are valid children, return the no-arg constructor so they get interpreted as children
+  by the widget creator"
+
+  [cls args]
+  (letfn [(match-ctor [ctor]
+            (if-let [conv-args (match-args (seq (.getParameterTypes ctor)) (take (.getParameterCount ctor) args))]
+              {:ctor ctor :ctor-args conv-args}))]
+    (if (zero? (count args))
+      (null-ctor-for cls)
+      (let [ctor-list (sort #(>= (.getParameterCount %1) (.getParameterCount %2)) (seq (.getConstructors cls)))]
+        (or
+          (some match-ctor ctor-list)
+          (if (buildable-childen? args) (null-ctor-for cls) nil))))))
+
+(defn- parse-builder-args
+  "Parse builder arguments, returning a constructor, it's arguments, any unused constructor arguments,
+  an optional config map, and any children"
+  [cls args]
+  (let [split-args (s/conform ::component-args args)
+        cls-name (.getSimpleName cls)]
+    (if (= split-args ::s/invalid)
+      (bad-argument "Bad format building " cls-name ": " (s/explain-str ::component-args args))
+      (let [{:keys [initial-args config]} split-args
+            {:keys [ctor-args] :as ctor-map} (find-constructor cls initial-args)]
+        ; If there is no config, the initial-args are a combination of children and ctor args, so split out any children
+        ; otherwise just set any initial arguments that haven't been matched to the constructor
+        (merge split-args ctor-map (if config
+                                     {:unused-args (drop (count ctor-args) initial-args)}
+                                     {:unused-args [] :children (drop (count ctor-args) initial-args)})
+          )
+
+        ))
+    ))
+
 (defn- do-create-widget
-  "Create Vaadin widgets using, if possible, the initial n items of args as constructor argument.
-
-  For n > 0, try and match the types of a constructors parameters againt the first n arguments types. For multiple
-  matches, the longest constructor arglist is preferred. If the first argument is a Map,
-  and there is a null constructor, prefer that to any constructors, and construct and congfigure the widget from the
-  map. If no constructors match, and there is a null constructor, create a widget using that
-
-  Any remaining arguments are treated as an optionanl configuration Map, folloed by any children, unless allow-children
-  is false. The new object is configured from the optional configuration Map, and this and any children are
-  returned in a vector. If there is no match to the arguments are made, and exception is thrown"
-
+  "Create Vaadin widgets from a list of arguments. The variable arguments are a list of constructor values, an optional config Map
+  and any child widgets.
+  "
   [cls args allow-children]
-  (let [null-ctor (.getConstructor cls (make-array Class 0))]
+  (let [{:keys [ctor ctor-args initial-args unused-args config children]} (parse-builder-args cls args)
+        cls-name (.getSimpleName cls)]
+    (cond
+      (not ctor) (bad-argument "Cannot create a " cls-name " from " initial-args)
+      (and (not allow-children) (not-empty children)) (bad-argument cls-name " does not allow children components")
+      (not-empty unused-args) (bad-argument "Unknown extra arguments after constructor args "
+                                (drop (count ctor-args) initial-args)))
 
-    (letfn [
-            (unwrap-children [obj computed-children?]
-              (let [children (unwrap-sequence-args computed-children?)]
-                (if (and (not allow-children) (> (count children) 0))
-                 (bad-argument (.getSimpleName cls) " does not allow children")
-                 [obj children])))
+    (let [obj (.newInstance ctor (object-array ctor-args))]
+      [(if config (configure obj config) obj) (or children '())])
+    ))
 
-            (make-result [obj children]
-              (let [config (first children)]
-                (if (instance? Map config)         ; Configure if needed and check/unwrap children
-                 (unwrap-children (configure obj config) (drop 1 children))
-                 (unwrap-children obj children))))
-            ]
-
-      ;; First try for configuration only
-      (if (and null-ctor (instance? Map (first args)))
-        (make-result (.newInstance null-ctor (object-array 0)) args)
-
-        ;; Otherwise try and find a non-null constructor and use that
-        (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
-          (make-result
-            (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
-            (drop (.getParameterCount ctor) args))
-
-          ;; Otherwise use the null constructor if any children satisfy allow-children
-          (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
-            (make-result (.newInstance null-ctor (object-array 0)) args)
-
-            ;; Otherwise, we fail
-            (bad-argument "Cannot create a " (.getSimpleName cls) " from " (unwrap-sequence-args args))))))))
+;(let [null-ctor (.getConstructor cls (make-array Class 0))]
+;
+;  (letfn [
+;          (unwrap-children [obj computed-children?]
+;            (let [children (unwrap-sequence-args computed-children?)]
+;              (if (and (not allow-children) (> (count children) 0))
+;               (bad-argument (.getSimpleName cls) " does not allow children")
+;               [obj children])))
+;
+;          (make-result [obj children]
+;            (let [config (first children)]
+;              (if (instance? Map config)         ; Configure if needed and check/unwrap children
+;               (unwrap-children (configure obj config) (drop 1 children))
+;               (unwrap-children obj children))))
+;          ]
+;
+;    ;; First try for configuration only
+;    (if (and null-ctor (instance? Map (first args)))
+;      (make-result (.newInstance null-ctor (object-array 0)) args)
+;
+;      ;; Otherwise try and find a non-null constructor and use that
+;      (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
+;        (make-result
+;          (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
+;          (drop (.getParameterCount ctor) args))
+;
+;        ;; Otherwise use the null constructor if any children satisfy allow-children
+;        (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
+;          (make-result (.newInstance null-ctor (object-array 0)) args)
+;
+;          ;; Otherwise, we fail
+;          (bad-argument "Cannot create a " (.getSimpleName cls) " from " (unwrap-sequence-args args)))))))
+;)
 
 (defn create-widget
   ([cls args allow-children] (do-create-widget cls args allow-children))
@@ -182,28 +255,7 @@
     (.addComponent parent child))
   parent)
 
-;; A Command that allows functions as Menu Items
 
-(defrecord FunctionCommand [cmd-fn]
-  MenuBar$Command
-  (^void menuSelected [this ^MenuBar$MenuItem item] (cmd-fn item)))
-
-(defprotocol IMenuItemSpec
-  (hasChildren? [this])
-  (addFrom [this mbi])
-  (getChildren [this])
-  )
-
-(deftype MenuItemSpec [name resource content]
-  IMenuItemSpec
-  (hasChildren? [this] (instance? Collection content))
-  (addFrom [this mbi]
-    {:pre [(or (nil? content) (fn? content))]}
-    (if (nil? content)
-      (.addSeparator mbi)
-      (.addItem mbi name resource (->FunctionCommand content))))
-  (getChildren [this] content)
-  )
 
 (defn ->MenItemSeparator []
   (->MenuItemSpec nil nil nil))
