@@ -25,19 +25,19 @@
             [functional-vaadin.utils :refer :all])
   (:import (com.vaadin.ui
              MenuBar
-             Label Embedded Link Upload Button Calendar
+             Label Embedded Link Button
              Panel VerticalLayout HorizontalLayout FormLayout GridLayout TabSheet VerticalSplitPanel HorizontalSplitPanel
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
              Table Tree TreeTable Accordion
-             Component UI Field Image ProgressBar MenuBar$MenuItem Window)
+             Component UI Image ProgressBar Window Upload)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
            (com.vaadin.event ShortcutAction Action$Listener)
            (com.vaadin.data.util.converter Converter)))
 
 
-; TODO - notification, login-form, upload, calendar, popupview, audio, video, browser-frame, color picker, flash, grid
+; TODO - upload, loginForm, calendar, popupview, audio, video, browser-frame, color picker, flash, notification, grid,
 ; TODO - generated table columns, table clicks, editing?
 ; TODO - actions, esp. on tables
 ; TODO - layouts: absolute, css, custom(?)
@@ -205,14 +205,33 @@
   [& args]
   (create-widget ProgressBar args))
 
+(defn upload
+  "Usage: (upload ctor_args? config_map?)
+
+  Create an Upload component from constructor arguments or a configuration Map."
+  [& args]
+  (create-widget Upload args))
+
+;(defn file-upload
+;  "Usage: (file-upload config_map? filename)
+;
+;  A convenience function to create a file upload. \"filename\" is a server pathname where the file will be uploaded,
+;  \"config_map\" is a map of configuration options:
+;
+;  :showProgress - show a progress bar of the upload state, true/false, default false
+;  :onFailed     - a function to call on failure. Arguments are the upload and event
+;  :onSucceeded  - a function to call on success. Arguments are the upload and event
+;  :onChanged    - a function to call when filename is changed. Arguments are the upload, event, and the new value"
+;  )
+
+;; Containers and layouts
+
 (defn tree
   "Usage: (tree ctor_args? config_map?)
 
   Create a Tree component from constructor arguments or a configuration Map."
   [& args]
   (create-widget Tree args))
-
-;; Containers and layouts
 
 (defn panel
   "Usage: (panel ctor_args? config_map? children?)
@@ -350,6 +369,7 @@
        (set-field-group l# *current-field-group*)
        l#)))
 
+
 ;; Embedded items
 
 (defn image
@@ -412,6 +432,7 @@
      (add-children window children)
      (.addWindow ui window)
      window)))
+
 
 
 

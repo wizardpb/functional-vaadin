@@ -39,6 +39,28 @@
   (getChildren [this] content)
   )
 
+(defn- translate-column-options [propertyId column-config]
+  ; translate option :XXX to :columnXXX. This gets further translated to :setColumnXXX by (configure)
+  ; Also add in the propertyId as the first argument
+  (reduce (fn [tconfig [opt-key opt-arg]]
+            (assoc tconfig
+              (keyword (str "column" (capitalize (name opt-key))))
+              [propertyId opt-arg]))
+    {}
+    column-config))
+
+(defprotocol ITableColumn
+  (addToTable [this table]))
+
+(deftype TableColumn [options]
+  ITableColumn
+  (addToTable [this table]
+    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys options #{:propertyId :type :defaultValue})]
+      (.addContainerProperty table propertyId type defaultValue)
+      (->> column-config
+        (translate-column-options propertyId)
+        (configure table)))))
+
 ;; Argument parsing
 
 (s/def ::menu-items (s/* #(instance? IMenuItemSpec %)))
@@ -51,7 +73,7 @@
   (s/cat
     :initial-args (s/* #(not (instance? Map %)))
     :config (s/? #(instance? Map %))
-    :children (s/* #(instance? Component %))))
+    :children (s/* #(or (instance? Component %) (instance? TableColumn %)))))
 
 ;; Widget creation
 
@@ -147,40 +169,6 @@
       [(if config (configure obj config) obj) (or children '())])
     ))
 
-;(let [null-ctor (.getConstructor cls (make-array Class 0))]
-;
-;  (letfn [
-;          (unwrap-children [obj computed-children?]
-;            (let [children (unwrap-sequence-args computed-children?)]
-;              (if (and (not allow-children) (> (count children) 0))
-;               (bad-argument (.getSimpleName cls) " does not allow children")
-;               [obj children])))
-;
-;          (make-result [obj children]
-;            (let [config (first children)]
-;              (if (instance? Map config)         ; Configure if needed and check/unwrap children
-;               (unwrap-children (configure obj config) (drop 1 children))
-;               (unwrap-children obj children))))
-;          ]
-;
-;    ;; First try for configuration only
-;    (if (and null-ctor (instance? Map (first args)))
-;      (make-result (.newInstance null-ctor (object-array 0)) args)
-;
-;      ;; Otherwise try and find a non-null constructor and use that
-;      (if-let [[^Constructor ctor conv-args] (find-constructor cls args)]
-;        (make-result
-;          (.newInstance ctor (object-array (take (.getParameterCount ctor) conv-args)))
-;          (drop (.getParameterCount ctor) args))
-;
-;        ;; Otherwise use the null constructor if any children satisfy allow-children
-;        (if (and null-ctor (or allow-children (and (not allow-children) (zero? (count args)))))
-;          (make-result (.newInstance null-ctor (object-array 0)) args)
-;
-;          ;; Otherwise, we fail
-;          (bad-argument "Cannot create a " (.getSimpleName cls) " from " (unwrap-sequence-args args)))))))
-;)
-
 (defn create-widget
   ([cls args allow-children] (do-create-widget cls args allow-children))
   ([cls args]
@@ -275,28 +263,6 @@
     (add-menu-item mb mitem)))
 
 ;Tables
-
-(defn translate-column-options [propertyId column-config]
-  ; translate option :XXX to :columnXXX. This gets further translated to :setColumnXXX by (configure)
-  ; Also add in the propertyId as the first argument
-  (reduce (fn [tconfig [opt-key opt-arg]]
-            (assoc tconfig
-              (keyword (str "column" (capitalize (name opt-key))))
-              [propertyId opt-arg]))
-    {}
-    column-config))
-
-(defprotocol ITableColumn
-  (addToTable [this table]))
-
-(deftype TableColumn [options]
-  ITableColumn
-  (addToTable [this table]
-    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys options #{:propertyId :type :defaultValue})]
-      (.addContainerProperty table propertyId type defaultValue)
-      (->> column-config
-        (translate-column-options propertyId)
-        (configure table)))))
 
 (defmethod add-children Table [table children]
   ; Children are configuration Maps of Table setters for that column

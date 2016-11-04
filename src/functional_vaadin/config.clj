@@ -77,20 +77,20 @@
                  (do-bind field propertyId (or type Object) initialValue))))
 
 (defn add-validations
-  "Add validators to the given fiels. Validators are a single or sequnce of Validator instances"
+  "Add validators to the given fields. Validators are a single or sequnce of Validator instances"
   [field arg]
   (let [validators (if (collection? arg) arg [arg])]
     (reduce (fn [f v] (.addValidator f v) f) field validators)))
 
-(defn validator? [v]
+(defn- validator? [v]
   (instance? Validator v))
 
-(defn check-validators [val]
+(defn- check-validators [val]
   (if (collection? val)
     (every? validator? val)
     (validator? val)))
 
-(defn add-validations [field arg]
+(defn- add-validations [field arg]
   (let [validators (if (iterable? arg) arg [arg])]
     (reduce (fn [f v] (.addValidator f v) f) field validators)))
 
@@ -157,20 +157,28 @@
     errors)
   )
 
-(defn validate-config [config specs]
+(defn- validate-config [config specs]
   (reduce #(validate-option %1 %2 specs) [] config))
 
-(defn translate-config-keys [config]
+(defn- translate-config-keys [config]
   (reduce (fn [nopts [k v]] (assoc nopts (or (get attribute-translation k) k) v)) {} config))
 
-(defn do-syntheric-option [obj [opt-key opt-val]]
+(defn- do-synthetic-option [obj [opt-key opt-val]]
   ((get-in synthetic-option-specs [opt-key :execute]) obj opt-key opt-val))
 
-(defn do-synthetic-options [obj config]
-  (let [[syn-config attr-config] (extract-keys config (keys synthetic-option-specs))]
-    (doseq [option syn-config]
-      (do-syntheric-option obj option))
-    attr-config))
+;(defn do-synthetic-options [obj config]
+;  (let [[syn-config attr-config] (extract-keys config (keys synthetic-option-specs))]
+;    (doseq [option syn-config]
+;      (do-syntheric-option obj option))
+;    attr-config))
+
+(defn- do-synthetic-options [obj config]
+  (let [syn-keys (set (keys synthetic-option-specs))]
+    (reduce (fn [config-opts option]
+              (if (syn-keys (first option))
+                (do (do-synthetic-option obj option) config-opts)
+                (merge config-opts option))
+             ) {} config)))
 
 (defn- set-attribute
   [obj [attribute args]]

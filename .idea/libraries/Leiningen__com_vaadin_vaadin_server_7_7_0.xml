@@ -4,6 +4,8 @@
       <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.0/vaadin-server-7.7.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.0/vaadin-server-7.7.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

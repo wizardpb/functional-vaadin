@@ -97,6 +97,7 @@
         (fn [source evt propertyId]
           (.onNext sub {:source source :event evt :properyId propertyId})))))
   )
+
 ; TODO - other observers - component clicks - see notes.
 
 

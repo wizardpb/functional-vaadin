@@ -3,18 +3,21 @@
   The table can be filed by filling in the form and clicking 'Save'"
   (:use functional-vaadin.core
         functional-vaadin.data-binding
+        functional-vaadin.event-handling
         functional-vaadin.rx.observers
         functional-vaadin.rx.operators
-        functional-vaadin.utils)
+        ;functional-vaadin.utils
+        )
   (:require [rx.lang.clojure.core :as rx])
   (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.Sampler
               :extends com.vaadin.ui.UI
               :main false)
-  (:import (com.vaadin.ui VerticalLayout Button Table UI Alignment)
+  (:import (com.vaadin.ui VerticalLayout Button Table UI Alignment Upload$Receiver Upload$StartedEvent Upload)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.annotations Theme)
            (java.util.concurrent TimeUnit)
-           (rx Observable)))
+           (rx Observable)
+           (java.io OutputStream ByteArrayOutputStream)))
 
 ; TODO - add To-Do tab˙
 
@@ -59,6 +62,16 @@
            ["Cake" 11]]}]}]
       )))
 
+(defn file-upload-tab []
+  (vertical-layout {:caption "File Upload" :margin true :spacing true}
+    (upload {:id :file-upload :receiver (reify
+                                          Upload$Receiver
+                                          (^OutputStream receiveUpload [this ^String fname ^String mineType]
+                                            (ByteArrayOutputStream.)))})
+    (button {:caption "Stop" :id :upload-stop-button :enabled false})
+    (progress-bar {:id :upload-progress :value (float 0.0) :visible false :width "100%"})
+    (label {:id :upload-state :value ""})))
+
 (defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
     (commit)                                             ; Commit the form of which it is a part
@@ -73,6 +86,7 @@
 ; Simulate a background job for the progress indicator by using a timer to send events (increasing integers)
 ; at 1 second intervals. We update the progress by subscribing to these events.
 ;
+
 (defn- setup-background-actions [main-ui]
   (let [subscription (atom nil)                             ; Indicate we are running by saving the timer subsciption
         timer (->>                                          ; The timer that sends events - wrap it in UI access protection
@@ -93,19 +107,45 @@
         tick-fn (fn [t]                                     ; Function to count the timer ticks
                   (.setValue progress (float (/ (inc t) 100)))
                   (if (> t 99) (stop-fn {})))                ;Stop when we're done
+        start-fn (fn [clickInfo]
+                   (when-not @subscription               ; When it's not subscribed, subscribe and save the subscription
+                     (swap! subscription (fn [_] (rx/subscribe timer tick-fn)))
+                     (.setEnabled start-button false)    ; Flip button state so Start is disabled and Stop enabled
+                     (.setEnabled stop-button true)
+                     (.setValue state-label "Running...")
+                     ))
         ]
     (->                                                     ; Set up the Start button to subscribe to the timer
       (button-clicks start-button)
-      (rx/subscribe (fn [clickInfo]
-                      (when-not @subscription               ; When it's not subscribed, subscribe and save the subscription
-                        (swap! subscription (fn [_] (rx/subscribe timer tick-fn)))
-                        (.setEnabled start-button false)    ; Flip button state so Start is disabled and Stop enabled
-                        (.setEnabled stop-button true)
-                        (.setValue state-label "Running...")
-                        ))))
+      (rx/subscribe start-fn))
     (->                                                     ; Set up the Stop button to stop the action
       (button-clicks stop-button)
       (rx/subscribe stop-fn))))
+
+(defn- set-label [label & args]
+  (.setValue label (apply str args)))
+
+(defn setup-upload-actions [main-ui]
+  (let [^Upload upload (componentNamed :file-upload main-ui)
+        progress (componentNamed :upload-progress main-ui)
+        stop-button (componentNamed :upload-stop-button main-ui)
+        state-label (componentNamed :upload-state main-ui)]
+    (onProgress upload (fn [readBytes contentLength]
+                         (set-label state-label "Upload " readBytes " bytes of " contentLength)
+                         (.setValue progress (float (/ readBytes contentLength)))))
+    (onStarted upload (fn [c evt]
+                        (.setEnabled stop-button true)
+                        (.setVisible progress true)
+                        (set-label state-label "Uploading " (.getFilename evt) ", type " (.getMIMEType evt))))
+    (onSucceeded upload (fn [c evt]
+                          (set-label state-label "Upload complete")
+                          (.setEnabled stop-button false)))
+    (onFailed upload (fn [c evt] (set-label state-label "Upload failed: " (.getMessage (.getReason evt)))))
+    (onClick stop-button (fn [btn evt form]
+                           (set-label state-label "Interrupting...")
+                           (.setVisible progress false)
+                           (.interruptUpload upload)))
+    ))
 
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
@@ -114,11 +154,12 @@
       (form-and-table)
       (background-task)
       (food-menu)
+      (file-upload-tab)
       )
     )
 
   (setup-form-actions main-ui)
   (setup-background-actions main-ui)
-
+  (setup-upload-actions main-ui)
   (.setPollInterval main-ui 50)                            ; Make the ProgressBar work - we could also use PUSH mode
   )

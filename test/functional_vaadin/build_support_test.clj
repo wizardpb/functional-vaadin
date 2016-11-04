@@ -8,6 +8,12 @@
            (clojure.lang MapEntry)
            (java.io File)))
 
+(defn- mk-column [propertyId config]
+  (->TableColumn
+    (assoc
+      (merge {:type Object :defaultValue nil} config)
+      :propertyId propertyId)))
+
 (deftest component-args-spec
   (testing "conformance"
     (is (= (s/conform ::functional-vaadin.build-support/component-args '())
@@ -18,12 +24,22 @@
           {:initial-args ["c1" "c2"]}))
     (is (= (s/conform ::functional-vaadin.build-support/component-args '("c1" "c2" {:hidden true}))
           {:initial-args ["c1" "c2"] :config {:hidden true}}))
+
+    ; Test component children
     (let [c1 (Button.)
           c2 (VerticalLayout.)]
       (is (= (s/conform ::functional-vaadin.build-support/component-args (list {:hidden true} c1 c2))
             {:config {:hidden true} :children [c1 c2]}))
       (is (= (s/conform ::functional-vaadin.build-support/component-args (list "c1" c1 {:hidden true} c1 c2))
             {:initial-args ["c1" c1] :config {:hidden true} :children [c1 c2]})))
+
+    ; Test table column children
+    (let [c1 (mk-column "first-name" {:header "First Name" })
+          c2 (mk-column "last-name" {:header "Last Name" })]
+      (is (= (s/conform ::functional-vaadin.build-support/component-args (list {:caption "Table"} c1 c2))
+            {:config {:caption "Table"} :children [c1 c2]}))
+      (is (= (s/conform ::functional-vaadin.build-support/component-args (list "c1" c1 {:caption "Table"} c1 c2))
+            {:initial-args ["c1" c1] :config {:caption "Table"} :children [c1 c2]})))
     )
   (testing "failed conformance"
     (is (= (s/conform ::functional-vaadin.build-support/component-args [{:hidden true} {:enabled false}])

@@ -8,13 +8,13 @@
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar TreeTable)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar TreeTable Upload$Receiver)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui TestUI]
            (com.vaadin.data.util IndexedContainer PropertysetItem HierarchicalContainer)
            (functional_vaadin.build_support FunctionCommand)
-           (java.io File)
+           (java.io File OutputStream ByteArrayOutputStream)
            (com.vaadin.server FileResource)
            (com.vaadin.shared.ui.label ContentMode)))
 
@@ -196,6 +196,15 @@
       (is (= (.getValue (fn "Field" (Date. 0))) (Date. 0)))
       )))
 
+(deftest ui-upload
+  (testing "Building"
+    (let [store (atom (ByteArrayOutputStream.))
+          receiver (reify Upload$Receiver
+                     (^OutputStream receiveUpload [this ^String fname ^String type]
+                       @store))
+          ul (upload {:receiver receiver})]
+      (is (identical? (.getReceiver ul) receiver)))))
+
 (defmacro with-form [& forms]
   `(with-bindings
      {#'*current-field-group* (FieldGroup. (PropertysetItem.))}
@@ -284,7 +293,7 @@
 
 (deftest ui-tables
   (testing "Creation"
-    (let [tbl (table "My Table"
+    (let [tbl (table {:caption "My Table" }
                 (table-column "Col1")
                 (table-column "Col2"))]
       (is (instance? Table tbl))
