@@ -12,9 +12,9 @@
                        functional-vaadin.rx.observers
                        functional-vaadin.rx.operators
                        functional-vaadin.examples.Sampler]}
-  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.0"]
-                                       [com.vaadin/vaadin-client-compiled "7.7.0"]
-                                       [com.vaadin/vaadin-themes "7.7.0"]
+  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.3"]
+                                       [com.vaadin/vaadin-client-compiled "7.7.3"]
+                                       [com.vaadin/vaadin-themes "7.7.3"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]}
@@ -30,9 +30,9 @@
              :uberjar  {:aot [functional-vaadin.examples.Sampler]
                         :main functional-vaadin.examples.run
                         :dependencies [[io.reactivex/rxclojure "1.0.0"]
-                                       [com.vaadin/vaadin-server "7.7.0"]
-                                       [com.vaadin/vaadin-client-compiled "7.7.0"]
-                                       [com.vaadin/vaadin-themes "7.7.0"]
+                                       [com.vaadin/vaadin-server "7.7.3"]
+                                       [com.vaadin/vaadin-client-compiled "7.7.3"]
+                                       [com.vaadin/vaadin-themes "7.7.3"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]
