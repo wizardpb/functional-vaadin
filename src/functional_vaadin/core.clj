@@ -38,7 +38,7 @@
            (functional_vaadin LoginForm)))
 
 
-; TODO - loginForm, calendar, popupview, audio, video, browser-frame, color picker, flash, notification, grid,
+; TODO - calendar, popupview, audio, video, browser-frame, color picker, flash, notification, grid,
 ; TODO - generated table columns, table clicks, editing?
 ; TODO - actions, esp. on tables
 ; TODO - layouts: absolute, css, custom(?)
