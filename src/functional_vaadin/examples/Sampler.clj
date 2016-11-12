@@ -21,7 +21,7 @@
 
 ; TODO - add To-Do tab˙
 
-(defn- form-and-table []
+(defn- form-and-table-tab []
   (horizontal-layout {:sizeFull [] :caption "Form and Table"}
     (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
       (form-layout
@@ -39,7 +39,7 @@
         (table-column "notes" {:header "Notes" :width 300})
         ))))
 
-(defn- background-task []
+(defn- background-task-tab []
   (vertical-layout {:caption "Background Task"}
     (horizontal-layout {:margin true :spacing true}
       (button {:caption "Start" :id :start-button})
@@ -48,7 +48,7 @@
         (progress-bar {:id :progress :value (float 0.0) :width "300px"})
         (label {:value "Stopped" :id :running-state})))))
 
-(defn food-menu []
+(defn food-menu-tab []
   (vertical-layout {:caption "Food Menu" :margin true :spacing true}
     (add-hierarchy (tree-table {:alignment Alignment/MIDDLE_CENTER }
                     (table-column "Name" {:type String :defaultValue "" :width 200})
@@ -71,6 +71,19 @@
     (button {:caption "Stop" :id :upload-stop-button :enabled false})
     (progress-bar {:id :upload-progress :value (float 0.0) :visible false :width "100%"})
     (label {:id :upload-state :value ""})))
+
+(declare login-func)
+
+(defn login-form-tab []
+  (vertical-layout {:caption "Login Forms" :margin true :spacing true}
+    (horizontal-layout {:margin true :spacing true}
+     (panel {:caption "Default"} (login-form (fn [src evt uname pwd] (login-func uname pwd))))
+     (panel {:caption "Modified"} (login-form
+                                    {:usernameCaption "Enter username"
+                                     :passwordCaption "And your password"
+                                     :loginButtonFunc (fn [] (button "Do Login"))}
+                                    (fn [src evt uname pwd] (login-func uname pwd)))))
+    (label {:id :login-message})))
 
 (defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
@@ -150,14 +163,19 @@
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
   (defui main-ui
-    (panel "Functional Vaadin Sampler" (tab-sheet)
-      (form-and-table)
-      (background-task)
-      (food-menu)
-      (file-upload-tab)
+    (panel "Functional Vaadin Sampler"
+      (tab-sheet
+        (form-and-table-tab)
+        (background-task-tab)
+        (food-menu-tab)
+        (file-upload-tab)
+        (login-form-tab)
+        )
       )
     )
 
+  (defn login-func [uname pwd]
+    (.setValue (componentNamed :login-message main-ui) (str "Logged in as \"" uname "\" with password \"" pwd "\"")))
   (setup-form-actions main-ui)
   (setup-background-actions main-ui)
   (setup-upload-actions main-ui)

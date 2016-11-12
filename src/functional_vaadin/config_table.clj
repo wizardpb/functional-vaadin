@@ -3,9 +3,9 @@
   DO NOT EDIT"
   (:import
     (com.vaadin.ui Label Embedded Link MenuBar Upload Button Calendar GridLayout Panel Window VerticalLayout 
-      HorizontalLayout FormLayout TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField 
-      ProgressBar CheckBox RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect ListSelect 
-      OptionGroup Tree TreeTable 
+      HorizontalLayout FormLayout TabSheet Accordion VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField 
+      ProgressBar CheckBox RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect 
+      ListSelect OptionGroup Tree TreeTable LoginForm 
     )))
 
 (def config-table
@@ -123,6 +123,8 @@
     [:setLenient 1] (fn [obj arg0] (.setLenient obj arg0))
     [:setLocale 1] (fn [obj arg0] (.setLocale obj arg0))
     [:setLocked 1] (fn [obj arg0] (.setLocked obj arg0))
+    [:setLoginButtonCaption 1] (fn [obj arg0] (.setLoginButtonCaption obj arg0))
+    [:setLoginButtonFunc 1] (fn [obj arg0] (.setLoginButtonFunc obj arg0))
     [:setMargin 1] (fn [obj arg0] (.setMargin obj arg0))
     [:setMax 1] (fn [obj arg0] (.setMax obj arg0))
     [:setMaxLength 1] (fn [obj arg0] (.setMaxLength obj arg0))
@@ -147,6 +149,9 @@
     [:setParent 1] (fn [obj arg0] (.setParent obj arg0))
     [:setParent 2] (fn [obj arg0 arg1] (.setParent obj arg0 arg1))
     [:setParseErrorMessage 1] (fn [obj arg0] (.setParseErrorMessage obj arg0))
+    [:setPasswordCaption 1] (fn [obj arg0] (.setPasswordCaption obj arg0))
+    [:setPasswordFieldFunc 1] (fn [obj arg0] (.setPasswordFieldFunc obj arg0))
+    [:setPopupWidth 1] (fn [obj arg0] (.setPopupWidth obj arg0))
     [:setPosition 2] (fn [obj arg0 arg1] (.setPosition obj arg0 arg1))
     [:setPositionX 1] (fn [obj arg0] (.setPositionX obj arg0))
     [:setPositionY 1] (fn [obj arg0] (.setPositionY obj arg0))
@@ -162,6 +167,7 @@
     [:setResizeLazy 1] (fn [obj arg0] (.setResizeLazy obj arg0))
     [:setResolution 1] (fn [obj arg0] (.setResolution obj arg0))
     [:setResource 1] (fn [obj arg0] (.setResource obj arg0))
+    [:setResource 2] (fn [obj arg0 arg1] (.setResource obj arg0 arg1))
     [:setResponsive 1] (fn [obj arg0] (.setResponsive obj arg0))
     [:setRightColumnCaption 1] (fn [obj arg0] (.setRightColumnCaption obj arg0))
     [:setRowExpandRatio 2] (fn [obj arg0 arg1] (.setRowExpandRatio obj arg0 arg1))
@@ -210,6 +216,8 @@
     [:setTimeFormat 1] (fn [obj arg0] (.setTimeFormat obj arg0))
     [:setTimeZone 1] (fn [obj arg0] (.setTimeZone obj arg0))
     [:setType 1] (fn [obj arg0] (.setType obj arg0))
+    [:setUsernameCaption 1] (fn [obj arg0] (.setUsernameCaption obj arg0))
+    [:setUsernameFieldFunc 1] (fn [obj arg0] (.setUsernameFieldFunc obj arg0))
     [:setValidationVisible 1] (fn [obj arg0] (.setValidationVisible obj arg0))
     [:setValue 1] (fn [obj arg0] (.setValue obj arg0))
     [:setVisible 1] (fn [obj arg0] (.setVisible obj arg0))

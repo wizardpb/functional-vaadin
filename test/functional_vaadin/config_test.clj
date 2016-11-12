@@ -16,7 +16,8 @@
            (com.vaadin.data.util PropertysetItem)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.validator StringLengthValidator)
-           (functional_vaadin.validation FunctionalValidator)))
+           (functional_vaadin.validation FunctionalValidator)
+           (functional_vaadin LoginForm)))
 
 (defmacro with-form [& forms]
   `(with-bindings
@@ -164,3 +165,13 @@
 
 
   )
+
+(deftest login-form-ui
+  (testing "building"
+    (let [c (login-form identity)]
+      (is (instance? LoginForm c)))
+    (let [c (login-form {:usernameCaption "Enter Username"} identity)]
+      (is (instance? LoginForm c)))
+    (is (thrown-with-msg?
+          IllegalArgumentException #"No arguments supplied to login-form"
+          (login-form)))))

@@ -30,11 +30,12 @@
              TextField TextArea PasswordField RichTextArea InlineDateField PopupDateField Slider CheckBox
              ComboBox TwinColSelect NativeSelect ListSelect OptionGroup
              Table Tree TreeTable Accordion
-             Component UI Image ProgressBar Window Upload)
+             Component UI Image ProgressBar Window Upload LoginForm$LoginListener LoginForm$LoginEvent)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
            (com.vaadin.event ShortcutAction Action$Listener)
-           (com.vaadin.data.util.converter Converter)))
+           (com.vaadin.data.util.converter Converter)
+           (functional_vaadin LoginForm)))
 
 
 ; TODO - loginForm, calendar, popupview, audio, video, browser-frame, color picker, flash, notification, grid,
@@ -211,6 +212,42 @@
   Create an Upload component from constructor arguments or a configuration Map."
   [& args]
   (create-widget Upload args))
+
+(s/def ::login-form-args
+  (s/cat :config (s/? map?) :login-fn fn?))
+
+(defn- onLogin [^LoginForm source act-fn]
+  (.addLoginListener
+    source
+    (reify
+      LoginForm$LoginListener
+      (^void onLogin [this ^LoginForm$LoginEvent event]
+        (act-fn (.getSource event) event (.getLoginParameter event "username") (.getLoginParameter event "password")))))
+  source)
+
+(defn login-form
+  "Usage: (login-form config_map? login-fn)
+
+  Create an LoginForm component from a login function and an optional configuration Map. The login function will be called
+  with arguments \"[source event username password]\" when the loginform is submitted.
+
+  The optional config can set the usual setters on LoginForm, and also accepts options
+  to alter the creation of the login button, user name and password fields:
+
+  option :loginButtonFunc takes a function that should return the login button component. It must be a Button
+  option :usernameFieldFunc takes a function that should return the user name field. It must be a TextField
+  option :passwordFieldFunc takes a function that should return the password field. It must be a TextField
+
+  Defaults for these are as for com.vaadin.ui.LoginForm"
+  [& args]
+  (let [parsed-args (s/conform ::login-form-args args)]
+    (if (= parsed-args ::s/invalid)
+      (apply bad-argument (if (zero? (count args))
+                            ["No arguments supplied to login-form"]
+                            ["Bad arguments for login-form: " args]))
+      (->
+        (create-widget LoginForm ((fnil list {}) (:config parsed-args)))
+        (onLogin (:login-fn parsed-args))))))
 
 ;(defn file-upload
 ;  "Usage: (file-upload config_map? filename)

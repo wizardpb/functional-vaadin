@@ -1,7 +1,7 @@
 (ns functional-vaadin.event-handling
   (:require [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.utils :refer :all])
-  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent AbstractTextField Table Table$HeaderClickListener Table$HeaderClickEvent Table$FooterClickListener Table$FooterClickEvent Upload Upload$ChangeListener Upload$ChangeEvent Upload$FailedListener Upload$FailedEvent Upload$FinishedEvent Upload$FinishedListener Upload$StartedListener Upload$StartedEvent Upload$SucceededListener Upload$SucceededEvent Upload$ProgressListener)
+  (:import (com.vaadin.ui Button$ClickListener Button$ClickEvent Button Panel Image Embedded Field Label Label$ValueChangeEvent AbstractTextField Table Table$HeaderClickListener Table$HeaderClickEvent Table$FooterClickListener Table$FooterClickEvent Upload Upload$ChangeListener Upload$ChangeEvent Upload$FailedListener Upload$FailedEvent Upload$FinishedEvent Upload$FinishedListener Upload$StartedListener Upload$StartedEvent Upload$SucceededListener Upload$SucceededEvent Upload$ProgressListener LoginForm LoginForm$LoginListener LoginForm$LoginEvent)
            (com.vaadin.event MouseEvents$ClickListener MouseEvents$ClickEvent FieldEvents$TextChangeListener FieldEvents$TextChangeEvent FieldEvents$TextChangeNotifier)
            (com.vaadin.data Property$ValueChangeListener Property$ValueChangeEvent Property$ValueChangeNotifier)))
 
@@ -158,3 +158,4 @@
       Upload$ProgressListener
       (^void updateProgress [this ^long readBytes ^long contentLength]
         (act-fn readBytes contentLength)))))
+
