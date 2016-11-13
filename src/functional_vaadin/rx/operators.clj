@@ -12,6 +12,7 @@
 
 (defn consume-for
   "Usage: (consume-for component fn xs)
+
   Subscribes to an Observable xs, calling the function fn with the given component for every event received
   from xs."
   [comp c-fn xs]
@@ -27,7 +28,7 @@
     "Required"
     (.getMessage e)))
 
-(defn commit-error [e]
+(defn- commit-error [e]
   (if (instance? FieldGroup$CommitException e)
     (.center
       (window "Field Errors"
@@ -39,28 +40,21 @@
     (throw e))
   )
 
-(defmulti do-commit
-  "Commit a passed in FieldGroup, depending on the way it was passed"
-  (fn [v] (class v)))
-
-(defmethod do-commit Map [v]
-  (if-let [fg (:field-group v)]
-    (do
-      (.commit fg)
-      (assoc v :item (.getItemDataSource fg)))              ; Add the data Item to the Map
+(defn- do-commit [v]
+  (condp instance? v
+    Map (if-let [fg (:field-group v)]
+          (do
+            (.commit fg)
+            (assoc v :item (.getItemDataSource fg)))        ; Add the data Item to the Map
+          )
+    FieldGroup (do
+                 (.commit v)
+                 (.getItemDataSource v))
+    ; default - pass the item through
     v))
 
-(defmethod do-commit FieldGroup [v]
-  (do
-    (.commit v)
-    (.getItemDataSource v)))                                ; Just return the data item
-
-(defmethod do-commit :default [v]                           ; Pass on the value by default
-  v)
-
-
 (defn commit
-  "Usage: (commit [error-handler? xs])
+  "Usage: (commit error-handler? xs)
 
   Commit a received event from a form item by calling commit on the forms field group and extracting the data as an item. The item
   is passed on to the next subscriber. Assumes it will receive either a single FieldGroup object, or a Map with
@@ -87,7 +81,9 @@
   )
 
 (defn with-ui-access
-  "Forward events to subscribers protected by a UI access lock. Uses UI.access() which hands the onNext off to a Future."
+  "Usage: (with-ui-access xs)
+
+  Forward events to subscribers protected by a UI access lock. Uses UI.access() which hands the onNext off to a Future."
   [^Observable xs]
   (let [op (rx/operator*
              (fn [subscribed-o]

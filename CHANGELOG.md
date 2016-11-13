@@ -26,17 +26,25 @@
 
 ### Added
 - Better documentation, better jar constructions
+- Actions on Panel and Window
 
-<!---
 ## [0.2.0]
 
 ### Added
-- Added Tree, TreeTable, Accordion builders
+- Added Tree, TreeTable, Accordion, Upload and LoginForm builders
 - Added Container$Hierarchical builder
+- Sampler app updated
+- Upgraded to Vaadin 7.7.3
 
 ### Changed
 - Improved documentation
---->
+- Internal refactoring, mostly using clojure.spec for parsing and error reporting
+
+### TO DO
+- Builders: calendar, popupview, browser-frame, audio, video, color picker, flash, notification, grid
+- Better error reporting (using clojure.spec)
+- Generated table columns, table click actions
+
 
 
 

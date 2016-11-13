@@ -17,14 +17,15 @@
            (com.vaadin.annotations Theme)
            (java.util.concurrent TimeUnit)
            (rx Observable)
-           (java.io OutputStream ByteArrayOutputStream)))
+           (java.io OutputStream ByteArrayOutputStream)
+           (com.vaadin.shared.ui AlignmentInfo$Bits)))
 
 ; TODO - add To-Do tab˙
 
 (defn- form-and-table-tab []
-  (horizontal-layout {:sizeFull [] :caption "Form and Table"}
-    (form {:content (vertical-layout) :id :form :margin true :sizeFull []}
-      (form-layout
+  (horizontal-layout {:caption "Form and Table" :width "100%"}
+    (form {:content (vertical-layout {:margin true :sizeUndefined []}) :id :form :margin true}
+      (form-layout {:sizeUndefined []}
         (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
         (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
         (text-field {:bindTo ["notes" String] :nullRepresentation "" })
@@ -32,8 +33,8 @@
       (horizontal-layout
         (button {:caption "Save" :id :save-button}))
       )
-    (vertical-layout {:margin true :sizeFull []}
-      (table {:caption "People" :sizeFull [] :id :table}
+    (vertical-layout {:margin true :sizeUndefined [] :expandRatio 1.0}
+      (table {:caption "People" :id :table}
         (table-column "first-name" {:header "First Name" })
         (table-column "last-name" {:header "Last Name"})
         (table-column "notes" {:header "Notes" :width 300})
@@ -41,10 +42,10 @@
 
 (defn- background-task-tab []
   (vertical-layout {:caption "Background Task"}
-    (horizontal-layout {:margin true :spacing true}
+    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
       (button {:caption "Start" :id :start-button})
       (button {:caption "Stop" :id :stop-button :enabled false})
-      (vertical-layout
+      (vertical-layout {:sizeUndefined []}
         (progress-bar {:id :progress :value (float 0.0) :width "300px"})
         (label {:value "Stopped" :id :running-state})))))
 
@@ -63,20 +64,25 @@
       )))
 
 (defn file-upload-tab []
-  (vertical-layout {:caption "File Upload" :margin true :spacing true}
-    (upload {:id :file-upload :receiver (reify
-                                          Upload$Receiver
-                                          (^OutputStream receiveUpload [this ^String fname ^String mineType]
-                                            (ByteArrayOutputStream.)))})
-    (button {:caption "Stop" :id :upload-stop-button :enabled false})
-    (progress-bar {:id :upload-progress :value (float 0.0) :visible false :width "100%"})
-    (label {:id :upload-state :value ""})))
+  (horizontal-layout {:caption "File Upload" :margin true :spacing true :width "100%"}
+    (vertical-layout {:widthUndefined [] :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
+     (upload {:id :file-upload :receiver (reify
+                                           Upload$Receiver
+                                           (^OutputStream receiveUpload [this ^String fname ^String mineType]
+                                             (ByteArrayOutputStream.)))})
+      ;
+      ; The current implementation of upload interrupt causes the upload to restart on Chrome and Firefox.
+      ; Only Safari (AFAIK) has an implementation that works. Becaus of this, I've left out the Stop function,
+      ; but left the code as an example
+     ;(button {:caption "Stop" :id :upload-stop-button :enabled false})
+     (progress-bar {:id :upload-progress :value (float 0.0) :visible false :width "100%"})
+     (label {:id :upload-state :value ""}))))
 
 (declare login-func)
 
 (defn login-form-tab []
   (vertical-layout {:caption "Login Forms" :margin true :spacing true}
-    (horizontal-layout {:margin true :spacing true}
+    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
      (panel {:caption "Default"} (login-form (fn [src evt uname pwd] (login-func uname pwd))))
      (panel {:caption "Modified"} (login-form
                                     {:usernameCaption "Enter username"
@@ -141,23 +147,27 @@
 (defn setup-upload-actions [main-ui]
   (let [^Upload upload (componentNamed :file-upload main-ui)
         progress (componentNamed :upload-progress main-ui)
-        stop-button (componentNamed :upload-stop-button main-ui)
+        ;stop-button (componentNamed :upload-stop-button main-ui)
         state-label (componentNamed :upload-state main-ui)]
+    (onChange upload (fn [src evt fname]
+                       (.setVisible progress false)
+                       (set-label state-label "")))
     (onProgress upload (fn [readBytes contentLength]
                          (set-label state-label "Upload " readBytes " bytes of " contentLength)
                          (.setValue progress (float (/ readBytes contentLength)))))
     (onStarted upload (fn [c evt]
-                        (.setEnabled stop-button true)
+                        ;(.setEnabled stop-button true)
                         (.setVisible progress true)
                         (set-label state-label "Uploading " (.getFilename evt) ", type " (.getMIMEType evt))))
     (onSucceeded upload (fn [c evt]
                           (set-label state-label "Upload complete")
-                          (.setEnabled stop-button false)))
+                          ;(.setEnabled stop-button false)
+                          ))
     (onFailed upload (fn [c evt] (set-label state-label "Upload failed: " (.getMessage (.getReason evt)))))
-    (onClick stop-button (fn [btn evt form]
-                           (set-label state-label "Interrupting...")
-                           (.setVisible progress false)
-                           (.interruptUpload upload)))
+    ;(onClick stop-button (fn [btn evt form]
+    ;                       (set-label state-label "Interrupting...")
+    ;                       (.setVisible progress false)
+    ;                       (.interruptUpload upload)))
     ))
 
 (defn -init [^UI main-ui request]

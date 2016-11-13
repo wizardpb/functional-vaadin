@@ -1,4 +1,4 @@
-(defproject com.prajnainc/functional-vaadin "0.1.1"
+(defproject com.prajnainc/functional-vaadin "0.2.0"
   :description "A functional interface to Vaadin"
   :url "https://github.com/wizardpb/functional-vaadin"
   :license {:name "Eclipse Public License"
@@ -27,7 +27,7 @@
                                        [org.clojure/tools.namespace "0.2.11"]
                                        ]
                         }
-             :uberjar  {:aot [functional-vaadin.examples.Sampler]
+             :uberjar  {:aot [functional-vaadin.LoginForm functional-vaadin.examples.Sampler]
                         :main functional-vaadin.examples.run
                         :dependencies [[io.reactivex/rxclojure "1.0.0"]
                                        [com.vaadin/vaadin-server "7.7.3"]
