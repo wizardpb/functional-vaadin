@@ -1,5 +1,6 @@
 lein uberjar
+lein codox
 rm -rf uberjars
 mv target uberjars
 lein with-profile jar jar
-lein codox
+
