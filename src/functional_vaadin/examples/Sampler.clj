@@ -23,26 +23,27 @@
 ; TODO - add To-Do tab˙
 
 (defn- form-and-table-tab []
-  (horizontal-layout {:caption "Form and Table" :width "100%"}
-    (form {:content (vertical-layout {:margin true :sizeUndefined []}) :id :form :margin true}
-      (form-layout {:sizeUndefined []}
-        (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
-        (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
-        (text-field {:bindTo ["notes" String] :nullRepresentation "" })
-        )
-      (horizontal-layout
-        (button {:caption "Save" :id :save-button}))
-      )
-    (vertical-layout {:margin true :sizeUndefined [] :expandRatio 1.0}
-      (table {:caption "People" :id :table}
-        (table-column "first-name" {:header "First Name" })
-        (table-column "last-name" {:header "Last Name"})
-        (table-column "notes" {:header "Notes" :width 300})
-        ))))
+  (vertical-layout {:caption "Form and Table" :sizeFull []}
+    (horizontal-layout {:componentAlignment Alignment/TOP_CENTER}
+     (form {:content (vertical-layout {:margin true :sizeUndefined []}) :id :form :margin true}
+       (form-layout {:sizeUndefined []}
+         (text-field {:bindTo ["first-name" String] :nullRepresentation "" :required true})
+         (text-field {:bindTo ["last-name" String] :nullRepresentation "" :required true})
+         (text-field {:bindTo ["notes" String] :nullRepresentation ""})
+         )
+       (horizontal-layout
+         (button {:caption "Save" :id :save-button}))
+       )
+     (vertical-layout {:margin true :sizeUndefined [] :expandRatio 1.0}
+       (table {:caption "People" :id :table}
+         (table-column "first-name" {:header "First Name"})
+         (table-column "last-name" {:header "Last Name"})
+         (table-column "notes" {:header "Notes" :width 300})
+         )))))
 
 (defn- background-task-tab []
-  (vertical-layout {:caption "Background Task"}
-    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
+  (vertical-layout {:caption "Background Task" :sizeFull []}
+    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
       (button {:caption "Start" :id :start-button})
       (button {:caption "Stop" :id :stop-button :enabled false})
       (vertical-layout {:sizeUndefined []}
@@ -50,22 +51,23 @@
         (label {:value "Stopped" :id :running-state})))))
 
 (defn food-menu-tab []
-  (vertical-layout {:caption "Food Menu" :margin true :spacing true}
-    (add-hierarchy (tree-table {:alignment Alignment/MIDDLE_CENTER }
-                    (table-column "Name" {:type String :defaultValue "" :width 200})
-                    (table-column "Number" {:type Long :defaultValue nil :width 100}))
-      [{["Menu"]
-        [{"Beverages"
-          [["Coffee" 23]
-           ["Tea" 42]]}
-         {"Food"
-          [["Bread" 13]
-           ["Cake" 11]]}]}]
-      )))
+  (vertical-layout {:caption "Food Menu" :margin true :spacing true :height "100%"}
+    (horizontal-layout {:margin true :alignment Alignment/TOP_CENTER}
+      (add-hierarchy (tree-table "Eats!"
+                      (table-column "Name" {:type String :defaultValue "" :width 200})
+                      (table-column "Number" {:type Long :defaultValue nil :width 100}))
+       [{["Menu"]
+         [{"Beverages"
+           [["Coffee" 23]
+            ["Tea" 42]]}
+          {"Food"
+           [["Bread" 13]
+            ["Cake" 11]]}]}]
+       ))))
 
 (defn file-upload-tab []
-  (horizontal-layout {:caption "File Upload" :margin true :spacing true :width "100%"}
-    (vertical-layout {:widthUndefined [] :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
+  (vertical-layout {:caption "File Upload" :margin true :spacing true :width "100%"}
+    (horizontal-layout {:widthUndefined [] :margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
      (upload {:id :file-upload :receiver (reify
                                            Upload$Receiver
                                            (^OutputStream receiveUpload [this ^String fname ^String mineType]
@@ -82,8 +84,8 @@
 (declare login-func)
 
 (defn login-form-tab []
-  (vertical-layout {:caption "Login Forms" :margin true :spacing true}
-    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/MIDDLE_CENTER}
+  (vertical-layout {:caption "Login Forms" :margin true :spacing true :height "100%"}
+    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
      (panel {:caption "Default"} (login-form (fn [src evt uname pwd] (login-func uname pwd))))
      (panel {:caption "Modified"} (login-form
                                     {:usernameCaption "Enter username"
@@ -174,7 +176,7 @@
 (defn -init [^UI main-ui request]
   ; Define our UI. Use :id to capture components we'll need later
   (defui main-ui
-    (panel "Functional Vaadin Sampler"
+    (panel {:caption "Functional Vaadin Sampler" :sizeFull []}
       (tab-sheet
         (form-and-table-tab)
         (background-task-tab)

@@ -106,11 +106,12 @@
   {:ctor (.getConstructor cls (make-array Class 0)) :ctor-args '()})
 
 (defn- buildable-childen?
-  "Can all these args be considered vald children of a widget? True if they are all Components or all MenuItemSpecs"
+  "Can all these args be considered vald children of a widget? True if they are all Components, MenuItemSpecs or TableColumn"
   [args]
   (or
     (every? #(instance? Component %) args)
-    (every? #(instance? MenuItemSpec %) args)))
+    (every? #(instance? MenuItemSpec %) args)
+    (every? #(instance? TableColumn %) args)))
 
 (defn- find-constructor
   "Find a constructor for the given class and arguments, matching argument types against the arguments

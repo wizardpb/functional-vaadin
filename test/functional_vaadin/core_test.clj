@@ -293,6 +293,20 @@
 
 (deftest ui-tables
   (testing "Creation"
+    (let [tbl (table
+                (table-column "Col1")
+                (table-column "Col2"))]
+      (is (instance? Table tbl))
+      (is (= nil (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      )
+    (let [tbl (table "My Table"
+                (table-column "Col1")
+                (table-column "Col2"))]
+      (is (instance? Table tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      )
     (let [tbl (table {:caption "My Table" }
                 (table-column "Col1")
                 (table-column "Col2"))]
@@ -331,6 +345,13 @@
 
 (deftest ui-tree-table
   (testing "Creation"
+    (let [tbl (tree-table
+                (table-column "Col1")
+                (table-column "Col2"))]
+      (is (instance? TreeTable tbl))
+      (is (= nil (.getCaption tbl)))
+      (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
+      )
     (let [tbl (tree-table "My Table"
                 (table-column "Col1")
                 (table-column "Col2"))]
