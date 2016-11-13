@@ -1,7 +1,7 @@
 /target
 /classes
 /checkouts
-/uberjars
+/builds
 pom.xml
 pom.xml.asc
 *.jar

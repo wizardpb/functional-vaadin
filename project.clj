@@ -9,6 +9,7 @@
                  [io.reactivex/rxclojure "1.0.0"]]
   :codox {:namespaces [functional-vaadin.core
                        functional-vaadin.conversion
+                       functional-vaadin.validation
                        functional-vaadin.rx.observers
                        functional-vaadin.rx.operators]}
   :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.3"]

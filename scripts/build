@@ -1,0 +1,7 @@
+build_dir="builds/${1:-default}"
+lein uberjar
+lein codox
+rm -rf $build_dir
+mv target $build_dir
+lein with-profile jar jar
+

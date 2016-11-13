@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/scripts/build_release" afterPath="$PROJECT_DIR$/scripts/build" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/build_release" afterPath="$PROJECT_DIR$/scripts/build_release" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,6 +18,7 @@
     <ignored path="notes.txt" />
     <ignored path="$PROJECT_DIR$/.idea/shelf/" />
     <ignored path="uberjars/" />
+    <ignored path="builds/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +48,8 @@
       <file leaf-file-name="config_test.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="148">
+              <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -63,7 +68,7 @@
       <file leaf-file-name="config.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="-480">
               <caret line="85" column="22" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="22" />
               <folding />
             </state>
@@ -90,17 +95,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_release" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/build_release">
+      <file leaf-file-name="build" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/build">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+            <state relative-caret-position="0">
+              <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deploy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/deploy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -143,8 +148,8 @@
       <file leaf-file-name="core_test.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="298" column="32" selection-start-line="298" selection-start-column="32" selection-end-line="298" selection-end-column="32" />
+            <state relative-caret-position="157">
+              <caret line="309" column="23" selection-start-line="309" selection-start-column="22" selection-end-line="309" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -163,8 +168,8 @@
       <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+            <state relative-caret-position="-483">
+              <caret line="384" column="73" selection-start-line="384" selection-start-column="67" selection-end-line="384" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -173,8 +178,8 @@
       <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
+            <state relative-caret-position="150">
+              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -183,8 +188,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            <state relative-caret-position="195">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -200,15 +205,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider editor-type-id="MarkdownFxPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="321">
-                <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+              <first_editor relative-caret-position="111">
+                <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -291,16 +296,16 @@
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
-        <option value="$PROJECT_DIR$/scripts/build" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/validation.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
-        <option value="$PROJECT_DIR$/project.clj" />
-        <option value="$PROJECT_DIR$/scripts/build_release" />
         <option value="$PROJECT_DIR$/scripts/deploy" />
+        <option value="$PROJECT_DIR$/scripts/build_release" />
+        <option value="$PROJECT_DIR$/scripts/build" />
+        <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
       </list>
     </option>
   </component>
@@ -506,7 +511,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uberjars" />
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional_vaadin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -614,7 +623,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/examples" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1479055130402">{:repl-history {:ide [], :local [&quot;(s/conform (s/spec (s/alt \n                     :nk (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))\n                     :kn (s/cat  :kws (s/* map?) :numbers (s/* #(not (map? %)))))) [3 {:a 1}])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [1 2 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q :b])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q 1])&quot; &quot;(s/conform ::men_item_args (\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::men_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(fn? (fn [i] (println 1)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. \&quot;str\&quot;) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. (File. \&quot;fname\&quot;)) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(get-in parsed-args [:children :item_fn])&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(-&gt;MapEntry :a \&quot;b\&quot;)&quot; &quot;(MapEntry. :a \&quot;b\&quot;)&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/explain :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list (\&quot;item\&quot; (fn [item] (println item)))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; (fn [item] (println item)))})&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)})&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;(some nil? [1 23 4])&quot; &quot;(any?)&quot; &quot;(any? 1)&quot; &quot;(any? nil)&quot; &quot;(any? 1 2)&quot; &quot;(cond false 1)&quot; &quot;(seq children)&quot; &quot;(boolean '())&quot; &quot;(and 1 2)&quot; &quot;(and nil 2)&quot; &quot;(and false 2)&quot; &quot;(vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))&quot; &quot;(create-widget Button '(1 2) false)&quot; &quot;(vertical-layout (map #(Label. (str \&quot;Label \&quot; %1)) (range 0 10)))&quot; &quot;(merge {} [:a 1])&quot; &quot;(deftest configuration\n\n  (testing \&quot;Single option args\&quot;\n    (let [obj (Button.)]\n      (is (identical? (configure obj {:caption \&quot;Caption\&quot;}) obj))\n      (is (= (.getCaption (configure obj {:caption \&quot;Caption2\&quot;})) \&quot;Caption2\&quot;))\n      (is (= (.getCaption (configure obj {:caption [\&quot;Caption3\&quot;]})) \&quot;Caption3\&quot;))\n      (is (= (.getHeight (configure obj {:height \&quot;3px\&quot;})) 3.0))\n      (is (= (.getHeight (configure obj {:height [\&quot;3px\&quot;]})) 3.0)))\n\n    (let [obj (configure (VerticalLayout.) {:margin true :spacing true })]\n      (is (.isSpacing obj))\n      (is (= (.getMargin obj) (MarginInfo. true true true true)))))\n\n  (testing \&quot;Multiple option args\&quot;\n    (let [obj (Button.)]\n      (is (= (.getHeight (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) 3.0))\n      (is (= (.getHeightUnits (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) (Sizeable/UNITS_INCH))))\n\n    (let [obj (configure (Button.) {:height [3 (Sizeable/UNITS_MM)] :width [4 (Sizeable/UNITS_MM)]})]\n      (is (= (.getHeight obj) 3.0))\n      (is (= (.getHeightUnits obj) (Sizeable/UNITS_MM)))\n      (is (= (.getWidth obj) 4.0))\n      (is (= (.getWidthUnits obj) (Sizeable/UNITS_MM)))\n      ))\n\n  (testing \&quot;Parent attributes\&quot;\n    )\n\n  (testing \&quot;Synthetic attributes\&quot;\n    (with-bindings\n      {#'*current-ui* (TestUI.)}\n      (let [b (button {:id \&quot;myform\&quot;})]\n        (is (= (.getId b) \&quot;myform\&quot;))\n        (is (identical? (componentAt *current-ui* :myform) b))\n        ))\n    (with-bindings\n      {#'*current-ui* (TestUI.)}\n      (let [b (button {:id :myform.save})]\n        (is (= (.getId b) \&quot;myform.save\&quot;))\n        (is (identical? (componentAt *current-ui* :myform.save) b))\n        ))\n    (let [b (button {:position [0 0]})]\n      (is (= (.getData b) {:parent-data {:position [0 0]}})))\n    (let [b (button {:alignment Alignment/TOP_LEFT})]\n      (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}}))\n      )\n    (button {:addStyleName \&quot;border\&quot;})                       ;How to verify ?\n\n    (let [f (text-field {:validateWith (StringLengthValidator. \&quot;Length Error: {0}\&quot;)})]\n      (is (= 1 (count (.getValidators f))))\n      (is (instance? StringLengthValidator (first (.getValidators f)))))\n\n    (let [f (text-field {:validateWith [\n                                        (StringLengthValidator. \&quot;Length Error: {0}\&quot;)\n                                        (-&gt;FunctionalValidator (fn [obj] false) \&quot;Always fail {0}\&quot;)]})]\n      (is (= 2 (count (.getValidators f))))\n      (is (= [StringLengthValidator FunctionalValidator] (map #(class %1) (.getValidators f)))))\n    )\n\n  (testing \&quot;Actions\&quot;\n    (let [action (shortcutAction \&quot;Enter\&quot; 13 (fn [sender target] (println sender target)))\n          p (panel {:actions\n                    [action]})]\n      (.removeAction p action)))\n\n  (testing \&quot;Binding\&quot;\n    (let [fg (with-form\n               (bind-field (TextField.) \&quot;propId\&quot;))\n          item (.getItemDataSource fg)]\n      (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n      (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) Object))\n      (is (nil? (.getValue (.getItemProperty item \&quot;propId\&quot;))))\n      )\n    (doseq [bval [[\&quot;propId\&quot; String]\n                  {:propertyId \&quot;propId\&quot; :type String}]]\n      (let [fg (with-form\n                (bind-field (TextField.) bval))\n           item (.getItemDataSource fg)]\n       (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n       (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) String))\n       (is (nil? (.getValue (.getItemProperty item \&quot;propId\&quot;))))\n       ))\n    (doseq [bval [[\&quot;propId\&quot; String \&quot;text\&quot;]\n                  {:propertyId \&quot;propId\&quot; :type String :initialValue \&quot;text\&quot;}]]\n      (let [fg (with-form\n                (bind-field (TextField.) bval))\n           item (.getItemDataSource fg)]\n       (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n       (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) String))\n       (is (= (.getValue (.getItemProperty item \&quot;propId\&quot;)) \&quot;text\&quot;))\n       ))\n\n    )\n\n  (testing \&quot;Margin setting\&quot;\n    (let [l (vertical-layout {:margin true})]\n      (is (= (.getMargin l) (MarginInfo.  true ))))\n    (let [l (vertical-layout {:margin [:vertical]})]\n      (is (= (.getMargin l) (MarginInfo.  true false))))\n    (let [l (vertical-layout {:margin [:horizontal]})]\n      (is (= (.getMargin l) (MarginInfo. false true))))\n    (let [l (vertical-layout {:margin [:vertical :top]})]\n      (is (= (.getMargin l) (MarginInfo. true false))))\n    (let [l (vertical-layout {:margin [:vertical :left]})]\n      (is (= (.getMargin l) (MarginInfo. true false true true))))\n    (let [l (vertical-layout {:margin [:horizontal :left]})]\n      (is (= (.getMargin l) (MarginInfo. false true))))\n    (let [l (vertical-layout {:margin [:top :left]})]\n      (is (= (.getMargin l) (MarginInfo. true false false true))))\n    )\n\n  (testing \&quot;Computed children\&quot;\n    (let [l (apply vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))]\n      (is (= (.getComponentCount l) 10))\n      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))\n      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str \&quot;Label \&quot; %1 )) (range (.getComponentCount l)))))\n\n      )\n    (let [l (apply vertical-layout {:margin true :spacing true} (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))]\n      (is (.getMargin l))\n      (is (.isSpacing l))\n      (is (= (.getComponentCount l) 10))\n      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))\n      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str \&quot;Label \&quot; %1 )) (range (.getComponentCount l)))))\n\n      )\n    )\n\n  (testing \&quot;Error handling\&quot;\n    (is (thrown-with-msg?\n          IllegalArgumentException #\&quot;Configuration options must be a Map\&quot;\n          (configure (Button.) :keyword)))\n    (is (thrown-with-msg?\n          UnsupportedOperationException #\&quot;No such option for class com.vaadin.ui.Button: :wozza\&quot;\n          (configure (Button.) {:wozza \&quot;wizzbang\&quot;}))))\n\n\n\n  )&quot; &quot;~(run-my-test)&quot; &quot;(deftest button-events\n  (testing \&quot;Firing\&quot;\n    (let [clicked (atom false)\n          button (button {:onClick (fn [src evt fg] (swap! clicked #(vector (not %1) fg src)))})]\n      (.click button)\n      (is (first @clicked))\n      (is (nil? (second @clicked)))\n      (.click button)\n      (is (not (first @clicked))))\n    (let [clicked (atom false)\n          ^FormLayout form (form\n                 (button {:onClick (fn [src evt fg] (swap! clicked #(vector (not %1) fg src)))}))\n          ^Button button (.getComponent form 0)\n          field-group (get-field-group form)]\n      (.click button)\n      (is (first @clicked))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      (.click button)\n      (is (not (first @clicked)))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      )))&quot; &quot;(deftest button-events\n  (testing \&quot;Firing\&quot;\n    (let [clicked (atom false)\n          button (button)]\n      (onClick button (fn [src evt fg] (swap! clicked #(vector (not %1) fg src))))\n      (.click button)\n      (is (first @clicked))\n      (is (nil? (second @clicked)))\n      (.click button)\n      (is (not (first @clicked))))\n    (let [clicked (atom false)\n          ^FormLayout form (form\n                 (button))\n          ^Button button (.getComponent form 0)\n          field-group (get-field-group form)]\n      (onClick button (fn [src evt fg] (swap! clicked #(vector (not %1) fg src))))\n      (.click button)\n      (is (first @clicked))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      (.click button)\n      (is (not (first @clicked)))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      )))&quot; &quot;(deftest ui-upload\n  (testing \&quot;Building\&quot;\n    (let [store (atom (ByteArrayOutputStream.))\n          receiver (reify Upload$Receiver\n                     (^OutputStream receiveUpload [this fname type]\n                       @store))\n          ul (upload {:receiver receiver})]\n      (is (identical? (.getReceiver ul) receiver)))))&quot; &quot;(deftest ui-upload\n  (testing \&quot;Building\&quot;\n    (let [store (atom (ByteArrayOutputStream.))\n          receiver (reify Upload$Receiver\n                     (^OutputStream receiveUpload [this ^String fname ^String type]\n                       @store))\n          ul (upload {:receiver receiver})]\n      (is (identical? (.getReceiver ul) receiver)))))&quot; &quot;(prompt-loop nil)&quot; &quot;(table \&quot;My Table\&quot;\n  (table-column \&quot;Col1\&quot; {:type String :defaultValue \&quot;\&quot; :header \&quot;Column 1\&quot; :width 100})\n  (table-column \&quot;Col2\&quot; {:type Integer :defaultValue 0 :header \&quot;Column 2\&quot; :width 50}))&quot; &quot;(table {:caption \&quot;My Table\&quot;}\n  (table-column \&quot;Col1\&quot; {:type String :defaultValue \&quot;\&quot; :header \&quot;Column 1\&quot; :width 100})\n  (table-column \&quot;Col2\&quot; {:type Integer :defaultValue 0 :header \&quot;Column 2\&quot; :width 50}))&quot; &quot;(table {:caption \&quot;My Table\&quot; }\n                (table-column \&quot;Col1\&quot;)\n                (table-column \&quot;Col2\&quot;))&quot; &quot;(table \&quot;My Table\&quot;\n  (table-column \&quot;Col1\&quot;)\n                (table-column \&quot;Col2\&quot;))&quot; &quot;(run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(get nil :key)&quot; &quot;(new-form)&quot; &quot;(.getComponentCount (new-form))&quot; &quot;(.getContent (vaadin.ui.LoginForm))&quot; &quot;(import com.vaadin.ui.LoginForm)&quot; &quot;(.getContent (com.vaadin.ui.LoginForm.))&quot; &quot;(.getContent (com.vaadin.ui.LoginForm))&quot; &quot;(.getContent (new-form))&quot; &quot;(.createContent (new-form))&quot; &quot;(compile 'functional-vaadin.LoginForm)&quot; &quot;(gen-config-table)&quot; &quot;(s/conform ::login-form-args [{} identity])&quot; &quot;(s/conform ::login-form-args [identity])&quot; &quot;(s/conform ::login-form-args [identity (Button.)])&quot; &quot;(s/exp ::login-form-args [identity (Button.)])&quot; &quot;(s/explain-str ::login-form-args [identity (Button.)])&quot; &quot;(s/explain-str ::login-form-args [(Button.)])&quot; &quot;(s/explain ::login-form-args [(Button.)])&quot; &quot;(s/explain-data ::login-form-args [(Button.)])&quot; &quot;(use [clojure.pprint] )&quot; &quot;(use '[clojure.pprint ] )&quot; &quot;(pp)&quot; &quot;(pprint (s/explain-data ::login-form-args [(Button.)]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} (Button.)]))&quot; &quot;((fnil list {}) (:config {:a 1}))&quot; &quot;((fnil list {}) (:config {:config 1}))&quot; &quot;(pprint (s/explain-data ::login-form-args [[] (Button.)]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} identity]))&quot; &quot;(pprint (s/explain-data ::login-form-args [ 1]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} 1]))&quot; &quot;(pprint (s/explain-data ::login-form-args [[] identity]))&quot; &quot;(login-form)&quot; &quot;(login-form {} 1)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(compile 'functional-vaadin.examples.Sampler) &quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(run-)&quot; &quot;nil&quot; &quot;(tree-table\n  (table-column \&quot;Col1\&quot;)\n  (table-column \&quot;Col2\&quot;))&quot; &quot;(.stop server) (compile 'functional-vaadin.examples.Sampler) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server) &quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1479059864570">{:repl-history {:ide [], :local [&quot;(s/conform (s/spec (s/alt \n                     :nk (s/cat :numbers (s/* #(not (map? %))) :kws (s/* map?))\n                     :kn (s/cat  :kws (s/* map?) :numbers (s/* #(not (map? %)))))) [3 {:a 1}])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [1 2 3])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q :b])&quot; &quot;(s/conform (s/spec (s/alt \n                     :nums (s/+ integer?)\n                     :kws (s/+ keyword?))) [:q 1])&quot; &quot;(s/conform ::men_item_args (\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::men_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/conform ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; #(println %)))&quot; &quot;(fn? (fn [i] (println 1)))&quot; &quot;(s/explain ::menu_item_args '(\&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. \&quot;str\&quot;) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (FileResource. (File. \&quot;fname\&quot;)) (fn [i] (println i))))&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot;  (list (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(s/explain ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(get-in parsed-args [:children :item_fn])&quot; &quot;(s/conform ::menu_item_args (list \&quot;item\&quot; (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;)) (-&gt;MenuItemSpec \&quot;sub\&quot; nil #(identity \&quot;si\&quot;))))&quot; &quot;(-&gt;MapEntry :a \&quot;b\&quot;)&quot; &quot;(MapEntry. :a \&quot;b\&quot;)&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/explain :functional_vaadin.specs/menu_item_args '(\&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list (\&quot;item\&quot; (fn [item] (println item)))))&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; (fn [item] (println item))))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; (fn [item] (println item)))})&quot; &quot;(=\n  (s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n  {:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)})&quot; &quot;(s/conform :functional_vaadin.specs/menu_item_args (list \&quot;item\&quot; identity))\n{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;{:name \&quot;item\&quot; :children (MapEntry. \&quot;item\&quot; identity)}&quot; &quot;(some nil? [1 23 4])&quot; &quot;(any?)&quot; &quot;(any? 1)&quot; &quot;(any? nil)&quot; &quot;(any? 1 2)&quot; &quot;(cond false 1)&quot; &quot;(seq children)&quot; &quot;(boolean '())&quot; &quot;(and 1 2)&quot; &quot;(and nil 2)&quot; &quot;(and false 2)&quot; &quot;(vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))&quot; &quot;(create-widget Button '(1 2) false)&quot; &quot;(vertical-layout (map #(Label. (str \&quot;Label \&quot; %1)) (range 0 10)))&quot; &quot;(merge {} [:a 1])&quot; &quot;(deftest configuration\n\n  (testing \&quot;Single option args\&quot;\n    (let [obj (Button.)]\n      (is (identical? (configure obj {:caption \&quot;Caption\&quot;}) obj))\n      (is (= (.getCaption (configure obj {:caption \&quot;Caption2\&quot;})) \&quot;Caption2\&quot;))\n      (is (= (.getCaption (configure obj {:caption [\&quot;Caption3\&quot;]})) \&quot;Caption3\&quot;))\n      (is (= (.getHeight (configure obj {:height \&quot;3px\&quot;})) 3.0))\n      (is (= (.getHeight (configure obj {:height [\&quot;3px\&quot;]})) 3.0)))\n\n    (let [obj (configure (VerticalLayout.) {:margin true :spacing true })]\n      (is (.isSpacing obj))\n      (is (= (.getMargin obj) (MarginInfo. true true true true)))))\n\n  (testing \&quot;Multiple option args\&quot;\n    (let [obj (Button.)]\n      (is (= (.getHeight (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) 3.0))\n      (is (= (.getHeightUnits (configure obj {:height [3 (Sizeable/UNITS_INCH)]})) (Sizeable/UNITS_INCH))))\n\n    (let [obj (configure (Button.) {:height [3 (Sizeable/UNITS_MM)] :width [4 (Sizeable/UNITS_MM)]})]\n      (is (= (.getHeight obj) 3.0))\n      (is (= (.getHeightUnits obj) (Sizeable/UNITS_MM)))\n      (is (= (.getWidth obj) 4.0))\n      (is (= (.getWidthUnits obj) (Sizeable/UNITS_MM)))\n      ))\n\n  (testing \&quot;Parent attributes\&quot;\n    )\n\n  (testing \&quot;Synthetic attributes\&quot;\n    (with-bindings\n      {#'*current-ui* (TestUI.)}\n      (let [b (button {:id \&quot;myform\&quot;})]\n        (is (= (.getId b) \&quot;myform\&quot;))\n        (is (identical? (componentAt *current-ui* :myform) b))\n        ))\n    (with-bindings\n      {#'*current-ui* (TestUI.)}\n      (let [b (button {:id :myform.save})]\n        (is (= (.getId b) \&quot;myform.save\&quot;))\n        (is (identical? (componentAt *current-ui* :myform.save) b))\n        ))\n    (let [b (button {:position [0 0]})]\n      (is (= (.getData b) {:parent-data {:position [0 0]}})))\n    (let [b (button {:alignment Alignment/TOP_LEFT})]\n      (is (= (.getData b) {:parent-data {:componentAlignment [b Alignment/TOP_LEFT]}}))\n      )\n    (button {:addStyleName \&quot;border\&quot;})                       ;How to verify ?\n\n    (let [f (text-field {:validateWith (StringLengthValidator. \&quot;Length Error: {0}\&quot;)})]\n      (is (= 1 (count (.getValidators f))))\n      (is (instance? StringLengthValidator (first (.getValidators f)))))\n\n    (let [f (text-field {:validateWith [\n                                        (StringLengthValidator. \&quot;Length Error: {0}\&quot;)\n                                        (-&gt;FunctionalValidator (fn [obj] false) \&quot;Always fail {0}\&quot;)]})]\n      (is (= 2 (count (.getValidators f))))\n      (is (= [StringLengthValidator FunctionalValidator] (map #(class %1) (.getValidators f)))))\n    )\n\n  (testing \&quot;Actions\&quot;\n    (let [action (shortcutAction \&quot;Enter\&quot; 13 (fn [sender target] (println sender target)))\n          p (panel {:actions\n                    [action]})]\n      (.removeAction p action)))\n\n  (testing \&quot;Binding\&quot;\n    (let [fg (with-form\n               (bind-field (TextField.) \&quot;propId\&quot;))\n          item (.getItemDataSource fg)]\n      (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n      (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) Object))\n      (is (nil? (.getValue (.getItemProperty item \&quot;propId\&quot;))))\n      )\n    (doseq [bval [[\&quot;propId\&quot; String]\n                  {:propertyId \&quot;propId\&quot; :type String}]]\n      (let [fg (with-form\n                (bind-field (TextField.) bval))\n           item (.getItemDataSource fg)]\n       (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n       (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) String))\n       (is (nil? (.getValue (.getItemProperty item \&quot;propId\&quot;))))\n       ))\n    (doseq [bval [[\&quot;propId\&quot; String \&quot;text\&quot;]\n                  {:propertyId \&quot;propId\&quot; :type String :initialValue \&quot;text\&quot;}]]\n      (let [fg (with-form\n                (bind-field (TextField.) bval))\n           item (.getItemDataSource fg)]\n       (is (= (set (.getItemPropertyIds item)) #{\&quot;propId\&quot;}))\n       (is (identical? (.getType (.getItemProperty item \&quot;propId\&quot;)) String))\n       (is (= (.getValue (.getItemProperty item \&quot;propId\&quot;)) \&quot;text\&quot;))\n       ))\n\n    )\n\n  (testing \&quot;Margin setting\&quot;\n    (let [l (vertical-layout {:margin true})]\n      (is (= (.getMargin l) (MarginInfo.  true ))))\n    (let [l (vertical-layout {:margin [:vertical]})]\n      (is (= (.getMargin l) (MarginInfo.  true false))))\n    (let [l (vertical-layout {:margin [:horizontal]})]\n      (is (= (.getMargin l) (MarginInfo. false true))))\n    (let [l (vertical-layout {:margin [:vertical :top]})]\n      (is (= (.getMargin l) (MarginInfo. true false))))\n    (let [l (vertical-layout {:margin [:vertical :left]})]\n      (is (= (.getMargin l) (MarginInfo. true false true true))))\n    (let [l (vertical-layout {:margin [:horizontal :left]})]\n      (is (= (.getMargin l) (MarginInfo. false true))))\n    (let [l (vertical-layout {:margin [:top :left]})]\n      (is (= (.getMargin l) (MarginInfo. true false false true))))\n    )\n\n  (testing \&quot;Computed children\&quot;\n    (let [l (apply vertical-layout (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))]\n      (is (= (.getComponentCount l) 10))\n      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))\n      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str \&quot;Label \&quot; %1 )) (range (.getComponentCount l)))))\n\n      )\n    (let [l (apply vertical-layout {:margin true :spacing true} (map #(label (str \&quot;Label \&quot; %1)) (range 0 10)))]\n      (is (.getMargin l))\n      (is (.isSpacing l))\n      (is (= (.getComponentCount l) 10))\n      (is (every? #(instance? Label %1) (map #(.getComponent l %1) (range (.getComponentCount l)))))\n      (is (every? true? (map #(= (.getValue (.getComponent l %1)) (str \&quot;Label \&quot; %1 )) (range (.getComponentCount l)))))\n\n      )\n    )\n\n  (testing \&quot;Error handling\&quot;\n    (is (thrown-with-msg?\n          IllegalArgumentException #\&quot;Configuration options must be a Map\&quot;\n          (configure (Button.) :keyword)))\n    (is (thrown-with-msg?\n          UnsupportedOperationException #\&quot;No such option for class com.vaadin.ui.Button: :wozza\&quot;\n          (configure (Button.) {:wozza \&quot;wizzbang\&quot;}))))\n\n\n\n  )&quot; &quot;~(run-my-test)&quot; &quot;(deftest button-events\n  (testing \&quot;Firing\&quot;\n    (let [clicked (atom false)\n          button (button {:onClick (fn [src evt fg] (swap! clicked #(vector (not %1) fg src)))})]\n      (.click button)\n      (is (first @clicked))\n      (is (nil? (second @clicked)))\n      (.click button)\n      (is (not (first @clicked))))\n    (let [clicked (atom false)\n          ^FormLayout form (form\n                 (button {:onClick (fn [src evt fg] (swap! clicked #(vector (not %1) fg src)))}))\n          ^Button button (.getComponent form 0)\n          field-group (get-field-group form)]\n      (.click button)\n      (is (first @clicked))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      (.click button)\n      (is (not (first @clicked)))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      )))&quot; &quot;(deftest button-events\n  (testing \&quot;Firing\&quot;\n    (let [clicked (atom false)\n          button (button)]\n      (onClick button (fn [src evt fg] (swap! clicked #(vector (not %1) fg src))))\n      (.click button)\n      (is (first @clicked))\n      (is (nil? (second @clicked)))\n      (.click button)\n      (is (not (first @clicked))))\n    (let [clicked (atom false)\n          ^FormLayout form (form\n                 (button))\n          ^Button button (.getComponent form 0)\n          field-group (get-field-group form)]\n      (onClick button (fn [src evt fg] (swap! clicked #(vector (not %1) fg src))))\n      (.click button)\n      (is (first @clicked))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      (.click button)\n      (is (not (first @clicked)))\n      (is (identical? field-group (second @clicked)))\n      (is (identical? button (nth @clicked 2)))\n      )))&quot; &quot;(deftest ui-upload\n  (testing \&quot;Building\&quot;\n    (let [store (atom (ByteArrayOutputStream.))\n          receiver (reify Upload$Receiver\n                     (^OutputStream receiveUpload [this fname type]\n                       @store))\n          ul (upload {:receiver receiver})]\n      (is (identical? (.getReceiver ul) receiver)))))&quot; &quot;(deftest ui-upload\n  (testing \&quot;Building\&quot;\n    (let [store (atom (ByteArrayOutputStream.))\n          receiver (reify Upload$Receiver\n                     (^OutputStream receiveUpload [this ^String fname ^String type]\n                       @store))\n          ul (upload {:receiver receiver})]\n      (is (identical? (.getReceiver ul) receiver)))))&quot; &quot;(prompt-loop nil)&quot; &quot;(table \&quot;My Table\&quot;\n  (table-column \&quot;Col1\&quot; {:type String :defaultValue \&quot;\&quot; :header \&quot;Column 1\&quot; :width 100})\n  (table-column \&quot;Col2\&quot; {:type Integer :defaultValue 0 :header \&quot;Column 2\&quot; :width 50}))&quot; &quot;(table {:caption \&quot;My Table\&quot;}\n  (table-column \&quot;Col1\&quot; {:type String :defaultValue \&quot;\&quot; :header \&quot;Column 1\&quot; :width 100})\n  (table-column \&quot;Col2\&quot; {:type Integer :defaultValue 0 :header \&quot;Column 2\&quot; :width 50}))&quot; &quot;(table {:caption \&quot;My Table\&quot; }\n                (table-column \&quot;Col1\&quot;)\n                (table-column \&quot;Col2\&quot;))&quot; &quot;(table \&quot;My Table\&quot;\n  (table-column \&quot;Col1\&quot;)\n                (table-column \&quot;Col2\&quot;))&quot; &quot;(run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)&quot; &quot;(do (refresh) (run-my-tests))&quot; &quot;(get nil :key)&quot; &quot;(new-form)&quot; &quot;(.getComponentCount (new-form))&quot; &quot;(.getContent (vaadin.ui.LoginForm))&quot; &quot;(import com.vaadin.ui.LoginForm)&quot; &quot;(.getContent (com.vaadin.ui.LoginForm.))&quot; &quot;(.getContent (com.vaadin.ui.LoginForm))&quot; &quot;(.getContent (new-form))&quot; &quot;(.createContent (new-form))&quot; &quot;(compile 'functional-vaadin.LoginForm)&quot; &quot;(gen-config-table)&quot; &quot;(s/conform ::login-form-args [{} identity])&quot; &quot;(s/conform ::login-form-args [identity])&quot; &quot;(s/conform ::login-form-args [identity (Button.)])&quot; &quot;(s/exp ::login-form-args [identity (Button.)])&quot; &quot;(s/explain-str ::login-form-args [identity (Button.)])&quot; &quot;(s/explain-str ::login-form-args [(Button.)])&quot; &quot;(s/explain ::login-form-args [(Button.)])&quot; &quot;(s/explain-data ::login-form-args [(Button.)])&quot; &quot;(use [clojure.pprint] )&quot; &quot;(use '[clojure.pprint ] )&quot; &quot;(pp)&quot; &quot;(pprint (s/explain-data ::login-form-args [(Button.)]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} (Button.)]))&quot; &quot;((fnil list {}) (:config {:a 1}))&quot; &quot;((fnil list {}) (:config {:config 1}))&quot; &quot;(pprint (s/explain-data ::login-form-args [[] (Button.)]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} identity]))&quot; &quot;(pprint (s/explain-data ::login-form-args [ 1]))&quot; &quot;(pprint (s/explain-data ::login-form-args [{} 1]))&quot; &quot;(pprint (s/explain-data ::login-form-args [[] identity]))&quot; &quot;(login-form)&quot; &quot;(login-form {} 1)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(compile 'functional-vaadin.examples.Sampler) &quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(run-)&quot; &quot;nil&quot; &quot;(tree-table\n  (table-column \&quot;Col1\&quot;)\n  (table-column \&quot;Col2\&quot;))&quot; &quot;(.stop server) (compile 'functional-vaadin.examples.Sampler) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server) &quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -950,8 +959,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.48497853" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1240" height="700" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.6838341" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.31616595" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.68597996" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.31402004" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21816881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5243205" order="3" side_tool="false" content_ui="tabs" />
@@ -959,7 +968,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21387696" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15307583" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.5271817" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.5243205" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25608012" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.36051503" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
@@ -1008,7 +1017,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Added header click clearing, minor refactoring" />
     <MESSAGE value="Removed println tracing" />
     <MESSAGE value="Updated leiningen" />
     <MESSAGE value="Updated generated dependencies" />
@@ -1033,7 +1041,8 @@
     <MESSAGE value="Various changes:&#10;- Bug fix: buildable-children ignored TableColumns&#10;- More Sampler restyling" />
     <MESSAGE value="Various changes:&#10;- Updated Changelog&#10;- Release build script added" />
     <MESSAGE value="Fixed deployment errors. Version 0.2.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed deployment errors. Version 0.2.1" />
+    <MESSAGE value="Updated build script to save docs along with the uberjars" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated build script to save docs along with the uberjars" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1608,28 +1617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="298" column="32" selection-start-line="298" selection-start-column="32" selection-end-line="298" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="321">
-            <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/LoginForm.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1642,14 +1629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="61" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1670,42 +1649,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="85" column="22" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dev/user.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1718,27 +1665,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="50" selection-start-line="0" selection-start-column="50" selection-end-line="0" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/build_release">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/deploy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/build">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/validation.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="85" column="22" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-483">
+          <caret line="384" column="73" selection-start-line="384" selection-start-column="67" selection-end-line="384" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="309" column="23" selection-start-line="309" selection-start-column="22" selection-end-line="309" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="89" column="20" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="111">
+            <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

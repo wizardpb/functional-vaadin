@@ -30,8 +30,13 @@
 
 ## [0.2.0]
 
+Do not use - deploy bug
+
+## [0.2.1]
+
 ### Added
-- Added Tree, TreeTable, Accordion, Upload and LoginForm builders
+- Added Tree, TreeTable, Accordion, Upload, LoginForm and shortcutActions builders
+- FunctionalValidator
 - Added Container$Hierarchical builder
 - Sampler app updated
 - Upgraded to Vaadin 7.7.3

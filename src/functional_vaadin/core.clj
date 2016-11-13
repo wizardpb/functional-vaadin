@@ -20,6 +20,9 @@
                             :left, :right, :vertical or :horizontal, indicating that margins should be added to the
                             respective location(s)
 
+                  :validateWith - adds a validator to a Field. The argument is any Vaadin Validator instance. There is also
+                            a Clojure type FunctionalValidator which can be used to create a Validator from an arbitrary function.
+
                   :id - will set the component id, and also allow lookup via (component-named). This removes the need to
                         use temporary variables when referencing already-built components.
 
@@ -379,7 +382,7 @@
   "Usage: (menu-item name icon_resource? [menu-fn | menu-items])
 
   Create a menu item for the contaning menu. \"name\" is the menu item name, \"icon\" is and optional Resource that defines the menu item
-  icon. Further arguments are either a single fn defining teh menu action, or further menu-items defining a sub-menu"
+  icon. Further arguments are either a single fn defining the menu action, or further menu-items defining a sub-menu"
 
   ;[name & args]
   ;(if (not (instance? String name))
