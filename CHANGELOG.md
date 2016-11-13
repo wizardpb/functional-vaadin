@@ -37,6 +37,7 @@
 - Upgraded to Vaadin 7.7.3
 
 ### Changed
+- Bug fixes!
 - Improved documentation
 - Internal refactoring, mostly using clojure.spec for parsing and error reporting
 
