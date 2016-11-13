@@ -6,7 +6,7 @@
         functional-vaadin.event-handling
         functional-vaadin.rx.observers
         functional-vaadin.rx.operators
-        ;functional-vaadin.utils
+        functional-vaadin.examples.run
         )
   (:require [rx.lang.clojure.core :as rx])
   (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.Sampler
@@ -66,8 +66,8 @@
        ))))
 
 (defn file-upload-tab []
-  (vertical-layout {:caption "File Upload" :margin true :spacing true :width "100%"}
-    (horizontal-layout {:widthUndefined [] :margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
+  (vertical-layout {:caption "File Upload" :width "100%"}
+    (vertical-layout {:sizeUndefined [] :margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
      (upload {:id :file-upload :receiver (reify
                                            Upload$Receiver
                                            (^OutputStream receiveUpload [this ^String fname ^String mineType]
@@ -85,14 +85,15 @@
 
 (defn login-form-tab []
   (vertical-layout {:caption "Login Forms" :margin true :spacing true :height "100%"}
-    (horizontal-layout {:margin true :spacing true :componentAlignment Alignment/TOP_CENTER}
-     (panel {:caption "Default"} (login-form (fn [src evt uname pwd] (login-func uname pwd))))
-     (panel {:caption "Modified"} (login-form
-                                    {:usernameCaption "Enter username"
-                                     :passwordCaption "And your password"
-                                     :loginButtonFunc (fn [] (button "Do Login"))}
-                                    (fn [src evt uname pwd] (login-func uname pwd)))))
-    (label {:id :login-message})))
+    (vertical-layout {:sizeUndefined [] :margin [:top] :spacing true :componentAlignment Alignment/TOP_CENTER}
+      (horizontal-layout {:spacing true }
+        (panel {:caption "Default"} (login-form (fn [src evt uname pwd] (login-func uname pwd))))
+        (panel {:caption "Modified"} (login-form
+                                       {:usernameCaption "Enter username"
+                                        :passwordCaption "And your password"
+                                        :loginButtonFunc (fn [] (button "Do Login"))}
+                                       (fn [src evt uname pwd] (login-func uname pwd)))))
+      (label {:id :login-message}))))
 
 (defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks

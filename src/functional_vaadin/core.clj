@@ -14,6 +14,20 @@
                   setter name, minus the 'set' prefix, and all lower case e.g. the config '{:id \"this-como\"} will set
                   the 'id' attribute using setId(val)
 
+                  Certain config items can take more convenient specification of value:
+
+                  :margin - can be either \"true\", indicating full margins, or an array of any combination of :top, :bottom,
+                            :left, :right, :vertical or :horizontal, indicating that margins should be added to the
+                            respective location(s)
+
+                  :id - will set the component id, and also allow lookup via (component-named). This removes the need to
+                        use temporary variables when referencing already-built components.
+
+                  :addStyleNamed - will add a style to a component. The name is a String
+
+                  Positioning and expansion options that Vaadin requires specified on the parent can now be placed on the child -
+                  these include :expansionRatio, :componentAlignment, :position and :span
+
   children:       are the Components child Components, which will be added as appropriate
                   "
 
@@ -37,6 +51,7 @@
            (com.vaadin.data.util.converter Converter)
            (functional_vaadin LoginForm)))
 
+; TODO - make validators and actions take functions, not Vaadin objects
 ; TODO - actions, esp. on tables
 ; TODO - calendar, popupview, browser-frame, audio, video, color picker, flash, notification, grid
 ; TODO - generated table columns, table clicks, editing?
