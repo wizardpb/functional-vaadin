@@ -88,6 +88,10 @@
 ;; Auxiliary objects - actions, etc.
 
 (defn shortcutAction
+  "Usage: (shortcutAction name keycode action-fn modifiers?)
+
+  Create a ShortcutAction that executes action-fn when fired.
+  "
   ([name keycode a-fn modifiers]
    (proxy [ShortcutAction Action$Listener] [name (int keycode) (int-array modifiers)]
      (handleAction [sender target] (a-fn this sender target))))
@@ -104,13 +108,15 @@
 ;; Base components - Button, Link, Label etc.
 
 (defn button
-  "Create a Button component from constructor arguments or a configuration Map"
+  "Usage: (button ctor_args? config_map?)
+
+  Create a Button component from constructor arguments or a configuration Map"
   [& args]
   (create-widget Button args))
 
 
 (defn link
-  "Usage: (button ctor_args? config_map?)
+  "Usage: (link ctor_args? config_map?)
 
   Create a Link component from constructor arguments or a single configuration Map"
   [& args]
