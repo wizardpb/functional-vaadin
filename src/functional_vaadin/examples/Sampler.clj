@@ -73,7 +73,8 @@
       ;
       ; The current implementation of upload interrupt causes the upload to restart on Chrome and Firefox.
       ; Only Safari (AFAIK) has an implementation that works. Becaus of this, I've left out the Stop function,
-      ; but left the code as an example
+      ; but left the code as an example. Feel free to uncomment (here and in setup-upload-actions) and experiment
+
      ;(button {:caption "Stop" :id :upload-stop-button :enabled false})
      (progress-bar {:id :upload-progress :value (float 0.0) :visible false :width "100%"})
      (label {:id :upload-state :value ""}))))
