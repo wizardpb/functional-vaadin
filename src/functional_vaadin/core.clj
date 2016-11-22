@@ -50,11 +50,10 @@
              Component UI Image ProgressBar Window Upload LoginForm$LoginListener LoginForm$LoginEvent)
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.util PropertysetItem)
-           (com.vaadin.event ShortcutAction Action$Listener)
+           (com.vaadin.event ShortcutAction Action$Listener ActionManager)
            (com.vaadin.data.util.converter Converter)
-           (functional_vaadin LoginForm)))
+           (functional_vaadin.ui LoginForm)))
 
-; TODO - make validators and actions take functions, not Vaadin objects
 ; TODO - actions, esp. on tables
 ; TODO - calendar, popupview, browser-frame, audio, video, color picker, flash, notification, grid
 ; TODO - generated table columns, table clicks, editing?
@@ -87,15 +86,14 @@
 
 ;; Auxiliary objects - actions, etc.
 
-(defn shortcutAction
-  "Usage: (shortcutAction name keycode action-fn modifiers?)
-
-  Create a ShortcutAction that executes action-fn when fired.
+(defn ^{:deprecated "0.3.0"} shortcutAction
+  "Deprecated. Use (->ShortcutAction) instead
   "
   ([name keycode a-fn modifiers]
    (proxy [ShortcutAction Action$Listener] [name (int keycode) (int-array modifiers)]
      (handleAction [sender target] (a-fn this sender target))))
-  ([name keycode a-fn] (shortcutAction name keycode a-fn [])))
+  ([name keycode a-fn] (shortcutAction name keycode a-fn []))
+  )
 
 (deftype FunctionalConverter [to-model-fn to-presn-fn model-type presn-type]
   Converter
@@ -492,6 +490,15 @@
      (add-children window children)
      (.addWindow ui window)
      window)))
+
+;; ActionManager
+
+(defn action-manager
+  "Usage: (action-manager ctor_args? config_map?
+
+  Creates an ActionManager for general use"
+  [& args]
+  (create-widget ActionManager args))
 
 
 

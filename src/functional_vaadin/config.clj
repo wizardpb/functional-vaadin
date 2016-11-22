@@ -1,7 +1,7 @@
 (ns functional-vaadin.config
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:require [clojure.string :as str]
-            [clojure.set :as set]
+            [clojure.spec :as s]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]
@@ -12,8 +12,9 @@
            (clojure.lang Keyword)
            (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment)
            (com.vaadin.shared.ui MarginInfo)
-           (javax.xml.validation Validator)
-           (com.vaadin.event Action Action$Listener Action$Notifier)))
+           (com.vaadin.event Action Action$Listener Action$Notifier Action$Handler Action$Container)
+           (com.vaadin.data Validator)
+           ))
 
 (def attribute-translation
   "A mapping for alternative names for configuration attribute keys"
@@ -35,7 +36,6 @@
       (<= (count opt-val) 4)
       (every? #{:left :right :top :bottom :vertical :horizontal} opt-val)
       )))
-
 
 (defn ^MarginInfo ->MarginInfo [opt-val]
   (if (instance? Boolean opt-val)
@@ -77,7 +77,7 @@
                  (do-bind field propertyId (or type Object) initialValue))))
 
 (defn add-validations
-  "Add validators to the given fields. Validators are a single or sequnce of Validator instances"
+  "Add validators to the given fields. Validators are a single or sequence of Validator instances"
   [field arg]
   (let [validators (if (collection? arg) arg [arg])]
     (reduce (fn [f v] (.addValidator f v) f) field validators)))
@@ -94,11 +94,24 @@
   (let [validators (if (iterable? arg) arg [arg])]
     (reduce (fn [f v] (.addValidator f v) f) field validators)))
 
+(defn- validate-actions [val]
+  (or (instance? Action$Handler val)
+    (and (seq val) (every? #(instance? Action$Listener %) (seq val)))))
+
+(defn- add-actions [obj _ val]
+  ;; Assume actions have been validated
+  (cond
+    (and (instance? Action$Handler val) (instance? Action$Container obj)) (.addActionHandler obj val)
+    (instance? Action$Notifier obj) (doseq [a val] (.addAction obj a))
+    :else (bad-argument "A " (class obj) " does not support adding " (if (seq val) "individual actions" "ActionHandlersƒ"))
+    )
+  )
+
 (def synthetic-option-specs
   ""
   {
    :expandRatio        {; OrderedLayout expansionRation
-                        :validate  (fn [optval] (instance? Float optval))
+                        :validate  (fn [optval] (or (instance? Double optval) (instance? Float optval)))
                         :error-msg "Expansion ration must be a Float"
                         :execute   save-for-layout-parent
                         }
@@ -126,11 +139,11 @@
                         :execute   (fn [obj opt-key id]
                                      (if *current-ui* (addComponent *current-ui* obj (keyword id)))
                                      (.setId obj (name id)))
-                        :error-msg "Id must be a String or Keyword"}
+                        :error-msg "Component ID must be a String or Keyword"}
    :bindTo             {
-                        :validate  (fn [val] (or (instance? Keyword val) (instance? String val)))
+                        :validate  (fn [val] (some #(instance? % val) #{Keyword String Map Collection}))
                         :execute   (fn [obj opt-key opt-val] (bind-field obj opt-val))
-                        :error-msg "Id must be a String or Keyword"}
+                        :error-msg ":bindTo ID must be a String or Keyword"}
    :addStyleName       {
                         :validate  (fn [val] (instance? String val))
                         :execute   (fn [obj opt-key opt-val] (.addStyleName obj opt-val))
@@ -140,18 +153,15 @@
                         :execute   (fn [obj opt-key opt-val] (add-validations obj opt-val))
                         :error-msg "Arguments must all be validators"}
    :actions            {
-                        :validate  (fn [val] (every? #(and (instance? Action %1) (instance? Action$Listener %1)) val))
-                        :execute   (fn [obj opt-key opt-val]
-                                     (if (not (instance? Action$Notifier obj))
-                                       (bad-argument "Actions cannot be added to a " (.getSimpleName (class obj))))
-                                     (doseq [action opt-val] (.addAction obj action)))
-                        :error-msg "Arguments must all be Actions"
+                        :validate  validate-actions
+                        :execute   add-actions
+                        :error-msg "Arguments must be a non-empty list of Action.Listeners or an Action.Handler"
                         }
 
    })
 
 (defn- validate-option [errors [opt-key opt-val] specs]
-  (if-let [{v-fn :validate msg :error-msg} (get specs opt-val)]
+  (if-let [{v-fn :validate msg :error-msg} (get specs opt-key)]
     (if (not (v-fn opt-val))
       (conj errors msg))
     errors)

@@ -1,4 +1,4 @@
-(defproject com.prajnainc/functional-vaadin "0.2.1"
+(defproject com.prajnainc/functional-vaadin "0.3.0-snapshot"
   :description "A functional interface to Vaadin"
   :url "https://github.com/wizardpb/functional-vaadin"
   :license {:name "Eclipse Public License"
@@ -27,14 +27,14 @@
                                        [org.clojure/tools.namespace "0.2.11"]
                                        ]
                         }
-             :jar      {:aot          [functional-vaadin.LoginForm]
+             :jar      {:aot          [functional-vaadin.ui.LoginForm]
                         :dependencies [[com.vaadin/vaadin-server "7.7.3"]
                                        [com.vaadin/vaadin-client-compiled "7.7.3"]
                                        [com.vaadin/vaadin-themes "7.7.3"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]}
-             :uberjar  {:aot          [functional-vaadin.LoginForm functional-vaadin.examples.Sampler functional-vaadin.examples.run]
+             :uberjar  {:aot          [functional-vaadin.ui.LoginForm functional-vaadin.examples.Sampler functional-vaadin.examples.run]
                         :main         functional-vaadin.examples.run
                         :dependencies [[io.reactivex/rxclojure "1.0.0"]
                                        [com.vaadin/vaadin-server "7.7.3"]

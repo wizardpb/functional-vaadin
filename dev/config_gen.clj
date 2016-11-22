@@ -9,7 +9,7 @@
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
              ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar Window)
-           (functional_vaadin LoginForm)
+           (functional_vaadin.ui LoginForm)
            ))
 
 (def configurable-classes

@@ -2,6 +2,7 @@
   "A simple UI that presents some UI examples in a TabSheet: a form and a table. progress bar, etc..
   The table can be filed by filling in the form and clicking 'Save'"
   (:use functional-vaadin.core
+        functional-vaadin.actions
         functional-vaadin.data-binding
         functional-vaadin.event-handling
         functional-vaadin.rx.observers
@@ -22,6 +23,20 @@
 
 ; TODO - add To-Do tab˙
 
+(defn- table-action-handler []
+  (letfn [(select-fn [target table actions]
+            (println "Selections=" (seq (.getValue table)) )
+            (if (seq (.getValue table))
+              (filter #(= (.getCaption %) "Delete Selected") actions)
+              (filter #(= (.getCaption %) "Delete") actions)))]
+    (->ActionHandler select-fn dispatch-listener
+     [(->FunctionAction "Delete" (fn [a ^Table table id] (.removeItem table id)))
+      (->FunctionAction "Delete Selected"
+        (fn [a ^Table table id] (let [selected (.getValue table)]
+                                  (if (seq selected)
+                                    (doseq [id (seq selected)] (.removeItem table id ))
+                                    (.removeItem table selected)))))])))
+
 (defn- form-and-table-tab []
   (vertical-layout {:caption "Form and Table" :sizeFull []}
     (horizontal-layout {:componentAlignment Alignment/TOP_CENTER}
@@ -35,7 +50,11 @@
          (button {:caption "Save" :id :save-button}))
        )
      (vertical-layout {:margin true :sizeUndefined [] :expandRatio 1.0}
-       (table {:caption "People" :id :table}
+       (table {:caption "People" :id :table
+               :immediate true
+               :selectable  true :multiSelect true
+               :actions (table-action-handler)
+               }
          (table-column "first-name" {:header "First Name"})
          (table-column "last-name" {:header "Last Name"})
          (table-column "notes" {:header "Notes" :width 300})

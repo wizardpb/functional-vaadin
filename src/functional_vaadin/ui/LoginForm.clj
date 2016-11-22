@@ -1,4 +1,4 @@
-(ns functional-vaadin.LoginForm
+(ns functional-vaadin.ui.LoginForm
   (:gen-class :extends com.vaadin.ui.LoginForm
               :main false
               :state state

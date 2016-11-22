@@ -1,6 +1,8 @@
 (ns functional-vaadin.config-test
+  (:require [clojure.spec :as s])
   (:use [clojure.test]
         [functional-vaadin.core]
+        [functional-vaadin.actions]
         [functional-vaadin.validation]
         [functional-vaadin.naming]
         [functional-vaadin.thread-vars]
@@ -17,7 +19,8 @@
            (com.vaadin.data.fieldgroup FieldGroup)
            (com.vaadin.data.validator StringLengthValidator)
            (functional_vaadin.validation FunctionalValidator)
-           (functional_vaadin LoginForm)))
+           (functional_vaadin.ui LoginForm)
+           (com.vaadin.event ActionManager Action$Handler Action$Listener)))
 
 (defmacro with-form [& forms]
   `(with-bindings
@@ -86,10 +89,45 @@
     )
 
   (testing "Actions"
-    (let [action (shortcutAction "Enter" 13 (fn [sender target] (println sender target)))
-          p (panel {:actions
-                    [action]})]
-      (.removeAction p action)))
+    (is (instance? Action$Handler (->ActionHandler all-actions dispatch-listener
+                                    [(->FunctionAction "Action" (fn [a s t] ))])))
+    (is (instance? Action$Listener (->FunctionAction "Action" (fn [a s t] ))))
+    (is (every? #(instance? Action$Listener %)
+          (map
+            #(->FunctionAction (str "Action" %) (fn [a s t]))
+            (range 5))))
+    (let [results (atom nil)
+          actions (map
+                    #(->FunctionAction (str "Action" %) (fn [a s t] (swap! results (fn [_] [a s t]))))
+                    (range 5))
+          ^ActionManager am (action-manager {:actions actions})
+          ]
+      (is (= (seq (.getActions am "Target" "Sender")) actions))
+      (let [a (first (.getActions am "Target" "Sender"))]
+        (.handleAction a "Sender" "Target")
+        (is (= @results [a "Sender" "Target"])))
+      )
+    (let [results (atom nil)
+          actions (map
+                    #(->FunctionAction (str "Action" %) (fn [a s t] (swap! results (fn [_] [a s t]))))
+                    (range 5))
+          ^ActionManager am (action-manager {:actions (->ActionHandler all-actions dispatch-listener actions)})
+          ]
+      (is (= (seq (.getActions am "Target" "Sender")) actions))
+      (let [a (first (.getActions am "Target" "Sender"))]
+        (.handleAction a "Sender" "Target")
+        (is (= @results [a "Sender" "Target"]))))
+    (let [results (atom nil)
+          actions (vec (map
+                     #(->FunctionAction (str "Action" %) (fn [a s t] (swap! results (fn [_] [a s t]))))
+                     (range 5)))
+          ^ActionManager am (action-manager {:actions (->ActionHandler all-actions dispatch-listener actions)})
+          ]
+      (is (= (seq (.getActions am "Target" "Sender")) actions))
+      (let [a (first (.getActions am "Target" "Sender"))]
+        (.handleAction a "Sender" "Target")
+        (is (= @results [a "Sender" "Target"]))))
+    )
 
   (testing "Binding"
     (let [fg (with-form
