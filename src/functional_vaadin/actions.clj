@@ -1,11 +1,13 @@
 (ns functional-vaadin.actions
-  "Useful public functions for creating and manipulatinig Actions"
+  "Useful public functions for creating and manipulatinig Actions, It provides a new type ActionHandler, implementing Action$Handler. This
+  allows for the customization of action selection and handling by providing two functions, a select function and a handler function, along
+  with a list of Actions to choose from."
   (:require [clojure.spec :as s])
   (:use [functional-vaadin.utils])
   (:import (com.vaadin.event Action$Listener ShortcutAction Action$Handler Action)))
 
 (defn ->FunctionAction
-  "Usage: (->Action caption icon? action-fn)
+  "Usage: (->FunctionAction caption icon? action-fn)
 
   Create an Action that executes action-fn when it is activated. This can be added to any Component that implements
   com.vaadin.Action.Notiifer, and also supplied as an Action to functional_vaadin.action.ActionHandler.
@@ -23,9 +25,8 @@
           (->ShortcutAction [caption resource] keycode action-fn modifiers?)
 
 
-  Create a ShortcutAction that executes action-fn when fired. The action function is passed the Action (this),
-  the sender and the target
-  "
+  Create a ShortcutAction that executes action-fn when fired. The action function is called as
+  (action-fn action sender target)"
   ([ident keycode action-fn modifiers]
    (cond
      (instance? String ident)
@@ -48,29 +49,16 @@
     )
   )
 
-(defn dispatch-listener [action sender target]
+(defn dispatch-listener
+  "A convenience handler function for ActionHandler that displatches an Action as an Action$Listener. Actions held in this
+  ActionHandler must therefore be Action$Listeners (->FunctionalAction) creates such actions"
+  [action sender target]
   (.handleAction action sender target))
 
-(defn all-actions [target sender actions]
+(defn all-actions
+  "A convenience action selection function for an ActionHandler. Simply returns all available actions"
+  [target sender actions]
   actions)
-
-;(defn ->ActionHandler
-;  "Usage: (->ActionHandler select-fn handler-fn actions)
-;          (->ActionHandler select-fn actions)
-;          (->ActionHandler actions)
-;
-;  Create and ActionHandler from a set of actions that uses select-fn to select an Action for a sender and target, and
-;  handler-fn to handle it.
-;
-;  Defaults are to select all actions, and to dispatch as an Action$Listener. This allows and ActionHandler to be created that
-;  acts as a collection of Action$Listeners"
-;  ([select-fn handler-fn actions]
-;   (println select-fn handler-fn actions)
-;    #functional_vaadin.actions.ActionHandler[select-fn handler-fn actions])
-;  ([select-fn actions]
-;    (->ActionHandler select-fn dispatch-listener actions))
-;  ([actions]
-;    (->ActionHandler all-actions dispatch-listener actions)))
 
 
 

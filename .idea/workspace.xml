@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/functional_vaadin/actions.clj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional_vaadin/actions_test.clj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/functional_vaadin/LoginForm.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/config_gen.clj" afterPath="$PROJECT_DIR$/dev/config_gen.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/config.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/event_handling.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/event_handling.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/actions.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/actions.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dev/user.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="346">
+              <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -117,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actions.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="actions.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+            <state relative-caret-position="495">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -645,7 +636,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/rx" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1479826411264">{:repl-history {:ide [], :local [&quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (Resource. \&quot;f\&quot;)\n                                      ]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (Resource \&quot;f\&quot;)\n                                      ]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileR \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;f\&quot;]])&quot; &quot;(s/expla ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(str \&quot;a\\n\&quot; \&quot;b\\n\&quot;)&quot; &quot;(print (str \&quot;a\\n\&quot; \&quot;b\\n\&quot;))&quot; &quot;(into {} [[:a 1]])&quot; &quot;(into {} [[:a 1] [:b 2]])&quot; &quot;(s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]])&quot; &quot;(:problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(.problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) :problems)&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) ::s/problems)&quot; &quot;(::s/problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(str :ke)&quot; &quot;(str (name :ke))&quot; &quot;(str (capitalize (name :ke)))&quot; &quot;(map #([ %1 %2]) {:a 1})&quot; &quot;(map #([%1 %2]) {:a 1})&quot; &quot;(map #(vector %1 %2) {:a 1})&quot; &quot;(map-kv #(vector %1 %2) {:a 1})&quot; &quot;(map #(vector %1 %2) (seq {:a 1}))&quot; &quot;(map #(identity %1) {:a 1})&quot; &quot;(conca)&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]]))&quot; &quot;(apply bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/expl ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(for(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]]))&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]])&quot; &quot;(-&gt;ActionHandler [])&quot; &quot;(instance? ActionHandler (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Notifier (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Handler (-&gt;ActionHandler []))&quot; &quot;(any? 1)&quot; &quot;(every? any? [])&quot; &quot;(print select-fn target sender)&quot; &quot;ah&quot; &quot;(s/conform ::actions-spec ah)&quot; &quot;(def ah (map\n          #(-&gt;FunctionAction (str \&quot;Action\&quot; %) (fn [a s t] (swap! (fn [_] [a s t]))))\n          (range 5)))&quot; &quot;(s/conform ::function-vaadin.actions/actions-spec ah)&quot; &quot;(seq {a:1})&quot; &quot;(seq {a: 1})&quot; &quot;(seq {:a 1})&quot; &quot;(first (seq {:a 1}))&quot; &quot;(into {}  (first (seq {:a 1})))&quot; &quot;(seq (map #(str %) (range 10)))&quot; &quot;(seq? [1])&quot; &quot;(seq? (map #(str %) (range 10)))&quot; &quot;(and 1 2)&quot; &quot;(every any? 1)&quot; &quot;(every? any? 1)&quot; &quot;(every? any? (seq 1))&quot; &quot;(seq? 1)&quot; &quot;(col? [])&quot; &quot;(seq [1])&quot; &quot;(every? any? (seq []))&quot; &quot;(coll? [])&quot; &quot;(seq? [])&quot; &quot;(seq? (seq []))&quot; &quot;(seq #{})&quot; &quot;(every? identity (seq []))&quot; &quot;(every? identity (seq [false]))&quot; &quot;(seq [])&quot; &quot;(seq '())&quot; &quot;(some #(#{Keyword String Map Collection} (class {})))&quot; &quot;(some #(instance? % {}) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % \&quot;\&quot;) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % :a) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % []) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % 1) #{Keyword String Map Collection})&quot; &quot;&quot; &quot;(run-my-tests)&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(compile)&quot; &quot;(compile 'func)&quot; &quot;(some #(= 1) (range 10))&quot; &quot;(some #(= % 1) (range 10))&quot; &quot;(some? #(= % 1) (range 10))&quot; &quot;(some #(&gt; % 1) (range 10))&quot; &quot;(some #(%) (range 10))&quot; &quot;(some #(identity %) (range 10))&quot; &quot;(some #(if (= % 1) % nil) (range 10))&quot; &quot;(.stop server)\n&quot; &quot;filter&quot; &quot;(compile 'functional-vaadin.examples.Sampler)&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1479827007880">{:repl-history {:ide [], :local [&quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (Resource. \&quot;f\&quot;)\n                                      ]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (Resource \&quot;f\&quot;)\n                                      ]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileR \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;f\&quot;]])&quot; &quot;(s/expla ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(str \&quot;a\\n\&quot; \&quot;b\\n\&quot;)&quot; &quot;(print (str \&quot;a\\n\&quot; \&quot;b\\n\&quot;))&quot; &quot;(into {} [[:a 1]])&quot; &quot;(into {} [[:a 1] [:b 2]])&quot; &quot;(s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]])&quot; &quot;(:problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(.problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) :problems)&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) ::s/problems)&quot; &quot;(::s/problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(str :ke)&quot; &quot;(str (name :ke))&quot; &quot;(str (capitalize (name :ke)))&quot; &quot;(map #([ %1 %2]) {:a 1})&quot; &quot;(map #([%1 %2]) {:a 1})&quot; &quot;(map #(vector %1 %2) {:a 1})&quot; &quot;(map-kv #(vector %1 %2) {:a 1})&quot; &quot;(map #(vector %1 %2) (seq {:a 1}))&quot; &quot;(map #(identity %1) {:a 1})&quot; &quot;(conca)&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]]))&quot; &quot;(apply bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/expl ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(for(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]]))&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]])&quot; &quot;(-&gt;ActionHandler [])&quot; &quot;(instance? ActionHandler (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Notifier (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Handler (-&gt;ActionHandler []))&quot; &quot;(any? 1)&quot; &quot;(every? any? [])&quot; &quot;(print select-fn target sender)&quot; &quot;ah&quot; &quot;(s/conform ::actions-spec ah)&quot; &quot;(def ah (map\n          #(-&gt;FunctionAction (str \&quot;Action\&quot; %) (fn [a s t] (swap! (fn [_] [a s t]))))\n          (range 5)))&quot; &quot;(s/conform ::function-vaadin.actions/actions-spec ah)&quot; &quot;(seq {a:1})&quot; &quot;(seq {a: 1})&quot; &quot;(seq {:a 1})&quot; &quot;(first (seq {:a 1}))&quot; &quot;(into {}  (first (seq {:a 1})))&quot; &quot;(seq (map #(str %) (range 10)))&quot; &quot;(seq? [1])&quot; &quot;(seq? (map #(str %) (range 10)))&quot; &quot;(and 1 2)&quot; &quot;(every any? 1)&quot; &quot;(every? any? 1)&quot; &quot;(every? any? (seq 1))&quot; &quot;(seq? 1)&quot; &quot;(col? [])&quot; &quot;(seq [1])&quot; &quot;(every? any? (seq []))&quot; &quot;(coll? [])&quot; &quot;(seq? [])&quot; &quot;(seq? (seq []))&quot; &quot;(seq #{})&quot; &quot;(every? identity (seq []))&quot; &quot;(every? identity (seq [false]))&quot; &quot;(seq [])&quot; &quot;(seq '())&quot; &quot;(some #(#{Keyword String Map Collection} (class {})))&quot; &quot;(some #(instance? % {}) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % \&quot;\&quot;) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % :a) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % []) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % 1) #{Keyword String Map Collection})&quot; &quot;&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(compile)&quot; &quot;(compile 'func)&quot; &quot;(some #(= 1) (range 10))&quot; &quot;(some #(= % 1) (range 10))&quot; &quot;(some? #(= % 1) (range 10))&quot; &quot;(some #(&gt; % 1) (range 10))&quot; &quot;(some #(%) (range 10))&quot; &quot;(some #(identity %) (range 10))&quot; &quot;(some #(if (= % 1) % nil) (range 10))&quot; &quot;(.stop server)\n&quot; &quot;filter&quot; &quot;(compile 'functional-vaadin.examples.Sampler)&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -981,8 +972,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.48497853" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1240" height="700" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.62017167" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.37982833" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.6223176" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31610578" sideWeight="0.37768242" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21816881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.5214592" order="3" side_tool="false" content_ui="tabs" />
@@ -993,7 +984,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.5071531" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2553648" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.50429183" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.50143063" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1031,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Updated generated dependencies" />
     <MESSAGE value="Updated README" />
     <MESSAGE value="Refactoring&#10;- Added test for form field building&#10;- Removed dead code" />
     <MESSAGE value="Added Heirarchical container creation" />
@@ -1065,7 +1055,8 @@
     <MESSAGE value="Updated build script to save docs along with the uberjars" />
     <MESSAGE value="Various changes:&#10;- Build scripts update&#10;- Better doc strings&#10;- Added validation to docs" />
     <MESSAGE value="Updated doc strings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated doc strings" />
+    <MESSAGE value="Added Action creation and attachment, plus various:&#10;- LoginForm moved to ui namespace&#10;- Bug fixes in synthetic config option validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Action creation and attachment, plus various:&#10;- LoginForm moved to ui namespace&#10;- Bug fixes in synthetic config option validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1749,14 +1740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dev/user.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1775,8 +1758,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+        <state relative-caret-position="495">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/user.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
           <folding />
         </state>
       </provider>
