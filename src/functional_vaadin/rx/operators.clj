@@ -19,8 +19,8 @@
   (let [c comp]
     (rx/subscribe xs
       (fn [v] (c-fn c v))
-      (fn [e] )
-      (fn [] )))
+      (fn [e])
+      (fn [])))
   )
 
 (defn- failure-message [e]
@@ -28,15 +28,16 @@
     "Required"
     (.getMessage e)))
 
-(defn- commit-error [e]
+(defn- default-commit-error-handler [e]
   (if (instance? FieldGroup$CommitException e)
     (.center
       (window "Field Errors"
-        (vertical-layout {:margin true :spacing true}
-          (doall (map
-                   (fn [[f exp]]
-                     (label (str (.getCaption f) ": " (failure-message exp))))
-                   (.getInvalidFields e))))))
+        (apply vertical-layout
+          (concat (list {:margin true :spacing true})
+            (map
+              (fn [[f exp]]
+                (label (str (.getCaption f) ": " (failure-message exp))))
+              (.getInvalidFields e))))))
     (throw e))
   )
 
@@ -60,24 +61,25 @@
   is passed on to the next subscriber. Assumes it will receive either a single FieldGroup object, or a Map with
   containing a key :field-group. For the former, just the item data is passed on, in the latter case, the data is added
   to the Map under a key :item. Simply passes on the received data if there is no field group."
-  ([error-handler ^Observable xs]
+  ([commit-error-handler ^Observable xs]
    (let [op (rx/operator*
               (fn [subscribed-o]
                 (rx/subscriber subscribed-o
                   (fn [^Observer recv-o v]
-                    (try
-                      (when-subscribed recv-o
-                        (.onNext recv-o (do-commit v)))
-                      (catch Exception e
-                        (error-handler e)
-                        (.onError recv-o e))))
+                    (when-subscribed recv-o
+                      (try
+                        (.onNext recv-o (do-commit v))
+                        (catch FieldGroup$CommitException e
+                          (commit-error-handler e))
+                        (catch Throwable t
+                          (.onError recv-o t)))))
                   (fn [recv-o e]
                     (when-subscribed recv-o
                       (.onError recv-o e)))
                   )
                 ))]
      (rx/lift op xs)))
-  ([^Observable xs] (commit commit-error xs))
+  ([^Observable xs] (commit default-commit-error-handler xs))
   )
 
 (defn with-ui-access
@@ -91,16 +93,16 @@
                  (fn [recv-o v]                             ;on-next
                    (when-subscribed recv-o
                      (if-let [ui (UI/getCurrent)]
-                      (.access ui
-                        (reify
-                          ErrorHandlingRunnable
-                          (^void run [this] (rx/on-next recv-o v))
-                          (^void handleError [this ^Exception e] (rx/on-error recv-o e))))
-                      (try
-                        (rx/on-next recv-o v)
-                        (catch Exception e
-                          (rx/on-error recv-o e)))
-                      )))
+                       (.access ui
+                         (reify
+                           ErrorHandlingRunnable
+                           (^void run [this] (rx/on-next recv-o v))
+                           (^void handleError [this ^Exception e] (rx/on-error recv-o e))))
+                       (try
+                         (rx/on-next recv-o v)
+                         (catch Exception e
+                           (rx/on-error recv-o e)))
+                       )))
                  (fn [recv-o e]
                    (when-subscribed recv-o
                      (rx/on-error recv-o e))))
