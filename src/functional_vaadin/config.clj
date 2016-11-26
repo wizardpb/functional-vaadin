@@ -192,7 +192,9 @@
 
 (defn- set-attribute
   [obj [attribute args]]
-  (let [arg-list (if (not (or (seq? args) (vector? args))) [args] args)
+  (let [arg-list (if (nil? args)
+                   []
+                   (if (not (or (seq? args) (vector? args))) [args] args))
         attr-setter (keyword (str "set" (capitalize (name attribute))))
         f (get config-table [attr-setter (count arg-list)])]
     (if f

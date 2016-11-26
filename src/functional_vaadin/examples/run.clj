@@ -6,22 +6,23 @@
            [com.vaadin.server VaadinServlet])
   (:gen-class))
 
+(defn- jetty-server [port ui-name]
+  (doto (Server. port)
+    (.setHandler
+      (doto (ServletContextHandler. ServletContextHandler/SESSIONS)
+        (.setContextPath "/")
+
+        (.setInitParameter "UI" ui-name)
+        (.setInitParameter "legacyPropertyToString" "true")
+        (.setResourceBase "dev-resources/public")
+        (.addServlet VaadinServlet "/*")))))
+
 (defn run-jetty [ui-name bg?]
-  (let [server (Server. 8080)
-        ^ServletContextHandler context (ServletContextHandler. ServletContextHandler/SESSIONS)]
-    (.setContextPath context "/")
-    (.setInitParameter context "UI" ui-name)
-    (.setInitParameter context "legacyPropertyToString" "true")
-    (.setResourceBase context "dev-resources/public")
-
-    (.setHandler server context)
-    (.addServlet context VaadinServlet "/*")
-
+  (let [server (jetty-server 8080 ui-name)]
     (.start server)
     (if bg?
       server
-      (.join server)
-      )))
+      (.join server))))
 
 (defn choose-example [examples]
   (loop []

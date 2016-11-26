@@ -30,6 +30,11 @@
 
 (deftest configuration
 
+  (testing "Zero option args"
+    (let [obj (vertical-layout {:sizeFull nil})]
+      (is (= (.getWidth obj) 100.0))
+      (is (= (.getHeight obj) 100.0))))
+
   (testing "Single option args"
     (let [obj (Button.)]
       (is (identical? (configure obj {:caption "Caption"}) obj))
