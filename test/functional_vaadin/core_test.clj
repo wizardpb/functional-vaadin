@@ -416,7 +416,14 @@
       (is (instance? FunctionCommand (.getCommand (first (.getItems mb)))))
       (is (= "File" (.getText (first (.getItems mb)))))
       )
-    (let [mb (menu-bar
+    (let [mb (menu-bar {:width "100%"}
+               (menu-item "File" (fn [item] "File")))
+          ]
+      (is (= 1 (count (.getItems mb))))
+      (is (instance? MenuBar$MenuItem (first (.getItems mb))))
+      (is (instance? FunctionCommand (.getCommand (first (.getItems mb)))))
+      (is (= "File" (.getText (first (.getItems mb)))))
+      )    (let [mb (menu-bar
                (menu-item "File" (FileResource. (File. "it")) (fn [item]  "File")))
           ]
       (is (= 1 (count (.getItems mb))))

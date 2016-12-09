@@ -19,7 +19,8 @@
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]}
              :dev      {:main         functional-vaadin.examples.run
-                        :aot          [functional-vaadin.ui.TestUI
+                        :aot          [functional-vaadin.ui.LoginForm
+                                       functional-vaadin.ui.TestUI
                                        functional-vaadin.examples.Sampler]
                         :source-paths ["src" "dev"]
                         :dependencies [[org.apache.directory.studio/org.apache.commons.io "2.4"]

@@ -73,7 +73,10 @@
   (s/cat
     :initial-args (s/* #(not (instance? Map %)))
     :config (s/? #(instance? Map %))
-    :children (s/* #(or (instance? Component %) (instance? TableColumn %)))))
+    :children (s/* #(or
+                      (instance? Component %)
+                      (instance? TableColumn %)
+                      (instance? MenuItemSpec %)))))
 
 ;; Widget creation
 

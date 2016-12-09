@@ -8,8 +8,7 @@
              Label Embedded Link MenuBar Upload Button Calendar GridLayout Accordion
              TabSheet VerticalSplitPanel HorizontalSplitPanel Slider TextField TextArea PasswordField CheckBox
              RichTextArea InlineDateField PopupDateField Table ComboBox TwinColSelect NativeSelect
-             ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar Window)
-           (functional_vaadin.ui LoginForm)
+             ListSelect OptionGroup Tree TreeTable Panel VerticalLayout HorizontalLayout FormLayout ProgressBar Window LoginForm)
            ))
 
 (def configurable-classes

@@ -384,8 +384,11 @@
 (defn menu-item
   "Usage: (menu-item name icon_resource? [menu-fn | menu-items])
 
-  Create a menu item for the contaning menu. \"name\" is the menu item name, \"icon\" is and optional Resource that defines the menu item
-  icon. Further arguments are either a single fn defining the menu action, or further menu-items defining a sub-menu"
+  Create a menu item for the contaning menu. \"name\" is the menu item name, \"icon\" is and optional Resource that
+  defines the menu item icon. Further arguments are either a single fn defining the menu action, or further menu-items
+  defining a sub-menu
+
+  When triggered, the menu-fn is called with the selected MenuItem"
 
   ;[name & args]
   ;(if (not (instance? String name))

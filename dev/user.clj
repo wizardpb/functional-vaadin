@@ -11,7 +11,9 @@
             [functional-vaadin.examples.run :refer [run-jetty]]
             [rx.lang.clojure.core :as rx]
             [clojure.tools.namespace.repl :refer [refresh]])
-  (:use clojure.test functional-vaadin.ui.test-ui-def config-gen)
+  (:use clojure.test config-gen
+        functional-vaadin.ui.test-ui-def
+        )
   (:import (java.io File)
            (org.apache.commons.io FileUtils)
            (com.vaadin.ui UI)))
