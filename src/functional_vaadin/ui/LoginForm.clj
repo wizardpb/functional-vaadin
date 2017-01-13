@@ -1,5 +1,6 @@
 (ns functional-vaadin.ui.LoginForm
-  (:gen-class :extends com.vaadin.ui.LoginForm
+  (:gen-class :name functional_vaadin.ui.LoginForm
+              :extends com.vaadin.ui.LoginForm
               :main false
               :state state
               :init init-my-state

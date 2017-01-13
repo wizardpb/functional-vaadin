@@ -80,14 +80,6 @@
 
 ;; Widget creation
 
-(defn- apply-parent-config
-  "Apply any options save on the child under the key :parent-data."
-  [config parent child]
-  (if-let [config (detach-data child :parent-data)]
-    ;; Use do-configure so the parent opst aren't re-extracted
-    (do-configure parent config))
-  )
-
 (defn- match-arg
   "Return the argument if it's type matches ctor-type. Matching is done using Java assignability. Since Clojure uses
   integer Long types exclusively, Integer types match a Long argument, and it is converted to a raw int. Return nil
@@ -246,8 +238,6 @@
   (doseq [child children]
     (.addComponent parent child))
   parent)
-
-
 
 (defn ->MenItemSeparator []
   (->MenuItemSpec nil nil nil))
