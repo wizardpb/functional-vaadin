@@ -3,5 +3,6 @@ lein uberjar
 lein codox
 rm -rf $build_dir
 mv target $build_dir
-lein with-profile jar jar
+lein with-profile +provided,+jar jar
+lein pom
 

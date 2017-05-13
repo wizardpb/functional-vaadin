@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional-vaadin.iml" afterPath="$PROJECT_DIR$/functional-vaadin.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/build" afterPath="$PROJECT_DIR$/scripts/build" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,11 +83,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="extract-native.dependencies" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/builds/default/stale/extract-native.dependencies">
+      <file leaf-file-name="build" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/build">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deploy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/deploy">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="154" lean-forward="false" selection-start-line="0" selection-start-column="154" selection-end-line="0" selection-end-column="154" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -222,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/functional_vaadin/validation.clj" />
         <option value="$PROJECT_DIR$/scripts/deploy" />
         <option value="$PROJECT_DIR$/scripts/build_release" />
-        <option value="$PROJECT_DIR$/scripts/build" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/actions_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
@@ -240,6 +251,7 @@
         <option value="$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/scripts/build" />
         <option value="$PROJECT_DIR$/project.clj" />
       </list>
     </option>
@@ -1089,7 +1101,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Minor refactoring, update to use Vaadin 7.7.0&#10;- namespace change: conversion -&gt; data-binding&#10;- Comment update&#10;" />
     <MESSAGE value="Refactoring - more idiomatic cond statements" />
     <MESSAGE value="Fixed incorrect comment for menu-item" />
     <MESSAGE value="Refactoring&#10;- Updated menu-item to use clojure.spec to parse arguments&#10;- Updated clojure to 1.9.0_alpha11" />
@@ -1114,7 +1125,8 @@
     <MESSAGE value="Minor refactoring and cleanup" />
     <MESSAGE value="Updated to clojure-1.9.0-alpha16" />
     <MESSAGE value="Updated CHANGELOG.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated CHANGELOG.md" />
+    <MESSAGE value="Fixed version # in project.clj" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed version # in project.clj" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1376,20 +1388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/build">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/deploy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3-sources.jar!/com/vaadin/ui/AbstractComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1494,6 +1492,22 @@
           <second_editor>
             <js_state />
           </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/build">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
