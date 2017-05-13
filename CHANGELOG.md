@@ -51,6 +51,13 @@ Do not use - deploy bug
 - Better error reporting (using clojure.spec)
 - Generated table columns, table click actions
 
+## [0.2.2]
+
+### Changed
+- More bug fixes
+- Documentation updates
+- Upgraded to clojure-1.9.0-alpha16
+
 
 
 
