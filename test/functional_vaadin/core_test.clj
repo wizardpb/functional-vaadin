@@ -314,6 +314,10 @@
       (is (= "My Table" (.getCaption tbl)))
       (is (= #{"Col1" "Col2"} (set (.getContainerPropertyIds tbl))))
       ))
+  (testing "Configuration"
+    (let [tbl (table {:cellStyleGenerator (fn [i c] (str "cellStyle" i "-" c))})]
+      (is (= (.getStyle (.getCellStyleGenerator tbl) tbl 1 0) "cellStyle1-0")))
+    )
   (testing "Column config options"
     (let [tbl (table "My Table"
                 (table-column "Col1" {:type String :defaultValue "" :header "Column 1" :width 100})
@@ -356,7 +360,8 @@
       (.setContainerDataSource tbl data)
       (is (= (.size tbl) 10)
         )
-      )))
+      ))
+  )
 
 (deftest ui-tree-table
   (testing "Creation"

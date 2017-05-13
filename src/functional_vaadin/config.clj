@@ -10,7 +10,7 @@
             [functional-vaadin.utils :refer :all])
   (:import (java.util Map Collection)
            (clojure.lang Keyword)
-           (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment)
+           (com.vaadin.ui AbstractComponent AbstractOrderedLayout Alignment Table Table$CellStyleGenerator)
            (com.vaadin.shared.ui MarginInfo)
            (com.vaadin.event Action Action$Listener Action$Notifier Action$Handler Action$Container)
            (com.vaadin.data Validator)
@@ -157,7 +157,15 @@
                         :execute   add-actions
                         :error-msg "Arguments must be a non-empty list of Action.Listeners or an Action.Handler"
                         }
-
+   :cellStyleGenerator {
+                        :validate  fn?
+                        :execute   (fn [tbl opt-key opt-val]
+                                     (.setCellStyleGenerator tbl
+                                       (reify Table$CellStyleGenerator
+                                         (getStyle [this table itemId propertyId]
+                                           (opt-val itemId propertyId)))))
+                        :error-msg "Cell style generator must be a function"
+                        }
    })
 
 (defn- validate-option [errors [opt-key opt-val] specs]
@@ -176,17 +184,13 @@
 (defn- do-synthetic-option [obj [opt-key opt-val]]
   ((get-in synthetic-option-specs [opt-key :execute]) obj opt-key opt-val))
 
-;(defn do-synthetic-options [obj config]
-;  (let [[syn-config attr-config] (extract-keys config (keys synthetic-option-specs))]
-;    (doseq [option syn-config]
-;      (do-syntheric-option obj option))
-;    attr-config))
-
 (defn- do-synthetic-options [obj config]
   (let [syn-keys (set (keys synthetic-option-specs))]
     (reduce (fn [config-opts option]
               (if (syn-keys (first option))
-                (do (do-synthetic-option obj option) config-opts)
+                (do
+                  (do-synthetic-option obj option)
+                  config-opts)
                 (merge config-opts option))
              ) {} config)))
 

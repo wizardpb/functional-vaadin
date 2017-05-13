@@ -54,7 +54,7 @@
            (com.vaadin.data.util.converter Converter)
            (functional_vaadin.ui LoginForm)))
 
-; TODO - calendar, popupview, browser-frame, audio, video, color picker, flash, notification, grid
+; TODO - grid, calendar, popupview, browser-frame, audio, video, color picker, flash, notification
 ; TODO - layouts: absolute, css, custom(?)
 ; TODO - registering custom components? Custon layout, field, component
 ; TODO - drag and drop

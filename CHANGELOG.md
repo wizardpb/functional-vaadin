@@ -67,6 +67,7 @@ Do not use - deploy bug
 ### Added
 - Generated table columns. table-column can now take a generation function
 - Table click actions
+- Table cell style generation
 
 
 
