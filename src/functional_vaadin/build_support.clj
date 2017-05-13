@@ -7,7 +7,7 @@
             [clojure.set :as set]
             [clojure.spec.alpha :as s])
   (:import (com.vaadin.ui
-             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window Component)
+             Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window Component Table$ColumnGenerator)
            (java.util Map Collection)
            (java.lang.reflect Constructor)
            (clojure.lang Keyword)
@@ -52,14 +52,25 @@
 (defprotocol ITableColumn
   (addToTable [this table]))
 
-(deftype TableColumn [options]
+(deftype TableColumn [propertyId options]
   ITableColumn
   (addToTable [this table]
-    (let [[{:keys [propertyId type defaultValue]} column-config] (extract-keys options #{:propertyId :type :defaultValue})]
+    (let [[{:keys [type defaultValue]} column-config] (extract-keys options #{:type :defaultValue})]
       (.addContainerProperty table propertyId type defaultValue)
       (->> column-config
         (translate-column-options propertyId)
         (configure table)))))
+
+(deftype GeneratedTableColumn [propertyId config gen_fn]
+  ITableColumn
+  (addToTable [this table]
+    (.addGeneratedColumn table propertyId
+      (reify
+        Table$ColumnGenerator
+        (generateCell [this t item col] (gen_fn t item col))))
+    (->> config
+      (translate-column-options propertyId)
+      (configure table))))
 
 ;; Argument parsing
 
@@ -76,6 +87,7 @@
     :children (s/* #(or
                       (instance? Component %)
                       (instance? TableColumn %)
+                      (instance? GeneratedTableColumn %)
                       (instance? MenuItemSpec %)))))
 
 ;; Widget creation

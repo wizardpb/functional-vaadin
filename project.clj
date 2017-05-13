@@ -1,4 +1,4 @@
-(defproject com.prajnainc/functional-vaadin "0.2.2"
+(defproject com.prajnainc/functional-vaadin "0.3.0-snapshot"
   :description "A functional interface to Vaadin"
   :url "https://github.com/wizardpb/functional-vaadin"
   :license {:name "Eclipse Public License"
@@ -12,9 +12,9 @@
                        functional-vaadin.validation
                        functional-vaadin.rx.observers
                        functional-vaadin.rx.operators]}
-  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.3"]
-                                       [com.vaadin/vaadin-client-compiled "7.7.3"]
-                                       [com.vaadin/vaadin-themes "7.7.3"]
+  :profiles {:provided {:dependencies [[com.vaadin/vaadin-server "7.7.9"]
+                                       [com.vaadin/vaadin-client-compiled "7.7.9"]
+                                       [com.vaadin/vaadin-themes "7.7.9"]
                                        [org.eclipse.jetty/jetty-server "9.3.8.v20160314"]
                                        [org.eclipse.jetty/jetty-servlet "9.3.8.v20160314"]
                                        [javax.servlet/javax.servlet-api "3.1.0"]]}

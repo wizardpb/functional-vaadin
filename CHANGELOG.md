@@ -58,6 +58,16 @@ Do not use - deploy bug
 - Documentation updates
 - Upgraded to clojure-1.9.0-alpha16
 
+## [0.3.0]
+
+### Changed
+- Upgraded to Vaadin 7.7.9
+- Sampler updated to show new features
+
+### Added
+- Generated table columns. table-column can now take a generation function
+- Table click actions
+
 
 
 

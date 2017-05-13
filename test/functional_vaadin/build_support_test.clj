@@ -8,12 +8,6 @@
            (clojure.lang MapEntry)
            (java.io File)))
 
-(defn- mk-column [propertyId config]
-  (->TableColumn
-    (assoc
-      (merge {:type Object :defaultValue nil} config)
-      :propertyId propertyId)))
-
 (deftest component-args-spec
   (testing "conformance"
     (is (= (s/conform ::functional-vaadin.build-support/component-args '())
@@ -34,8 +28,8 @@
             {:initial-args ["c1" c1] :config {:hidden true} :children [c1 c2]})))
 
     ; Test table column children
-    (let [c1 (mk-column "first-name" {:header "First Name" })
-          c2 (mk-column "last-name" {:header "Last Name" })]
+    (let [c1 (->TableColumn "first-name" {:header "First Name" })
+          c2 (->TableColumn "last-name" {:header "Last Name" })]
       (is (= (s/conform ::functional-vaadin.build-support/component-args (list {:caption "Table"} c1 c2))
             {:config {:caption "Table"} :children [c1 c2]}))
       (is (= (s/conform ::functional-vaadin.build-support/component-args (list "c1" c1 {:caption "Table"} c1 c2))

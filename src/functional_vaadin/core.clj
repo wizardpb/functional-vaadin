@@ -54,7 +54,6 @@
            (com.vaadin.data.util.converter Converter)
            (functional_vaadin.ui LoginForm)))
 
-; TODO - generated table columns, table clicks, editing?
 ; TODO - calendar, popupview, browser-frame, audio, video, color picker, flash, notification, grid
 ; TODO - layouts: absolute, css, custom(?)
 ; TODO - registering custom components? Custon layout, field, component
@@ -449,18 +448,29 @@
 ;; Tables
 
 (defn table-column
-  "Usage: (table-column property_id config_map)
+  "Usage: (table-column property_id config_map? gen_fn?)
 
   Create a table column. Only valid as a child of a Table component. The first argument must be the name of the
   data binding property that the column will bind to. Other config options can be the type (:type) and default value
   (:default) of the property, plus any of the table setColumnXXX setters. These will be configured on the table as
-  for other config options"
-  ([propertyId config]
-   (->TableColumn
-     (assoc
-      (merge {:type Object :defaultValue nil} config)
-      :propertyId propertyId))
-   )
+  for other config options.
+
+  Generated table columns can be added by adding a generation function. This will be called as
+
+     (gen_fn table itemId columnId)
+
+  Both the config_map and gen_fn are optional, defaults are a standard table column of type Object and a default
+  value of nil
+  "
+  ([propertyId config gen_fn]
+   (->GeneratedTableColumn propertyId config gen_fn))
+  ([propertyId config_or_fn]
+   (if (fn? config_or_fn)
+     (->GeneratedTableColumn propertyId {} config_or_fn)
+     (->TableColumn
+       propertyId
+       (merge {:type Object :defaultValue nil} config_or_fn)))
+    )
   ([propertyId] (table-column propertyId {}))
   )
 

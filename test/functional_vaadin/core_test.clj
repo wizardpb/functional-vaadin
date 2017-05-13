@@ -8,7 +8,7 @@
         )
   (:import (com.vaadin.ui Panel VerticalLayout Button TextField HorizontalLayout FormLayout Label
                           TextArea PasswordField PopupDateField RichTextArea InlineDateField CheckBox
-                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar TreeTable Upload$Receiver)
+                          Slider CheckBox ComboBox TwinColSelect NativeSelect ListSelect OptionGroup Image Embedded Table Layout MenuBar$MenuItem MenuBar TreeTable Upload$Receiver Table$ColumnGenerator)
            (java.util Date)
            (com.vaadin.data.fieldgroup FieldGroup)
            [functional_vaadin.ui TestUI]
@@ -325,6 +325,21 @@
       (is (= [100 50] (map #(.getColumnWidth tbl %1) ["Col1" "Col2"])))
       (is (= [String Integer] (map #(.getType (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
       (is (= ["" 0] (map #(.getValue (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
+      ))
+  (testing "Column generation"
+    (let [tbl (table "My Table"
+                (table-column "Col1" {:header "Column 1" :width 100}
+                  (fn [t item col] (label (str "Item " item ", Column " col))))
+                (table-column "Col2"
+                  (fn [t item col] (label (str "Item " item ", Column " col)))))
+          itemId (.addItem tbl)]
+      (is (instance? Table tbl))
+      (is (= "My Table" (.getCaption tbl)))
+      (is (= #{} (set (.getContainerPropertyIds tbl))))
+      (is (= [100 -1] (map #(.getColumnWidth tbl %1) ["Col1" "Col2"])))
+      (is (every? true? (map #(instance? Table$ColumnGenerator (.getColumnGenerator tbl %)) ["Col1" "Col2"])))
+      ;(is (= [String Integer] (map #(.getType (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
+      ;(is (= ["" 0] (map #(.getValue (.getContainerProperty tbl itemId %1)) ["Col1" "Col2"])))
       ))
   (testing "Data"
     (let [tbl (table "My Table"

@@ -21,11 +21,8 @@
            (java.io OutputStream ByteArrayOutputStream)
            (com.vaadin.shared.ui AlignmentInfo$Bits)))
 
-; TODO - add To-Do tab˙
-
 (defn- table-action-handler []
   (letfn [(select-fn [target table actions]
-            (println "Selections=" (seq (.getValue table)) )
             (if (seq (.getValue table))
               (filter #(= (.getCaption %) "Delete Selected") actions)
               (filter #(= (.getCaption %) "Delete") actions)))]
@@ -58,6 +55,8 @@
          (table-column "first-name" {:header "First Name"})
          (table-column "last-name" {:header "Last Name"})
          (table-column "notes" {:header "Notes" :width 300})
+         (table-column "loc" {:header "Location (Generated)" :width 210}
+           (fn [t item col] (label (str "Item Id " item ", Column Id " col))))
          )))))
 
 (defn- background-task-tab []
