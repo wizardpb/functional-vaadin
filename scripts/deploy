@@ -1,2 +1,1 @@
-lein with-profile jar deploy clojars
-
+lein with-profile +provided,+jar deploy clojars

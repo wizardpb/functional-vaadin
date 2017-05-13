@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional-vaadin.iml" afterPath="$PROJECT_DIR$/functional-vaadin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/build" afterPath="$PROJECT_DIR$/scripts/build" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/deploy" afterPath="$PROJECT_DIR$/scripts/deploy" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1101,7 +1099,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Refactoring - more idiomatic cond statements" />
     <MESSAGE value="Fixed incorrect comment for menu-item" />
     <MESSAGE value="Refactoring&#10;- Updated menu-item to use clojure.spec to parse arguments&#10;- Updated clojure to 1.9.0_alpha11" />
     <MESSAGE value="Refactoring&#10;- Updated widget creation to use clojure.spec to parse arguments&#10;" />
@@ -1126,7 +1123,8 @@
     <MESSAGE value="Updated to clojure-1.9.0-alpha16" />
     <MESSAGE value="Updated CHANGELOG.md" />
     <MESSAGE value="Fixed version # in project.clj" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed version # in project.clj" />
+    <MESSAGE value="Set release version # in project.clj" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set release version # in project.clj" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
