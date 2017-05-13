@@ -1,7 +1,7 @@
 (ns user
   (:require [clojure.string :as str]
             [clojure.pprint :as pp]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [functional-vaadin.core :refer :all]
             [functional-vaadin.event-handling :refer :all]
             [functional-vaadin.build-support :refer :all]

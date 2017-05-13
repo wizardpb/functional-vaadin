@@ -1,7 +1,7 @@
 (ns functional-vaadin.config
   "Functions for doing map-based configuration of Vaadinwidgets. See config-table namespace"
   (:require [clojure.string :as str]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.config-table :refer :all]
             [functional-vaadin.event-handling :refer :all]

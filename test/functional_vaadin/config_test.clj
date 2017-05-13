@@ -1,5 +1,5 @@
 (ns functional-vaadin.config-test
-  (:require [clojure.spec :as s])
+  (:require [clojure.spec.alpha :as s])
   (:use [clojure.test]
         [functional-vaadin.core]
         [functional-vaadin.actions]

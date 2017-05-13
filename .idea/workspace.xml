@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="894e337c-9d30-45f3-9fe6-da87d1e8b3ba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_core_specs_alpha_0_1_10.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_spec_alpha_0_1_94.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_9_0_alpha11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Leiningen__org_clojure_clojure_1_9_0_alpha16.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/user.clj" afterPath="$PROJECT_DIR$/dev/user.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional-vaadin.iml" afterPath="$PROJECT_DIR$/functional-vaadin.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.clj" afterPath="$PROJECT_DIR$/project.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/deploy" afterPath="$PROJECT_DIR$/scripts/deploy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/actions.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/actions.clj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/config.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/functional_vaadin/core.clj" afterPath="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" afterPath="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
     </list>
     <ignored path="functional-vaadin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,57 +34,110 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="functional-vaadin" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user.clj" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dev/user.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/build">
+      <file leaf-file-name="actions.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="401">
+                <caret line="50" column="32" lean-forward="false" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+                <folding />
+              </first_editor>
+              <second_editor>
+                <js_state />
+              </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project.clj" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/project.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extract-native.dependencies" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/builds/default/stale/extract-native.dependencies">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+              <caret line="0" column="154" lean-forward="false" selection-start-line="0" selection-start-column="154" selection-end-line="0" selection-end-column="154" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config_gen.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dev/config_gen.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_ui_def.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
+      <file leaf-file-name="LoginForm.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/run.clj">
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+            <state relative-caret-position="555">
+              <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_support_test.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -91,114 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
+      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3030">
-              <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_table.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config_table.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2775">
-              <caret line="185" column="22" lean-forward="false" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="project.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="16" column="73" lean-forward="true" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="330">
-                <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core_test.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/functional_vaadin/core_test.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6285">
-              <caret line="419" column="0" lean-forward="false" selection-start-line="419" selection-start-column="0" selection-end-line="419" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sampler.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginForm.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="40" lean-forward="false" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractComponent.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3-sources.jar!/com/vaadin/ui/AbstractComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="76" column="22" lean-forward="false" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actions.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="105">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -207,28 +166,8 @@
       <file leaf-file-name="config_test.clj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="268" column="32" lean-forward="false" selection-start-line="268" selection-start-column="23" selection-end-line="268" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build_support.clj" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2336">
-              <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+            <state relative-caret-position="15">
+              <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -242,7 +181,14 @@
       <find>menu</find>
       <find>MenuBar</find>
       <find>widthFull</find>
+      <find>complete.core</find>
+      <find>complete</find>
+      <find>clojure-complete</find>
+      <find>clojure.spec</find>
     </findStrings>
+    <replaceStrings>
+      <replace>clojure.spec.alpha</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -280,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/functional_vaadin/specs.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/specs_test.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/event_handling_test.clj" />
-        <option value="$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/observers.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/LoginField_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/LoginForm.clj" />
@@ -295,18 +240,19 @@
         <option value="$PROJECT_DIR$/test/functional_vaadin/actions_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/event_handling.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/actions.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/rx/operators.clj" />
-        <option value="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/examples/run.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
         <option value="$PROJECT_DIR$/dev/config_gen.clj" />
         <option value="$PROJECT_DIR$/test/functional_vaadin/core_test.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
-        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
         <option value="$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj" />
-        <option value="$PROJECT_DIR$/dev/user.clj" />
         <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/dev/user.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/actions.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/build_support.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/config.clj" />
+        <option value="$PROJECT_DIR$/src/functional_vaadin/core.clj" />
+        <option value="$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj" />
+        <option value="$PROJECT_DIR$/test/functional_vaadin/config_test.clj" />
       </list>
     </option>
   </component>
@@ -356,6 +302,49 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional_vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="functional-vaadin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples.simple" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Production">
           <PATH>
@@ -424,49 +413,6 @@
             <PATH_ELEMENT USER_OBJECT="ui">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional_vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="functional-vaadin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="examples.simple" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -699,7 +645,7 @@
       <recent name="$PROJECT_DIR$/src/functional_vaadin/rx" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1484324586797">{:repl-history {:ide [], :local [&quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (Resource \&quot;f\&quot;)\n                                      ]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileR \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. \&quot;f\&quot;)]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; (FileResource. (File. \&quot;f\&quot;))]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;f\&quot;]])&quot; &quot;(s/expla ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(str \&quot;a\\n\&quot; \&quot;b\\n\&quot;)&quot; &quot;(print (str \&quot;a\\n\&quot; \&quot;b\\n\&quot;))&quot; &quot;(into {} [[:a 1]])&quot; &quot;(into {} [[:a 1] [:b 2]])&quot; &quot;(s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]])&quot; &quot;(:problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(.problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) :problems)&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) ::s/problems)&quot; &quot;(::s/problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(str :ke)&quot; &quot;(str (name :ke))&quot; &quot;(str (capitalize (name :ke)))&quot; &quot;(map #([ %1 %2]) {:a 1})&quot; &quot;(map #([%1 %2]) {:a 1})&quot; &quot;(map #(vector %1 %2) {:a 1})&quot; &quot;(map-kv #(vector %1 %2) {:a 1})&quot; &quot;(map #(vector %1 %2) (seq {:a 1}))&quot; &quot;(map #(identity %1) {:a 1})&quot; &quot;(conca)&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]]))&quot; &quot;(apply bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/expl ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(for(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]]))&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]])&quot; &quot;(-&gt;ActionHandler [])&quot; &quot;(instance? ActionHandler (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Notifier (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Handler (-&gt;ActionHandler []))&quot; &quot;(any? 1)&quot; &quot;(every? any? [])&quot; &quot;(print select-fn target sender)&quot; &quot;ah&quot; &quot;(s/conform ::actions-spec ah)&quot; &quot;(def ah (map\n          #(-&gt;FunctionAction (str \&quot;Action\&quot; %) (fn [a s t] (swap! (fn [_] [a s t]))))\n          (range 5)))&quot; &quot;(s/conform ::function-vaadin.actions/actions-spec ah)&quot; &quot;(seq {a:1})&quot; &quot;(seq {a: 1})&quot; &quot;(seq {:a 1})&quot; &quot;(first (seq {:a 1}))&quot; &quot;(into {}  (first (seq {:a 1})))&quot; &quot;(seq (map #(str %) (range 10)))&quot; &quot;(seq? [1])&quot; &quot;(seq? (map #(str %) (range 10)))&quot; &quot;(and 1 2)&quot; &quot;(every any? 1)&quot; &quot;(every? any? 1)&quot; &quot;(every? any? (seq 1))&quot; &quot;(seq? 1)&quot; &quot;(col? [])&quot; &quot;(seq [1])&quot; &quot;(every? any? (seq []))&quot; &quot;(coll? [])&quot; &quot;(seq? [])&quot; &quot;(seq? (seq []))&quot; &quot;(seq #{})&quot; &quot;(every? identity (seq []))&quot; &quot;(every? identity (seq [false]))&quot; &quot;(seq [])&quot; &quot;(seq '())&quot; &quot;(some #(#{Keyword String Map Collection} (class {})))&quot; &quot;(some #(instance? % {}) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % \&quot;\&quot;) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % :a) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % []) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % 1) #{Keyword String Map Collection})&quot; &quot;&quot; &quot;(compile)&quot; &quot;(compile 'func)&quot; &quot;(some #(= 1) (range 10))&quot; &quot;(some #(= % 1) (range 10))&quot; &quot;(some? #(= % 1) (range 10))&quot; &quot;(some #(&gt; % 1) (range 10))&quot; &quot;(some #(%) (range 10))&quot; &quot;(some #(identity %) (range 10))&quot; &quot;(some #(if (= % 1) % nil) (range 10))&quot; &quot;(.stop server)\n&quot; &quot;filter&quot; &quot;(compile 'functional-vaadin.examples.Sampler)&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(do (.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(run-my-tests)&quot;], :remote []}}</component>
+  <component name="ReplState" timestamp="1494679895473">{:repl-history {:ide [], :local [&quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;f\&quot;]])&quot; &quot;(s/expla ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(str \&quot;a\\n\&quot; \&quot;b\\n\&quot;)&quot; &quot;(print (str \&quot;a\\n\&quot; \&quot;b\\n\&quot;))&quot; &quot;(into {} [[:a 1]])&quot; &quot;(into {} [[:a 1] [:b 2]])&quot; &quot;(s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]])&quot; &quot;(:problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(.problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) :problems)&quot; &quot;(get (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]) ::s/problems)&quot; &quot;(::s/problems (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[1] [\&quot;B\&quot; 1]]))&quot; &quot;(str :ke)&quot; &quot;(str (name :ke))&quot; &quot;(str (capitalize (name :ke)))&quot; &quot;(map #([ %1 %2]) {:a 1})&quot; &quot;(map #([%1 %2]) {:a 1})&quot; &quot;(map #(vector %1 %2) {:a 1})&quot; &quot;(map-kv #(vector %1 %2) {:a 1})&quot; &quot;(map #(vector %1 %2) (seq {:a 1}))&quot; &quot;(map #(identity %1) {:a 1})&quot; &quot;(conca)&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]]))&quot; &quot;(apply bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(bad-argument (format-actionspec-errors (s/explain-data ::action-spec [[:snaggle] [\&quot;B\&quot; 1]])))&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; 1]])&quot; &quot;(s/conform ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/expl ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(for(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]]))&quot; &quot;(format-actionspec-errors (s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]]))&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; \&quot;icon\&quot; :k]])&quot; &quot;(s/explain-data ::action-spec [[\&quot;A\&quot;] [\&quot;B\&quot; 1 :k]])&quot; &quot;(-&gt;ActionHandler [])&quot; &quot;(instance? ActionHandler (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Notifier (-&gt;ActionHandler []))&quot; &quot;(instance? Action$Handler (-&gt;ActionHandler []))&quot; &quot;(any? 1)&quot; &quot;(every? any? [])&quot; &quot;(print select-fn target sender)&quot; &quot;ah&quot; &quot;(s/conform ::actions-spec ah)&quot; &quot;(def ah (map\n          #(-&gt;FunctionAction (str \&quot;Action\&quot; %) (fn [a s t] (swap! (fn [_] [a s t]))))\n          (range 5)))&quot; &quot;(s/conform ::function-vaadin.actions/actions-spec ah)&quot; &quot;(seq {a:1})&quot; &quot;(seq {a: 1})&quot; &quot;(seq {:a 1})&quot; &quot;(first (seq {:a 1}))&quot; &quot;(into {}  (first (seq {:a 1})))&quot; &quot;(seq (map #(str %) (range 10)))&quot; &quot;(seq? [1])&quot; &quot;(seq? (map #(str %) (range 10)))&quot; &quot;(and 1 2)&quot; &quot;(every any? 1)&quot; &quot;(every? any? 1)&quot; &quot;(every? any? (seq 1))&quot; &quot;(seq? 1)&quot; &quot;(col? [])&quot; &quot;(seq [1])&quot; &quot;(every? any? (seq []))&quot; &quot;(coll? [])&quot; &quot;(seq? [])&quot; &quot;(seq? (seq []))&quot; &quot;(seq #{})&quot; &quot;(every? identity (seq []))&quot; &quot;(every? identity (seq [false]))&quot; &quot;(seq [])&quot; &quot;(seq '())&quot; &quot;(some #(#{Keyword String Map Collection} (class {})))&quot; &quot;(some #(instance? % {}) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % \&quot;\&quot;) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % :a) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % []) #{Keyword String Map Collection})&quot; &quot;(some #(instance? % 1) #{Keyword String Map Collection})&quot; &quot;&quot; &quot;(compile)&quot; &quot;(compile 'func)&quot; &quot;(some #(= 1) (range 10))&quot; &quot;(some #(= % 1) (range 10))&quot; &quot;(some? #(= % 1) (range 10))&quot; &quot;(some #(&gt; % 1) (range 10))&quot; &quot;(some #(%) (range 10))&quot; &quot;(some #(identity %) (range 10))&quot; &quot;(some #(if (= % 1) % nil) (range 10))&quot; &quot;(.stop server)\n&quot; &quot;filter&quot; &quot;(compile 'functional-vaadin.examples.Sampler)&quot; &quot;(.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(do (.stop server) (def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true)))&quot; &quot;(def server (run-jetty \&quot;functional_vaadin.examples.Sampler\&quot; true))&quot; &quot;(.stop server)&quot; &quot;(run-my-tests)&quot; &quot;(true? nil)&quot; &quot;(true? 1)&quot; &quot;(true? 0)&quot; &quot;(true? true)&quot; &quot;(true? false)&quot;], :remote []}}</component>
   <component name="RunManager" selected="Clojure REPL.Lein Repl">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -941,6 +887,38 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="" />
       <envs />
@@ -975,13 +953,29 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <classRegexps />
+      <testRegexps />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="false" name="Lein Repl" type="ClojureREPL" factoryName="Local">
       <setting name="replType" value="1" />
       <module name="functional-vaadin" />
       <setting name="jvmArgs" value="" />
       <setting name="parameters" value="" />
       <setting name="workingDir" value="$PROJECT_DIR$" />
-      <setting name="profiles" value="provided,dev" />
+      <setting name="profiles" value="+provided,+dev" />
       <method />
     </configuration>
     <list size="1">
@@ -996,6 +990,11 @@
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1017,29 +1016,29 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.48569384" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.49425286" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42307693" sideWeight="0.48497853" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31370193" sideWeight="0.6309013" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31370193" sideWeight="0.36909872" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38822114" sideWeight="0.6330472" order="11" side_tool="true" content_ui="tabs" x="373" y="319" width="981" height="541" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38822114" sideWeight="0.36695278" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31545064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.51573676" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.49427754" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30758226" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32331902" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2553648" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.6423462" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.49425286" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1240" height="700" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.49713877" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23962805" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37860578" sideWeight="0.54077256" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23677884" sideWeight="0.5379113" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.6423462" order="7" side_tool="false" content_ui="tabs" x="401" y="284" width="947" height="567" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932693" sideWeight="0.48855507" order="10" side_tool="false" content_ui="tabs" />
@@ -1071,6 +1070,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -1084,7 +1101,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Better hierachy construction&#10;- Now includes tree-table data&#10;- Added Food Menu to Sampler" />
     <MESSAGE value="Updated CHANGELOG" />
     <MESSAGE value="Added FunctionalConveter" />
     <MESSAGE value="Minor refactoring, update to use Vaadin 7.7.0&#10;- namespace change: conversion -&gt; data-binding&#10;- Comment update&#10;" />
@@ -1109,7 +1125,8 @@
     <MESSAGE value="Bug fix in commit observer&#10;- Commit errors now handled without killing the observer" />
     <MESSAGE value="Bug fix in config.clj - now accept nil as argument to zero-arg setter" />
     <MESSAGE value="Bug fixes:&#10;- Incorrect LoginForm ref in config-gen&#10;- Bad child spec for components" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes:&#10;- Incorrect LoginForm ref in config-gen&#10;- Bad child spec for components" />
+    <MESSAGE value="Minor refactoring and cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor refactoring and cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1125,34 +1142,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3-sources.jar!/com/vaadin/event/ConnectorActionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3.jar!/com/vaadin/ui/Window.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="621" column="24" lean-forward="false" selection-start-line="621" selection-start-column="24" selection-end-line="621" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3-sources.jar!/com/vaadin/ui/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12120">
-          <caret line="916" column="8" lean-forward="false" selection-start-line="916" selection-start-column="8" selection-end-line="916" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3.jar!/com/vaadin/ui/Button.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="217" column="24" lean-forward="false" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.3/vaadin-server-7.7.3.jar!/com/vaadin/ui/Button.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5295">
@@ -1312,20 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
           <caret line="132" column="24" lean-forward="false" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#5756#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1300#1301#0" expanded="false" />
-            <element signature="e#1338#1339#0" expanded="false" />
-            <element signature="e#1842#1843#0" expanded="false" />
-            <element signature="e#1872#1873#0" expanded="false" />
-            <element signature="e#1996#1997#0" expanded="false" />
-            <element signature="e#2023#2024#0" expanded="false" />
-            <element signature="e#5540#5541#0" expanded="false" />
-            <element signature="e#5578#5579#0" expanded="false" />
-            <element signature="e#5719#5720#0" expanded="false" />
-            <element signature="e#5751#5752#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1333,202 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53160">
           <caret line="3675" column="0" lean-forward="false" selection-start-line="3675" selection-start-column="0" selection-end-line="3675" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#225111#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#5221#5222#0" expanded="false" />
-            <element signature="e#5271#5272#0" expanded="false" />
-            <element signature="e#5325#5326#0" expanded="false" />
-            <element signature="e#5365#5366#0" expanded="false" />
-            <element signature="e#9381#9382#0" expanded="false" />
-            <element signature="e#9421#9422#0" expanded="false" />
-            <element signature="e#9476#9477#0" expanded="false" />
-            <element signature="e#9511#9512#0" expanded="false" />
-            <element signature="e#32447#32448#0" expanded="false" />
-            <element signature="e#32480#32481#0" expanded="false" />
-            <element signature="e#34428#34429#0" expanded="false" />
-            <element signature="e#34460#34461#0" expanded="false" />
-            <element signature="e#36064#36065#0" expanded="false" />
-            <element signature="e#36134#36135#0" expanded="false" />
-            <element signature="e#37930#37931#0" expanded="false" />
-            <element signature="e#37998#37999#0" expanded="false" />
-            <element signature="e#38349#38350#0" expanded="false" />
-            <element signature="e#38399#38400#0" expanded="false" />
-            <element signature="e#43456#43457#0" expanded="false" />
-            <element signature="e#43502#43503#0" expanded="false" />
-            <element signature="e#45381#45382#0" expanded="false" />
-            <element signature="e#45447#45448#0" expanded="false" />
-            <element signature="e#45633#45634#0" expanded="false" />
-            <element signature="e#45679#45680#0" expanded="false" />
-            <element signature="e#47477#47478#0" expanded="false" />
-            <element signature="e#47525#47526#0" expanded="false" />
-            <element signature="e#52346#52347#0" expanded="false" />
-            <element signature="e#52406#52407#0" expanded="false" />
-            <element signature="e#53577#53578#0" expanded="false" />
-            <element signature="e#53616#53617#0" expanded="false" />
-            <element signature="e#58055#58056#0" expanded="false" />
-            <element signature="e#58092#58093#0" expanded="false" />
-            <element signature="e#58127#58128#0" expanded="false" />
-            <element signature="e#58163#58164#0" expanded="false" />
-            <element signature="e#60192#60193#0" expanded="false" />
-            <element signature="e#60221#60222#0" expanded="false" />
-            <element signature="e#90416#90417#0" expanded="false" />
-            <element signature="e#90452#90453#0" expanded="false" />
-            <element signature="e#112757#112758#0" expanded="false" />
-            <element signature="e#112825#112826#0" expanded="false" />
-            <element signature="e#117763#117764#0" expanded="false" />
-            <element signature="e#117812#117813#0" expanded="false" />
-            <element signature="e#117861#117862#0" expanded="false" />
-            <element signature="e#117903#117904#0" expanded="false" />
-            <element signature="e#121525#121526#0" expanded="false" />
-            <element signature="e#121553#121554#0" expanded="false" />
-            <element signature="e#121955#121956#0" expanded="false" />
-            <element signature="e#121979#121980#0" expanded="false" />
-            <element signature="e#122456#122457#0" expanded="false" />
-            <element signature="e#122480#122481#0" expanded="false" />
-            <element signature="e#123160#123161#0" expanded="false" />
-            <element signature="e#123188#123189#0" expanded="false" />
-            <element signature="e#123654#123655#0" expanded="false" />
-            <element signature="e#123678#123679#0" expanded="false" />
-            <element signature="e#124211#124212#0" expanded="false" />
-            <element signature="e#124235#124236#0" expanded="false" />
-            <element signature="e#126140#126141#0" expanded="false" />
-            <element signature="e#126211#126212#0" expanded="false" />
-            <element signature="e#137973#137974#0" expanded="false" />
-            <element signature="e#138038#138039#0" expanded="false" />
-            <element signature="e#151866#151867#0" expanded="false" />
-            <element signature="e#151896#151897#0" expanded="false" />
-            <element signature="e#164717#164718#0" expanded="false" />
-            <element signature="e#164786#164787#0" expanded="false" />
-            <element signature="e#165035#165036#0" expanded="false" />
-            <element signature="e#165104#165105#0" expanded="false" />
-            <element signature="e#165292#165293#0" expanded="false" />
-            <element signature="e#165356#165357#0" expanded="false" />
-            <element signature="e#165541#165542#0" expanded="false" />
-            <element signature="e#165604#165605#0" expanded="false" />
-            <element signature="e#165866#165867#0" expanded="false" />
-            <element signature="e#165934#165935#0" expanded="false" />
-            <element signature="e#166193#166194#0" expanded="false" />
-            <element signature="e#166260#166261#0" expanded="false" />
-            <element signature="e#168170#168171#0" expanded="false" />
-            <element signature="e#168205#168206#0" expanded="false" />
-            <element signature="e#168743#168744#0" expanded="false" />
-            <element signature="e#168774#168775#0" expanded="false" />
-            <element signature="e#172334#172335#0" expanded="false" />
-            <element signature="e#172380#172381#0" expanded="false" />
-            <element signature="e#172622#172623#0" expanded="false" />
-            <element signature="e#172682#172683#0" expanded="false" />
-            <element signature="e#173642#173643#0" expanded="false" />
-            <element signature="e#173678#173679#0" expanded="false" />
-            <element signature="e#173924#173925#0" expanded="false" />
-            <element signature="e#173973#173974#0" expanded="false" />
-            <element signature="e#174884#174885#0" expanded="false" />
-            <element signature="e#174923#174924#0" expanded="false" />
-            <element signature="e#175092#175093#0" expanded="false" />
-            <element signature="e#175126#175127#0" expanded="false" />
-            <element signature="e#175424#175425#0" expanded="false" />
-            <element signature="e#175469#175470#0" expanded="false" />
-            <element signature="e#177667#177668#0" expanded="false" />
-            <element signature="e#177708#177709#0" expanded="false" />
-            <element signature="e#179271#179272#0" expanded="false" />
-            <element signature="e#179317#179318#0" expanded="false" />
-            <element signature="e#179738#179739#0" expanded="false" />
-            <element signature="e#179787#179788#0" expanded="false" />
-            <element signature="e#180633#180634#0" expanded="false" />
-            <element signature="e#180664#180665#0" expanded="false" />
-            <element signature="e#181460#181461#0" expanded="false" />
-            <element signature="e#181508#181509#0" expanded="false" />
-            <element signature="e#181567#181568#0" expanded="false" />
-            <element signature="e#181619#181620#0" expanded="false" />
-            <element signature="e#181682#181683#0" expanded="false" />
-            <element signature="e#181747#181748#0" expanded="false" />
-            <element signature="e#182020#182021#0" expanded="false" />
-            <element signature="e#182054#182055#0" expanded="false" />
-            <element signature="e#182113#182114#0" expanded="false" />
-            <element signature="e#182159#182160#0" expanded="false" />
-            <element signature="e#183115#183116#0" expanded="false" />
-            <element signature="e#183153#183154#0" expanded="false" />
-            <element signature="e#184113#184114#0" expanded="false" />
-            <element signature="e#184187#184188#0" expanded="false" />
-            <element signature="e#187710#187711#0" expanded="false" />
-            <element signature="e#187757#187758#0" expanded="false" />
-            <element signature="e#189415#189416#0" expanded="false" />
-            <element signature="e#189462#189463#0" expanded="false" />
-            <element signature="e#191422#191423#0" expanded="false" />
-            <element signature="e#191470#191471#0" expanded="false" />
-            <element signature="e#192004#192005#0" expanded="false" />
-            <element signature="e#192055#192056#0" expanded="false" />
-            <element signature="e#192925#192926#0" expanded="false" />
-            <element signature="e#192973#192974#0" expanded="false" />
-            <element signature="e#193507#193508#0" expanded="false" />
-            <element signature="e#193558#193559#0" expanded="false" />
-            <element signature="e#193819#193820#0" expanded="false" />
-            <element signature="e#193871#193872#0" expanded="false" />
-            <element signature="e#195109#195110#0" expanded="false" />
-            <element signature="e#195152#195153#0" expanded="false" />
-            <element signature="e#196927#196928#0" expanded="false" />
-            <element signature="e#196974#196975#0" expanded="false" />
-            <element signature="e#197158#197159#0" expanded="false" />
-            <element signature="e#197202#197203#0" expanded="false" />
-            <element signature="e#197384#197385#0" expanded="false" />
-            <element signature="e#197427#197428#0" expanded="false" />
-            <element signature="e#198637#198638#0" expanded="false" />
-            <element signature="e#198686#198687#0" expanded="false" />
-            <element signature="e#199243#199244#0" expanded="false" />
-            <element signature="e#199295#199296#0" expanded="false" />
-            <element signature="e#200091#200092#0" expanded="false" />
-            <element signature="e#200128#200129#0" expanded="false" />
-            <element signature="e#201427#201428#0" expanded="false" />
-            <element signature="e#201468#201469#0" expanded="false" />
-            <element signature="e#202538#202539#0" expanded="false" />
-            <element signature="e#202588#202589#0" expanded="false" />
-            <element signature="e#203153#203154#0" expanded="false" />
-            <element signature="e#203206#203207#0" expanded="false" />
-            <element signature="e#204877#204878#0" expanded="false" />
-            <element signature="e#204924#204925#0" expanded="false" />
-            <element signature="e#207792#207793#0" expanded="false" />
-            <element signature="e#207827#207828#0" expanded="false" />
-            <element signature="e#207866#207867#0" expanded="false" />
-            <element signature="e#207906#207907#0" expanded="false" />
-            <element signature="e#207958#207959#0" expanded="false" />
-            <element signature="e#208007#208008#0" expanded="false" />
-            <element signature="e#208266#208267#0" expanded="false" />
-            <element signature="e#208334#208335#0" expanded="false" />
-            <element signature="e#208379#208380#0" expanded="false" />
-            <element signature="e#208421#208422#0" expanded="false" />
-            <element signature="e#208642#208643#0" expanded="false" />
-            <element signature="e#208696#208697#0" expanded="false" />
-            <element signature="e#209150#209151#0" expanded="false" />
-            <element signature="e#209185#209186#0" expanded="false" />
-            <element signature="e#210655#210656#0" expanded="false" />
-            <element signature="e#210725#210726#0" expanded="false" />
-            <element signature="e#211064#211065#0" expanded="false" />
-            <element signature="e#211126#211127#0" expanded="false" />
-            <element signature="e#211874#211875#0" expanded="false" />
-            <element signature="e#211907#211908#0" expanded="false" />
-            <element signature="e#214495#214496#0" expanded="false" />
-            <element signature="e#214544#214545#0" expanded="false" />
-            <element signature="e#214591#214592#0" expanded="false" />
-            <element signature="e#214639#214640#0" expanded="false" />
-            <element signature="e#222861#222862#0" expanded="false" />
-            <element signature="e#222898#222899#0" expanded="false" />
-            <element signature="e#223156#223157#0" expanded="false" />
-            <element signature="e#223197#223198#0" expanded="false" />
-            <element signature="e#223356#223357#0" expanded="false" />
-            <element signature="e#223394#223395#0" expanded="false" />
-            <element signature="e#223451#223452#0" expanded="false" />
-            <element signature="e#223510#223511#0" expanded="false" />
-            <element signature="e#223569#223570#0" expanded="false" />
-            <element signature="e#223606#223607#0" expanded="false" />
-            <element signature="e#223678#223679#0" expanded="false" />
-            <element signature="e#223741#223742#0" expanded="false" />
-            <element signature="e#224245#224246#0" expanded="false" />
-            <element signature="e#224288#224289#0" expanded="false" />
-            <element signature="e#224664#224665#0" expanded="false" />
-            <element signature="e#224720#224721#0" expanded="false" />
-            <element signature="e#225049#225050#0" expanded="false" />
-            <element signature="e#225107#225108#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1536,7 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
           <caret line="76" column="43" lean-forward="false" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1544,58 +1322,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#35532#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="60">
+          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="45" lean-forward="false" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev/config_gen.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config_table.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2775">
-          <caret line="185" column="22" lean-forward="false" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="990">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1603,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6285">
           <caret line="419" column="0" lean-forward="false" selection-start-line="419" selection-start-column="0" selection-end-line="419" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1614,23 +1353,52 @@
             <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
             <folding />
           </first_editor>
-          <second_editor />
+          <second_editor>
+            <js_state />
+          </second_editor>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2336">
-          <caret line="80" column="18" lean-forward="false" selection-start-line="80" selection-start-column="18" selection-end-line="80" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/utils.clj">
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config_table.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="43" />
-          <folding />
+        <state relative-caret-position="2775">
+          <caret line="185" column="22" lean-forward="false" selection-start-line="185" selection-start-column="5" selection-end-line="185" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/ui/test_ui_def.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/config_gen.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/build">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/deploy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1638,39 +1406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="76" column="22" lean-forward="false" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="40" lean-forward="false" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="268" column="32" lean-forward="false" selection-start-line="268" selection-start-column="23" selection-end-line="268" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/build">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1678,6 +1413,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/ui/LoginForm.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1690,26 +1432,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/examples/Sampler.clj">
+    <entry file="file://$PROJECT_DIR$/builds/default/stale/extract-native.dependencies">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.clj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="16" column="73" lean-forward="true" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+        <state relative-caret-position="0">
+          <caret line="0" column="154" lean-forward="false" selection-start-line="0" selection-start-column="154" selection-end-line="0" selection-end-column="154" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dev/user.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/actions.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/build_support.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/config.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/functional_vaadin/core.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/build_support_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/functional_vaadin/config_test.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="401">
+            <caret line="50" column="32" lean-forward="false" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.clj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="37" />
           <folding />
         </state>
       </provider>

@@ -35,7 +35,7 @@
                   "
 
   (:require [clojure.set :as set]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [functional-vaadin.naming :as nm]
             [functional-vaadin.thread-vars :refer :all]
             [functional-vaadin.build-support :refer :all]

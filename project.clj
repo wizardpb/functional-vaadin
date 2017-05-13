@@ -5,7 +5,7 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
   :plugins [[lein-codox "0.9.5"]
             [lein-pprint "1.1.1"]]
-  :dependencies [[org.clojure/clojure "1.9.0-alpha11"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
                  [io.reactivex/rxclojure "1.0.0"]]
   :codox {:namespaces [functional-vaadin.core
                        functional-vaadin.conversion

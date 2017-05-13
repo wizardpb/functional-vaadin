@@ -5,7 +5,7 @@
             [functional-vaadin.data-binding :refer :all]
             [functional-vaadin.utils :refer :all]
             [clojure.set :as set]
-            [clojure.spec :as s])
+            [clojure.spec.alpha :as s])
   (:import (com.vaadin.ui
              Panel AbstractOrderedLayout GridLayout AbstractSplitPanel AbstractComponentContainer Table Alignment Table$Align FormLayout ComponentContainer MenuBar MenuBar$Command MenuBar$MenuItem Window Component)
            (java.util Map Collection)

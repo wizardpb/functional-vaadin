@@ -2,7 +2,7 @@
   "Useful public functions for creating and manipulatinig Actions, It provides a new type ActionHandler, implementing Action$Handler. This
   allows for the customization of action selection and handling by providing two functions, a select function and a handler function, along
   with a list of Actions to choose from."
-  (:require [clojure.spec :as s])
+  (:require [clojure.spec.alpha :as s])
   (:use [functional-vaadin.utils])
   (:import (com.vaadin.event Action$Listener ShortcutAction Action$Handler Action)))
 
