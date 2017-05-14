@@ -51,14 +51,15 @@
            )))
   )
 
-(defn prompt-loop [examples-dir]
-  (loop []
-    (let [files ["Sampler"]]
-     (let [item (choose-example files)]
-       (run-and-wait item)))
-    (recur)))
+(def examples ["Sampler"])
 
-(defn -main
-  ([] (prompt-loop nil))
-  ([examples-dir] (prompt-loop examples-dir)))
+(defn prompt-loop []
+  (let [item (choose-example examples)]
+    (run-and-wait item))
+  (recur))
+
+(defn -main [& args]
+  (if (zero? (count args))
+    (prompt-loop)
+    (run-and-wait (first args))))
 

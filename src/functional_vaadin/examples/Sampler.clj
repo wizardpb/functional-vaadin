@@ -13,13 +13,10 @@
   (:gen-class :name ^{com.vaadin.annotations.Theme "valo"} functional_vaadin.examples.Sampler
               :extends com.vaadin.ui.UI
               :main false)
-  (:import (com.vaadin.ui VerticalLayout Button Table UI Alignment Upload$Receiver Upload$StartedEvent Upload)
-           (com.vaadin.data.fieldgroup FieldGroup)
-           (com.vaadin.annotations Theme)
+  (:import (com.vaadin.ui Table UI Alignment Upload$Receiver Upload)
            (java.util.concurrent TimeUnit)
            (rx Observable)
-           (java.io OutputStream ByteArrayOutputStream)
-           (com.vaadin.shared.ui AlignmentInfo$Bits)))
+           (java.io OutputStream ByteArrayOutputStream)))
 
 (defn- table-action-handler []
   (letfn [(select-fn [target table actions]
@@ -56,8 +53,12 @@
          (table-column "last-name" {:header "Last Name"})
          (table-column "notes" {:header "Notes" :width 300})
          (table-column "loc" {:header "Location (Generated)" :width 210}
-           (fn [t item col] (label (str "Item Id " item ", Column Id " col))))
-         )))))
+           (fn [t item col] (label (str "Item Id " item ", Column Id " col)))))
+       (check-box {:id :edit-table :caption "Editable" :value false :alignment Alignment/MIDDLE_LEFT})
+       )
+      )
+    )
+  )
 
 (defn- background-task-tab []
   (vertical-layout {:caption "Background Task" :sizeFull []}
@@ -116,12 +117,16 @@
 (defn- setup-form-actions [main-ui]
   (->> (button-clicks (componentNamed :save-button main-ui))    ; Observe Save button clicks
     (commit)                                             ; Commit the form of which it is a part
-    (consume-for (componentNamed :table main-ui)            ; Consume the form data (in :item) and set into the table
+    (consume-for (componentNamed :table main-ui)         ; Consume the form data (in :item) and set into the table
       (fn [table data]
         (let [{:keys [item]} data
               row (object-array (map #(.getValue (.getItemProperty item %1)) ["first-name" "last-name" "notes"]))]
           (.addItem table row nil))
-        ))))
+        )))
+  (->> (value-changes (componentNamed :edit-table main-ui))
+    (consume-for (componentNamed :table main-ui)
+      (fn [table data]
+        (.setEditable table (.getValue (:source data)))))))
 
 ;
 ; Simulate a background job for the progress indicator by using a timer to send events (increasing integers)
