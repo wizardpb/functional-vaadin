@@ -1,3 +1,9 @@
+;;
+;; Copyright 2016 Prajna Inc. All Rights Reserved.
+;;
+;; This work is licensed under the Eclipse Public License v1.0 - https://www.eclipse.org/legal/epl-v10.html
+;; Distrubition and use must be done under the terms of this license
+;;
 (ns functional-vaadin.actions
   "Useful public functions for creating and manipulatinig Actions, It provides a new type ActionHandler, implementing Action$Handler. This
   allows for the customization of action selection and handling by providing two functions, a select function and a handler function, along

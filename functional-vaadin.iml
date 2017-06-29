@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module cursive.leiningen.project.LeiningenProjectsManager.displayName="com.prajnainc/functional-vaadin:0.3.0-snapshot" cursive.leiningen.project.LeiningenProjectsManager.isLeinModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/classes" />
     <exclude-output />
@@ -29,7 +29,6 @@
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.9.0-alpha16" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.1.10" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.1.94" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/tools.cli:0.3.5" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.namespace:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.11" level="project" />
     <orderEntry type="library" name="Leiningen: org.eclipse.jetty/jetty-http:9.3.8.v20160314" level="project" />

@@ -1,3 +1,9 @@
+;;
+;; Copyright 2016 Prajna Inc. All Rights Reserved.
+;;
+;; This work is licensed under the Eclipse Public License v1.0 - https://www.eclipse.org/legal/epl-v10.html
+;; Distrubition and use must be done under the terms of this license
+;;
 (ns functional-vaadin.examples.Sampler
   "A simple UI that presents some UI examples in a TabSheet: a form and a table. progress bar, etc..
   The table can be filed by filling in the form and clicking 'Save'"
