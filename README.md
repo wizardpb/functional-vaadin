@@ -43,7 +43,7 @@ RxClojure integrations are in:
     (require [functional-vaadin.rx.observers :as obs]
              [functional-vaadin.rx.operators :as ops])
 
-##Documentation
+## Documentation
 Guides and documentation are available on the [project wiki](https://github.com/wizardpb/functional-vaadin/wiki)
 
 API specifications are [here](http://prajnainc.com/functional-vaadin/doc/)
